@@ -1,4 +1,4 @@
-@import "styles/variables.scss";
+@import "./Side_NavBar_Emp_variables.scss";
 
 .sidebar {
   background-color: $dark-background;
@@ -7,7 +7,9 @@
   flex-direction: column;
   min-width: 18rem;
   padding: $spacing 0;
+  
 
+ 
   &--centered {
     align-self: center;
   }
@@ -35,6 +37,7 @@
   margin: 2rem 0;
   padding: 0 $spacing;
   width: 100%;
+ 
 }
 .PTagDescription {
 

@@ -23,7 +23,7 @@ export default function Application(props) {
                   <h1> Hello from "/" Page</h1>
               </Route>
               <Route path= "/dashboard-employee">
-                <h1> Hello from "/dashboard-employee" Page</h1>
+                <Employee_Dashboard/>
               </Route>
               <Route path= "/login">
                 <h1> Hello from "/login" Page</h1>
