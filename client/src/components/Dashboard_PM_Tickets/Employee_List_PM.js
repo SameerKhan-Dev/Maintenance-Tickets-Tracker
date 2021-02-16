@@ -6,16 +6,19 @@ import "./Employee_List_PM.scss"
 // import "components/Employee_List_PM.scss";
 
 const employees = [
-  {name: "Tim",
-  role_id: 1,
+  {
+    name: "Tim",
+    role_id: 1,
   },
-  {name: "Jack",
-  role_id: 2,
+  {
+    name: "Jack",
+    role_id: 2,
   },
-  {name: "John",
-  role_id: 3,
+  {
+    name: "John",
+    role_id: 3,
   }
-]
+];
 
 export default function Employee_List_PM(props) {
   const [selectedEmployee, setSelectEmployee] = useState("none");
