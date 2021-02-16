@@ -1,0 +1,144 @@
+{
+	"users": [
+		{
+			"id": 1,
+			"first_name": "Drew",
+			"last_name": "Mills",
+			"email": "Pink.Wunsch@yahoo.com",
+			"password": "password",
+			"role_id": 1,
+			"start_date": "2015-04-14T03:50:56.268Z",
+			"end_date": "NULL"
+		},
+		{
+			"id": 2,
+			"first_name": "Frida",
+			"last_name": "Padberg",
+			"email": "Maci_Lehner@gmail.com",
+			"password": "password",
+			"role_id": 1,
+			"start_date": "2015-09-22T08:41:20.700Z",
+			"end_date": "NULL"
+		},
+		{
+			"id": 3,
+			"first_name": "Celia",
+			"last_name": "Kuvalis",
+			"email": "Aiyana.Stracke@hotmail.com",
+			"password": "password",
+			"role_id": 2,
+			"start_date": "2015-10-13T17:58:48.011Z",
+			"end_date": "NULL"
+		},
+		{
+			"id": 4,
+			"first_name": "Carrie",
+			"last_name": "Kessler",
+			"email": "Selena_Hane@gmail.com",
+			"password": "password",
+			"role_id": 2,
+			"start_date": "2018-09-10T09:30:40.397Z",
+			"end_date": "NULL"
+		},
+		{
+			"id": 5,
+			"first_name": "Reva",
+			"last_name": "Hilll",
+			"email": "Sincere70@yahoo.com",
+			"password": "password",
+			"role_id": 2,
+			"start_date": "2017-12-18T01:16:04.626Z",
+			"end_date": "NULL"
+		},
+		{
+			"id": 6,
+			"first_name": "Shayne",
+			"last_name": "Lindgren",
+			"email": "Jaron.Greenholt45@yahoo.com",
+			"password": "password",
+			"role_id": 2,
+			"start_date": "2018-12-23T12:02:33.829Z",
+			"end_date": "NULL"
+		},
+		{
+			"id": 7,
+			"first_name": "Opal",
+			"last_name": "Adams",
+			"email": "Pearl_Spencer@yahoo.com",
+			"password": "password",
+			"role_id": 2,
+			"start_date": "2016-06-12T08:03:52.569Z",
+			"end_date": "NULL"
+		},
+		{
+			"id": 8,
+			"first_name": "Julio",
+			"last_name": "Harvey",
+			"email": "Benton35@gmail.com",
+			"password": "password",
+			"role_id": 3,
+			"start_date": "2019-01-10T22:45:05.783Z",
+			"end_date": "NULL"
+		},
+		{
+			"id": 9,
+			"first_name": "Rylan",
+			"last_name": "O'Conner",
+			"email": "Gerardo.Krajcik57@hotmail.com",
+			"password": "password",
+			"role_id": 3,
+			"start_date": "2017-07-04T03:13:44.223Z",
+			"end_date": "NULL"
+		},
+		{
+			"id": 10,
+			"first_name": "Rebecca",
+			"last_name": "Schumm",
+			"email": "Victoria98@yahoo.com",
+			"password": "password",
+			"role_id": 4,
+			"start_date": "2019-01-01T00:25:07.113Z",
+			"end_date": "NULL"
+		},
+		{
+			"id": 11,
+			"first_name": "Barrett",
+			"last_name": "Lehner",
+			"email": "Teresa_Monahan@hotmail.com",
+			"password": "password",
+			"role_id": 4,
+			"start_date": "2016-04-04T16:36:32.413Z",
+			"end_date": "NULL"
+		},
+		{
+			"id": 12,
+			"first_name": "Keon",
+			"last_name": "Ankunding",
+			"email": "Dorcas_Kulas@yahoo.com",
+			"password": "password",
+			"role_id": 5,
+			"start_date": "2016-09-08T05:42:28.509Z",
+			"end_date": "NULL"
+		},
+		{
+			"id": 13,
+			"first_name": "Reynold",
+			"last_name": "Boyer",
+			"email": "Harold64@hotmail.com",
+			"password": "password",
+			"role_id": 5,
+			"start_date": "2018-06-18T13:28:53.282Z",
+			"end_date": "NULL"
+		},
+		{
+			"id": 14,
+			"first_name": "Mikel",
+			"last_name": "Ruecker",
+			"email": "Abe_Goodwin28@gmail.com",
+			"password": "password",
+			"role_id": 5,
+			"start_date": "2017-11-08T20:19:29.374Z",
+			"end_date": "NULL"
+		}
+	]
+}

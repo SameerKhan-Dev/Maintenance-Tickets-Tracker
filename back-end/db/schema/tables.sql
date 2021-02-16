@@ -1,7 +1,6 @@
 -- Drop and recreate Users table (Example)
 
-
-/* maintenance_issues Table */
+/* roles Table */
 DROP TABLE IF EXISTS roles CASCADE;
 CREATE TABLE roles (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -19,7 +18,7 @@ CREATE TABLE users (
   role_id INTEGER REFERENCES roles(id) ON DELETE CASCADE,
   active BOOLEAN DEFAULT true,
   start_date TIMESTAMP DEFAULT NOW(),
-  end_date TIMESTAMP DEFAULT NULL
+  end_date TIMESTAMP  
 );
 /* properties Table */
 DROP TABLE IF EXISTS properties CASCADE;
@@ -60,7 +59,6 @@ CREATE TABLE maintenance_issues (
   maintenance_type VARCHAR(255) NOT NULL 
 );
 
-
 /* tickets Table */
 DROP TABLE IF EXISTS tickets CASCADE;
 CREATE TABLE tickets (
@@ -71,6 +69,7 @@ CREATE TABLE tickets (
   maintenance_type_id INTEGER REFERENCES maintenance_issues(id) ON DELETE CASCADE,
   ticket_status_id INTEGER REFERENCES ticket_statuses(id) ON DELETE CASCADE,
   description TEXT NOT NULL,
+  estimated_cost INTEGER,
   actual_cost INTEGER DEFAULT NULL,
   created_at TIMESTAMP DEFAULT NOW(),
   completed_at TIMESTAMP DEFAULT NULL,
