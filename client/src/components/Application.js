@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import All_Property_Interface from "./Dashboard_PM_Stats/All_Property_Interface";
 import Individual_Property_Interface from "./Dashboard_PM_Stats/Individual_Property_Interface";
 
-import Employee_List_Item from "./Dashboard_PM_Tickets/Employee_List_Item";
-import Employee_List from "./Dashboard_PM_Tickets/Employee_List";
+import Employee_List_Item_PM from "./Dashboard_PM_Tickets/Employee_List_Item_PM";
+import Employee_List_PM from "./Dashboard_PM_Tickets/Employee_List_PM";
 
 
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
@@ -39,7 +39,6 @@ export default function Application(props) {
           </Route>
           <Route path="/dashboard-pm-tickets">
             <h1> Hello from "/dashboard-pm-tickets" Page</h1>
-            <Employee_List_Item />
           </Route>
           <Route path="/dashboard-tenant">
             <h1> Hello from "/dashboard-tenant" Page</h1>
@@ -52,7 +51,7 @@ export default function Application(props) {
           </Route>
           <Route path="/test">
             <h1> Hello from "/test" Page</h1>
-            <Employee_List />
+            <Employee_List_PM />
           </Route>
         </Switch>
       </main>
