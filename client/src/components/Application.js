@@ -2,12 +2,8 @@ import React, { useState, Component } from "react";
 import { useEffect } from "react";
 import "components/Application.scss";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import All_Property_Interface from "./PM-PropertiesStats/All_Property_Interface";
-import Individual_Property_Interface from "./PM-PropertiesStats/Individual_Property_Interface";
-
-import Comparison_Chart from "./PM-PropertiesStats/Comparison_Chart";
-import Pie_Chart from "./PM-PropertiesStats/Pie_Chart";
-import Bar_Chart from "./PM-PropertiesStats/Bar_Chart";
+import All_Property_Interface from "./Dashboard_PM_Stats/All_Property_Interface";
+import Individual_Property_Interface from "./Dashboard_PM_Stats/Individual_Property_Interface";
 
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
 const axios = require("axios");
@@ -32,10 +28,13 @@ export default function Application(props) {
           <Route path="/register">
             <h1> Hello from "/register Page</h1>
           </Route>
-          <Route path="/dashboard-pm">
-            <h1> Hello from "/dashboard-pm" Page</h1>
+          <Route path="/dashboard-pm-stats">
+            <h1> Hello from "/dashboard-pm-stats" Page</h1>
             <All_Property_Interface />
             <Individual_Property_Interface />
+          </Route>
+          <Route path="/dashboard-pm-tickets">
+            <h1> Hello from "/dashboard-pm-tickets" Page</h1>
           </Route>
           <Route path="/dashboard-tenant">
             <h1> Hello from "/dashboard-tenant" Page</h1>
