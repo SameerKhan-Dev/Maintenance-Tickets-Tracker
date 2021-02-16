@@ -47,9 +47,50 @@ app.use(express.static("public"));
 
 // Home page
 // Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
+// Separate them into separate routes files (see above)5
+// 1
 app.get("/homepage", (req, res) => {
-  res.send("Hello from the back-end");
+  res.send("Hello from: route 1  ");
+});
+// 2
+app.post("/register", (req, res) => {
+  res.send("Hello from: route 2  ");
+});
+//3
+app.post("/login", (req, res) => {
+  res.send("Hello from: route 3  ");
+});
+//4
+app.get("/my_properties", (req, res) => {
+  res.send("Hello from: route 4  ");
+});
+//5
+app.get("/properties/tickets", (req, res) => {
+  res.send("Hello from: route 5  ");
+});
+//6
+app.get("/tickets-dashboard/properties", (req, res) => {
+  res.send("Hello from: route 6  ");
+});
+//7
+app.put("/tickets/update/:ticket_id", (req, res) => {
+  res.send("Hello from: route 7  ");
+});
+//8
+app.post("/tickets/new", (req, res) => {
+  res.send("Hello from: route 8  ");
+});
+//9
+app.put("/tickets/update/:ticket_id", (req, res) => {
+  res.send("Hello from: route 9  ");
+});
+//10
+app.get("/property/tenant/:tenant_id", (req, res) => {
+  res.send("Hello from: route 10  ");
+});
+//11
+app.get("/tickets/employee/:employee_id", (req, res) => {
+  res.send("Hello from: route 11  ");
 });
 
 app.listen(PORT, () => {
