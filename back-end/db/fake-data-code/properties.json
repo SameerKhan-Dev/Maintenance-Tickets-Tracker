@@ -1,0 +1,124 @@
+{
+	"data": [
+		{
+			"id": 1,
+			"property_manager_id": 1,
+			"name": "Yessenia Common",
+			"address": "797 Marques Island",
+			"unit": "APT 3327",
+			"city": "Toronto",
+			"province": "Ontario",
+			"postal_code": "07717-0821",
+			"property_type": "Condominium",
+			"image_path": "http://placeimg.com/640/480/business"
+		},
+		{
+			"id": 2,
+			"property_manager_id": 1,
+			"name": "Maximus Isle",
+			"address": "92671 Rafael Mews",
+			"unit": "APT 87",
+			"city": "Toronto",
+			"province": "Ontario",
+			"postal_code": "05838",
+			"property_type": "Condominium",
+			"image_path": "http://placeimg.com/640/480/business"
+		},
+		{
+			"id": 3,
+			"property_manager_id": 1,
+			"name": "Michale Points",
+			"address": "133 Rutherford Crossroad",
+			"unit": "APT 214",
+			"city": "Toronto",
+			"province": "Ontario",
+			"postal_code": "33439",
+			"property_type": "Condominium",
+			"image_path": "http://placeimg.com/640/480/business"
+		},
+		{
+			"id": 4,
+			"property_manager_id": 1,
+			"name": "Goldner Way",
+			"address": "01813 Warren Divide",
+			"unit": "APT 5826",
+			"city": "Toronto",
+			"province": "Ontario",
+			"postal_code": "82167",
+			"property_type": "Condominium",
+			"image_path": "http://placeimg.com/640/480/business"
+		},
+		{
+			"id": 5,
+			"property_manager_id": 2,
+			"name": "Erdman Crossing",
+			"address": "170 Savanna Motorway",
+			"unit": "APT 5993",
+			"city": "Toronto",
+			"province": "Ontario",
+			"postal_code": "03832-9978",
+			"property_type": "Condominium",
+			"image_path": "http://placeimg.com/640/480/business"
+		},
+		{
+			"id": 6,
+			"property_manager_id": 2,
+			"name": "Muller Hollow",
+			"address": "903 Declan Groves",
+			"unit": "APT 6729",
+			"city": "Toronto",
+			"province": "Ontario",
+			"postal_code": "56882-6445",
+			"property_type": "Condominium",
+			"image_path": "http://placeimg.com/640/480/business"
+		},
+		{
+			"id": 7,
+			"property_manager_id": 2,
+			"name": "Lou Throughway",
+			"address": "0120 Sawayn Spring",
+			"unit": "APT 843",
+			"city": "Toronto",
+			"province": "Ontario",
+			"postal_code": "02030",
+			"property_type": "Condominium",
+			"image_path": "http://placeimg.com/640/480/business"
+		},
+		{
+			"id": 8,
+			"property_manager_id": 2,
+			"name": "Carissa Stream",
+			"address": "040 Unique Ways",
+			"unit": "APT 1023",
+			"city": "Toronto",
+			"province": "Ontario",
+			"postal_code": "89551",
+			"property_type": "Condominium",
+			"image_path": "http://placeimg.com/640/480/business"
+		},
+		{
+			"id": 9,
+			"property_manager_id": 2,
+			"name": "Cora Rue",
+			"address": "3116 Brando Gateway",
+			"unit": "APT 4604",
+			"city": "Toronto",
+			"province": "Ontario",
+			"postal_code": "56465",
+			"property_type": "Condominium",
+			"image_path": "http://placeimg.com/640/480/business"
+		},
+		{
+			"id": 10,
+			"property_manager_id": 2,
+			"name": "Hudson Way",
+			"address": "536 Amanda Loaf",
+			"unit": "APT 5214",
+			"city": "Toronto",
+			"province": "Ontario",
+			"postal_code": "93432",
+			"property_type": "Condominium",
+			"image_path": "http://placeimg.com/640/480/business"
+		}
+	]
+}
