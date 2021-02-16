@@ -2,8 +2,9 @@ import React, { useState, Component } from "react";
 import { useEffect } from "react";
 import "components/Application.scss";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import All_Property_Interface from "./Dashboard_PM_Stats/All_Property_Interface";
-import Individual_Property_Interface from "./Dashboard_PM_Stats/Individual_Property_Interface";
+// import All_Property_Interface from "./Dashboard_PM_Stats/All_Property_Interface";
+// import Individual_Property_Interface from "./Dashboard_PM_Stats/Individual_Property_Interface";
+import Dashboard_PM_Stats from "./Dashboard_PM_Stats/Dashboard_PM_Stats";
 
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
 const axios = require("axios");
@@ -29,9 +30,8 @@ export default function Application(props) {
             <h1> Hello from "/register Page</h1>
           </Route>
           <Route path="/dashboard-pm-stats">
-            <h1> Hello from "/dashboard-pm-stats" Page</h1>
-            <All_Property_Interface />
-            <Individual_Property_Interface />
+            {/* <h1> Hello from "/dashboard-pm-stats" Page</h1> */}
+            <Dashboard_PM_Stats/>
           </Route>
           <Route path="/dashboard-pm-tickets">
             <h1> Hello from "/dashboard-pm-tickets" Page</h1>
