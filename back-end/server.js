@@ -12,7 +12,7 @@ const app = express();
 const morgan = require("morgan");
 
 const database = require('./database/database');
-
+const getAllPropertiesByPM_Id = require('./database/databaseHelpers/getAllPropertiesByPM_Id')
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -59,7 +59,14 @@ app.post("/login", (req, res) => {
 });
 //4
 app.get("/my_properties", (req, res) => {
-  res.send("Hello from: route 4  ");
+  
+  res.send("Hello from: route 4 ");
+  myProperties = getAllPropertiesByPM_Id(1)
+  .then((response) => {
+    res.send(response);
+
+});
+  
 });
 //5
 app.get("/properties/tickets", (req, res) => {

@@ -12,4 +12,4 @@ const dbParams = require("../lib/db.js");
 const db = new Pool(dbParams);
 db.connect(console.log("DB connected"));
 
-module.exports = Pool;
+module.exports = db;
