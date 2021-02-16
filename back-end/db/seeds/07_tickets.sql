@@ -13,7 +13,7 @@
 --     "data_image_path" TEXT
 -- );
 
-
+/*  Change creator_id to match property_id */
 INSERT INTO "tickets" (property_id, creator_id, employee_id, maintenance_type_id, ticket_status_id, description , estimated_cost, actual_cost , created_at, image_path)
 VALUES
     (2,3,13,2,2,'Enim autem nulla rerum voluptas amet et quidem. Quidem magni autem nobis nesciunt rem consequuntur reprehenderit maxime eos. Voluptatem cum corporis assumenda repudiandae consectetur aliquid repudiandae dolores. Ipsa sequi velit unde eaque nam et nesciunt. Dolorem qui velit.',364.92,819.02,'2018-05-13T15:55:16.824Z','http://placeimg.com/640/480/business'),

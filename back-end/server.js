@@ -12,7 +12,9 @@ const app = express();
 const morgan = require("morgan");
 
 const database = require('./database/database');
-const getAllPropertiesByPM_Id = require('./database/databaseHelpers/getAllPropertiesByPM_Id')
+const getAllPropertiesByPM_Id = require('./database/databaseHelpers/getAllPropertiesByPM_Id');
+const getAllTicketsByProperty_Id = require('./database/databaseHelpers/getAllTicketsByProperty_Id');
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -60,21 +62,30 @@ app.post("/login", (req, res) => {
 //4
 app.get("/my_properties", (req, res) => {
   
-  res.send("Hello from: route 4 ");
+  console.log("Hello from: route 4 ");
+
   myProperties = getAllPropertiesByPM_Id(1)
   .then((response) => {
     res.send(response);
-
 });
   
 });
 //5
-app.get("/properties/tickets", (req, res) => {
-  res.send("Hello from: route 5  ");
+app.get("/properties/:property_id/tickets", (req, res) => {
+  console.log("Hello from: route 5  ");
+  propertyTickets = getAllTicketsByProperty_Id(4)
+  .then((response) => {
+    res.send(response);
+  });
+ 
 });
 //6
 app.get("/tickets-dashboard/properties", (req, res) => {
-  res.send("Hello from: route 6  ");
+  res.send("Hello from: route 6");
+});
+
+app.get("/properties/:property_id/employees", (req, res) => {
+  res.send("Hello from: route 6");
 });
 //7
 app.put("/tickets/update/:ticket_id", (req, res) => {
