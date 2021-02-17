@@ -2,11 +2,11 @@ import React, {useState, Component} from 'react';
 import {useEffect} from 'react';
 
 import "./Side_NavBar_PM_Tickets.scss";
-import "./map.scss";
+import "./map_Tickets.scss";
 //import Ticket_List_Item from  "./Ticket_List_Item"
 //import Ticket_List from  "./Ticket_List"
-import PropertyList from "./PropertyList";
-import Map_SideBar from "./property_map";
+import PropertyList from "./PropertyList_Tickets";
+import Map_SideBar from "./property_map_Tickets";
 
 
 export default function Side_NavBar_PM_Tickets(props) {

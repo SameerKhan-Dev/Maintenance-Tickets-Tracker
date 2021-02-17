@@ -1,5 +1,5 @@
 import React from "react";
-import PropertyListItem from "./PropertyListItem"
+import PropertyListItem from "./PropertyListItem_Tickets"
 
 let properties = [
   {name: "property #1", property_id:1, address: 'address #1'},

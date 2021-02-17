@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import React, { useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
-import fetchFakeData from "./fetchFakeData";
-import Popup from "./Popup";
-import "./map.scss";
+import fetchFakeData from "./fetchFakeData_Tickets";
+import Popup from "./Popup_Tickets";
+import '/Users/zahrahm/lighthouse/final-project/Maintenance-Tickets-Tracker/client/src/components/Dashboard_PM_Tickets/map_Tickets.scss'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiemFocmFhYWFhIiwiYSI6ImNrNjI5czFkcjBjNXIza212dGFweGVkcmMifQ.VOxm_Cmy9VDyGvBcLUqWPA ';
 

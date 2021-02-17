@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./PropertyListItem.scss";
+import "./PropertyListItem_Tickets.scss";
 import classnames from "classnames";
 
 export default function PropertyListItem(props) {
