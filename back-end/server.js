@@ -13,7 +13,7 @@ const morgan = require("morgan");
 
 const database = require('./database/database');
 const getAllPropertiesByPM_Id = require('./database/databaseHelpers/getAllPropertiesByPM_Id');
-const getAllTicketsByProperty_Id = require('./database/databaseHelpers/getAllTicketsByProperty_Id');
+const getAllTicketsByPm_Id = require('./database/databaseHelpers/getAllTicketsByPm_Id');
 const  getAllEmployeesByProperty_Id = require('./database/databaseHelpers/getAllEmployeesByProperty_Id');
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -72,13 +72,13 @@ app.get("/my_properties/:pm_id", (req, res) => {
   
 });
 //5
-app.get("/properties/:property_id/tickets", (req, res) => {
+app.get("/properties/:pm_id/tickets", (req, res) => {
 
-  const property_id = req.params.property_id;
+  const pm_id = req.params.pm_id;
 
   console.log("Hello from: route 5  ");
 
-  propertyTickets = getAllTicketsByProperty_Id(property_id)
+  propertyTickets = getAllTicketsByPm_Id(pm_id)
   .then((response) => {
     res.send(response);
   });

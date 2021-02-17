@@ -22,6 +22,8 @@ VALUES
     (2,'Lou Throughway','0120 Sawayn Spring','APT 843','Toronto','Ontario','02030','Condominium','http://placeimg.com/640/480/business'),
     (2,'Carissa Stream','040 Unique Ways','APT 1023','Toronto','Ontario','89551','Condominium','http://placeimg.com/640/480/business'),
     (2,'Cora Rue','3116 Brando Gateway','APT 4604','Toronto','Ontario','56465','Condominium','http://placeimg.com/640/480/business'),
-    (2,'Hudson Way','536 Amanda Loaf','APT 5214','Toronto','Ontario','93432','Condominium','http://placeimg.com/640/480/business');
+    (2,'Hudson Way','536 Amanda Loaf','APT 5214','Toronto','Ontario','93432','Condominium','http://placeimg.com/640/480/business'),
+    (3,'HelloWorld1','3116 Brando Gateway','APT 4604','Toronto','Ontario','56465','Condominium','http://placeimg.com/640/480/business'),
+    (3,'HelloWorld2','536 Amanda Loaf','APT 5214','Toronto','Ontario','93432','Condominium','http://placeimg.com/640/480/business');
 
 

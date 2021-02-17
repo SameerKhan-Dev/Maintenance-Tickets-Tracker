@@ -1,10 +1,12 @@
 const db = require('../database');
 
-const getAllTicketsByProperty_Id = function (property_id) {
+const getAllTicketsByPm_Id = function (pm_id) {
 
     return db.query(`
-        SELECT * FROM tickets
-        WHERE property_id = ($1)`, [property_id])
+      SELECT * FROM tickets
+      JOIN properties ON tickets.property_id = properties.id
+      WHERE property_manager_id = $1;`
+      , [pm_id])
       .then(res => {
         if (res.rows) {
   
@@ -21,5 +23,5 @@ const getAllTicketsByProperty_Id = function (property_id) {
   
   }
 
-  module.exports = getAllTicketsByProperty_Id;
+  module.exports = getAllTicketsByPm_Id;
   

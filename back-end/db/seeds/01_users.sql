@@ -13,6 +13,7 @@ INSERT INTO "users" (firstname, lastname, email, password, role_id, start_date)
 VALUES
     ('Drew','Mills','Pink.Wunsch@yahoo.com','password',1,'2015-04-14T03:50:56.268Z'),    /* PM */
     ('Frida','Padberg','Maci_Lehner@gmail.com','password',1,'2015-09-22T08:41:20.700Z'), /* PM */
+    ('Temp','hello','Maci_Lehner@gmail.com','password',1,'2015-09-22T08:41:20.700Z'),
     ('Celia','Kuvalis','Aiyana.Stracke@hotmail.com','password',2,'2015-10-13T17:58:48.011Z'), /* Tenant */
     ('Carrie','Kessler','Selena_Hane@gmail.com','password',2,'2018-09-10T09:30:40.397Z'), /* Tenant */
     ('Reva','Hilll','Sincere70@yahoo.com','password',2,'2017-12-18T01:16:04.626Z'), /* Tenant */

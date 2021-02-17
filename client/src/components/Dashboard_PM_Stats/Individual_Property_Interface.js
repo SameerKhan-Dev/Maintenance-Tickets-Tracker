@@ -4,6 +4,28 @@ import Pie_Chart from "./Pie_Chart";
 import Bar_Chart from "./Bar_Chart";
 
 export default function Individual_Property_Interface(props) {
+  /*
+    let totalUnsolvedTickets = 0;
+    let in-ProgressTickets = 0;
+
+
+
+  */
+  // const { selectedProperty } = props;  // from parent component dashboard
+
+  /*
+    const decideWhichDataToDisplay = {
+      if(selectedProperty === 0) {
+        
+
+
+      }
+      else if( selectedProperty === 1)......
+
+
+    }
+  */
+
   return (
     <main className="stats__view">
       <section className="ticket__info">
