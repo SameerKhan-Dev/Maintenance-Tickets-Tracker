@@ -34,7 +34,14 @@ export default function Application(props) {
             <h1> Hello from "/register Page</h1>
           </Route>
           <Route path="/dashboard-pm-stats">
-            {/* <h1> Hello from "/dashboard-pm-stats" Page</h1> */}
+            {/* <h1> Hello from "/dashboard-pm-stats" Page</h1>
+              // all tickets 
+              // all properties
+              // tickets for specific properties
+              // all employees
+            
+            */}
+            
             <Dashboard_PM_Stats/>
           </Route>
           <Route path="/dashboard-pm-tickets">
@@ -42,6 +49,10 @@ export default function Application(props) {
           </Route>
           <Route path="/dashboard-tenant">
             <h1> Hello from "/dashboard-tenant" Page</h1>
+            {/*  
+              // specific property
+            
+            */ }
           </Route>
           <Route path="/tickets">
             <h1> Hello from "/tickets" Page</h1>

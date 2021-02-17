@@ -60,11 +60,12 @@ app.post("/login", (req, res) => {
   res.send("Hello from: route 3  ");
 });
 //4
-app.get("/my_properties", (req, res) => {
+app.get("/my_properties/:pm_id", (req, res) => {
   
+  const pm_id = req.params.pm_id;
   console.log("Hello from: route 4 ");
 
-  myProperties = getAllPropertiesByPM_Id(1)
+  myProperties = getAllPropertiesByPM_Id(pm_id)
   .then((response) => {
     res.send(response);
 });
@@ -119,12 +120,7 @@ app.get("/properties/employees/:property_id", (req, res) => {
 });
 //12
 app.get("/tickets/employee/:employee_id", (req, res) => {
-  console.log("Hello from: route 11  ");
-  const employee_id = req.params.employee_id;
-  allEmployees = getAllEmployeesByProperty_Id(employee_id)
-  .then((response) => {
-    res.send(response);
-  });
+
 });
 
 app.listen(PORT, () => {
