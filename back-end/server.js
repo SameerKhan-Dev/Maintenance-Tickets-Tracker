@@ -14,7 +14,7 @@ const morgan = require("morgan");
 const database = require('./database/database');
 const getAllPropertiesByPM_Id = require('./database/databaseHelpers/getAllPropertiesByPM_Id');
 const getAllTicketsByProperty_Id = require('./database/databaseHelpers/getAllTicketsByProperty_Id');
-
+const  getAllEmployeesByProperty_Id = require('./database/databaseHelpers/getAllEmployeesByProperty_Id');
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -72,8 +72,12 @@ app.get("/my_properties", (req, res) => {
 });
 //5
 app.get("/properties/:property_id/tickets", (req, res) => {
+
+  const property_id = req.params.property_id;
+
   console.log("Hello from: route 5  ");
-  propertyTickets = getAllTicketsByProperty_Id(4)
+
+  propertyTickets = getAllTicketsByProperty_Id(property_id)
   .then((response) => {
     res.send(response);
   });
@@ -86,6 +90,7 @@ app.get("/tickets-dashboard/properties", (req, res) => {
 
 app.get("/properties/:property_id/employees", (req, res) => {
   res.send("Hello from: route 6");
+  
 });
 //7
 app.put("/tickets/update/:ticket_id", (req, res) => {
@@ -104,8 +109,22 @@ app.get("/property/tenant/:tenant_id", (req, res) => {
   res.send("Hello from: route 10  ");
 });
 //11
+app.get("/properties/employees/:property_id", (req, res) => {
+  console.log("Hello from: route 11  ");
+  const property_id = req.params.property_id;
+  allEmployees = getAllEmployeesByProperty_Id(property_id)
+  .then((response) => {
+    res.send(response);
+  });
+});
+//12
 app.get("/tickets/employee/:employee_id", (req, res) => {
-  res.send("Hello from: route 11  ");
+  console.log("Hello from: route 11  ");
+  const employee_id = req.params.employee_id;
+  allEmployees = getAllEmployeesByProperty_Id(employee_id)
+  .then((response) => {
+    res.send(response);
+  });
 });
 
 app.listen(PORT, () => {
