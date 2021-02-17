@@ -2,7 +2,6 @@ import React from "react";
 import PropertyListItem from "./PropertyListItem"
 
 
-
 export default function Propertylist(props){
 
   const {selectProperty, properties} = props;
@@ -14,13 +13,18 @@ export default function Propertylist(props){
         selectProperty = {selectProperty}
         key={property.id}
         name={property.name} 
+       
       />
       )
   });
 
   return (
     <>
-    <li onClick={ () => selectProperty(0)} >
+    <li onClick={ () => {
+      
+      selectProperty(0);
+     
+                        }} >
       <h2 className="text--regular">All Properties</h2>
     </li>
     {propertiesListArray}

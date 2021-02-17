@@ -17,7 +17,11 @@ export default function PropertyListItem(props) {
   return (
 
     // assign li to be a clickable component: add onClick: (state-handler - helper function)
-    <li className= {props.name} data-testid="day" onClick={ () => selectProperty(property_id)} >
+    <li className= {props.name} data-testid="day" onClick={ () => {
+      
+      selectProperty(property_id);
+     
+      }} >
       <h2 className="text--regular">{props.name}</h2>
     </li>
   );

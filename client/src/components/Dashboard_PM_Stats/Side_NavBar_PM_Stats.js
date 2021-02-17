@@ -10,7 +10,7 @@ import Map_SideBar from "./property_map";
 
 
 export default function Side_NavBar_Emp(props) {
-  const {selectProperty, properties} = props;
+  const {selectProperty, properties } = props;
 
     return (
       <>
@@ -38,6 +38,7 @@ export default function Side_NavBar_Emp(props) {
            <PropertyList
             selectProperty = {selectProperty}
             properties = {properties}
+            
            />
           </nav>
           {/* <img

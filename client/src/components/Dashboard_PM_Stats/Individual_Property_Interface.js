@@ -4,27 +4,8 @@ import Pie_Chart from "./Pie_Chart";
 import Bar_Chart from "./Bar_Chart";
 
 export default function Individual_Property_Interface(props) {
-  /*
-    let totalUnsolvedTickets = 0;
-    let in-ProgressTickets = 0;
-
-
-
-  */
-  // const { selectedProperty } = props;  // from parent component dashboard
-
-  /*
-    const decideWhichDataToDisplay = {
-      if(selectedProperty === 0) {
-        
-
-
-      }
-      else if( selectedProperty === 1)......
-
-
-    }
-  */
+  
+  //const {specificStats} = props; 
 
   return (
     <main className="stats__view">
@@ -34,11 +15,11 @@ export default function Individual_Property_Interface(props) {
         </h1>
         <Button onClick={props.onClick}>View Tickets</Button>
         <h2 className="Text--semi-bold">Total Unsolved Tickets:</h2>
-        <h1 className="Text--big-bold">43</h1>
+        <h1 className="Text--big-bold">{props.specificStats.totalUnsolved}</h1>
         <h2 className="Text--semi-bold">Pending:</h2>
-        <h1 className="Text--big-bold">20</h1>
+        <h1 className="Text--big-bold">{props.specificStats.pending}</h1>
         <h2 className="Text--semi-bold">In Progress:</h2>
-        <h1 className="Text--big-bold">23</h1>
+        <h1 className="Text--big-bold">{props.specificStats.in_Progress}</h1>
       </section>
       <section className="expenses__info">
         <h2 className="Text--semi-bold">
@@ -55,3 +36,5 @@ export default function Individual_Property_Interface(props) {
     </main>
   );
 }
+
+
