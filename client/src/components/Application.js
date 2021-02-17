@@ -2,12 +2,13 @@ import React, { useState, Component } from "react";
 import { useEffect } from "react";
 import "components/Application.scss";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import All_Property_Interface from "./PM-PropertiesStats/All_Property_Interface";
-import Individual_Property_Interface from "./PM-PropertiesStats/Individual_Property_Interface";
+// import All_Property_Interface from "./Dashboard_PM_Stats/All_Property_Interface";
+// import Individual_Property_Interface from "./Dashboard_PM_Stats/Individual_Property_Interface";
+import Dashboard_PM_Stats from "./Dashboard_PM_Stats/Dashboard_PM_Stats";
 
-import Comparison_Chart from "./PM-PropertiesStats/Comparison_Chart";
-import Pie_Chart from "./PM-PropertiesStats/Pie_Chart";
-import Bar_Chart from "./PM-PropertiesStats/Bar_Chart";
+import Employee_List_Item_PM from "./Dashboard_PM_Tickets/Employee_List_Item_PM";
+import Employee_List_PM from "./Dashboard_PM_Tickets/Employee_List_PM";
+import Ticket_List_PM from "./Dashboard_PM_Tickets/Ticket_List_PM";
 
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
 const axios = require("axios");
@@ -32,10 +33,12 @@ export default function Application(props) {
           <Route path="/register">
             <h1> Hello from "/register Page</h1>
           </Route>
-          <Route path="/dashboard-pm">
-            <h1> Hello from "/dashboard-pm" Page</h1>
-            <All_Property_Interface />
-            <Individual_Property_Interface />
+          <Route path="/dashboard-pm-stats">
+            {/* <h1> Hello from "/dashboard-pm-stats" Page</h1> */}
+            <Dashboard_PM_Stats/>
+          </Route>
+          <Route path="/dashboard-pm-tickets">
+            <h1> Hello from "/dashboard-pm-tickets" Page</h1>
           </Route>
           <Route path="/dashboard-tenant">
             <h1> Hello from "/dashboard-tenant" Page</h1>
@@ -45,6 +48,11 @@ export default function Application(props) {
           </Route>
           <Route path="/logout">
             <h1> Hello from "/logout" Page</h1>
+          </Route>
+          <Route path="/test">
+            <h1> Hello from "/test" Page</h1>
+            <Employee_List_PM />
+            <Ticket_List_PM />
           </Route>
         </Switch>
       </main>
