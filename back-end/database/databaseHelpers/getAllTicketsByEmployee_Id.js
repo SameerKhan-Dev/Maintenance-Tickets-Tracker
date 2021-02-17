@@ -1,20 +1,19 @@
-
 const db = require('../database');
 
-const assignEmployeeForTicket_Id = function (employee_id, ticket_id) {
+const getAllTicketsByEmployee_Id = function (employee_id) {
 
     return db.query(`
-        UPDATE tickets
-        SET employee_id = $1
-        WHERE id = $2`
-      ,[employee_id, ticket_id]).then(res => {
+      SELECT * FROM tickets
+      WHERE employee_id = $1;`
+      , [employee_id])
+      .then(res => {
         if (res.rows) {
   
           // console.log("res.rows is, ", res.rows);
           return res.rows;
   
         } else {
-  
+            
           console.log("null returned");
           return null;
         }
@@ -23,4 +22,5 @@ const assignEmployeeForTicket_Id = function (employee_id, ticket_id) {
   
   }
 
-  module.exports = assignEmployeeForTicket_Id;
+  module.exports = getAllTicketsByEmployee_Id;
+  
