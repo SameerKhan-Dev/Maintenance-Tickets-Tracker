@@ -11,7 +11,7 @@ export default function AssignedTicketsListItem(props) {
 
     
     <li className= {props.id} data-testid="day">
-      <h2 className="text--regular">{props.id}</h2>
+      <h2 className="text--regular">{props.name}</h2>
     </li>
   );
 }
