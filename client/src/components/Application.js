@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import All_Property_Interface from "./Dashboard_PM_Stats/All_Property_Interface";
 // import Individual_Property_Interface from "./Dashboard_PM_Stats/Individual_Property_Interface";
 import Dashboard_PM_Stats from "./Dashboard_PM_Stats/Dashboard_PM_Stats";
+import Dashboard_PM_Tickets from "./Dashboard_PM_Tickets/Dashboard_PM_Tickets";
 
 import Employee_List_Item_PM from "./Dashboard_PM_Tickets/Employee_List_Item_PM";
 import Employee_List_PM from "./Dashboard_PM_Tickets/Employee_List_PM";
@@ -61,9 +62,10 @@ export default function Application(props) {
             <h1> Hello from "/logout" Page</h1>
           </Route>
           <Route path="/test">
-            <h1> Hello from "/test" Page</h1>
-            <Employee_List_PM />
-            <Ticket_List_PM />
+            {/* <h1> Hello from "/test" Page</h1> */}
+            {/* <Employee_List_PM /> */}
+            {/* <Ticket_List_PM /> */}
+            <Dashboard_PM_Tickets/>
           </Route>
         </Switch>
       </main>
