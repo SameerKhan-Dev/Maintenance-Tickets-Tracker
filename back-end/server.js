@@ -4,18 +4,17 @@ require("dotenv").config();
 // Web server config
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || "development";
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require("morgan");
 
-// PG database client/connection setup
-const { Pool } = require("pg");
-const dbParams = require("./lib/db.js");
-const db = new Pool(dbParams);
-db.connect(console.log("DB connected"));
-
+const database = require('./database/database');
+const getAllPropertiesByPM_Id = require('./database/databaseHelpers/getAllPropertiesByPM_Id');
+const getAllTicketsByPm_Id = require('./database/databaseHelpers/getAllTicketsByPm_Id');
+const  getAllEmployeesByProperty_Id = require('./database/databaseHelpers/getAllEmployeesByProperty_Id');
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -47,11 +46,84 @@ app.use(express.static("public"));
 
 // Home page
 // Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
+// Separate them into separate routes files (see above)5
+// 1
 app.get("/homepage", (req, res) => {
-  res.send("Hello from the back-end");
+  res.send("Hello from: route 1  ");
+});
+// 2
+app.post("/register", (req, res) => {
+  res.send("Hello from: route 2  ");
+});
+//3
+app.post("/login", (req, res) => {
+  res.send("Hello from: route 3  ");
+});
+//4
+app.get("/my_properties/:pm_id", (req, res) => {
+  
+  const pm_id = req.params.pm_id;
+  console.log("Hello from: route 4 ");
+
+  myProperties = getAllPropertiesByPM_Id(pm_id)
+  .then((response) => {
+    res.send(response);
+});
+  
+});
+//5
+app.get("/properties/:pm_id/tickets", (req, res) => {
+
+  const pm_id = req.params.pm_id;
+
+  console.log("Hello from: route 5  ");
+
+  propertyTickets = getAllTicketsByPm_Id(pm_id)
+  .then((response) => {
+    res.send(response);
+  });
+ 
+});
+//6
+app.get("/tickets-dashboard/properties", (req, res) => {
+  res.send("Hello from: route 6");
+});
+
+app.get("/properties/:property_id/employees", (req, res) => {
+  res.send("Hello from: route 6");
+  
+});
+//7
+app.put("/tickets/update/:ticket_id", (req, res) => {
+  res.send("Hello from: route 7  ");
+});
+//8
+app.post("/tickets/new", (req, res) => {
+  res.send("Hello from: route 8  ");
+});
+//9
+app.put("/tickets/update/:ticket_id", (req, res) => {
+  res.send("Hello from: route 9  ");
+});
+//10
+app.get("/property/tenant/:tenant_id", (req, res) => {
+  res.send("Hello from: route 10  ");
+});
+//11
+app.get("/properties/employees/:property_id", (req, res) => {
+  console.log("Hello from: route 11  ");
+  const property_id = req.params.property_id;
+  allEmployees = getAllEmployeesByProperty_Id(property_id)
+  .then((response) => {
+    res.send(response);
+  });
+});
+//12
+app.get("/tickets/employee/:employee_id", (req, res) => {
+
 });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
