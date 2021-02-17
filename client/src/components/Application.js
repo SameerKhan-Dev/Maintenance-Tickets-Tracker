@@ -8,6 +8,7 @@ import Individual_Property_Interface from "./Dashboard_PM_Stats/Individual_Prope
 import Employee_List_Item_PM from "./Dashboard_PM_Tickets/Employee_List_Item_PM";
 import Employee_List_PM from "./Dashboard_PM_Tickets/Employee_List_PM";
 import Ticket_List_PM from "./Dashboard_PM_Tickets/Ticket_List_PM";
+import Tenant_Interface from "./Dashboard_Tenant/Tenant_Interface";
 
 
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
@@ -52,8 +53,9 @@ export default function Application(props) {
           </Route>
           <Route path="/test">
             <h1> Hello from "/test" Page</h1>
-            <Employee_List_PM />
-            <Ticket_List_PM />
+            {/* <Employee_List_PM />
+            <Ticket_List_PM /> */}
+            <Tenant_Interface />
           </Route>
         </Switch>
       </main>
