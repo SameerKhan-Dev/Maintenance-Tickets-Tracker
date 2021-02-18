@@ -15,7 +15,7 @@ export default function Dashboard_PM_Stats(props) {
 
   // When user login is setup, extract user_id using cookies
   // temporarily we are going to use user_id as 1 (i.e pm_id for this page)
-  const  tempPM_Id = 1;
+  const  tempPM_Id = 3;
   const [state_PM_Stats, setState_PM_Stats] = useState( 
     {  // selectedProperty = 0, means no property selected
       selectedProperty: 0,

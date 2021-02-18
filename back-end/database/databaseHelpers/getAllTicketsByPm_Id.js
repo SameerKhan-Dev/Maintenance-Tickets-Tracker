@@ -3,7 +3,7 @@ const db = require('../database');
 const getAllTicketsByPm_Id = function (pm_id) {
 
     return db.query(`
-      SELECT * FROM tickets
+      SELECT tickets.* FROM tickets
       JOIN properties ON tickets.property_id = properties.id
       WHERE property_manager_id = $1;`
       , [pm_id])
