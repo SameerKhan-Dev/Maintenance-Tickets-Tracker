@@ -44,6 +44,8 @@ export default function Dashboard_PM_Stats(props) {
   
   const constructTicketsData = function (propertiesArray, ticketsArray) {
     let ticketsOrganizedByProperty = []; // our result to be populated and sent out from this helper function.
+    console.log("propertiesArray is: ", propertiesArray);
+    console.log("ticketsArray is: ", ticketsArray); 
     
     // construct the initial tickets data
     ticketsOrganizedByProperty.push({ 
@@ -118,7 +120,9 @@ export default function Dashboard_PM_Stats(props) {
   // const obtainStats for Specific Property:
   // input is all tickets and stats sorted by property
   // output is specific stats to display for property
-  
+  console.log("ticketsOrganizedByProperty is: ")
+  console.log(state_PM_Stats.ticketsOrganizedByProperty);
+
   const obtainStats = function(ticketsOrganizedByProperty, selectedProperty){
     
     // loop through allPropertiesStats array and find property with id matching selectedProperty value.
@@ -136,7 +140,7 @@ export default function Dashboard_PM_Stats(props) {
     setState_PM_Stats({...state_PM_Stats, selectedProperty: property_id, specificStats: obtainStats(state_PM_Stats.ticketsOrganizedByProperty, property_id)});
     
   }
-
+console.log("Selected Property is: ", state_PM_Stats.selectedProperty);
 
 
   useEffect(() => {

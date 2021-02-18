@@ -1,14 +1,14 @@
 import React from "react";
-import PropertyListItem from "./PropertyListItem_Tickets"
+import PropertyListItem_Tickets from "./PropertyListItem_Tickets"
 
 
-export default function Propertylist(props){
+export default function Propertylist_Tickets(props){
 
   const {selectProperty, properties} = props;
 
   const propertiesListArray = properties.map((property) => {
     return (
-      <PropertyListItem
+      <PropertyListItem_Tickets
         property_id = {property.id}
         selectProperty = {selectProperty}
         key={property.id}

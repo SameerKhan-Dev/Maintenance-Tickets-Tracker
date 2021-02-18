@@ -3,7 +3,7 @@ import React, {useState, Component} from 'react';
 import "./PropertyListItem_Tickets.scss";
 import classnames from "classnames";
 
-export default function PropertyListItem(props) {
+export default function PropertyListItem_Tickets(props) {
   
   const { name, selectProperty, property_id } = props;
 

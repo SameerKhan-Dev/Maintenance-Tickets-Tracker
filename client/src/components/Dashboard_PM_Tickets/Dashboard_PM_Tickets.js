@@ -3,7 +3,7 @@ import {useEffect} from 'react';
 import "../Application.scss";
 import axios from "axios";
 import Employee_List_PM from "./Employee_List_PM";
-import Ticket_List_PM from "./Ticket_List_PM";
+import Ticket_List_PM_Pending from "./Ticket_List_PM_Pending";
 // import Side_NavBar_PM_Stats from "/Users/zahrahm/lighthouse/final-project/Maintenance-Tickets-Tracker/client/src/components/Dashboard_PM_Stats/Side_NavBar_PM_Stats.js";
 import Side_NavBar_PM_Tickets from "./Side_NavBar_PM_Tickets"
 import Top_NavBar_PM_Tickets from "./Top_Nav_Bar_PM_Tickets";
@@ -13,18 +13,20 @@ export default function Dashboard_PM_Tickets(props) {
 
   // When user login is setup, extract user_id using cookies
   // temporarily we are going to use user_id as 1 (i.e pm_id for this page)
-  const  tempPM_Id = 1;
+  const  tempPM_Id = 3
   const [state_PM_Tickets, setState_PM_Tickets] = useState( 
     {  // selectedProperty = 0, means no property selected
       selectedProperty: 0,
       properties:[],
       tickets: [],
-      ticketsOrganizedByProperty : [],
+      ticketsOrganizedByProperty : [{}],
       specificStats: {
         totalUnsolved: 0,
         pending: 0,
         in_Progress: 0
-      }
+      },
+      ticketsPending: [],
+      ticketsInProgress: []
     }
   );
 
@@ -71,7 +73,7 @@ export default function Dashboard_PM_Tickets(props) {
         }
       }
     }
- 
+    console.log("ticketsOrganizedByProperty is: ", state_PM_Tickets.ticketsOrganizedByProperty);
     // then filter and build stats for each property and add to the corresponding properties array - loop through tickets and 
     for (let property of ticketsOrganizedByProperty) {
       // loop through the property's ticketData to build the stats
@@ -118,13 +120,40 @@ export default function Dashboard_PM_Tickets(props) {
     
   }
   const selectProperty = function (property_id) {
+    let pendingTicketsArray = [];
+    let inProgressTicketsArray = [];
 
-    setState_PM_Tickets({...state_PM_Tickets, selectedProperty: property_id, specificStats: obtainStats(state_PM_Tickets.ticketsOrganizedByProperty, property_id)});
+    for (let propertyObject of state_PM_Tickets.ticketsOrganizedByProperty) {
+      //console.log("propertyObject.ticketsArray is: ");
+      //console.log(propertyObject.ticketsArray);
+      
+      if (propertyObject.property_id === state_PM_Tickets.selectedProperty) {
+        //console.log("propertyObject.ticketsArray is: ");
+        //console.log(propertyObject.ticketsArray);
+        
+        for (let ticket of propertyObject.ticketsArray) {
+          //console.log("ticket is: ", ticket);
+          //console.log(ticket);
+          if(ticket.ticket_status_id === 1){
+            pendingTicketsArray.push(ticket);
+          }
+        }
+      
+        
+      }
+      
+    // console.log("propertyObject is : ", propertyObject);
+
+    }
+
+    setState_PM_Tickets(prev => ({...prev, selectedProperty: property_id, specificStats: obtainStats(state_PM_Tickets.ticketsOrganizedByProperty, property_id), ticketsPending: pendingTicketsArray  , ticketsInProgress:inProgressTicketsArray}));
     
   }
 
   console.log("Current selected property is: ", state_PM_Tickets.selectedProperty);
-  
+  console.log("Current ticketsOrganizedByProperty is: ", state_PM_Tickets.ticketsOrganizedByProperty);
+  console.log("Pending Tickets are: ", state_PM_Tickets.ticketsPending);
+
   useEffect(() => {
 
     Promise.all([
@@ -157,10 +186,13 @@ export default function Dashboard_PM_Tickets(props) {
         </div>
         <div>
           <Employee_List_PM />
-          <Ticket_List_PM
-            ticketsOrganizedByProperty= {setState_PM_Tickets.ticketsOrganizedByProperty}
-            selectedProperty= {setState_PM_Tickets.selectedProperty}
+          <Ticket_List_PM_Pending
+            //ticketsOrganizedByProperty= {state_PM_Tickets.ticketsOrganizedByProperty}
+            ticketsPending= {state_PM_Tickets.ticketsPending}
+            ticketsInProgress = {state_PM_Tickets.ticketsInProgress}
+            selectedProperty= {state_PM_Tickets.selectedProperty}
           />
+          
         </div>
         <div>
         <Top_NavBar_PM_Tickets/>
