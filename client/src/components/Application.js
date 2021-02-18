@@ -1,5 +1,7 @@
 import React, { useState, Component } from "react";
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import PrivateRoute from "./Private_Route";
 import "components/Application.scss";
 // import { Cookies } from 'react-cookie';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -14,12 +16,12 @@ import Employee_List_PM from "./Dashboard_PM_Tickets/Employee_List_PM";
 import Ticket_List_PM from "./Dashboard_PM_Tickets/Ticket_List_PM";
 import Tenant_Interface from "./Dashboard_Tenant/Tenant_Interface";
 import Employee_Interface from "./Employee/Employee_Interface";
-
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
-const axios = require("axios");
+import Login from "./Dashboard_Tenant/Login";
 
 export default function Application(props) {
-  // LOGIC SHOULD BE HERE
+  // LOGIC SHOULD BE HERE  
+  
   const [loginUser, setLoginUser] = useState({
     loggedIn: false,
     userEmail: "",
@@ -29,56 +31,7 @@ export default function Application(props) {
   // Once front-end cookies figure out, change default page for current page state based on if login or not
   const [currentPage, setCurrentPage] = useState({
     page: "/login"
-  })
-
-  const [inputsState, setInputsState] = useState({
-    emailInput: "",
-    passwordInput: "",
   });
-
-  const onFormChange = function (inputType, newValue) {
-    if (inputType === "email") {
-      setInputsState({
-        ...inputsState,
-        emailInput: newValue,
-      });
-    }
-
-    if (inputType === "password") {
-      setInputsState({
-        ...inputsState,
-        passwordInput: newValue,
-      });
-    }
-  };
-
-  const onLoginSubmit = () => {
-    const currentEmail = inputsState.emailInput;
-    const currentPassword = inputsState.passwordInput;
-    console.log("currentEmail: ", currentEmail);
-    console.log("currentPassword: ", currentPassword);
-
-    console.log("Button submitted");
-
-    return axios
-      .post(`/login`, {
-        email: currentEmail,
-        password: currentPassword,
-      })
-      .then((response) => {
-        console.log("RESPONSE: ", response.data);
-        if (response.data) {
-          setLoginUser({...loginUser, loggedIn: true, userEmail: response.data.email, userRole: response.data.role_id });
-        }
-        // setState({ ...state, appointments: appointments, days: daysArray });
-      });
-  };
-
-  // console.log("loginUser: ", loginUser);
-{/* <Route exact path="/">
-  {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
-</Route> */}
-
 
   return (
     <Router>
@@ -92,57 +45,18 @@ export default function Application(props) {
             <Employee_Dashboard />
           </Route>
 
-          {/* Start logic here */}
           <Route path="/login">
-            <h1> Hello from "/login" Page</h1>
-            <form onSubmit={(event) => event.preventDefault()}>
-              <section className="issue__description">
-                <h1>Please enter email:</h1>
-                <input
-                  className="issue__create-input"
-                  value={inputsState.emailInput}
-                  name="email"
-                  onChange={(event) =>
-                    onFormChange("email", event.target.value)
-                  }
-                  description="description"
-                  type="email"
-                  placeholder="Enter email"
-                />
-              </section>
-              <h1>Please enter password:</h1>
-              <input
-                type="password"
-                name="password"
-                value={inputsState.passwordInput}
-                onChange={(event) =>
-                  onFormChange("password", event.target.value)
-                }
-              />
-              <section className="issue__actions">
-                {/* <button onClick={upload}>Upload Photos</button> */}
-                {/* <button onClick={submit}>Submit</button> */}
-                <button onClick={onLoginSubmit}>Empty Submit</button>
-              </section>
-            </form>
+            <Login 
+              setLoginUser={setLoginUser}
+            />
           </Route>
-
-          {/* Start logic here */}
 
           <Route path="/register">
             <h1> Hello from "/register Page</h1>
-          </Route>
-          <Route path="/dashboard-pm-stats">
-            {/* <h1> Hello from "/dashboard-pm-stats" Page</h1>
-              // all tickets 
-              // all properties
-              // tickets for specific properties
-              // all employees
-            
-            */}
-
-            <Dashboard_PM_Stats />
-          </Route>
+          </Route>          
+            <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
+              <Dashboard_PM_Stats />
+            </PrivateRoute>
           <Route path="/dashboard-pm-tickets">
             <h1> Hello from "/dashboard-pm-tickets" Page</h1>
           </Route>
@@ -163,9 +77,9 @@ export default function Application(props) {
             <h1> Hello from "/test" Page</h1>
             {/* <Employee_List_PM /> */}
             {/* <Ticket_List_PM /> */}
-            {/* <Tenant_Interface /> */}
-            {/* {<Employee_Interface />} */}
-            <Dashboard_PM_Tickets />
+            <Tenant_Interface />
+            <Employee_Interface />
+            {/* <Dashboard_PM_Tickets /> */}
           </Route>
         </Switch>
       </main>
