@@ -19,6 +19,12 @@
 //   border: solid red 3px;
 // }
 
+.map {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+}
+
 .map-container {
   position: absolute;
   height: 35vh;
