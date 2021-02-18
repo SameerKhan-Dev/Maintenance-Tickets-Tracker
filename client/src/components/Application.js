@@ -48,7 +48,8 @@ export default function Application(props) {
             <Dashboard_PM_Stats />
           </Route>
           <Route path="/dashboard-pm-tickets">
-            <h1> Hello from "/dashboard-pm-tickets" Page</h1>
+         
+            <Dashboard_PM_Tickets/>
           </Route>
           <Route path="/dashboard-tenant">
             <h1> Hello from "/dashboard-tenant" Page</h1>

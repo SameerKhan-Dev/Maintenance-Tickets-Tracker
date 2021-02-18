@@ -39,6 +39,13 @@ const tickets = [
 export default function Ticket_List_PM(props) {
   const [ticketStatus, setTicketStatus] = useState("Pending");
   const [employee, setEmployee] = useState("none"); // need this?
+
+  const {ticketsOrganizedByProperty} = props;
+
+  
+
+
+
   return (
     <section className="tickets">
       <h4>Ticket List</h4>

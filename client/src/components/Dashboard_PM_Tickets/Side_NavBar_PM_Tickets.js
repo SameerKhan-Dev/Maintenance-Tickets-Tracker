@@ -10,6 +10,7 @@ import Map_SideBar from "./property_map_Tickets";
 
 
 export default function Side_NavBar_PM_Tickets(props) {
+  const {selectProperty, properties } = props;
 
     return (
       <>
@@ -34,7 +35,10 @@ export default function Side_NavBar_PM_Tickets(props) {
             />
             */
            }
-           <PropertyList/>
+           <PropertyList
+              selectProperty = {selectProperty}
+              properties = {properties}
+           />
           </nav>
           {/* <img
             className="sidebar__lhl sidebar--centered"

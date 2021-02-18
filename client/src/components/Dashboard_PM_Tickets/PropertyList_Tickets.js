@@ -1,20 +1,35 @@
 import React from "react";
 import PropertyListItem from "./PropertyListItem_Tickets"
 
-let properties = [
-  {name: "property #1", property_id:1, address: 'address #1'},
-  {name: "property #2", property_id:2, address: 'address #2'},
-  {name: "property #3", property_id:2, address: 'address #3'},
-  {name: "property #4", property_id:2, address: 'address #4'},
-]
 
 export default function Propertylist(props){
+
+  const {selectProperty, properties} = props;
+
+  const propertiesListArray = properties.map((property) => {
+    return (
+      <PropertyListItem
+        property_id = {property.id}
+        selectProperty = {selectProperty}
+        key={property.id}
+        name={property.name} 
+       
+      />
+      )
+  });
+
   return (
-    (properties.map((property) => (
-        <PropertyListItem
-          key={property.id}
-          name={property.name} 
-        />
-    )))
-  );
+    <>
+    <li onClick={ () => {
+      
+      selectProperty(0);
+     
+                        }} >
+      <h2 className="text--regular">All Properties</h2>
+    </li>
+    {propertiesListArray}
+    </>  
+  )
 };
+
+
