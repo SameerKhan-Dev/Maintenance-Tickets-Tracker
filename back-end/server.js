@@ -20,6 +20,8 @@ const assignEmployeeForTicket_Id = require("./database/databaseHelpers/assignEmp
 const getAllTicketsByEmployee_Id = require("./database/databaseHelpers/getAllTicketsByEmployee_Id");
 const getUserByEmail = require("./database/databaseHelpers/getUserByEmail");
 const addNewTicket = require("./database/databaseHelpers/addNewTicket");
+const getPropertyByTenantUser_Id = require("./database/databaseHelpers/getPropertyByTenantUser_Id");
+const completeTicketByTicket_Id = require("./database/databaseHelpers/completeTicketByTicket_Id");
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -156,16 +158,31 @@ app.post("/tickets/new", (req, res) => {
     res.send(response);
   });
 });
+
 //8
 // neeed this for employee-dashboard when a ticket is marked as resolved.
-app.put("/tickets/resolved/:ticket_id", (req, res) => {
-  res.send("Hello from: route 9  ");
+app.put("/tickets/resolved", (req, res) => {
+  const ticket_id = req.body.ticket_id;
+  const actual_cost = req.body.actual_cost;
+  
+  console.log("Hello from: route 9  ");
+  const completedTicket = completeTicketByTicket_Id(ticket_id, actual_cost)
+  .then((response) => {
+    res.send(response);
+  });
 });
+
 //11
 //get the property based on tenant that is logged in
 app.get("/property/tenant/:tenant_id", (req, res) => {
-  res.send("Hello from: route 10  ");
+  const tenant_id = req.params.tenant_id;
+  console.log("Hello from: route 10  ");
+  const property_tenant_id = getPropertyByTenantUser_Id(tenant_id)
+  .then((response) => {
+    res.send(response);
+  });
 });
+
 //9
 app.get("/properties/employees/:property_id", (req, res) => {
   console.log("Hello from: route 11  ");
