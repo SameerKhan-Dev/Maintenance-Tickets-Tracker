@@ -44,7 +44,7 @@ export default function Login(props) {
 
     return paths[userRole] || "/login";
   });
-
+// *******************
   const onLoginSubmit = () => {
     const currentEmail = inputsState.emailInput;
     const currentPassword = inputsState.passwordInput;
@@ -70,7 +70,7 @@ export default function Login(props) {
         }
       });
   };
-
+// **************************
   return (
     <>
       <h1> Hello from "/login" Page</h1>

@@ -17,7 +17,7 @@ import Ticket_List_PM from "./Dashboard_PM_Tickets/Ticket_List_PM";
 import Tenant_Interface from "./Dashboard_Tenant/Tenant_Interface";
 import Employee_Interface from "./Employee/Employee_Interface";
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
-import Login from "./Dashboard_Tenant/Login";
+import Login from "./Login";
 
 export default function Application(props) {
   // LOGIC SHOULD BE HERE  
