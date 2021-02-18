@@ -15,6 +15,8 @@ const database = require('./database/database');
 const getAllPropertiesByPM_Id = require('./database/databaseHelpers/getAllPropertiesByPM_Id');
 const getAllTicketsByPm_Id = require('./database/databaseHelpers/getAllTicketsByPm_Id');
 const  getAllEmployeesByProperty_Id = require('./database/databaseHelpers/getAllEmployeesByProperty_Id');
+const assignEmployeeForTicket_Id = require('./database/databaseHelpers/assignEmployeeForTicket_Id');
+const getAllTicketsByEmployee_Id = require('./database/databaseHelpers/getAllTicketsByEmployee_Id')
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -47,19 +49,20 @@ app.use(express.static("public"));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above)5
-// 1
+
 app.get("/homepage", (req, res) => {
   res.send("Hello from: route 1  ");
 });
-// 2
+// 1
 app.post("/register", (req, res) => {
   res.send("Hello from: route 2  ");
 });
-//3
+//2
 app.post("/login", (req, res) => {
   res.send("Hello from: route 3  ");
 });
-//4
+//3
+// get all properties for logged in pm_id
 app.get("/my_properties/:pm_id", (req, res) => {
   
   const pm_id = req.params.pm_id;
@@ -71,7 +74,9 @@ app.get("/my_properties/:pm_id", (req, res) => {
 });
   
 });
-//5
+
+//4
+// get all tickets for all properties, for logged in PM.
 app.get("/properties/:pm_id/tickets", (req, res) => {
 
   const pm_id = req.params.pm_id;
@@ -84,32 +89,42 @@ app.get("/properties/:pm_id/tickets", (req, res) => {
   });
  
 });
+
 //6
-app.get("/tickets-dashboard/properties", (req, res) => {
-  res.send("Hello from: route 6");
+app.put("/tickets/assignEmployee", (req, res) => {
+  // extract the values from the request body.
+  //const {ticket_id} = req.body.ticket_id;
+  //const {employee_id} = req.body.employee_id;
+  const ticket_id = req.body.ticket_id;
+  const employee_id = req.body.employee_id;
+
+  console.log("Hello from: route 7  ");
+  const allTickets =  assignEmployeeForTicket_Id(employee_id, ticket_id)
+  .then((response) => {
+    res.send(response);
+  });
+
+ 
+  //res.send(`ticket_id is: ${ticket_id}, employee_id is: ${employee_id} `);
+  //res.send(req.body);
 });
 
-app.get("/properties/:property_id/employees", (req, res) => {
-  res.send("Hello from: route 6");
-  
-});
 //7
-app.put("/tickets/update/:ticket_id", (req, res) => {
-  res.send("Hello from: route 7  ");
-});
-//8
+// add a new ticket to the database
 app.post("/tickets/new", (req, res) => {
   res.send("Hello from: route 8  ");
 });
-//9
-app.put("/tickets/update/:ticket_id", (req, res) => {
+//8
+// neeed this for employee-dashboard when a ticket is marked as resolved. 
+app.put("/tickets/resolved/:ticket_id", (req, res) => {
   res.send("Hello from: route 9  ");
 });
-//10
+//11
+//get the property based on tenant that is logged in
 app.get("/property/tenant/:tenant_id", (req, res) => {
   res.send("Hello from: route 10  ");
 });
-//11
+//9
 app.get("/properties/employees/:property_id", (req, res) => {
   console.log("Hello from: route 11  ");
   const property_id = req.params.property_id;
@@ -118,12 +133,18 @@ app.get("/properties/employees/:property_id", (req, res) => {
     res.send(response);
   });
 });
-//12
+//10
+// get all tickets for an employee when they are logged in.
 app.get("/tickets/employee/:employee_id", (req, res) => {
+  const employee_id = req.params.employee_id;
 
+  getAllTicketsByEmployee_Id(employee_id)
+  .then((response) => {
+      res.send(response);
+    }
+  );
 });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
-

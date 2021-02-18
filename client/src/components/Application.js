@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import All_Property_Interface from "./Dashboard_PM_Stats/All_Property_Interface";
 // import Individual_Property_Interface from "./Dashboard_PM_Stats/Individual_Property_Interface";
 import Dashboard_PM_Stats from "./Dashboard_PM_Stats/Dashboard_PM_Stats";
+import Dashboard_PM_Tickets from "./Dashboard_PM_Tickets/Dashboard_PM_Tickets";
 
 import Employee_List_Item_PM from "./Dashboard_PM_Tickets/Employee_List_Item_PM";
 import Employee_List_PM from "./Dashboard_PM_Tickets/Employee_List_PM";
@@ -68,6 +69,7 @@ export default function Application(props) {
             {/* <Ticket_List_PM /> */}
             {/* <Tenant_Interface /> */}
             {/* {<Employee_Interface />} */}
+            <Dashboard_PM_Tickets />
           </Route>
         </Switch>
       </main>

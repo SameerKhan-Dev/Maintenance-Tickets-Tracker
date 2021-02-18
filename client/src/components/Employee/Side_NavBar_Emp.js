@@ -1,5 +1,6 @@
 import React, {useState, Component} from 'react';
 import {useEffect} from 'react';
+import AssignedTicketList from './AssignedTicketsList';
 
 import "./Side_NavBar_Emp.scss";
 //import Ticket_List_Item from  "./Ticket_List_Item"
@@ -13,27 +14,17 @@ export default function Side_NavBar_Emp(props) {
       <>
       <main className="layout">
         <section className="sidebar">
-          <img
-            className="sidebar--centered"
-            src="images/logo.png"
-            alt="Interview Scheduler"
-          />
+          <h1>Assigned</h1>
+          <h1>Tickets</h1>
           <hr className="sidebar__separator sidebar--centered" />                 
-          <nav className="sidebar__menu">'
-           { /*
-            <DayList
-              days = {state.days}
-              day = {state.day}
-              setDay = {setDay}
-            />
-            */
-           }
+          <nav className="sidebar__menu">
+            <AssignedTicketList/>
           </nav>
-          <img
+          {/* <img
             className="sidebar__lhl sidebar--centered"
             src="images/lhl.png"
             alt="Lighthouse Labs"
-          />
+          /> */}
         </section>
       </main>
       </>

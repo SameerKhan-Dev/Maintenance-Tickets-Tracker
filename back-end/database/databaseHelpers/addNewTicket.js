@@ -1,3 +1,4 @@
+/*
 const pool = require('./database');
 
 const addNewTicket = function (creator_id, property_id, title, description, maintenance_type_id) {
@@ -15,4 +16,4 @@ const addNewTicket = function (creator_id, property_id, title, description, main
       });
   }
 
-  
+  */
