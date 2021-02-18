@@ -10,17 +10,31 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require("morgan");
+const cookieSession = require("cookie-session");
 
-const database = require('./database/database');
-const getAllPropertiesByPM_Id = require('./database/databaseHelpers/getAllPropertiesByPM_Id');
-const getAllTicketsByPm_Id = require('./database/databaseHelpers/getAllTicketsByPm_Id');
-const  getAllEmployeesByProperty_Id = require('./database/databaseHelpers/getAllEmployeesByProperty_Id');
-const assignEmployeeForTicket_Id = require('./database/databaseHelpers/assignEmployeeForTicket_Id');
-const getAllTicketsByEmployee_Id = require('./database/databaseHelpers/getAllTicketsByEmployee_Id')
+const database = require("./database/database");
+const getAllPropertiesByPM_Id = require("./database/databaseHelpers/getAllPropertiesByPM_Id");
+const getAllTicketsByPm_Id = require("./database/databaseHelpers/getAllTicketsByPm_Id");
+const getAllEmployeesByProperty_Id = require("./database/databaseHelpers/getAllEmployeesByProperty_Id");
+const assignEmployeeForTicket_Id = require("./database/databaseHelpers/assignEmployeeForTicket_Id");
+const getAllTicketsByEmployee_Id = require("./database/databaseHelpers/getAllTicketsByEmployee_Id");
+const getUserByEmail = require("./database/databaseHelpers/getUserByEmail");
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan("dev"));
+
+app.use(bodyParser.json());
+
+app.use(
+  cookieSession({
+    name: "session",
+    keys: [
+      "b6d0e7eb-8c4b-4ae4-8460-fd3a08733dcb",
+      "1fb2d767-ffbf-41a6-98dd-86ac2da9392e",
+    ],
+  })
+);
 
 //app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -58,36 +72,55 @@ app.post("/register", (req, res) => {
   res.send("Hello from: route 2  ");
 });
 //2
+// check user email and password, only allow valid user to login
 app.post("/login", (req, res) => {
-  res.send("Hello from: route 3  ");
+  const user_email = req.body.email;
+  const password = req.body.password;
+  console.log("user_email = ", user_email);
+  console.log("password = ", password);
+  userLogin = getUserByEmail(user_email)
+    .then((result) => {
+      if (result[0] && result[0].password === password) {
+        // if (result[0].)
+        req.session.user_id = result[0].id;
+        // res.redirect(`/my_properties/${req.session.user_id}`);
+        console.log("Hello from: route 2  ");
+        // res.send(result[0].id);
+        // let user_id = JSON.stringify({user_id: result[0].id});
+        res.send(result[0]);
+
+      } else {
+        // res.send(result);
+        res.send("Your email or password is invalid");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  // res.send(`${user_email}, ${password}`);
+  // res.send(req.body);
 });
 //3
 // get all properties for logged in pm_id
 app.get("/my_properties/:pm_id", (req, res) => {
-  
   const pm_id = req.params.pm_id;
   console.log("Hello from: route 4 ");
 
-  myProperties = getAllPropertiesByPM_Id(pm_id)
-  .then((response) => {
+  myProperties = getAllPropertiesByPM_Id(pm_id).then((response) => {
     res.send(response);
-});
-  
+  });
 });
 
 //4
 // get all tickets for all properties, for logged in PM.
 app.get("/properties/:pm_id/tickets", (req, res) => {
-
   const pm_id = req.params.pm_id;
 
   console.log("Hello from: route 5  ");
 
-  propertyTickets = getAllTicketsByPm_Id(pm_id)
-  .then((response) => {
+  propertyTickets = getAllTicketsByPm_Id(pm_id).then((response) => {
     res.send(response);
   });
- 
 });
 
 //6
@@ -99,12 +132,12 @@ app.put("/tickets/assignEmployee", (req, res) => {
   const employee_id = req.body.employee_id;
 
   console.log("Hello from: route 7  ");
-  const allTickets =  assignEmployeeForTicket_Id(employee_id, ticket_id)
-  .then((response) => {
-    res.send(response);
-  });
+  const allTickets = assignEmployeeForTicket_Id(employee_id, ticket_id).then(
+    (response) => {
+      res.send(response);
+    }
+  );
 
- 
   //res.send(`ticket_id is: ${ticket_id}, employee_id is: ${employee_id} `);
   //res.send(req.body);
 });
@@ -115,7 +148,7 @@ app.post("/tickets/new", (req, res) => {
   res.send("Hello from: route 8  ");
 });
 //8
-// neeed this for employee-dashboard when a ticket is marked as resolved. 
+// neeed this for employee-dashboard when a ticket is marked as resolved.
 app.put("/tickets/resolved/:ticket_id", (req, res) => {
   res.send("Hello from: route 9  ");
 });
@@ -128,8 +161,7 @@ app.get("/property/tenant/:tenant_id", (req, res) => {
 app.get("/properties/employees/:property_id", (req, res) => {
   console.log("Hello from: route 11  ");
   const property_id = req.params.property_id;
-  allEmployees = getAllEmployeesByProperty_Id(property_id)
-  .then((response) => {
+  allEmployees = getAllEmployeesByProperty_Id(property_id).then((response) => {
     res.send(response);
   });
 });
@@ -138,11 +170,9 @@ app.get("/properties/employees/:property_id", (req, res) => {
 app.get("/tickets/employee/:employee_id", (req, res) => {
   const employee_id = req.params.employee_id;
 
-  getAllTicketsByEmployee_Id(employee_id)
-  .then((response) => {
-      res.send(response);
-    }
-  );
+  getAllTicketsByEmployee_Id(employee_id).then((response) => {
+    res.send(response);
+  });
 });
 
 app.listen(PORT, () => {
