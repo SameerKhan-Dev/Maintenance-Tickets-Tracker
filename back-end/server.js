@@ -19,6 +19,7 @@ const getAllEmployeesByProperty_Id = require("./database/databaseHelpers/getAllE
 const assignEmployeeForTicket_Id = require("./database/databaseHelpers/assignEmployeeForTicket_Id");
 const getAllTicketsByEmployee_Id = require("./database/databaseHelpers/getAllTicketsByEmployee_Id");
 const getUserByEmail = require("./database/databaseHelpers/getUserByEmail");
+const addNewTicket = require("./database/databaseHelpers/addNewTicket");
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -67,7 +68,7 @@ app.use(express.static("public"));
 app.get("/homepage", (req, res) => {
   res.send("Hello from: route 1  ");
 });
-// 1
+// 1 
 app.post("/register", (req, res) => {
   res.send("Hello from: route 2  ");
 });
@@ -78,19 +79,18 @@ app.post("/login", (req, res) => {
   const password = req.body.password;
   console.log("user_email = ", user_email);
   console.log("password = ", password);
-  userLogin = getUserByEmail(user_email)
-    .then((result) => {
-      if (result[0] && result[0].password === password) {
-        // if (result[0].)
-        req.session.user_id = result[0].id;
+  const userLogin = getUserByEmail(user_email)
+    .then((response) => {
+      if (response[0] && response[0].password === password) {
+        req.session.user_id = response[0].id;
         // res.redirect(`/my_properties/${req.session.user_id}`);
         console.log("Hello from: route 2  ");
-        // res.send(result[0].id);
-        // let user_id = JSON.stringify({user_id: result[0].id});
-        res.send(result[0]);
+        // res.send(response[0].id);
+        // let user_id = JSON.stringify({user_id: response[0].id});
+        res.send(response[0]);
 
       } else {
-        // res.send(result);
+        // res.send(response);
         res.send("Your email or password is invalid");
       }
     })
@@ -132,11 +132,10 @@ app.put("/tickets/assignEmployee", (req, res) => {
   const employee_id = req.body.employee_id;
 
   console.log("Hello from: route 7  ");
-  const allTickets = assignEmployeeForTicket_Id(employee_id, ticket_id).then(
-    (response) => {
-      res.send(response);
-    }
-  );
+  const allTickets = assignEmployeeForTicket_Id(employee_id, ticket_id)
+  .then((response) => {
+    res.send(response);
+  });
 
   //res.send(`ticket_id is: ${ticket_id}, employee_id is: ${employee_id} `);
   //res.send(req.body);
@@ -145,7 +144,17 @@ app.put("/tickets/assignEmployee", (req, res) => {
 //7
 // add a new ticket to the database
 app.post("/tickets/new", (req, res) => {
-  res.send("Hello from: route 8  ");
+  const property_id = req.body.property_id;
+  const creator_id = req.body.creator_id;
+  const maintenance_type_id = req.body.maintenance_type_id;
+  const ticket_status_id = req.body.ticket_status_id;
+  const description = req.body.description;
+
+  console.log("Hello from: route 8  ");
+  const addNewTicket_Tenant = addNewTicket(property_id, creator_id, maintenance_type_id, ticket_status_id, description)
+  .then((response) => {
+    res.send(response);
+  });
 });
 //8
 // neeed this for employee-dashboard when a ticket is marked as resolved.
