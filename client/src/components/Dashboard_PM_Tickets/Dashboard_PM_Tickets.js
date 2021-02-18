@@ -127,7 +127,7 @@ export default function Dashboard_PM_Tickets(props) {
       //console.log("propertyObject.ticketsArray is: ");
       //console.log(propertyObject.ticketsArray);
       
-      if (propertyObject.property_id === state_PM_Tickets.selectedProperty) {
+      if (propertyObject.property_id === property_id) {
         //console.log("propertyObject.ticketsArray is: ");
         //console.log(propertyObject.ticketsArray);
         

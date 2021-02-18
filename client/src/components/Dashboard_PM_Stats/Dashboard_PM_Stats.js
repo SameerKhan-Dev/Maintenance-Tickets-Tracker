@@ -158,6 +158,7 @@ console.log("Selected Property is: ", state_PM_Stats.selectedProperty);
       
       setState_PM_Stats(prev => ({...prev, properties: propertiesData, tickets: ticketsData, ticketsOrganizedByProperty: constructTicketsData(propertiesData, ticketsData)}));
       setState_PM_Stats(prev => ({...prev, specificStats: obtainStats(prev.ticketsOrganizedByProperty, prev.selectedProperty)}));
+    
       // need to sort our tickets data into a structure like above using a helper function
       //constructTicketsData(propertiesData, ticketsData);
       
