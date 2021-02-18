@@ -10,6 +10,8 @@ import Dashboard_PM_Tickets from "./Dashboard_PM_Tickets/Dashboard_PM_Tickets";
 import Employee_List_Item_PM from "./Dashboard_PM_Tickets/Employee_List_Item_PM";
 import Employee_List_PM from "./Dashboard_PM_Tickets/Employee_List_PM";
 import Ticket_List_PM from "./Dashboard_PM_Tickets/Ticket_List_PM";
+import Tenant_Interface from "./Dashboard_Tenant/Tenant_Interface";
+import Employee_Interface from "./Employee/Employee_Interface";
 
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
 const axios = require("axios");
@@ -42,8 +44,8 @@ export default function Application(props) {
               // all employees
             
             */}
-            
-            <Dashboard_PM_Stats/>
+
+            <Dashboard_PM_Stats />
           </Route>
           <Route path="/dashboard-pm-tickets">
             <h1> Hello from "/dashboard-pm-tickets" Page</h1>
@@ -53,7 +55,7 @@ export default function Application(props) {
             {/*  
               // specific property
             
-            */ }
+            */}
           </Route>
           <Route path="/tickets">
             <h1> Hello from "/tickets" Page</h1>
@@ -62,10 +64,12 @@ export default function Application(props) {
             <h1> Hello from "/logout" Page</h1>
           </Route>
           <Route path="/test">
-            {/* <h1> Hello from "/test" Page</h1> */}
+            <h1> Hello from "/test" Page</h1>
             {/* <Employee_List_PM /> */}
             {/* <Ticket_List_PM /> */}
-            <Dashboard_PM_Tickets/>
+            {/* <Tenant_Interface /> */}
+            {/* {<Employee_Interface />} */}
+            <Dashboard_PM_Tickets />
           </Route>
         </Switch>
       </div>
