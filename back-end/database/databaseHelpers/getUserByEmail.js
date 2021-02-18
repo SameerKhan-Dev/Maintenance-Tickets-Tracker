@@ -4,7 +4,7 @@ const getUserByEmail = function (email) {
   return db
     .query(
       `
-      SELECT *, roles.role FROM users
+      SELECT users.*, roles.role FROM users
       JOIN roles ON role_id = roles.id
       WHERE users.email = $1;`,
       [email]
