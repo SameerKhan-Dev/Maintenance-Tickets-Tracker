@@ -6,6 +6,10 @@ import All_Property_Interface from "./All_Property_Interface";
 import Side_NavBar_PM_Stats from "./Side_NavBar_PM_Stats";
 import Individual_Property_Interface from './Individual_Property_Interface';
 
+import Top_NavBar_PM_Stats from "./Top_Nav_Bar_PM_Stats";
+
+import "./Dashboard_PM_Stats.scss";
+
 // all tickets 
 // all properties
 // tickets for specific properties
@@ -174,14 +178,16 @@ export default function Dashboard_PM_Stats(props) {
             properties= {state_PM_Stats.properties}
           />
         </div>
-        <div>
+        <div className="dashboard-interface">
           {/* Render All_Property_Interface if selectedProperty = 0. else Render InvidualPropertyInterface if selectedProperty != 0 (i,e
             i.e a specific property has been selected)*/}
-               
+                <Top_NavBar_PM_Stats/>
                  { state_PM_Stats.selectedProperty === 0 ?
                 <All_Property_Interface specificStats = {state_PM_Stats.specificStats}/> : <Individual_Property_Interface  specificStats = {state_PM_Stats.specificStats}/>}     
           
         </div>
+
+
         
       </>
     );
