@@ -85,6 +85,7 @@ app.get("/properties/:pm_id/tickets", (req, res) => {
 
   propertyTickets = getAllTicketsByPm_Id(pm_id)
   .then((response) => {
+    console.log("response is: ", response);
     res.send(response);
   });
  

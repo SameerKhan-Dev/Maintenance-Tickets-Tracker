@@ -9,7 +9,7 @@ const getAllTicketsByPm_Id = function (pm_id) {
       , [pm_id])
       .then(res => {
         if (res.rows) {
-  
+          console.log("Response for db query function is: ", res.rows);
           // console.log("res.rows is, ", res.rows);
           return res.rows;
   
