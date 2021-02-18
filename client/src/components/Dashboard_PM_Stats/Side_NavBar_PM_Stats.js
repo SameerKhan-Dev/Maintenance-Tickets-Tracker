@@ -1,5 +1,5 @@
-import React, {useState, Component} from 'react';
-import {useEffect} from 'react';
+import React, { useState, Component } from 'react';
+import { useEffect } from 'react';
 
 import "./Side_NavBar_PM_Stats.scss";
 import "./map.scss";
@@ -10,22 +10,33 @@ import Map_SideBar from "./property_map";
 
 
 export default function Side_NavBar_Emp(props) {
-  const {selectProperty, properties } = props;
+  const { selectProperty, properties } = props;
 
-    return (
-      <>
+  return (
+    <>
       <main className="layout">
         <head>
           <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
           <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+          {/* add MapboxGeocoder */}
+          <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+          <link
+            rel="stylesheet"
+            href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
+            type="text/css"
+          />
+          {/* polyfil */}
+          <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
         </head>
         <section className="sidebar">
-          <img
+          {/* <img
             className="sidebar--centered"
             src="images/logo.png"
             alt="Interview Scheduler"
-          />
-          <hr className="sidebar__separator sidebar--centered" />                 
+          /> */}
+          <h1>My Properties</h1>
+          <hr className="sidebar__separator sidebar--centered" />
           <nav className="sidebar__menu">'
            { /*
             <DayList
@@ -34,12 +45,12 @@ export default function Side_NavBar_Emp(props) {
               setDay = {setDay}
             />
             */
-           }
-           <PropertyList
-            selectProperty = {selectProperty}
-            properties = {properties}
-            
-           />
+            }
+            <PropertyList
+              selectProperty={selectProperty}
+              properties={properties}
+
+            />
           </nav>
           {/* <img
             className="sidebar__lhl sidebar--centered"
@@ -47,15 +58,15 @@ export default function Side_NavBar_Emp(props) {
             alt="Lighthouse Labs"
           /> */}
           <div className='map'>
-          {/* <link
+            {/* <link
             href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css"
             rel="stylesheet"
           /> */}
-          <Map_SideBar/>
+            <Map_SideBar />
 
           </div>
         </section>
       </main>
-      </>
-    );
+    </>
+  );
 }

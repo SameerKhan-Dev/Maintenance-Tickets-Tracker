@@ -9,7 +9,7 @@ import "./map.scss";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiemFocmFhYWFhIiwiYSI6ImNrNjI5czFkcjBjNXIza212dGFweGVkcmMifQ.VOxm_Cmy9VDyGvBcLUqWPA ';
 
-const App = () => {
+const Map_SideBar = () => {
   const mapContainerRef = useRef(null);
   const popUpRef = useRef(new mapboxgl.Popup({ offset: 15 }));
 
@@ -93,4 +93,4 @@ const App = () => {
   return <div className="map-container" ref={mapContainerRef} />;
 };
 
-export default App;
+export default Map_SideBar;
