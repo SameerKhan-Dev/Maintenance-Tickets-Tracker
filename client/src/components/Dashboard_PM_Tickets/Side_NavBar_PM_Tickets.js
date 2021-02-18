@@ -19,10 +19,8 @@ export default function Side_NavBar_PM_Tickets(props) {
           <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
         </head>
         <section className="sidebar">
+          <h1>MTracker</h1>
           <img
-            className="sidebar--centered"
-            src="images/logo.png"
-            alt="Interview Scheduler"
           />
           <hr className="sidebar__separator sidebar--centered" />                 
           <nav className="sidebar__menu">'
