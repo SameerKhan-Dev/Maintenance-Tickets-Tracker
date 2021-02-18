@@ -19,7 +19,7 @@ export default function Application(props) {
 
   return (
     <Router>
-      <main className="layout">
+      <div style={{ display: "flex" }}>
         <Switch>
           {/* Create routes for every wire-frame page */}
           <Route path="/" exact>
@@ -68,7 +68,7 @@ export default function Application(props) {
             <Dashboard_PM_Tickets/>
           </Route>
         </Switch>
-      </main>
+      </div>
     </Router>
   );
 }
