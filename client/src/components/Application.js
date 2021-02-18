@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import "components/Application.scss";
 // import { Cookies } from 'react-cookie';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 // import All_Property_Interface from "./Dashboard_PM_Stats/All_Property_Interface";
 // import Individual_Property_Interface from "./Dashboard_PM_Stats/Individual_Property_Interface";
 import Dashboard_PM_Stats from "./Dashboard_PM_Stats/Dashboard_PM_Stats";
@@ -20,9 +21,15 @@ const axios = require("axios");
 export default function Application(props) {
   // LOGIC SHOULD BE HERE
   const [loginUser, setLoginUser] = useState({
+    loggedIn: false,
     userEmail: "",
     userRole: "",
   });
+
+  // Once front-end cookies figure out, change default page for current page state based on if login or not
+  const [currentPage, setCurrentPage] = useState({
+    page: "/login"
+  })
 
   const [inputsState, setInputsState] = useState({
     emailInput: "",
@@ -60,9 +67,18 @@ export default function Application(props) {
       })
       .then((response) => {
         console.log("RESPONSE: ", response.data);
+        if (response.data) {
+          setLoginUser({...loginUser, loggedIn: true, userEmail: response.data.email, userRole: response.data.role_id });
+        }
         // setState({ ...state, appointments: appointments, days: daysArray });
       });
   };
+
+  // console.log("loginUser: ", loginUser);
+{/* <Route exact path="/">
+  {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
+</Route> */}
+
 
   return (
     <Router>
@@ -76,6 +92,7 @@ export default function Application(props) {
             <Employee_Dashboard />
           </Route>
 
+          {/* Start logic here */}
           <Route path="/login">
             <h1> Hello from "/login" Page</h1>
             <form onSubmit={(event) => event.preventDefault()}>
@@ -109,6 +126,8 @@ export default function Application(props) {
               </section>
             </form>
           </Route>
+
+          {/* Start logic here */}
 
           <Route path="/register">
             <h1> Hello from "/register Page</h1>
