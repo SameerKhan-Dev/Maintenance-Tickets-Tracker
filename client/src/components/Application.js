@@ -1,6 +1,7 @@
 import React, { useState, Component } from "react";
 import { useEffect } from "react";
 import "components/Application.scss";
+// import { Cookies } from 'react-cookie';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import All_Property_Interface from "./Dashboard_PM_Stats/All_Property_Interface";
 // import Individual_Property_Interface from "./Dashboard_PM_Stats/Individual_Property_Interface";
@@ -18,6 +19,50 @@ const axios = require("axios");
 
 export default function Application(props) {
   // LOGIC SHOULD BE HERE
+  const [loginUser, setLoginUser] = useState({
+    userEmail: "",
+    userRole: "",
+  });
+
+  const [inputsState, setInputsState] = useState({
+    emailInput: "",
+    passwordInput: "",
+  });
+
+  const onFormChange = function (inputType, newValue) {
+    if (inputType === "email") {
+      setInputsState({
+        ...inputsState,
+        emailInput: newValue,
+      });
+    }
+
+    if (inputType === "password") {
+      setInputsState({
+        ...inputsState,
+        passwordInput: newValue,
+      });
+    }
+  };
+
+  const onLoginSubmit = () => {
+    const currentEmail = inputsState.emailInput;
+    const currentPassword = inputsState.passwordInput;
+    console.log("currentEmail: ", currentEmail);
+    console.log("currentPassword: ", currentPassword);
+
+    console.log("Button submitted");
+
+    return axios
+      .post(`/login`, {
+        email: currentEmail,
+        password: currentPassword,
+      })
+      .then((response) => {
+        console.log("RESPONSE: ", response.data);
+        // setState({ ...state, appointments: appointments, days: daysArray });
+      });
+  };
 
   return (
     <Router>
@@ -30,9 +75,41 @@ export default function Application(props) {
           <Route path="/dashboard-employee">
             <Employee_Dashboard />
           </Route>
+
           <Route path="/login">
             <h1> Hello from "/login" Page</h1>
+            <form onSubmit={(event) => event.preventDefault()}>
+              <section className="issue__description">
+                <h1>Please enter email:</h1>
+                <input
+                  className="issue__create-input"
+                  value={inputsState.emailInput}
+                  name="email"
+                  onChange={(event) =>
+                    onFormChange("email", event.target.value)
+                  }
+                  description="description"
+                  type="email"
+                  placeholder="Enter email"
+                />
+              </section>
+              <h1>Please enter password:</h1>
+              <input
+                type="password"
+                name="password"
+                value={inputsState.passwordInput}
+                onChange={(event) =>
+                  onFormChange("password", event.target.value)
+                }
+              />
+              <section className="issue__actions">
+                {/* <button onClick={upload}>Upload Photos</button> */}
+                {/* <button onClick={submit}>Submit</button> */}
+                <button onClick={onLoginSubmit}>Empty Submit</button>
+              </section>
+            </form>
           </Route>
+
           <Route path="/register">
             <h1> Hello from "/register Page</h1>
           </Route>
