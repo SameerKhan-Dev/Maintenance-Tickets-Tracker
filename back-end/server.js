@@ -149,11 +149,16 @@ app.post("/tickets/new", (req, res) => {
   const property_id = req.body.property_id;
   const creator_id = req.body.creator_id;
   const maintenance_type_id = req.body.maintenance_type_id;
-  const ticket_status_id = req.body.ticket_status_id;
   const description = req.body.description;
 
   console.log("Hello from: route 8  ");
-  const addNewTicket_Tenant = addNewTicket(property_id, creator_id, maintenance_type_id, ticket_status_id, description)
+  console.log("property_id: ", property_id);
+  console.log("creator_id: ", creator_id);
+  console.log("maintenance_type_id: ", maintenance_type_id);
+  console.log("description: ", description);
+
+
+  const addNewTicket_Tenant = addNewTicket(property_id, creator_id, maintenance_type_id, description)
   .then((response) => {
     res.send(response);
   });
