@@ -7,6 +7,13 @@ export default function Bar_Chart(props) {
 
   let avgCosts = individualPropertyCostGraph(props.specificTicketsforProperty);
 
+  // const data = [
+  //   ["Maintenance Type", "Average Estimated Cost", "Average Actual Cost"],
+  //   ["Plumbing", 1, 1],
+  //   ["General Maintenance", 1, 1],
+  //   ["Electrical", 1, 1]
+  // ];
+
   const data = [
     ["Maintenance Type", "Average Estimated Cost", "Average Actual Cost"],
     ["Plumbing", avgCosts.plumbingAvgEstCost, avgCosts.plumbingAvgActualCost],

@@ -1,9 +1,12 @@
 import React from "react";
 import Chart from "react-google-charts";
 import Spinner from 'react-bootstrap/Spinner'
+import { maintenanceCountPieChart } from "./Graphs_functions/PieChartFunction"
 
 
-export default function Pie_Chart() {
+export default function Pie_Chart(props) {
+  let finalCosts = maintenanceCountPieChart(props.specificTicketsforPropertyPie)
+
   return (
     <Chart
       width={"500px"}
@@ -16,9 +19,9 @@ export default function Pie_Chart() {
       </div>}
       data={[
         ["Maintenance Type", "Cost"],
-        ["Plumbing", 2],
-        ["Electrical", 2],
-        ["General Maintenance", 3],
+        ["Plumbing", finalCosts.numPlumbing],
+        ["Electrical", finalCosts.numElectrical],
+        ["General Maintenance", finalCosts.numGeneral],
       ]}
       options={{
         title: "Maintenance Cost",

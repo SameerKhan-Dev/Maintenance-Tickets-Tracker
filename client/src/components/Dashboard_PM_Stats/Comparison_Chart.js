@@ -35,8 +35,8 @@ export default function Comparison_Chart() {
       options={{
         // Material design options
         chart: {
-          title: "Total Maintenance Cost",
-          subtitle: "Categorized by maintenance type",
+          // title: "Total Maintenance Cost",
+          // subtitle: "Categorized by maintenance type",
           hAxis: {
             title: "Cost",
             viewWindow: { min: 0, max: 5000 },
