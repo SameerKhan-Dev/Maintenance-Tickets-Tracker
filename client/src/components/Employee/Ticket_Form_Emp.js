@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+const axios = require("axios");
 
 export default function Ticket_Form_Emp(props) {
+  const history = useHistory(); 
 
   ////////////// GET ACTUAL DATA LATER AND SET AS PROPS.////////////////
   const ticket_id = 9;
@@ -18,23 +21,19 @@ export default function Ticket_Form_Emp(props) {
     }));
   };
 
+  console.log("finalCost = ", finalCost);
   const onSubmit = () => {
-  //   //When employee clicks submit button, it should ask for confirmation
-  //   return axios
-  //     .put(`/tickets/resolved/${ticket_id}`, {
-  //       ticket_id: ticket_id,
-  //       actual_cost: final_cost
-  //     })
-  //     .then((response) => {
-  //       console.log("RESPONSE: ", response.data);
-  //         history.push("/dashboard-employee");
-  //       //   setIssue((issue) => ({
-  //       // ...issue,
-  //       // ////////// WILL LATER CHANGE LOGIC TO RESET STATE WHEN CLOSE MODAL ////////
-  //       // description: "",
-  //       // maintenance_type: "general maintenance"
-  //     }));
-  //   });
+    
+    //When employee clicks submit button, it should ask for confirmation
+    return axios
+      .put(`/tickets/resolved/`, {
+        ticket_id: ticket_id,
+        actual_cost: finalCost.finalCost
+      })
+      .then((response) => {
+        console.log("RESPONSE: ", response.data);
+          history.push("/dashboard-employee");
+      });
   };
 
   return (

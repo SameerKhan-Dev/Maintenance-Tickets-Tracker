@@ -43,7 +43,9 @@ export default function Application(props) {
             <h1> Hello from "/" Page</h1>
           </Route>
           <Route path="/dashboard-employee">
-            <Employee_Dashboard />
+            {/* <Employee_Dashboard /> */}
+            <Employee_Interface />
+            {/* <Ticket_Form_Emp /> */}
           </Route>
 
           <Route path="/login">
