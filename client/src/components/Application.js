@@ -53,10 +53,13 @@ export default function Application(props) {
 
           <Route path="/register">
             <h1> Hello from "/register Page</h1>
-          </Route>          
-            <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
-              <Dashboard_PM_Stats />
-            </PrivateRoute>
+          </Route>      
+          <Route  path="/dashboard-pm-stats">
+            <Dashboard_PM_Stats></Dashboard_PM_Stats>
+          </Route>    
+            {/* <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}> */}
+              {/* <Dashboard_PM_Stats /> */}
+            {/* </PrivateRoute> */}
           <Route path="/dashboard-pm-tickets">
          
             <Dashboard_PM_Tickets/>
