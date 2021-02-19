@@ -4,12 +4,17 @@ import "../Application.scss";
 import axios from "axios";
 import Employee_List_PM from "./Employee_List_PM";
 import Ticket_List_PM_Pending from "./Ticket_List_PM_Pending";
+import Ticket_List_PM_In_Progress from "./Ticket_List_PM_In_Progress";
 // import Side_NavBar_PM_Stats from "/Users/zahrahm/lighthouse/final-project/Maintenance-Tickets-Tracker/client/src/components/Dashboard_PM_Stats/Side_NavBar_PM_Stats.js";
 import Side_NavBar_PM_Tickets from "./Side_NavBar_PM_Tickets"
 import Top_NavBar_PM_Tickets from "./Top_Nav_Bar_PM_Tickets";
 import "./Dashboard_PM_Tickets.scss";
-
-
+import Button from 'react-bootstrap/Button';
+import Toast from 'react-bootstrap/Toast';
+import ToastHeader from 'react-bootstrap/ToastHeader';
+import ToastBody from 'react-bootstrap/ToastBody';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Badge from 'react-bootstrap/Badge';
 
 export default function Dashboard_PM_Tickets(props) {
 
@@ -183,7 +188,44 @@ export default function Dashboard_PM_Tickets(props) {
     return ticketsPending;
 
   }
+
+  const setTicketsInProgress = function (){
+
+    const ticketsInProgress = [];
+    const property_id = state_PM_Tickets.selectedProperty;
+
+    for (let propertyObject of state_PM_Tickets.ticketsOrganizedByProperty) {
+      //console.log("propertyObject.ticketsArray is: ");
+      //console.log(propertyObject.ticketsArray);
+      
+      if (propertyObject.property_id === property_id) {
+        //console.log("propertyObject.ticketsArray is: ");
+        //console.log(propertyObject.ticketsArray);
+        
+        for (let ticket of propertyObject.ticketsArray) {
+          //console.log("ticket is: ", ticket);
+          //console.log(ticket);
+          if(ticket.ticket_status_id === 2){
+            ticketsInProgress.push(ticket);
+          }
+        }
+      
+        
+      }
+      
+    // console.log("propertyObject is : ", propertyObject);
+
+    }
+    return ticketsInProgress;
+
+  }
+
+
+
+
+
   const ticketsPending = setTicketsPending();
+  const ticketsInProgress = setTicketsInProgress();
   console.log("Current selected property is: ", state_PM_Tickets.selectedProperty);
   console.log("Current ticketsOrganizedByProperty is: ", state_PM_Tickets.ticketsOrganizedByProperty);
   console.log("Pending Tickets are: ", state_PM_Tickets.ticketsPending);
@@ -212,8 +254,7 @@ export default function Dashboard_PM_Tickets(props) {
   },[]);
 
     return (
-        <>
-       
+        <> 
         <div>
           <Side_NavBar_PM_Tickets
             selectProperty = {selectProperty}
@@ -222,10 +263,24 @@ export default function Dashboard_PM_Tickets(props) {
         </div>
         <div className= "dashboard-interface">
           <Top_NavBar_PM_Tickets/>
+          <>
+            <Button variant="success">In-Progress: {state_PM_Tickets.specificStats.totalUnsolved}</Button>{' '}
+            <Button variant="warning">Pending: {state_PM_Tickets.specificStats.pending}</Button>{' '}
+            <Button variant="danger">Total: {state_PM_Tickets.specificStats.in_Progress}</Button>
+          </>
+          <h1>     
+            <Badge variant="secondary">Pending Tickets</Badge>
+          </h1>
           <Ticket_List_PM_Pending
             ticketsPending= {ticketsPending}
-            ticketsInProgress = {state_PM_Tickets.ticketsInProgress}
             selectedProperty= {state_PM_Tickets.selectedProperty}
+          />
+          <h1>     
+            <Badge variant="secondary">In-Progress</Badge>
+          </h1>
+          <Ticket_List_PM_In_Progress
+              ticketsInProgress = {ticketsInProgress}
+              selectedProperty= {state_PM_Tickets.selectedProperty}
           />
         </div>
       </>
