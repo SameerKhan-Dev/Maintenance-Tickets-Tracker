@@ -96,7 +96,7 @@ export default function Individual_Property_Interface(props) {
       </section>
       <section className="graph__allProperties">
         <Pie_Chart />
-        <Bar_Chart />
+        <Bar_Chart specificTicketsforProperty = { props.ticketsForSelectedProperty }/>
       </section>
     </main>
   );

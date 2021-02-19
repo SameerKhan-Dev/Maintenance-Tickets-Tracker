@@ -1,12 +1,16 @@
 import React from "react";
 import Chart from "react-google-charts";
+import { individualPropertyCostGraph } from "./Graphs_functions/CostBarGraphCode.js"
 
-export default function Bar_Chart() {
+export default function Bar_Chart(props) {
+  
+  let avgCosts = individualPropertyCostGraph(props.specificTicketsforProperty);
+
   const data = [
-    ["Maintenance Type", "Estimated Cost", "Actual Cost"],
-    ["Plumbing", 1400, 1200],
-    ["Electrical", 2460, 4000],
-    ["General Maintenance", 880, 1000],
+    ["Maintenance Type", "Average Estimated Cost", "Average Actual Cost"],
+    ["Plumbing", avgCosts.plumbingAvgEstCost, avgCosts.plumbingAvgActualCost],
+    ["Electrical", avgCosts.electricalAvgEstCost, avgCosts.electricalAvgActualCost],
+    ["General Maintenance", avgCosts.generalAvgEstCost, avgCosts.generalAvgActualCost],
   ];
 
   return (
