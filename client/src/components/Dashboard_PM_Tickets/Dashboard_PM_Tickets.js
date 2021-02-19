@@ -38,6 +38,9 @@ export default function Dashboard_PM_Tickets(props) {
     }
   );
   // add tickete
+
+ 
+
   const assignEmployeeToTicket = function (ticket_id, employee_id){
     console.log("inside assignEmployeeToTicket!");
     console.log("ticket_id is: ", ticket_id);
@@ -62,6 +65,9 @@ export default function Dashboard_PM_Tickets(props) {
           }
           setState_PM_Tickets(prev => ({...prev, tickets: ticketsArray}));
           
+
+
+
         });
   }
 
@@ -137,6 +143,7 @@ export default function Dashboard_PM_Tickets(props) {
     }
      return ticketsOrganizedByProperty;
   } 
+  let ticketsOrganizedByProperty = constructTicketsData(state_PM_Tickets.properties, state_PM_Tickets.tickets);
 
   // const obtainStats for Specific Property:
   // input is all tickets and stats sorted by property
@@ -180,8 +187,8 @@ export default function Dashboard_PM_Tickets(props) {
     // console.log("propertyObject is : ", propertyObject);
 
     }
-
-    setState_PM_Tickets(prev => ({...prev, selectedProperty: property_id, specificStats: obtainStats(state_PM_Tickets.ticketsOrganizedByProperty, property_id), ticketsPending: pendingTicketsArray  , ticketsInProgress:inProgressTicketsArray}));
+    
+    setState_PM_Tickets(prev => ({...prev, selectedProperty: property_id}));
     
   }
 
@@ -190,7 +197,7 @@ export default function Dashboard_PM_Tickets(props) {
     const ticketsPending = [];
     const property_id = state_PM_Tickets.selectedProperty;
 
-    for (let propertyObject of state_PM_Tickets.ticketsOrganizedByProperty) {
+    for (let propertyObject of ticketsOrganizedByProperty) {
       //console.log("propertyObject.ticketsArray is: ");
       //console.log(propertyObject.ticketsArray);
       
@@ -221,7 +228,7 @@ export default function Dashboard_PM_Tickets(props) {
     const ticketsInProgress = [];
     const property_id = state_PM_Tickets.selectedProperty;
 
-    for (let propertyObject of state_PM_Tickets.ticketsOrganizedByProperty) {
+    for (let propertyObject of ticketsOrganizedByProperty) {
       //console.log("propertyObject.ticketsArray is: ");
       //console.log(propertyObject.ticketsArray);
       
@@ -257,6 +264,10 @@ export default function Dashboard_PM_Tickets(props) {
   console.log("Current ticketsOrganizedByProperty is: ", state_PM_Tickets.ticketsOrganizedByProperty);
   console.log("Pending Tickets are: ", state_PM_Tickets.ticketsPending);
 
+ 
+  let specificStats = obtainStats(ticketsOrganizedByProperty, state_PM_Tickets.selectedProperty);
+
+
   useEffect(() => {
 
     Promise.all([
@@ -271,7 +282,7 @@ export default function Dashboard_PM_Tickets(props) {
       // Update local state with data from API.
       
       setState_PM_Tickets(prev => ({...prev, properties: propertiesData, tickets: ticketsData, ticketsOrganizedByProperty: constructTicketsData(propertiesData, ticketsData)}));
-      setState_PM_Tickets(prev => ({...prev, specificStats: obtainStats(prev.ticketsOrganizedByProperty, prev.selectedProperty)}));
+      //setState_PM_Tickets(prev => ({...prev, specificStats: obtainStats(prev.ticketsOrganizedByProperty, prev.selectedProperty)}));
       
       // need to sort our tickets data into a structure like above using a helper function
       //constructTicketsData(propertiesData, ticketsData);
@@ -291,9 +302,9 @@ export default function Dashboard_PM_Tickets(props) {
         <div className= "dashboard-interface">
           <Top_NavBar_PM_Tickets/>
           <>
-            <Button variant="success">In-Progress: {state_PM_Tickets.specificStats.totalUnsolved}</Button>{' '}
-            <Button variant="warning">Pending: {state_PM_Tickets.specificStats.pending}</Button>{' '}
-            <Button variant="danger">Total: {state_PM_Tickets.specificStats.in_Progress}</Button>
+            <Button variant="success">Total: {specificStats.totalUnsolved}</Button>{' '}
+            <Button variant="warning">Pending: {specificStats.pending}</Button>{' '}
+            <Button variant="danger">In-Progress: {specificStats.in_Progress}</Button>
           </>
           <h1>     
             <Badge variant="secondary">Pending Tickets</Badge>
