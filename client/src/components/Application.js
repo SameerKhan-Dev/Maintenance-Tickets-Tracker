@@ -67,9 +67,13 @@ export default function Application(props) {
             <Dashboard_PM_Tickets/>
           </Route>
 
-          <PrivateRoute path="/dashboard-tenant" login={loginUser.loggedIn}>
+          <Route path="/dashboard-tenant">
+            <h1> Hello from "/dashboard-tenant</h1>
+          </Route>
+
+          {/* <PrivateRoute path="/dashboard-tenant" login={loginUser.loggedIn}>
             <Dashboard_Tenant />
-          </PrivateRoute>
+          </PrivateRoute> */}
             {/*  
               // specific property
             
@@ -78,6 +82,7 @@ export default function Application(props) {
             <h1> Hello from "/tickets" Page</h1>
           </Route>
           <Route path="/logout">
+
             <h1> Hello from "/logout" Page</h1>
           </Route>
           <Route path="/test">
