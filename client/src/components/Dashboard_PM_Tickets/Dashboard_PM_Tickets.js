@@ -32,6 +32,7 @@ export default function Dashboard_PM_Tickets(props) {
     }
   );
 
+
   const constructTicketsData = function (propertiesArray, ticketsArray) {
     let ticketsOrganizedByProperty = []; // our result to be populated and sent out from this helper function.
     
@@ -152,6 +153,37 @@ export default function Dashboard_PM_Tickets(props) {
     
   }
 
+  const setTicketsPending = function (){
+
+    const ticketsPending = [];
+    const property_id = state_PM_Tickets.selectedProperty;
+
+    for (let propertyObject of state_PM_Tickets.ticketsOrganizedByProperty) {
+      //console.log("propertyObject.ticketsArray is: ");
+      //console.log(propertyObject.ticketsArray);
+      
+      if (propertyObject.property_id === property_id) {
+        //console.log("propertyObject.ticketsArray is: ");
+        //console.log(propertyObject.ticketsArray);
+        
+        for (let ticket of propertyObject.ticketsArray) {
+          //console.log("ticket is: ", ticket);
+          //console.log(ticket);
+          if(ticket.ticket_status_id === 1){
+            ticketsPending.push(ticket);
+          }
+        }
+      
+        
+      }
+      
+    // console.log("propertyObject is : ", propertyObject);
+
+    }
+    return ticketsPending;
+
+  }
+  const ticketsPending = setTicketsPending();
   console.log("Current selected property is: ", state_PM_Tickets.selectedProperty);
   console.log("Current ticketsOrganizedByProperty is: ", state_PM_Tickets.ticketsOrganizedByProperty);
   console.log("Pending Tickets are: ", state_PM_Tickets.ticketsPending);
@@ -171,9 +203,10 @@ export default function Dashboard_PM_Tickets(props) {
       
       setState_PM_Tickets(prev => ({...prev, properties: propertiesData, tickets: ticketsData, ticketsOrganizedByProperty: constructTicketsData(propertiesData, ticketsData)}));
       setState_PM_Tickets(prev => ({...prev, specificStats: obtainStats(prev.ticketsOrganizedByProperty, prev.selectedProperty)}));
+      
       // need to sort our tickets data into a structure like above using a helper function
       //constructTicketsData(propertiesData, ticketsData);
-      
+      //ticketsPending= setTicketsPending();
     });
 
   },[]);
@@ -190,7 +223,7 @@ export default function Dashboard_PM_Tickets(props) {
         <div className= "dashboard-interface">
           <Top_NavBar_PM_Tickets/>
           <Ticket_List_PM_Pending
-            ticketsPending= {state_PM_Tickets.ticketsPending}
+            ticketsPending= {ticketsPending}
             ticketsInProgress = {state_PM_Tickets.ticketsInProgress}
             selectedProperty= {state_PM_Tickets.selectedProperty}
           />
