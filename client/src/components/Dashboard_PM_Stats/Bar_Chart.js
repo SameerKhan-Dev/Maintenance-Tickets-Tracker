@@ -9,8 +9,8 @@ export default function Bar_Chart(props) {
   const data = [
     ["Maintenance Type", "Average Estimated Cost", "Average Actual Cost"],
     ["Plumbing", avgCosts.plumbingAvgEstCost, avgCosts.plumbingAvgActualCost],
-    ["Electrical", avgCosts.electricalAvgEstCost, avgCosts.electricalAvgActualCost],
     ["General Maintenance", avgCosts.generalAvgEstCost, avgCosts.generalAvgActualCost],
+    ["Electrical", avgCosts.electricalAvgEstCost, avgCosts.electricalAvgActualCost]
   ];
 
   return (
