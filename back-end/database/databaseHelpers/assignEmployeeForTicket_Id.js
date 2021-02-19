@@ -5,7 +5,8 @@ const assignEmployeeForTicket_Id = function (employee_id, ticket_id) {
 
     return db.query(`
         UPDATE tickets
-        SET employee_id = $1
+        SET employee_id = $1,
+            ticket_status_id = 2
         WHERE id = $2`
       ,[employee_id, ticket_id]).then(res => {
         if (res.rows) {

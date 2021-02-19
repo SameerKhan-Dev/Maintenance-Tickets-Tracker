@@ -49,16 +49,19 @@ export default function Dashboard_PM_Tickets(props) {
         })
         .then((response) => {
           
+          let ticketsArray = [...state_PM_Tickets.tickets];
+          
           console.log("RESPONSE: ", response.data);
-          /*if (response.data) {
-            props.setLoginUser((prev) => ({
-              ...prev, 
-              loggedIn: true, 
-              userEmail: response.data.email, 
-              userRole: response.data.role_id 
-            }));
-           // history.push(getPathForRole(response.data.role_id));
-          }*/
+          for (let ticket of ticketsArray){
+            if (ticket.id === ticket_id) {
+              
+              ticket.ticket_status_id = 2;
+              ticket.employee_id = employee_id;
+              //setState_PM_Tickets(prev => {...prev, prev.ticket})
+            }
+          }
+          setState_PM_Tickets(prev => ({...prev, tickets: ticketsArray}));
+          
         });
   }
 
