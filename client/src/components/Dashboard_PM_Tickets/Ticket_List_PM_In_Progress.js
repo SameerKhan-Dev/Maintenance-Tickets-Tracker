@@ -37,7 +37,7 @@ const tickets = [
   }
 ];
 
-export default function Ticket_List_PM_Pending(props) {
+export default function Ticket_List_PM_In_Progress(props) {
   const [ticketStatus, setTicketStatus] = useState("Pending");
   const [employee, setEmployee] = useState("none"); // need this?
   const {assignEmployeeToTicket} = props;
@@ -75,12 +75,12 @@ export default function Ticket_List_PM_Pending(props) {
     <section className="tickets">
      
       <ListGroup>
-      {ticketsPending.map(ticket => (
+      {ticketsInProgress.map(ticket => (
           <ListGroup.Item action variant="light">
             <Ticket_List_Item_PM
-              assignEmployeeToTicket = {assignEmployeeToTicket}
               key={ticket.id}
               ticketID = {ticket.id}
+              assignEmployeeToTicket= {assignEmployeeToTicket}
               ticketStatus={ticket.ticketStatus}
               createdAt={ticket.createdAt}
               unit={ticket.unit}
