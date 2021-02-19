@@ -3,13 +3,13 @@ const db = require('../database');
 const getAllTicketsByPm_Id = function (pm_id) {
 
     return db.query(`
-      SELECT * FROM tickets
+      SELECT tickets.* FROM tickets
       JOIN properties ON tickets.property_id = properties.id
       WHERE property_manager_id = $1;`
       , [pm_id])
       .then(res => {
         if (res.rows) {
-  
+          console.log("Response for db query function is: ", res.rows);
           // console.log("res.rows is, ", res.rows);
           return res.rows;
   
