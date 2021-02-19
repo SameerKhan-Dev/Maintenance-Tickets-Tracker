@@ -102,6 +102,13 @@ app.post("/login", (req, res) => {
   // res.send(`${user_email}, ${password}`);
   // res.send(req.body);
 });
+
+// logout and clear cookies
+app.get("/logout", (req, res) => {
+  req.session = null;
+  res.redirect("/login");
+});
+
 //3
 // get all properties for logged in pm_id
 app.get("/my_properties/:pm_id", (req, res) => {
