@@ -13,7 +13,7 @@ import Dashboard_PM_Tickets from "./Dashboard_PM_Tickets/Dashboard_PM_Tickets";
 
 import Employee_List_Item_PM from "./Dashboard_PM_Tickets/Employee_List_Item_PM";
 import Employee_List_PM from "./Dashboard_PM_Tickets/Employee_List_PM";
-import Ticket_List_PM from "./Dashboard_PM_Tickets/Ticket_List_PM";
+
 import Tenant_Interface from "./Dashboard_Tenant/Tenant_Interface";
 import Employee_Interface from "./Employee/Employee_Interface";
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
@@ -58,7 +58,8 @@ export default function Application(props) {
               <Dashboard_PM_Stats />
             </PrivateRoute>
           <Route path="/dashboard-pm-tickets">
-            <h1> Hello from "/dashboard-pm-tickets" Page</h1>
+         
+            <Dashboard_PM_Tickets/>
           </Route>
           <Route path="/dashboard-tenant">
             <h1> Hello from "/dashboard-tenant" Page</h1>

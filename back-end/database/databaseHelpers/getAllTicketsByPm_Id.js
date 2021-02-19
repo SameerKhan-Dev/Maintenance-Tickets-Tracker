@@ -1,6 +1,7 @@
 const db = require("../database");
 
 const getAllTicketsByPm_Id = function (pm_id) {
+
   return db
     .query(
       `
