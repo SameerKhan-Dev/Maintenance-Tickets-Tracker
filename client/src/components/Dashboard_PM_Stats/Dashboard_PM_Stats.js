@@ -19,7 +19,7 @@ export default function Dashboard_PM_Stats(props) {
 
   // When user login is setup, extract user_id using cookies
   // temporarily we are going to use user_id as 1 (i.e pm_id for this page)
-  const  tempPM_Id = 1;
+  const  tempPM_Id = 3;
   const [state_PM_Stats, setState_PM_Stats] = useState( 
     {  // selectedProperty = 0, means no property selected
       selectedProperty: 0,
@@ -54,6 +54,8 @@ for (const propertyObject of state_PM_Stats.ticketsOrganizedByProperty) {
   
   const constructTicketsData = function (propertiesArray, ticketsArray) {
     let ticketsOrganizedByProperty = []; // our result to be populated and sent out from this helper function.
+    console.log("propertiesArray is: ", propertiesArray);
+    console.log("ticketsArray is: ", ticketsArray); 
     
     // construct the initial tickets data
     ticketsOrganizedByProperty.push({ 
@@ -128,7 +130,9 @@ for (const propertyObject of state_PM_Stats.ticketsOrganizedByProperty) {
   // const obtainStats for Specific Property:
   // input is all tickets and stats sorted by property
   // output is specific stats to display for property
-  
+  console.log("ticketsOrganizedByProperty is: ")
+  console.log(state_PM_Stats.ticketsOrganizedByProperty);
+
   const obtainStats = function(ticketsOrganizedByProperty, selectedProperty){
     
     // loop through allPropertiesStats array and find property with id matching selectedProperty value.
@@ -146,7 +150,7 @@ for (const propertyObject of state_PM_Stats.ticketsOrganizedByProperty) {
     setState_PM_Stats({...state_PM_Stats, selectedProperty: property_id, specificStats: obtainStats(state_PM_Stats.ticketsOrganizedByProperty, property_id)});
     
   }
-
+console.log("Selected Property is: ", state_PM_Stats.selectedProperty);
 
 
   useEffect(() => {
@@ -164,6 +168,7 @@ for (const propertyObject of state_PM_Stats.ticketsOrganizedByProperty) {
       
       setState_PM_Stats(prev => ({...prev, properties: propertiesData, tickets: ticketsData, ticketsOrganizedByProperty: constructTicketsData(propertiesData, ticketsData)}));
       setState_PM_Stats(prev => ({...prev, specificStats: obtainStats(prev.ticketsOrganizedByProperty, prev.selectedProperty)}));
+    
       // need to sort our tickets data into a structure like above using a helper function
       //constructTicketsData(propertiesData, ticketsData);
       

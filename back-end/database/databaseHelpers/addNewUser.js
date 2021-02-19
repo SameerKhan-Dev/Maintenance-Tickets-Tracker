@@ -1,13 +1,12 @@
 const db = require("../database");
 
-const getUserByEmail = function (email) {
+const addNewUser = function (firstname, lastname, email, password, role_id) {
   return db
     .query(
       `
-      SELECT users.*, roles.role FROM users
-      JOIN roles ON role_id = roles.id
-      WHERE users.email = $1;`,
-      [email]
+      INSERT INTO users (firstname, lastname, email, password, role_id)
+      VALUES ($1, $2, $3, $4, $5)
+      RETURNING *;`, [firstname, lastname, email, password, role_id]
     )
     .then((res) => {
       if (res.rows) {
@@ -21,4 +20,4 @@ const getUserByEmail = function (email) {
     .catch((err) => console.log(err));
 };
 
-module.exports = getUserByEmail;
+module.exports = addNewUser;
