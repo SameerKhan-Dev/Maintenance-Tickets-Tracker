@@ -127,7 +127,13 @@ export default function Issue_Form(props) {
         </form>
       </section>
       {/* add popup modal */}
-      {showModal && <div className={`modalBackground modalShowing-${showModal}`}>Modal</div>}
+      {showModal && 
+        <div className={`modalBackground modalShowing-${showModal}`}>
+          <h2>Thank you for your submission!</h2>
+          <h4>Please allow 24 hours for a response.</h4>
+          <h4>If emergency, please call 555-555-5555</h4>
+        </div>
+      }
       
     </section>
   );
