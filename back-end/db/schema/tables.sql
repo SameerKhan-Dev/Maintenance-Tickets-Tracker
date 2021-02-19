@@ -67,7 +67,7 @@ CREATE TABLE tickets (
   creator_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   employee_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   maintenance_type_id INTEGER REFERENCES maintenance_issues(id) ON DELETE CASCADE,
-  ticket_status_id INTEGER REFERENCES ticket_statuses(id) ON DELETE CASCADE,
+  ticket_status_id INTEGER REFERENCES ticket_statuses(id) ON DELETE CASCADE DEFAULT 1 ,
   description TEXT NOT NULL,
   estimated_cost INTEGER,
   actual_cost INTEGER DEFAULT NULL,

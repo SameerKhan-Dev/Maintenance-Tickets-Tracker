@@ -3,8 +3,7 @@ const db = require("../database");
 const addNewTicket = function (
   property_id, 
   creator_id, 
-  maintenance_type_id, 
-  ticket_status_id,
+  maintenance_type_id,
   description) {
   return db
     .query(
@@ -12,16 +11,14 @@ const addNewTicket = function (
       INSERT INTO tickets (
         property_id, 
         creator_id,
-        maintenance_type_id, 
-        ticket_status_id,
+        maintenance_type_id,
         description
       )
-      VALUES ($1, $2, $3, $4, $5)
+      VALUES ($1, $2, $3, $4)
       RETURNING *;`, [
         property_id, 
         creator_id,
-        maintenance_type_id, 
-        ticket_status_id,
+        maintenance_type_id,
         description
       ]
     )
