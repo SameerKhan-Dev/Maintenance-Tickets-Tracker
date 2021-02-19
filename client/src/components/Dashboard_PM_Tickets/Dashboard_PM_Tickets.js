@@ -4,6 +4,7 @@ import "../Application.scss";
 import axios from "axios";
 import Employee_List_PM from "./Employee_List_PM";
 import Ticket_List_PM_Pending from "./Ticket_List_PM_Pending";
+import specificTicket_Modal from "./specificTicket_Modal";
 import Ticket_List_PM_In_Progress from "./Ticket_List_PM_In_Progress";
 // import Side_NavBar_PM_Stats from "/Users/zahrahm/lighthouse/final-project/Maintenance-Tickets-Tracker/client/src/components/Dashboard_PM_Stats/Side_NavBar_PM_Stats.js";
 import Side_NavBar_PM_Tickets from "./Side_NavBar_PM_Tickets"
@@ -15,9 +16,11 @@ import ToastHeader from 'react-bootstrap/ToastHeader';
 import ToastBody from 'react-bootstrap/ToastBody';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Badge from 'react-bootstrap/Badge';
+import MyVerticallyCenteredModal from './specificTicket_Modal';
 
 export default function Dashboard_PM_Tickets(props) {
 
+  const [modalShow, setModalShow] = React.useState(false);
   // When user login is setup, extract user_id using cookies
   // temporarily we are going to use user_id as 1 (i.e pm_id for this page)
   const  tempPM_Id = 3
@@ -31,12 +34,31 @@ export default function Dashboard_PM_Tickets(props) {
         totalUnsolved: 0,
         pending: 0,
         in_Progress: 0
-      },
-      ticketsPending: [],
-      ticketsInProgress: []
+      }
     }
   );
-
+  // add tickete
+  const assignEmployeeToTicket = function (ticket_id, employee_id){
+    console.log("inside assignEmployeeToTicket!");
+      return axios
+        .put(`/tickets/assignEmployee`, {
+          ticket_id: ticket_id,
+          employee_id: employee_id
+        })
+        .then((response) => {
+          
+          console.log("RESPONSE: ", response.data);
+          /*if (response.data) {
+            props.setLoginUser((prev) => ({
+              ...prev, 
+              loggedIn: true, 
+              userEmail: response.data.email, 
+              userRole: response.data.role_id 
+            }));
+           // history.push(getPathForRole(response.data.role_id));
+          }*/
+        });
+  }
 
   const constructTicketsData = function (propertiesArray, ticketsArray) {
     let ticketsOrganizedByProperty = []; // our result to be populated and sent out from this helper function.
@@ -271,9 +293,11 @@ export default function Dashboard_PM_Tickets(props) {
           <h1>     
             <Badge variant="secondary">Pending Tickets</Badge>
           </h1>
+
           <Ticket_List_PM_Pending
             ticketsPending= {ticketsPending}
             selectedProperty= {state_PM_Tickets.selectedProperty}
+            assignEmployeeToTicket = {assignEmployeeToTicket}
           />
           <h1>     
             <Badge variant="secondary">In-Progress</Badge>
@@ -281,6 +305,7 @@ export default function Dashboard_PM_Tickets(props) {
           <Ticket_List_PM_In_Progress
               ticketsInProgress = {ticketsInProgress}
               selectedProperty= {state_PM_Tickets.selectedProperty}
+              assignEmployeeToTicket = {assignEmployeeToTicket}
           />
         </div>
       </>
