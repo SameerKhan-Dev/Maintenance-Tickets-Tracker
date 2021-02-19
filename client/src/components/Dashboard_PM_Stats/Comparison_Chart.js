@@ -1,5 +1,6 @@
 import React from "react";
 import Chart from "react-google-charts";
+import Spinner from 'react-bootstrap/Spinner'
 
 export default function Comparison_Chart() {
   const data = [
@@ -25,7 +26,11 @@ export default function Comparison_Chart() {
       width={"500px"}
       height={"300px"}
       chartType="Bar"
-      loader={<div>Loading Chart</div>}
+      loader={<div>
+        <Spinner animation="border" role="status" size="lg">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>}
       data={data}
       options={{
         // Material design options

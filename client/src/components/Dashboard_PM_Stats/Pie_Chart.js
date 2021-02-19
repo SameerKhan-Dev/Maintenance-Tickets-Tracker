@@ -1,5 +1,7 @@
 import React from "react";
 import Chart from "react-google-charts";
+import Spinner from 'react-bootstrap/Spinner'
+
 
 export default function Pie_Chart() {
   return (
@@ -7,7 +9,11 @@ export default function Pie_Chart() {
       width={"500px"}
       height={"300px"}
       chartType="PieChart"
-      loader={<div>Loading Chart</div>}
+      loader={<div>
+        <Spinner animation="border" role="status" size="lg">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>}
       data={[
         ["Maintenance Type", "Cost"],
         ["Plumbing", 2],

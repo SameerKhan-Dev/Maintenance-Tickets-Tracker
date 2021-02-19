@@ -1,9 +1,10 @@
 import React from "react";
 import Chart from "react-google-charts";
 import { individualPropertyCostGraph } from "./Graphs_functions/CostBarGraphCode.js"
+import Spinner from 'react-bootstrap/Spinner'
 
 export default function Bar_Chart(props) {
-  
+
   let avgCosts = individualPropertyCostGraph(props.specificTicketsforProperty);
 
   const data = [
@@ -18,7 +19,11 @@ export default function Bar_Chart(props) {
       width={"500px"}
       height={"300px"}
       chartType="Bar"
-      loader={<div>Loading Chart</div>}
+      loader={<div>
+        <Spinner animation="border" role="status" size="lg">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>}
       // We have to format data retrevied from DB to be like the following
       data={data}
       options={{
