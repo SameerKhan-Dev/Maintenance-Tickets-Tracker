@@ -4,7 +4,7 @@ import React, {useState, Component} from 'react';
 import Employee_List_PM from "./Employee_List_PM";
 
 export default function MyVerticallyCenteredModal(props) {
-   const {employeeList, description, assignEmployeeToTicket} = props;
+   const {employeeList, description, assignEmployeeToTicket, ticket_id} = props;
    const [selectedEmployee, setSelectEmployee] = useState("none");
 
    const handleConfirmAssignEmployee = function(ticket_id,employee_id) {
@@ -38,7 +38,7 @@ export default function MyVerticallyCenteredModal(props) {
         />
         <Modal.Footer>
           {/*<Button onClick={handleConfirmAssignEmployee(2,selectedEmployee)}*/}
-          <Button onClick={props.onHide}
+          <Button onClick={() => props.onHide(ticket_id, selectedEmployee)}
         >Confirm</Button>
         </Modal.Footer>
       </Modal>

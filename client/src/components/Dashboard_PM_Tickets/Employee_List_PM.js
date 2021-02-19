@@ -38,7 +38,7 @@ export default function Employee_List_PM(props) {
             id = {employee.id}
             name={employee.name}
             selected={currentEmployee === employee.name}
-            setEmployee={()=>setSelectEmployee(employee.name)}
+            setEmployee={()=>setSelectEmployee(employee.id)}
           />
         ))}
       </ul>

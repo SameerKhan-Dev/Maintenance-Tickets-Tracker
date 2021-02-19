@@ -80,6 +80,7 @@ export default function Ticket_List_PM_Pending(props) {
             <Ticket_List_Item_PM
               assignEmployeeToTicket = {assignEmployeeToTicket}
               key={ticket.id}
+              ticketID = {ticket.id}
               ticketStatus={ticket.ticketStatus}
               createdAt={ticket.createdAt}
               unit={ticket.unit}

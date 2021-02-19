@@ -18,9 +18,9 @@ export default function Ticket_List_Item_PM(props) {
     maintenanceType,
     description,
   } = props;
-  const hideModal = function (ticket_id,employee_id) {
+  const hideModal = function (ticket_id, employee_id) {
     setModalShow(false);
-    //assignEmployeeToTicket(ticket_id, employee_id);
+    assignEmployeeToTicket(ticket_id, employee_id);
     
     
   }
@@ -54,6 +54,7 @@ export default function Ticket_List_Item_PM(props) {
           description = {description}
           show={modalShow}
           onHide = {hideModal}
+          ticket_id = {ticketID}
           assignEmployeeToTicket = {assignEmployeeToTicket}
         />
       </>

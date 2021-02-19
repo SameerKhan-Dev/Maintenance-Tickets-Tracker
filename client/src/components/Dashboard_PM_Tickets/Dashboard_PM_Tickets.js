@@ -40,6 +40,8 @@ export default function Dashboard_PM_Tickets(props) {
   // add tickete
   const assignEmployeeToTicket = function (ticket_id, employee_id){
     console.log("inside assignEmployeeToTicket!");
+    console.log("ticket_id is: ", ticket_id);
+    console.log("employee_id is:", employee_id);
       return axios
         .put(`/tickets/assignEmployee`, {
           ticket_id: ticket_id,
