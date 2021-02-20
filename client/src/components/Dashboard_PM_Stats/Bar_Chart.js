@@ -1,12 +1,24 @@
 import React from "react";
 import Chart from "react-google-charts";
+import { individualPropertyCostGraph } from "./Graphs_functions/CostBarGraphCode.js"
+import Spinner from 'react-bootstrap/Spinner'
 
-export default function Bar_Chart() {
+export default function Bar_Chart(props) {
+
+  let avgCosts = individualPropertyCostGraph(props.specificTicketsforProperty);
+
+  // const data = [
+  //   ["Maintenance Type", "Average Estimated Cost", "Average Actual Cost"],
+  //   ["Plumbing", 1, 1],
+  //   ["General Maintenance", 1, 1],
+  //   ["Electrical", 1, 1]
+  // ];
+
   const data = [
-    ["Maintenance Type", "Estimated Cost", "Actual Cost"],
-    ["Plumbing", 1400, 1200],
-    ["Electrical", 2460, 4000],
-    ["General Maintenance", 880, 1000],
+    ["Maintenance Type", "Average Estimated Cost", "Average Actual Cost"],
+    ["Plumbing", avgCosts.plumbingAvgEstCost, avgCosts.plumbingAvgActualCost],
+    ["General Maintenance", avgCosts.generalAvgEstCost, avgCosts.generalAvgActualCost],
+    ["Electrical", avgCosts.electricalAvgEstCost, avgCosts.electricalAvgActualCost]
   ];
 
   return (
@@ -14,7 +26,11 @@ export default function Bar_Chart() {
       width={"500px"}
       height={"300px"}
       chartType="Bar"
-      loader={<div>Loading Chart</div>}
+      loader={<div>
+        <Spinner animation="border" role="status" size="lg">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>}
       // We have to format data retrevied from DB to be like the following
       data={data}
       options={{

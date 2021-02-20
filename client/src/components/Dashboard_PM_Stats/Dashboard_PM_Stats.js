@@ -35,7 +35,14 @@ export default function Dashboard_PM_Stats(props) {
       }
     }
   );
- 
+
+let ticketsForSelectedProperty = [];
+for (const propertyObject of state_PM_Stats.ticketsOrganizedByProperty) {
+  if (propertyObject.property_id === state_PM_Stats.selectedProperty) {
+    ticketsForSelectedProperty = propertyObject.ticketsArray;
+  }
+}
+
 
   // General pointers to remember
   // 1) Our axios call to backend allows us to obtain all tickets for all properties...
@@ -192,12 +199,10 @@ console.log("Selected Property is: ", state_PM_Stats.selectedProperty);
                   loggedInUserEmail={props.logInUserEmail}
                 />
                  { state_PM_Stats.selectedProperty === 0 ?
-                <All_Property_Interface specificStats = {state_PM_Stats.specificStats}/> : <Individual_Property_Interface  specificStats = {state_PM_Stats.specificStats}/>}     
+                <All_Property_Interface specificStats = {state_PM_Stats.specificStats} ticketsOrganizedByProperty = {state_PM_Stats.ticketsOrganizedByProperty} properties = {state_PM_Stats.properties}/> : <Individual_Property_Interface  specificStats = {state_PM_Stats.specificStats} ticketsForSelectedProperty = {ticketsForSelectedProperty}/>}     
           
         </div>
 
-
-        
       </>
     );
 }

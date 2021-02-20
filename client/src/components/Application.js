@@ -61,14 +61,22 @@ export default function Application(props) {
             <h1> Hello from "/register Page</h1>
           </Route>
 
+
           <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
             <Dashboard_PM_Stats 
               logInUserEmail={logInUserEmail}
             />
           </PrivateRoute>
 
-          <Route path="/dashboard-pm-tickets">
-         
+          <Route  path="/dashboard-pm-stats">
+            <Dashboard_PM_Stats></Dashboard_PM_Stats>
+          </Route>
+
+          {/* <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
+            <Dashboard_PM_Stats />
+          </PrivateRoute> */}
+
+          <Route path="/dashboard-pm-tickets">         
             <Dashboard_PM_Tickets 
               loggedInUserEmail={logInUserEmail}
             />
@@ -78,6 +86,7 @@ export default function Application(props) {
             <Dashboard_Tenant
               loggedInUserEmail={logInUserEmail}
             />
+            <Dashboard_Tenant />
           </Route>
 
           {/* <PrivateRoute path="/dashboard-tenant" login={loginUser.loggedIn}>
