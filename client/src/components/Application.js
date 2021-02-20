@@ -13,11 +13,12 @@ import Dashboard_PM_Tickets from "./Dashboard_PM_Tickets/Dashboard_PM_Tickets";
 
 import Employee_List_Item_PM from "./Dashboard_PM_Tickets/Employee_List_Item_PM";
 import Employee_List_PM from "./Dashboard_PM_Tickets/Employee_List_PM";
-
-import Tenant_Interface from "./Dashboard_Tenant/Tenant_Interface";
+// import Ticket_List_PM from "./Dashboard_PM_Tickets/Ticket_List_PM";
 import Employee_Interface from "./Employee/Employee_Interface";
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
 import Login from "./Login";
+import Dashboard_Tenant from "./Dashboard_Tenant/Dashboard_Tenant";
+import Ticket_Form_Emp from "./Employee/Ticket_Form_Emp";
 
 export default function Application(props) {
   // LOGIC SHOULD BE HERE  
@@ -42,7 +43,9 @@ export default function Application(props) {
             <h1> Hello from "/" Page</h1>
           </Route>
           <Route path="/dashboard-employee">
-            <Employee_Dashboard />
+            {/* <Employee_Dashboard /> */}
+            <Employee_Interface />
+            {/* <Ticket_Form_Emp /> */}
           </Route>
 
           <Route path="/login">
@@ -53,37 +56,44 @@ export default function Application(props) {
 
           <Route path="/register">
             <h1> Hello from "/register Page</h1>
-          </Route>      
+          </Route>
           <Route  path="/dashboard-pm-stats">
             <Dashboard_PM_Stats></Dashboard_PM_Stats>
           </Route>    
-            {/* <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}> */}
-              {/* <Dashboard_PM_Stats /> */}
-            {/* </PrivateRoute> */}
+          {/* <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
+            <Dashboard_PM_Stats />
+          </PrivateRoute> */}
+
           <Route path="/dashboard-pm-tickets">
          
             <Dashboard_PM_Tickets/>
           </Route>
+
           <Route path="/dashboard-tenant">
-            <h1> Hello from "/dashboard-tenant" Page</h1>
+            <Dashboard_Tenant />
+          </Route>
+
+          {/* <PrivateRoute path="/dashboard-tenant" login={loginUser.loggedIn}>
+            <Dashboard_Tenant />
+          </PrivateRoute> */}
             {/*  
               // specific property
             
             */}
-          </Route>
           <Route path="/tickets">
             <h1> Hello from "/tickets" Page</h1>
           </Route>
           <Route path="/logout">
+
             <h1> Hello from "/logout" Page</h1>
           </Route>
           <Route path="/test">
             {/* <h1> Hello from "/test" Page</h1> */}
             {/* <Employee_List_PM /> */}
             {/* <Ticket_List_PM /> */}
-            <Tenant_Interface />
-            <Employee_Interface />
+            {/* <Employee_Interface /> */}
             {/* <Dashboard_PM_Tickets /> */}
+            {/* <Dashboard_Tenant /> */}
           </Route>
         </Switch>
       </div>

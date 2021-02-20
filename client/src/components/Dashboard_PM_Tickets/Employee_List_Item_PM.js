@@ -1,10 +1,18 @@
 import React from "react";
 import classnames from "classnames";
-
+import Button from 'react-bootstrap/Button';
 import "./Employee_List_Item_PM.scss";
+import axios from "axios";
 
 export default function Employee_List_Item_PM(props) {
-  const { name, setEmployee, selected } = props;
+  const { id, name, setEmployee, selected } = props;
+
+  // this function will handle updating database and local-state
+  const handleEmployeeConfirmation = function () {
+    
+
+
+  }
 
   const EmployeeListItemClass = classnames({
     "employees-view": true,
@@ -12,6 +20,8 @@ export default function Employee_List_Item_PM(props) {
   });
 
   return (
-    <li className={EmployeeListItemClass} onClick={setEmployee}>{name}</li>
+    <li className={EmployeeListItemClass} onClick={setEmployee}>
+      <Button variant="outline-primary">{name}</Button>{' '}
+    </li>
   );
 };

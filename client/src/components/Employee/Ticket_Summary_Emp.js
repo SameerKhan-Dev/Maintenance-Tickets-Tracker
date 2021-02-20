@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 export default function Ticket_Summary_Emp(props) {
+  console.log("PROPS in Ticket_Summary_Emp =", props);
   const {
     ticketID,
     ticketStatus,
