@@ -21,8 +21,6 @@ import Dashboard_Tenant from "./Dashboard_Tenant/Dashboard_Tenant";
 import Ticket_Form_Emp from "./Employee/Ticket_Form_Emp";
 
 export default function Application(props) {
-  // LOGIC SHOULD BE HERE  
-  
   const [loginUser, setLoginUser] = useState({
     loggedIn: false,
     userEmail: "",
@@ -31,11 +29,17 @@ export default function Application(props) {
 
   // Once front-end cookies figure out, change default page for current page state based on if login or not
   const [currentPage, setCurrentPage] = useState({
-    page: "/login"
+    page: "/login",
   });
 
-  console.log("***From inside Application -- loginUser = ", loginUser["userEmail"]);
+  console.log(
+    "***From inside Application -- loginUser = ",
+    loginUser["userEmail"]
+  );
   const logInUserEmail = loginUser["userEmail"];
+  const pmEmail = "maci_lehner@gmail.com";
+  const empEmail = "harold64@hotmail.com";
+  const tenantEmail = "selena_hane@gmail.com";
 
   return (
     <Router>
@@ -47,51 +51,42 @@ export default function Application(props) {
           </Route>
           <Route path="/dashboard-employee">
             {/* <Employee_Dashboard /> */}
-            <Employee_Interface />
+            <Employee_Interface logInUserEmail={empEmail} />
             {/* <Ticket_Form_Emp /> */}
           </Route>
 
           <Route path="/login">
-            <Login 
-              setLoginUser={setLoginUser}
-            />
+            <Login setLoginUser={setLoginUser} />
           </Route>
 
           <Route path="/register">
             <h1> Hello from "/register Page</h1>
           </Route>
 
+          {/* <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
+            <Dashboard_PM_Stats logInUserEmail={logInUserEmail} />
+          </PrivateRoute> */}
 
-          <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
-            <Dashboard_PM_Stats 
-              logInUserEmail={logInUserEmail}
-            />
-          </PrivateRoute>
-
-          <Route  path="/dashboard-pm-stats">
-            <Dashboard_PM_Stats></Dashboard_PM_Stats>
+          <Route path="/dashboard-pm-stats">
+            <Dashboard_PM_Stats logInUserEmail={pmEmail} />
           </Route>
 
           {/* <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
             <Dashboard_PM_Stats />
           </PrivateRoute> */}
 
-          <Route path="/dashboard-pm-tickets">         
-            <Dashboard_PM_Tickets 
-              loggedInUserEmail={logInUserEmail}
-            />
+          <Route path="/dashboard-pm-tickets">
+            <Dashboard_PM_Tickets logInUserEmail={pmEmail} />
           </Route>
 
           <Route path="/dashboard-tenant">
-            <Dashboard_Tenant
-              loggedInUserEmail={logInUserEmail}
-            />
+            <Dashboard_Tenant loggedInUserEmail={tenantEmail} />
           </Route>
 
           {/* <PrivateRoute path="/dashboard-tenant" login={loginUser.loggedIn}>
             <Dashboard_Tenant />
           </PrivateRoute> */}
-            {/*  
+          {/*  
               // specific property
             
             */}
@@ -99,7 +94,6 @@ export default function Application(props) {
             <h1> Hello from "/tickets" Page</h1>
           </Route>
           <Route path="/logout">
-
             <h1> Hello from "/logout" Page</h1>
           </Route>
           <Route path="/test">
