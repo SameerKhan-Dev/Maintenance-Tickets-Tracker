@@ -12,11 +12,7 @@ let tickets = [
 
 export default function AssignedTicketList(props){
 
-  const {employeeInProgressTickets} = props;
-
-
-
-
+  const {employeeInProgressTickets, selectTicket} = props;
 
   return (
     <ListGroup>
@@ -31,6 +27,7 @@ export default function AssignedTicketList(props){
             created_at = {ticket.created_at}
             maintenance_type_id= {ticket.maintenance_type_id}
             property_id = {ticket.property_id}
+            selectTicket = {selectTicket}
           />
         </ListGroup.Item>
           <div>

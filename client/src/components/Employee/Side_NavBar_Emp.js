@@ -10,7 +10,7 @@ import "./Side_NavBar_Emp.scss";
 
 export default function Side_NavBar_Emp(props) {
 
-  const {employeeInProgressTickets} = props;
+  const {employeeInProgressTickets, selectTicket} = props;
 
     return (
       <>
@@ -33,6 +33,7 @@ export default function Side_NavBar_Emp(props) {
             </Dropdown>
           </div>
             <AssignedTicketList
+             selectTicket = {selectTicket}
              employeeInProgressTickets = {employeeInProgressTickets}
             />
           </nav>

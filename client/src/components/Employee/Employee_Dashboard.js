@@ -4,14 +4,16 @@ import "../Application.scss";
 import axios from "axios";
 import Employee_Interface from  "./Employee_Interface"
 import Side_NavBar_Emp from "./Side_NavBar_Emp";
-
+import './Employee_Interface.scss';
 
 export default function Employee_Dashboard(props) {
 
   const  employee_Id = 14;
   const [state_Employee, setState_Employee] = useState( 
     {  // selectedProperty = 0, means no property selected
+      selectedTicket: 9,
       selectedProperty: 0,
+      properties: [],
       tickets: [],
       specificStats: {
         totalUnsolved: 0,
@@ -20,6 +22,23 @@ export default function Employee_Dashboard(props) {
       }
     }
   );
+ 
+ const selectTicket = function(ticket_id) {
+  
+        setState_Employee(prev => ({...prev, selectedTicket: ticket_id}));
+ }
+ 
+ const specificTicket = function() {
+
+  for (let ticket of state_Employee.tickets){
+    if(ticket.id === state_Employee.selectedTicket) {
+      return ticket;
+    }
+  }
+ }
+ let selectedTicketInfo = specificTicket();
+ console.log("selectedTicketInfo is: ", selectedTicketInfo);
+
  console.log("state_Employee.tickets is: ", state_Employee.tickets);
  const getEmployeeInProgressTickets = function () {
   let inProgressTickets = [];
@@ -39,6 +58,7 @@ export default function Employee_Dashboard(props) {
 
     Promise.all([
       axios.get(`/tickets/employee/${employee_Id}`),
+      
     ])
     .then ((allValues) => {
 
@@ -58,19 +78,22 @@ export default function Employee_Dashboard(props) {
       res.send(response);
     });
   });
-  */
+*/
+console.log("selectedTicket is: ", state_Employee.selectedTicket);
     return (
       <>
         <div>
             <Side_NavBar_Emp 
                employeeInProgressTickets = {employeeInProgressTickets}
+               selectTicket = {selectTicket}
             />
         </div>
-
-        <div>
-          <Employee_Interface 
-             
-          />
+        <div className= "DivEmployee_Interface">
+          <div className= "DivEmployee_Interface">
+            <Employee_Interface 
+            selectedTicketInfo = {selectedTicketInfo}
+            />
+          </div>
         </div>
       </>
     );
