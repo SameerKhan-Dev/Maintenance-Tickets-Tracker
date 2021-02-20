@@ -1,8 +1,8 @@
-import React, {useState, Component} from 'react';
-import {useEffect} from 'react';
+import React, { useState, Component } from "react";
+import { useEffect } from "react";
 import "../Application.scss";
 import axios from "axios";
-import Employee_Interface from  "./Employee_Interface"
+import Employee_Interface from "./Employee_Interface";
 import Side_NavBar_Emp from "./Side_NavBar_Emp";
 import './Employee_Interface.scss';
 
@@ -107,14 +107,17 @@ const getEmployeeInProgressTickets = function () {
     ])
     .then ((allValues) => {
 
-      let ticketsData = allValues[0].data;
-      
-      // Update local state with data from API.
-      console.log("ticketsData is: ", ticketsData);
-      setState_Employee(prev => ({...prev, tickets: ticketsData}));
+  useEffect(() => {
+    Promise.all([axios.get(`/tickets/employee/${employee_Id}`)]).then(
+      (allValues) => {
+        let ticketsData = allValues[0].data;
 
-    });
-  },[]);
+        // Update local state with data from API.
+        console.log("ticketsData is: ", ticketsData);
+        setState_Employee((prev) => ({ ...prev, tickets: ticketsData }));
+      }
+    );
+  }, []);
   /*
   app.get("/tickets/employee/:employee_id", (req, res) => {
     const employee_id = req.params.employee_id;
