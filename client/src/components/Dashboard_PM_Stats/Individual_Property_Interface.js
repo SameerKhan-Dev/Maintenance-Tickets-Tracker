@@ -95,8 +95,19 @@ export default function Individual_Property_Interface(props) {
         </Card>
       </section>
       <section className="graph__allProperties">
-        <Pie_Chart specificTicketsforPropertyPie = { props.ticketsForSelectedProperty }/>
-        <Bar_Chart specificTicketsforProperty = { props.ticketsForSelectedProperty }/>
+      <Card>
+          <Card.Header>Percentage of Maintenance Types</Card.Header>
+          <Card.Body>
+            <Pie_Chart specificTicketsforPropertyPie = { props.ticketsForSelectedProperty }/> 
+          </Card.Body>
+        </Card>
+        <Card>
+          <Card.Header>Maintenance Cost: Estimates Cost Vs. Actual Cost</Card.Header>
+          <Card.Header>For All Properties</Card.Header>
+          <Card.Body>
+            <Bar_Chart specificTicketsforProperty = { props.ticketsForSelectedProperty }/>
+          </Card.Body>
+        </Card>
       </section>
     </main>
   );
