@@ -35,10 +35,10 @@ export default function Application(props) {
     "***From inside Application -- loginUser = ",
     loginUser["userEmail"]
   );
-  const logInUserEmail = loginUser["userEmail"];
+  // const logInUserEmail = loginUser["userEmail"];
   const pmEmail = "maci_lehner@gmail.com";
-  const empEmail = "harold64@hotmail.com";
-  const tenantEmail = "selena_hane@gmail.com";
+  const empEmail = "tim_ankunding.com";
+  const tenantEmail = "car_harvey@yahoo.com";
 
   return (
     <Router>
@@ -50,10 +50,7 @@ export default function Application(props) {
           </Route>
 
           <Route path="/dashboard-employee">
-            <Employee_Dashboard />
-            {/* <Employee_Dashboard /> */}
-            <Employee_Interface logInUserEmail={empEmail} />
-            {/* <Ticket_Form_Emp /> */}
+            <Employee_Dashboard loggedInUserEmail={empEmail} />
           </Route>
 
           <Route path="/login">
@@ -69,7 +66,7 @@ export default function Application(props) {
           </PrivateRoute> */}
 
           <Route path="/dashboard-pm-stats">
-            <Dashboard_PM_Stats logInUserEmail={pmEmail} />
+            <Dashboard_PM_Stats loggedInUserEmail={pmEmail} />
           </Route>
 
           {/* <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
@@ -77,12 +74,10 @@ export default function Application(props) {
           </PrivateRoute> */}
 
           <Route path="/dashboard-pm-tickets">
-            <Dashboard_PM_Tickets loggedInUserEmail={logInUserEmail} />
-            <Dashboard_PM_Tickets logInUserEmail={pmEmail} />
+            <Dashboard_PM_Tickets loggedInUserEmail={pmEmail} />
           </Route>
 
           <Route path="/dashboard-tenant">
-            <Dashboard_Tenant loggedInUserEmail={logInUserEmail} />
             <Dashboard_Tenant loggedInUserEmail={tenantEmail} />
           </Route>
 
