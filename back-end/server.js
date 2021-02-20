@@ -195,8 +195,9 @@ app.get("/properties/employees/:property_id", (req, res) => {
 // get all tickets for an employee when they are logged in.
 app.get("/tickets/employee/:employee_id", (req, res) => {
   const employee_id = req.params.employee_id;
-
+  console.log("In the back-end");
   getAllTicketsByEmployee_Id(employee_id).then((response) => {
+    console.log("respond from db query is: ", response);
     res.send(response);
   });
 });
