@@ -64,7 +64,7 @@ export default function Individual_Property_Interface(props) {
         </Card>
 
 
-      <Button variant="outline-info">View Tickets</Button>{' '}
+      <Button variant="outline-info" href="http://localhost:8000/dashboard-pm-tickets">View Tickets </Button>{' '}
       </section>
       <section className="expenses__info">
         <Card

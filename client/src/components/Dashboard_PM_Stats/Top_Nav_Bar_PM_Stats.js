@@ -13,6 +13,9 @@ import "./Top_Nav_Bar_PM_Stats.scss";
 
 
 export default function Top_NavBar_PM_Tickets(props) {
+
+  const { loggedInUserEmail } = props;
+  console.log("***From inside Top_NavBar_PM_Stats  -- props = ", loggedInUserEmail);
   return (
     <div classname="App">
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -20,7 +23,7 @@ export default function Top_NavBar_PM_Tickets(props) {
   <Navbar.Toggle />
   <Navbar.Collapse className="justify-content-end">
     <Navbar.Text>
-      Signed in as: <a href="#login">User Name/Email </a>
+      Signed in as: <a href="#login">{loggedInUserEmail}</a>
     </Navbar.Text>
 
     <Button variant="light">Logout</Button>

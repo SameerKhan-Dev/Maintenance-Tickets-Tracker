@@ -20,6 +20,8 @@ import MyVerticallyCenteredModal from './specificTicket_Modal';
 
 export default function Dashboard_PM_Tickets(props) {
 
+  console.log("****Inside Dashboard_PM_Tickets -- props = ", props);
+
   const [modalShow, setModalShow] = React.useState(false);
   // When user login is setup, extract user_id using cookies
   // temporarily we are going to use user_id as 1 (i.e pm_id for this page)
@@ -300,7 +302,7 @@ export default function Dashboard_PM_Tickets(props) {
           />
         </div>
         <div className= "dashboard-interface">
-          <Top_NavBar_PM_Tickets/>
+          <Top_NavBar_PM_Tickets loggedInUserEmail={props.logInUserEmail}/>
           <>
             <Button variant="success">Total: {specificStats.totalUnsolved}</Button>{' '}
             <Button variant="warning">Pending: {specificStats.pending}</Button>{' '}

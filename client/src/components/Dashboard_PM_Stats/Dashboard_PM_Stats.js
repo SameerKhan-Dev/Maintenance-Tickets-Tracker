@@ -17,6 +17,8 @@ import "./Dashboard_PM_Stats.scss";
 
 export default function Dashboard_PM_Stats(props) {
 
+  console.log("****Inside Dashboard_PM_Stats -- props = ", props);
+  
   // When user login is setup, extract user_id using cookies
   // temporarily we are going to use user_id as 1 (i.e pm_id for this page)
   const  tempPM_Id = 3;
@@ -186,7 +188,9 @@ console.log("Selected Property is: ", state_PM_Stats.selectedProperty);
         <div className="dashboard-interface">
           {/* Render All_Property_Interface if selectedProperty = 0. else Render InvidualPropertyInterface if selectedProperty != 0 (i,e
             i.e a specific property has been selected)*/}
-                <Top_NavBar_PM_Stats/>
+                <Top_NavBar_PM_Stats
+                  loggedInUserEmail={props.logInUserEmail}
+                />
                  { state_PM_Stats.selectedProperty === 0 ?
                 <All_Property_Interface specificStats = {state_PM_Stats.specificStats}/> : <Individual_Property_Interface  specificStats = {state_PM_Stats.specificStats}/>}     
           

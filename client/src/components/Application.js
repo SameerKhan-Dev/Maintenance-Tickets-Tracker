@@ -34,6 +34,9 @@ export default function Application(props) {
     page: "/login"
   });
 
+  console.log("***From inside Application -- loginUser = ", loginUser["userEmail"]);
+  const logInUserEmail = loginUser["userEmail"];
+
   return (
     <Router>
       <div style={{ display: "flex" }}>
@@ -59,12 +62,16 @@ export default function Application(props) {
           </Route>
 
           <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
-            <Dashboard_PM_Stats />
+            <Dashboard_PM_Stats 
+              logInUserEmail={logInUserEmail}
+            />
           </PrivateRoute>
 
           <Route path="/dashboard-pm-tickets">
          
-            <Dashboard_PM_Tickets/>
+            <Dashboard_PM_Tickets 
+              loggedInUserEmail={logInUserEmail}
+            />
           </Route>
 
           <Route path="/dashboard-tenant">
