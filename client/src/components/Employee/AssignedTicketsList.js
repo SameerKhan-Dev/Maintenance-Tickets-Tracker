@@ -1,4 +1,4 @@
-
+import ListGroup from 'react-bootstrap/ListGroup'
   
 import React from "react";
 import AssignedTicketsListItem from "./AssignedTicketsListItem"
@@ -11,13 +11,33 @@ let tickets = [
 ]
 
 export default function AssignedTicketList(props){
+
+  const {employeeInProgressTickets} = props;
+
+
+
+
+
   return (
-    (tickets.map((ticket) => (
-        <AssignedTicketsListItem
-          key={ticket.id}
-          name={ticket.name} 
-        />
-    )))
+    <ListGroup>
+    {employeeInProgressTickets.map((ticket) => (
+   
+      <>
+       <ListGroup.Item action variant="info">
+          <AssignedTicketsListItem
+            key={ticket.id}
+            id = {ticket.id}
+            description = {ticket.description}
+            created_at = {ticket.created_at}
+            maintenance_type_id= {ticket.maintenance_type_id}
+            property_id = {ticket.property_id}
+          />
+        </ListGroup.Item>
+          <div>
+          </div>
+      </>
+    ))}
+    </ListGroup>
   );
 };
 
