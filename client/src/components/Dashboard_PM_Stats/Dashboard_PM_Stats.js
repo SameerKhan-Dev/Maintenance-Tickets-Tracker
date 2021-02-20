@@ -33,6 +33,7 @@ export default function Dashboard_PM_Stats(props) {
       in_Progress: 0,
     },
   });
+  console.log("*** state_PM_Stats: ", state_PM_Stats);
 
   let ticketsForSelectedProperty = [];
   for (const propertyObject of state_PM_Stats.ticketsOrganizedByProperty) {
