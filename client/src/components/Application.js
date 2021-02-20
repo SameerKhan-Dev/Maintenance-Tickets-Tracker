@@ -75,7 +75,9 @@ export default function Application(props) {
           </Route>
 
           <Route path="/dashboard-tenant">
-            <h1> Hello from "/dashboard-tenant</h1>
+            <Dashboard_Tenant
+              loggedInUserEmail={logInUserEmail}
+            />
           </Route>
 
           {/* <PrivateRoute path="/dashboard-tenant" login={loginUser.loggedIn}>
