@@ -13,16 +13,15 @@ import Dashboard_PM_Tickets from "./Dashboard_PM_Tickets/Dashboard_PM_Tickets";
 
 import Employee_List_Item_PM from "./Dashboard_PM_Tickets/Employee_List_Item_PM";
 import Employee_List_PM from "./Dashboard_PM_Tickets/Employee_List_PM";
-// import Ticket_List_PM from "./Dashboard_PM_Tickets/Ticket_List_PM";
+
+import Dashboard_Tenant from "./Dashboard_Tenant/Dashboard_Tenant";
 import Employee_Interface from "./Employee/Employee_Interface";
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
 import Login from "./Login";
-import Dashboard_Tenant from "./Dashboard_Tenant/Dashboard_Tenant";
-import Ticket_Form_Emp from "./Employee/Ticket_Form_Emp";
 
 export default function Application(props) {
-  // LOGIC SHOULD BE HERE  
-  
+  // LOGIC SHOULD BE HERE
+
   const [loginUser, setLoginUser] = useState({
     loggedIn: false,
     userEmail: "",
@@ -31,10 +30,13 @@ export default function Application(props) {
 
   // Once front-end cookies figure out, change default page for current page state based on if login or not
   const [currentPage, setCurrentPage] = useState({
-    page: "/login"
+    page: "/login",
   });
 
-  console.log("***From inside Application -- loginUser = ", loginUser["userEmail"]);
+  console.log(
+    "***From inside Application -- loginUser = ",
+    loginUser["userEmail"]
+  );
   const logInUserEmail = loginUser["userEmail"];
 
   return (
@@ -46,29 +48,22 @@ export default function Application(props) {
             <h1> Hello from "/" Page</h1>
           </Route>
           <Route path="/dashboard-employee">
-            {/* <Employee_Dashboard /> */}
-            <Employee_Interface />
-            {/* <Ticket_Form_Emp /> */}
+            <Employee_Dashboard />
           </Route>
 
           <Route path="/login">
-            <Login 
-              setLoginUser={setLoginUser}
-            />
+            <Login setLoginUser={setLoginUser} />
           </Route>
 
           <Route path="/register">
             <h1> Hello from "/register Page</h1>
           </Route>
 
-
           <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
-            <Dashboard_PM_Stats 
-              logInUserEmail={logInUserEmail}
-            />
+            <Dashboard_PM_Stats logInUserEmail={logInUserEmail} />
           </PrivateRoute>
 
-          <Route  path="/dashboard-pm-stats">
+          <Route path="/dashboard-pm-stats">
             <Dashboard_PM_Stats></Dashboard_PM_Stats>
           </Route>
 
@@ -76,39 +71,34 @@ export default function Application(props) {
             <Dashboard_PM_Stats />
           </PrivateRoute> */}
 
-          <Route path="/dashboard-pm-tickets">         
-            <Dashboard_PM_Tickets 
-              loggedInUserEmail={logInUserEmail}
-            />
+          <Route path="/dashboard-pm-tickets">
+            <Dashboard_PM_Tickets loggedInUserEmail={logInUserEmail} />
           </Route>
-
           <Route path="/dashboard-tenant">
-            <Dashboard_Tenant
-              loggedInUserEmail={logInUserEmail}
-            />
+            <Dashboard_Tenant loggedInUserEmail={logInUserEmail} />
           </Route>
 
           {/* <PrivateRoute path="/dashboard-tenant" login={loginUser.loggedIn}>
             <Dashboard_Tenant />
           </PrivateRoute> */}
-            {/*  
+          {/*  
               // specific property
             
             */}
+          {/* </Route> */}
           <Route path="/tickets">
             <h1> Hello from "/tickets" Page</h1>
           </Route>
           <Route path="/logout">
-
             <h1> Hello from "/logout" Page</h1>
           </Route>
           <Route path="/test">
             {/* <h1> Hello from "/test" Page</h1> */}
             {/* <Employee_List_PM /> */}
             {/* <Ticket_List_PM /> */}
-            {/* <Employee_Interface /> */}
+
+            <Employee_Interface />
             {/* <Dashboard_PM_Tickets /> */}
-            {/* <Dashboard_Tenant /> */}
           </Route>
         </Switch>
       </div>
