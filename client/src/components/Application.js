@@ -27,7 +27,7 @@ export default function Application(props) {
     userEmail: "",
     userRole: "",
   });
-
+  
   // Once front-end cookies figure out, change default page for current page state based on if login or not
   const [currentPage, setCurrentPage] = useState({
     page: "/login"
@@ -62,7 +62,8 @@ export default function Application(props) {
             <Dashboard_PM_Tickets/>
           </Route>
           <Route path="/dashboard-tenant">
-            <h1> Hello from "/dashboard-tenant" Page</h1>
+            <Tenant_Interface />
+           
             {/*  
               // specific property
             
