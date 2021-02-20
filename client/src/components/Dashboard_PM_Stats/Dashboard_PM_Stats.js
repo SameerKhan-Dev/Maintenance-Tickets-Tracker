@@ -41,6 +41,7 @@ for (const propertyObject of state_PM_Stats.ticketsOrganizedByProperty) {
   }
 }
 
+
   // General pointers to remember
   // 1) Our axios call to backend allows us to obtain all tickets for all properties...
   // 2) We already have access to our all properties array through the useEffect below
@@ -194,12 +195,10 @@ console.log("Selected Property is: ", state_PM_Stats.selectedProperty);
             i.e a specific property has been selected)*/}
                 <Top_NavBar_PM_Stats/>
                  { state_PM_Stats.selectedProperty === 0 ?
-                <All_Property_Interface specificStats = {state_PM_Stats.specificStats}/> : <Individual_Property_Interface  specificStats = {state_PM_Stats.specificStats} ticketsForSelectedProperty = {ticketsForSelectedProperty}/>}     
+                <All_Property_Interface specificStats = {state_PM_Stats.specificStats} ticketsOrganizedByProperty = {state_PM_Stats.ticketsOrganizedByProperty} properties = {state_PM_Stats.properties}/> : <Individual_Property_Interface  specificStats = {state_PM_Stats.specificStats} ticketsForSelectedProperty = {ticketsForSelectedProperty}/>}     
           
         </div>
 
-
-        
       </>
     );
 }

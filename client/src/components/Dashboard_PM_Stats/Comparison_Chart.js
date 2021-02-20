@@ -1,15 +1,19 @@
 import React from "react";
 import Chart from "react-google-charts";
 import Spinner from 'react-bootstrap/Spinner'
+import { allPropertiesComparison } from "./Graphs_functions/AllPropertiesComparisonGraph.js"
 
-export default function Comparison_Chart() {
-  const data = [
-    ["Property Name", "Plumbing", "Electrical", "General Maintenance"],
-    ["Bridlewood", 1400, 3000, 1200],
-    ["Castle Hill", 800, 2460, 250],
-    ["Arcadia", 660, 1120, 300],
-    ["Carleton", 1030, 4500, 350],
-  ];
+export default function Comparison_Chart(props) {
+
+  let finalData = allPropertiesComparison(props.ticketsOrganizedByProperty, props.properties)
+  const data = finalData;
+  // const data = [
+  //   ["Property Name", "Plumbing", "Electrical", "General Maintenance"],
+  //   ["Bridlewood", 1400, 3000, 1200],
+  //   ["Castle Hill", 800, 2460, 250],
+  //   ["Arcadia", 660, 1120, 300],
+  //   ["Carleton", 1030, 4500, 350],
+  // ];
 
   // have to figure out
   const chartEvents = [
