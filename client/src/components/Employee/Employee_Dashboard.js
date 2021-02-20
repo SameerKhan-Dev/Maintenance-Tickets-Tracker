@@ -8,7 +8,7 @@ import './Employee_Interface.scss';
 
 export default function Employee_Dashboard(props) {
 
-  const  employee_Id = 14;
+  const  employee_Id = 24;
   const [state_Employee, setState_Employee] = useState( 
     {  // selectedProperty = 0, means no property selected
       selectedTicket: 0,
@@ -27,6 +27,13 @@ export default function Employee_Dashboard(props) {
   
         setState_Employee(prev => ({...prev, selectedTicket: ticket_id}));
  }
+ const selectProperty = function(property_id) {
+
+    setState_Employee(prev => ({...prev, selectedProperty: property_id}));
+
+ }
+
+ console.log("selectedProperty is: ", state_Employee.selectedProperty);
  /* selected property
 
     1) In my useEffect - i need to make an axios call to /employee_properites/:employee_id:
@@ -100,24 +107,22 @@ const getEmployeeInProgressTickets = function () {
   console.log("employeeInProgressTickets is :" , employeeInProgressTickets);
   
   useEffect(() => {
-
     Promise.all([
-      axios.get(`/tickets/employee/${employee_Id}`),
       
-    ])
-    .then ((allValues) => {
-
-  useEffect(() => {
-    Promise.all([axios.get(`/tickets/employee/${employee_Id}`)]).then(
+      axios.get(`/tickets/employee/${employee_Id}`),
+      axios.get(`/employeeProperties/${employee_Id}`)
+    ]).then(
       (allValues) => {
         let ticketsData = allValues[0].data;
+        let propertiesData = allValues[1].data;
 
         // Update local state with data from API.
         console.log("ticketsData is: ", ticketsData);
-        setState_Employee((prev) => ({ ...prev, tickets: ticketsData }));
+        setState_Employee((prev) => ({ ...prev, tickets: ticketsData, properties: propertiesData}));
       }
     );
   }, []);
+console.log("Properties is: ", state_Employee.properties);
   /*
   app.get("/tickets/employee/:employee_id", (req, res) => {
     const employee_id = req.params.employee_id;
@@ -134,6 +139,8 @@ console.log("selectedTicket is: ", state_Employee.selectedTicket);
             <Side_NavBar_Emp 
                employeeInProgressTickets = {employeeInProgressTickets}
                selectTicket = {selectTicket}
+               selectProperty = {selectProperty}
+               properties = {state_Employee.properties}
             />
         </div>
         <div className= "DivEmployee_Interface">

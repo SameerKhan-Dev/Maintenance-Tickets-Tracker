@@ -16,7 +16,7 @@ export default function Employee_Interface(props) {
 
         {selectedTicket === 0 && 
           <Tickets_Summary 
-            id={0}
+  
           />}
 
           { selectedTicketInfo && selectedTicket!== 0 &&  
