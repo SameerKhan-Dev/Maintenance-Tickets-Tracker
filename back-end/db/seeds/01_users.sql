@@ -25,6 +25,9 @@ VALUES
     ('Kobe','Pearl','Kobe_Pearl@yahoo.com','password',2,'2016-06-12T08:03:52.569Z'), /* Tenant */
     ('Matthew','Harden','Matthew_Harden@yahoo.com','password',2,'2016-06-12T08:03:52.569Z'), /* Tenant */
     ('Jack','Harvey','Jack_Harvey@yahoo.com','password',2,'2016-06-12T08:03:52.569Z'), /* Tenant */
+    ('Carl','Harvey','Car_Harvey@yahoo.com','password',2,'2016-06-12T08:03:52.569Z'), /* Tenant  - OPTION*/
+    ('Davey','Harvey','Davey_Harvey@yahoo.com','password',2,'2016-06-12T08:03:52.569Z'), /* Tenant - OPTION */
+    ('James','Harvey','James_Harvey@yahoo.com','password',2,'2016-06-12T08:03:52.569Z'), /* Tenant  - OPTION */
     ('Julio','Harvey','Benton35@gmail.com','password',3,'2019-01-10T22:45:05.783Z'), /* plumber */
     ('Rylan','O''Conner','Gerardo.Krajcik57@hotmail.com','password',3,'2017-07-04T03:13:44.223Z'), /* plumber */
     ('Rebecca','Schumm','Victoria98@yahoo.com','password',4,'2019-01-01T00:25:07.113Z'), /* electrician */
