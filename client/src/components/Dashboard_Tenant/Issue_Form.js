@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import MyVerticallyCenteredModal from './tenantIssue_Modal';
+import Spinner from 'react-bootstrap/Spinner'
 import axios from "axios";
-
-import "./Modal.scss";
 
 export default function Issue_Form(props) {
   const history = useHistory(); 

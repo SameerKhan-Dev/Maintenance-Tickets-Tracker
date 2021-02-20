@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import Issue_Form from "./Issue_Form";
 import Top_NavBar_Tenant from "./Top_Nav_Bar_Tenant";
 
-
 export default function Dashboard_Tenant() {
 
   const [maintenanceType, setMaintenanceType] = useState("");

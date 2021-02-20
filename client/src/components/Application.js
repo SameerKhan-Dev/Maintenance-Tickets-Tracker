@@ -86,7 +86,6 @@ export default function Application(props) {
             <Dashboard_Tenant
               loggedInUserEmail={logInUserEmail}
             />
-            <Dashboard_Tenant />
           </Route>
 
           {/* <PrivateRoute path="/dashboard-tenant" login={loginUser.loggedIn}>
