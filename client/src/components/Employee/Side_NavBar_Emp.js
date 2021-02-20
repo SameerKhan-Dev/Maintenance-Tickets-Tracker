@@ -26,6 +26,7 @@ export default function Side_NavBar_Emp(props) {
                       All Properties
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
+                <Dropdown.Item onClick={() =>selectProperty(0)}>All Properties</Dropdown.Item>
                   { properties.map(property =>(
                       <Dropdown.Item onClick={() =>selectProperty(property.id)}>{property.address}</Dropdown.Item>
                   ))}

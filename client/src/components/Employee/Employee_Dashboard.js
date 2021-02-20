@@ -59,12 +59,12 @@ export default function Employee_Dashboard(props) {
 
  console.log("state_Employee.tickets is: ", state_Employee.tickets);
 
- /*
+ 
  const getEmployeeInProgressTickets = function () {
 
   let inProgressTickets = [];
   // for all properties
-  if (selectedProperty === 0){
+  if (state_Employee.selectedProperty === 0){
     for (let ticket of state_Employee.tickets) {
       if (ticket.ticket_status_id === 2){
         inProgressTickets.push(ticket);
@@ -87,7 +87,7 @@ export default function Employee_Dashboard(props) {
 
   return inProgressTickets;
  }
-*/
+/*
 const getEmployeeInProgressTickets = function () {
 
   let inProgressTickets = [];
@@ -102,7 +102,7 @@ const getEmployeeInProgressTickets = function () {
 
   return inProgressTickets;
  }
-
+ */
  let employeeInProgressTickets = getEmployeeInProgressTickets(); 
   console.log("employeeInProgressTickets is :" , employeeInProgressTickets);
   
