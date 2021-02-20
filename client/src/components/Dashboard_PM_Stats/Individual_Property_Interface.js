@@ -13,9 +13,19 @@ export default function Individual_Property_Interface(props) {
   return (
     <main className="stats__view">
       <section className="address__title">
-        <h1 className="Text--address-header">
-            42 Wallaby Way Toronto, ON M1P 3R9
-        </h1>
+        {/* <h1 className="Text--address-header"> */}
+          <Card className="bg-dark text-white">
+            <Card.Img src="holder.js/100px270" alt="Card image" />
+            <Card.ImgOverlay>
+              <Card.Title>Card title</Card.Title>
+              <Card.Text>
+                This is a wider card with supporting text below as a natural lead-in to
+                additional content. This content is a little bit longer.
+              </Card.Text>
+              <Card.Text>Last updated 3 mins ago</Card.Text>
+            </Card.ImgOverlay>
+          </Card>
+        {/* </h1> */}
       </section>
       <section className="ticket__info">
         {/* <div class="unsolved"> */}
@@ -64,7 +74,7 @@ export default function Individual_Property_Interface(props) {
         </Card>
 
 
-      <Button variant="outline-info">View Tickets</Button>{' '}
+        {/* <Button variant="outline-info">View Tickets</Button>{' '} */}
       </section>
       <section className="expenses__info">
         <Card
@@ -74,9 +84,9 @@ export default function Individual_Property_Interface(props) {
           className="mb-2"
         >
           <Card.Header style={{ fontSize: '20px', textAlign: 'center' }}>
-          Total Expenses: January 2019 - December 2020</Card.Header>
+            Total Expenses: January 2019 - December 2020</Card.Header>
           <Card.Body>
-            <Card.Title style={{ fontSize: '50px', textAlign: 'center' }}>
+            <Card.Title style={{ fontSize: '40px', textAlign: 'center' }}>
               $12,432</Card.Title>
           </Card.Body>
         </Card>
@@ -87,25 +97,25 @@ export default function Individual_Property_Interface(props) {
           className="mb-2"
         >
           <Card.Header style={{ fontSize: '20px', textAlign: 'center' }}>
-          Total Expenses: January 2020 - Current</Card.Header>
+            Total Expenses: January 2020 - Current</Card.Header>
           <Card.Body>
-            <Card.Title style={{ fontSize: '50px', textAlign: 'center' }}>
+            <Card.Title style={{ fontSize: '40px', textAlign: 'center' }}>
               $3,532</Card.Title>
           </Card.Body>
         </Card>
       </section>
       <section className="graph__allProperties">
-      <Card>
+        <Card>
           <Card.Header>Percentage of Maintenance Types</Card.Header>
           <Card.Body>
-            <Pie_Chart specificTicketsforPropertyPie = { props.ticketsForSelectedProperty }/> 
+            <Pie_Chart specificTicketsforPropertyPie={props.ticketsForSelectedProperty} />
           </Card.Body>
         </Card>
         <Card>
           <Card.Header>Maintenance Cost: Estimates Cost Vs. Actual Cost</Card.Header>
           <Card.Header>For All Properties</Card.Header>
           <Card.Body>
-            <Bar_Chart specificTicketsforProperty = { props.ticketsForSelectedProperty }/>
+            <Bar_Chart specificTicketsforProperty={props.ticketsForSelectedProperty} />
           </Card.Body>
         </Card>
       </section>

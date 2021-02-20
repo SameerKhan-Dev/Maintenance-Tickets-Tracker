@@ -65,7 +65,6 @@ export default function Application(props) {
           </PrivateRoute> */}
 
           <Route path="/dashboard-pm-tickets">
-         
             <Dashboard_PM_Tickets/>
           </Route>
 
@@ -84,7 +83,6 @@ export default function Application(props) {
             <h1> Hello from "/tickets" Page</h1>
           </Route>
           <Route path="/logout">
-
             <h1> Hello from "/logout" Page</h1>
           </Route>
           <Route path="/test">

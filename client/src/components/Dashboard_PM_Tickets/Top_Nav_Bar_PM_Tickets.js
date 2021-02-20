@@ -15,14 +15,14 @@ import "./Top_Nav_Bar_PM_Tickets.scss";
 export default function Top_NavBar_PM_Tickets(props) {
   return (
     <div classname="App">
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="lg" bg="light" variant="dark">
   <Navbar.Brand href="#home">M Tracker</Navbar.Brand>
   <Navbar.Toggle />
   <Navbar.Collapse className="justify-content-end">
     <Navbar.Text>
       Signed in as: <a href="#login">User Name/Email</a>
     </Navbar.Text>
-    <Button variant="dark">Logout</Button>
+    <Button variant="light">Logout</Button>
   </Navbar.Collapse>
 </Navbar>
     </div>

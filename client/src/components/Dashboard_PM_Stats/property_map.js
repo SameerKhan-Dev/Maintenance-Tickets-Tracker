@@ -19,7 +19,7 @@ const Map_SideBar = () => {
       container: mapContainerRef.current,
       // See style options here: https://docs.mapbox.com/api/maps/#styles
       style: "mapbox://styles/mapbox/streets-v11",
-      center: [-104.9876, 39.7405],
+      center: [-79.3832, 43.6532],
       zoom: 12.5
     });
 

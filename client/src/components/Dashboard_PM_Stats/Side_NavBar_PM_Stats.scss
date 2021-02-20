@@ -1,4 +1,4 @@
-@import "./Side_NavBar_PM_Stats_variable.scss";
+@import "styles/variables.scss";
 
 .sidebar {
   background-color: $dark-background;
@@ -50,3 +50,13 @@
 .Side_NavBar_Emp {
   border: green solid 2px;
 }
+
+// .map {
+//   height: 35vh;
+//   width: 35vh;
+//   top: 30%;
+//   right: 5%;
+//   left: 5%;
+//   bottom: 15%;
+//   border: solid green 3px;
+// }

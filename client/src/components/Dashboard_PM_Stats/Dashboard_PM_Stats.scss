@@ -1,9 +1,11 @@
 .dashboard {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    // justify-content: space-between;
+    flex-direction:column;
 }
 
 .dashboard-interface {
     width: 80%;
+    margin: 5%
 }

@@ -24,7 +24,7 @@ export default function All_Property_Interface(props) {
           className="mb-2"
         >
           <Card.Header style={{ fontSize: '30px', textAlign: 'center' }}>
-            Total Unsolved Tickets</Card.Header>
+            Unresolved Tickets</Card.Header>
           <Card.Body>
             <Card.Title style={{ fontSize: '50px', textAlign: 'center' }}>
               {props.specificStats.totalUnsolved}</Card.Title>
@@ -58,7 +58,7 @@ export default function All_Property_Interface(props) {
           className="mb-2"
         >
           <Card.Header style={{ fontSize: '30px', textAlign: 'center' }}>
-            Tickets In Progress:</Card.Header>
+            In Progress:</Card.Header>
           <Card.Body>
             <Card.Title style={{ fontSize: '50px', textAlign: 'center' }}>
               {props.specificStats.in_Progress}</Card.Title>

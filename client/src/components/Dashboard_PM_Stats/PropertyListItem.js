@@ -22,7 +22,8 @@ export default function PropertyListItem(props) {
       selectProperty(property_id);
      
       }} >
-      <h2 className="text--regular">{props.name}</h2>
+        
+      <h2 className="text--regular"><a>{props.name}</a></h2>
     </li>
   );
 }
