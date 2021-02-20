@@ -20,8 +20,6 @@ import Employee_Dashboard from "./Employee/Employee_Dashboard";
 import Login from "./Login";
 
 export default function Application(props) {
-  // LOGIC SHOULD BE HERE
-
   const [loginUser, setLoginUser] = useState({
     loggedIn: false,
     userEmail: "",
@@ -38,6 +36,9 @@ export default function Application(props) {
     loginUser["userEmail"]
   );
   const logInUserEmail = loginUser["userEmail"];
+  const pmEmail = "maci_lehner@gmail.com";
+  const empEmail = "harold64@hotmail.com";
+  const tenantEmail = "selena_hane@gmail.com";
 
   return (
     <Router>
@@ -47,8 +48,12 @@ export default function Application(props) {
           <Route path="/" exact>
             <h1> Hello from "/" Page</h1>
           </Route>
+
           <Route path="/dashboard-employee">
             <Employee_Dashboard />
+            {/* <Employee_Dashboard /> */}
+            <Employee_Interface logInUserEmail={empEmail} />
+            {/* <Ticket_Form_Emp /> */}
           </Route>
 
           <Route path="/login">
@@ -59,12 +64,12 @@ export default function Application(props) {
             <h1> Hello from "/register Page</h1>
           </Route>
 
-          <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
+          {/* <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
             <Dashboard_PM_Stats logInUserEmail={logInUserEmail} />
-          </PrivateRoute>
+          </PrivateRoute> */}
 
           <Route path="/dashboard-pm-stats">
-            <Dashboard_PM_Stats></Dashboard_PM_Stats>
+            <Dashboard_PM_Stats logInUserEmail={pmEmail} />
           </Route>
 
           {/* <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
@@ -73,9 +78,12 @@ export default function Application(props) {
 
           <Route path="/dashboard-pm-tickets">
             <Dashboard_PM_Tickets loggedInUserEmail={logInUserEmail} />
+            <Dashboard_PM_Tickets logInUserEmail={pmEmail} />
           </Route>
+
           <Route path="/dashboard-tenant">
             <Dashboard_Tenant loggedInUserEmail={logInUserEmail} />
+            <Dashboard_Tenant loggedInUserEmail={tenantEmail} />
           </Route>
 
           {/* <PrivateRoute path="/dashboard-tenant" login={loginUser.loggedIn}>
