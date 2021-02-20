@@ -1,6 +1,6 @@
 import React, {useState, Component} from 'react';
 import {useEffect} from 'react';
-import AssignedTicketList from './AssignedTicketsList';
+import AssignedTicketList from './AssignedTicketList';
 import Dropdown from 'react-bootstrap/Dropdown'
 import "./Side_NavBar_Emp.scss";
 //import Ticket_List_Item from  "./Ticket_List_Item"

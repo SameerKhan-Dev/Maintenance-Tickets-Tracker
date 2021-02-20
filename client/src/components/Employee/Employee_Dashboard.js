@@ -11,7 +11,7 @@ export default function Employee_Dashboard(props) {
   const  employee_Id = 14;
   const [state_Employee, setState_Employee] = useState( 
     {  // selectedProperty = 0, means no property selected
-      selectedTicket: 9,
+      selectedTicket: 0,
       selectedProperty: 0,
       properties: [],
       tickets: [],
@@ -27,6 +27,17 @@ export default function Employee_Dashboard(props) {
   
         setState_Employee(prev => ({...prev, selectedTicket: ticket_id}));
  }
+ /* selected property
+
+    1) In my useEffect - i need to make an axios call to /employee_properites/:employee_id:
+      - store resulting properties: inside state_Employee. properties.
+
+    2) create a handler selectProperty and attach it to all drop-down menu option onClick
+       - this changes the selectedProperty state inside state_Employee
+
+    3) function that builds tickets based on - selectedProperty value inside
+
+ */
  
  const specificTicket = function() {
 
@@ -40,17 +51,51 @@ export default function Employee_Dashboard(props) {
  console.log("selectedTicketInfo is: ", selectedTicketInfo);
 
  console.log("state_Employee.tickets is: ", state_Employee.tickets);
+
+ /*
  const getEmployeeInProgressTickets = function () {
+
   let inProgressTickets = [];
-  for (let ticket of state_Employee.tickets) {
-    if (ticket.ticket_status_id === 2){
-      inProgressTickets.push(ticket);
+  // for all properties
+  if (selectedProperty === 0){
+    for (let ticket of state_Employee.tickets) {
+      if (ticket.ticket_status_id === 2){
+        inProgressTickets.push(ticket);
+        console.log(ticket);
+      }
       console.log(ticket);
     }
-    console.log(ticket);
+
   }
+  // for all  
+  else {
+    for (let ticket of state_Employee.tickets) {
+      if (ticket.ticket_status_id === 2 && ticket.property_id === state_Employee.selectedProperty){
+        inProgressTickets.push(ticket);
+        console.log(ticket);
+      }
+      console.log(ticket);
+    }
+  }
+
   return inProgressTickets;
  }
+*/
+const getEmployeeInProgressTickets = function () {
+
+  let inProgressTickets = [];
+  // for all properties
+    for (let ticket of state_Employee.tickets) {
+      if (ticket.ticket_status_id === 2){
+        inProgressTickets.push(ticket);
+        console.log(ticket);
+      }
+      console.log(ticket);
+    }
+
+  return inProgressTickets;
+ }
+
  let employeeInProgressTickets = getEmployeeInProgressTickets(); 
   console.log("employeeInProgressTickets is :" , employeeInProgressTickets);
   
@@ -92,6 +137,8 @@ console.log("selectedTicket is: ", state_Employee.selectedTicket);
           <div className= "DivEmployee_Interface">
             <Employee_Interface 
             selectedTicketInfo = {selectedTicketInfo}
+            selectedProperty = {state_Employee.selectedProperty}
+            selectedTicket = {state_Employee.selectedTicket}
             />
           </div>
         </div>

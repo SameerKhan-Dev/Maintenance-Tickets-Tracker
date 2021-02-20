@@ -16,6 +16,7 @@ export default function AssignedTicketList(props){
 
   return (
     <ListGroup>
+          <ListGroup.Item action variant="warning"><AssignedTicketsListItem  id={0} selectTicket = {selectTicket}/> Tickets Summary</ListGroup.Item>
     {employeeInProgressTickets.map((ticket) => (
    
       <>
