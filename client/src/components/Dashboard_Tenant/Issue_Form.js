@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import MyVerticallyCenteredModal from './tenantIssue_Modal';
+import Spinner from 'react-bootstrap/Spinner'
 import axios from "axios";
-
-import "./Modal.scss";
 
 export default function Issue_Form(props) {
   const history = useHistory(); 
@@ -18,8 +18,7 @@ export default function Issue_Form(props) {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
-    setShowModal(!showModal)
-    console.log("MODAL IS DISPLAYED!")
+    setShowModal(!showModal);
   }
 
   const handleDescriptionChange = (event) => {
@@ -66,7 +65,6 @@ export default function Issue_Form(props) {
           history.push("/dashboard-tenant");
           setIssue((issue) => ({
         ...issue,
-        ////////// WILL LATER CHANGE LOGIC TO RESET STATE WHEN CLOSE MODAL ////////
         description: "",
         maintenance_type: "general maintenance"
       }));
@@ -126,15 +124,10 @@ export default function Issue_Form(props) {
           </section>
         </form>
       </section>
-      {/* add popup modal */}
-      {showModal && 
-        <div className={`modalBackground modalShowing-${showModal}`}>
-          <h2>Thank you for your submission!</h2>
-          <h4>Please allow 24 hours for a response.</h4>
-          <h4>If emergency, please call 555-555-5555</h4>
-        </div>
-      }
-      
+      <MyVerticallyCenteredModal
+        show={showModal}
+        onHide={handleShowModal}
+      />      
     </section>
   );
 }
