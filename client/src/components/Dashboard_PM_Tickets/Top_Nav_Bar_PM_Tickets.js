@@ -1,8 +1,6 @@
-
-import React, { useState, Component } from 'react';
-import { useEffect } from 'react';
-import { Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
-
+import React, { useState, Component } from "react";
+import { useEffect } from "react";
+import { Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
 
 import "./Top_Nav_Bar_PM_Tickets.scss";
 // import "./map.scss";
@@ -11,27 +9,27 @@ import "./Top_Nav_Bar_PM_Tickets.scss";
 // import PropertyList from "./PropertyList";
 // import Map_SideBar from "./property_map";
 
-
 export default function Top_NavBar_PM_Tickets(props) {
-
   const { loggedInUserEmail } = props;
-  console.log("***From inside Top_NavBar_PM_Tickets  -- props = ", loggedInUserEmail);
+  console.log(
+    "***From inside Top_NavBar_PM_Tickets  -- props = ",
+    loggedInUserEmail
+  );
 
   return (
     <div classname="App">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-  <Navbar.Brand href="#home">M Tracker</Navbar.Brand>
-  <Navbar.Toggle />
-  <Navbar.Collapse className="justify-content-end">
-    <Navbar.Text>
-      Signed in as: <a href="#login">{props.logInUserEmail}</a>
-    </Navbar.Text>
-    <Button variant="dark">Logout</Button>
-  </Navbar.Collapse>
-</Navbar>
+        <Navbar.Brand href="#home">M Tracker</Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+            Signed in as: <a href="#login">{loggedInUserEmail}</a>
+          </Navbar.Text>
+          <Button variant="dark">Logout</Button>
+        </Navbar.Collapse>
+      </Navbar>
     </div>
-
-  )
+  );
 
   //   return (
   //     <div>
@@ -47,5 +45,3 @@ export default function Top_NavBar_PM_Tickets(props) {
   //     </div>
   // );
 }
-
-

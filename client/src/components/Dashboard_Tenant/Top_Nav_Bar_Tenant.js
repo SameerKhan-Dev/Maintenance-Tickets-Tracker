@@ -1,8 +1,6 @@
-
-import React, { useState, Component } from 'react';
-import { useEffect } from 'react';
-import { Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
-
+import React, { useState, Component } from "react";
+import { useEffect } from "react";
+import { Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
 
 import "./Top_Nav_Bar_Tenant.scss";
 
@@ -12,24 +10,22 @@ import "./Top_Nav_Bar_Tenant.scss";
 // import PropertyList from "./PropertyList";
 // import Map_SideBar from "./property_map";
 
-
 export default function Top_NavBar_Tenant(props) {
+  const { loggedInUserEmail } = props;
+  console.log("****Top_Nav_Bar_Tenant -- props = ", props.loggedInUserEmail);
   return (
     <div classname="App">
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-  {/* <Navbar.Brand href="#home">M Tracker</Navbar.Brand> */}
-  <Navbar.Toggle />
-  <Navbar.Collapse className="justify-content-end">
-    <Navbar.Text>
-      Signed in as: <a href="#login">User Name/Email </a>
-    </Navbar.Text>
+        {/* <Navbar.Brand href="#home">M Tracker</Navbar.Brand> */}
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+            Signed in as: <a href="#login">{loggedInUserEmail}</a>
+          </Navbar.Text>
 
-    <Button variant="light">Logout</Button>
-  </Navbar.Collapse>
-</Navbar>
+          <Button variant="light">Logout</Button>
+        </Navbar.Collapse>
+      </Navbar>
     </div>
-
-  )
+  );
 }
-
-
