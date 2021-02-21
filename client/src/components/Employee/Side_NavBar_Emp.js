@@ -10,7 +10,7 @@ import "./Side_NavBar_Emp.scss";
 
 export default function Side_NavBar_Emp(props) {
 
-  const {employeeInProgressTickets, selectTicket, selectProperty, properties} = props;
+  const {employeeInProgressTickets, selectTicket, selectProperty, properties, selectedPropertyAddress, selectedProperty} = props;
 
     return (
       <>
@@ -23,7 +23,7 @@ export default function Side_NavBar_Emp(props) {
           <div className= "dropDown">
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                      All Properties
+                      Selected Property:  {selectedPropertyAddress}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                 <Dropdown.Item onClick={() =>selectProperty(0)}>All Properties</Dropdown.Item>
@@ -36,6 +36,7 @@ export default function Side_NavBar_Emp(props) {
             <AssignedTicketList
              selectTicket = {selectTicket}
              employeeInProgressTickets = {employeeInProgressTickets}
+             selectedProperty = {selectedProperty}
             />
           </nav>
           {/* <img

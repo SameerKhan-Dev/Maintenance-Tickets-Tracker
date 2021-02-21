@@ -9,14 +9,16 @@ import Card from 'react-bootstrap/Card';
 import './Employee_Interface.scss';
 
 export default function Employee_Interface(props) {
-  const {selectedTicketInfo,  selectedProperty, selectedTicket} = props;
+  const {selectedTicketInfo,  selectedProperty, selectedTicket, properties, tickets} = props;
 
   return (
     <section className="employee__interface">
 
         {selectedTicket === 0 && 
           <Tickets_Summary 
-  
+            properties= {properties}
+            tickets = {tickets}
+            selectedProperty = {selectedProperty}
           />}
 
           { selectedTicketInfo && selectedTicket!== 0 &&  

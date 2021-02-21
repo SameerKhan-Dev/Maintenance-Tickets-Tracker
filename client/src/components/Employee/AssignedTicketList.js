@@ -12,11 +12,11 @@ let tickets = [
 
 export default function AssignedTicketList(props){
 
-  const {employeeInProgressTickets, selectTicket} = props;
+  const {employeeInProgressTickets, selectTicket, selectedProperty} = props;
 
   return (
     <ListGroup>
-          <ListGroup.Item action variant="warning"><AssignedTicketsListItem  id={0} selectTicket = {selectTicket}/> Tickets Summary</ListGroup.Item>
+          <ListGroup.Item action variant="warning"><AssignedTicketsListItem  id={0} selectTicket = {selectTicket}/></ListGroup.Item>
     {employeeInProgressTickets.map((ticket) => (
    
       <>
@@ -29,6 +29,7 @@ export default function AssignedTicketList(props){
             maintenance_type_id= {ticket.maintenance_type_id}
             property_id = {ticket.property_id}
             selectTicket = {selectTicket}
+            selectedProperty = {selectedProperty}
           />
         </ListGroup.Item>
           <div>

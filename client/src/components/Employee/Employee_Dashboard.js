@@ -29,9 +29,24 @@ export default function Employee_Dashboard(props) {
  }
  const selectProperty = function(property_id) {
 
-    setState_Employee(prev => ({...prev, selectedProperty: property_id}));
+    setState_Employee(prev => ({...prev,selectedTicket : 0, selectedProperty: property_id}));
+    
 
  }
+
+ const getSelectedPropertyName = function () {
+  if(state_Employee.selectedProperty === 0){
+    return "All Properties";
+  } else {
+    for (let property of state_Employee.properties) {
+      if(property.id === state_Employee.selectedProperty){
+        return property.address;
+      }
+    }
+  }
+ }
+
+ let selectedPropertyAddress = getSelectedPropertyName();
 
  console.log("selectedProperty is: ", state_Employee.selectedProperty);
  /* selected property
@@ -72,7 +87,6 @@ export default function Employee_Dashboard(props) {
       }
       console.log(ticket);
     }
-
   }
   // for all  
   else {
@@ -141,6 +155,8 @@ console.log("selectedTicket is: ", state_Employee.selectedTicket);
                selectTicket = {selectTicket}
                selectProperty = {selectProperty}
                properties = {state_Employee.properties}
+               selectedPropertyAddress = {selectedPropertyAddress}
+               selectedProperty = {state_Employee.selectedProperty}
             />
         </div>
         <div className= "DivEmployee_Interface">
@@ -149,6 +165,8 @@ console.log("selectedTicket is: ", state_Employee.selectedTicket);
             selectedTicketInfo = {selectedTicketInfo}
             selectedProperty = {state_Employee.selectedProperty}
             selectedTicket = {state_Employee.selectedTicket}
+            tickets = {employeeInProgressTickets}
+            properties = {state_Employee.properties}
             />
           </div>
         </div>
