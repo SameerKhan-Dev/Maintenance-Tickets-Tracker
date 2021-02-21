@@ -23,10 +23,10 @@ export default function All_Property_Interface(props) {
           style={{ width: '18rem' }}
           className="mb-2"
         >
-          <Card.Header style={{ fontSize: '30px', textAlign: 'center' }}>
+          <Card.Header style={{ fontSize: '15px', textAlign: 'center' }}>
             Unresolved Tickets</Card.Header>
           <Card.Body>
-            <Card.Title style={{ fontSize: '50px', textAlign: 'center' }}>
+            <Card.Title style={{ fontSize: '30px', textAlign: 'center' }}>
               {props.specificStats.totalUnsolved}</Card.Title>
           </Card.Body>
         </Card>
@@ -40,10 +40,10 @@ export default function All_Property_Interface(props) {
           style={{ width: '18rem' }}
           className="mb-2"
         >
-          <Card.Header style={{ fontSize: '30px', textAlign: 'center' }}>
+          <Card.Header style={{ fontSize: '15px', textAlign: 'center' }}>
             Pending Tickets:</Card.Header>
           <Card.Body>
-            <Card.Title style={{ fontSize: '50px', textAlign: 'center' }}>
+            <Card.Title style={{ fontSize: '30px', textAlign: 'center' }}>
               {props.specificStats.pending}</Card.Title>
           </Card.Body>
         </Card>
@@ -57,32 +57,26 @@ export default function All_Property_Interface(props) {
           style={{ width: '18rem' }}
           className="mb-2"
         >
-          <Card.Header style={{ fontSize: '30px', textAlign: 'center' }}>
+          <Card.Header style={{ fontSize: '15px', textAlign: 'center' }}>
             In Progress:</Card.Header>
           <Card.Body>
-            <Card.Title style={{ fontSize: '50px', textAlign: 'center' }}>
+            <Card.Title style={{ fontSize: '30px', textAlign: 'center' }}>
               {props.specificStats.in_Progress}</Card.Title>
           </Card.Body>
         </Card>
         {/* </div> */}
       </section>
       <section className="expenses__info">
-        <Card
-          bg={'primary'}
-          text={'primary' === 'light' ? 'dark' : 'white'}
-          style={{ width: '18rem' }}
-          className="mb-2"
-        >
-          <Card.Header style={{ fontSize: '30px', textAlign: 'center' }}>
-            Total Expenses:</Card.Header>
-          <Card.Body>
-            <Card.Title style={{ fontSize: '50px', textAlign: 'center' }}>
-              $12,432</Card.Title>
-          </Card.Body>
-        </Card>
+          <Card border="primary" style={{ width: '18rem' }}>
+            <Card.Header style={{ fontSize: '20px', textAlign: 'center' }}>
+              Total Expenses: January 2019 - December 2020</Card.Header>
+            <Card.Body>
+              <Card.Title style={{ fontSize: '40px', textAlign: 'center' }}>
+                $12,432</Card.Title>
+            </Card.Body>
+          </Card>
       </section>
       <section className="graph__allProperties">
-        
         <Card>
           <Card.Header>Total Maintenance Cost</Card.Header>
           <Card.Body>

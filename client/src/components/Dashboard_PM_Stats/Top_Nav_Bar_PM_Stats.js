@@ -12,7 +12,7 @@ import "./Top_Nav_Bar_PM_Stats.scss";
 // import Map_SideBar from "./property_map";
 
 
-export default function Top_NavBar_PM_Tickets(props) {
+export default function Top_NavBar_PM_Stats(props) {
   return (
     <div classname="App">
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">

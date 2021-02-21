@@ -188,14 +188,15 @@ console.log("Selected Property is: ", state_PM_Stats.selectedProperty);
         <div style = {{width: '100%', zIndex: '200', position: 'absolute'}}>
           <Top_NavBar_PM_Stats/>
         </div>
-        <div>
-          
-          <Side_NavBar_PM_Stats
-            selectProperty = {selectProperty}
-            properties= {state_PM_Stats.properties}
-          />
-        </div>
-        <div className="dashboard-interface">
+        <section className="content">
+          <div className="side__navbar">
+            
+            <Side_NavBar_PM_Stats
+              selectProperty = {selectProperty}
+              properties= {state_PM_Stats.properties}
+            />
+          </div>
+          <div className="dashboard-interface">
           {/* Render All_Property_Interface if selectedProperty = 0. else Render InvidualPropertyInterface if selectedProperty != 0 (i,e
             i.e a specific property has been selected)*/}
                 {/* <Top_NavBar_PM_Stats/> */}
@@ -203,7 +204,7 @@ console.log("Selected Property is: ", state_PM_Stats.selectedProperty);
                 <All_Property_Interface specificStats = {state_PM_Stats.specificStats} ticketsOrganizedByProperty = {state_PM_Stats.ticketsOrganizedByProperty} properties = {state_PM_Stats.properties}/> : <Individual_Property_Interface  specificStats = {state_PM_Stats.specificStats} ticketsForSelectedProperty = {ticketsForSelectedProperty}/>}     
           
         </div>
-
+        </section>
       </>
     );
 }
