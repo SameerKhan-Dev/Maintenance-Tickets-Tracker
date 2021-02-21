@@ -16,7 +16,7 @@ import "./Dashboard_PM_Stats.scss";
 // all employees
 
 export default function Dashboard_PM_Stats(props) {
-  console.log("****Inside Dashboard_PM_Stats -- props = ", props);
+  // console.log("****Inside Dashboard_PM_Stats -- props = ", props);
 
   // When user login is setup, extract user_id using cookies
   // temporarily we are going to use user_id as 1 (i.e pm_id for this page)
@@ -33,7 +33,7 @@ export default function Dashboard_PM_Stats(props) {
       in_Progress: 0,
     },
   });
-  console.log("*** state_PM_Stats: ", state_PM_Stats);
+  console.log("*** state_PM_Stats: ", state_PM_Stats.properties);
 
   let ticketsForSelectedProperty = [];
   for (const propertyObject of state_PM_Stats.ticketsOrganizedByProperty) {

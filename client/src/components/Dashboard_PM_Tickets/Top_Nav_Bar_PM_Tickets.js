@@ -1,6 +1,7 @@
 import React, { useState, Component } from "react";
 import { useEffect } from "react";
 import { Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 import "./Top_Nav_Bar_PM_Tickets.scss";
 // import "./map.scss";
@@ -10,6 +11,12 @@ import "./Top_Nav_Bar_PM_Tickets.scss";
 // import Map_SideBar from "./property_map";
 
 export default function Top_NavBar_PM_Tickets(props) {
+  const history = useHistory();
+
+  const goToStatsPage = function () {
+    history.push("/dashboard-pm-stats");
+  };
+
   const { loggedInUserEmail } = props;
   console.log(
     "***From inside Top_NavBar_PM_Tickets  -- props = ",
@@ -19,6 +26,7 @@ export default function Top_NavBar_PM_Tickets(props) {
   return (
     <div classname="App">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Button onClick={goToStatsPage}>View Statistic Summary Page</Button>
         <Navbar.Brand href="#home">M Tracker</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
