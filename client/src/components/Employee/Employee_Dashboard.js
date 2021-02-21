@@ -55,14 +55,6 @@ export default function Employee_Dashboard(props) {
   console.log("employeeInProgressTickets is :" , employeeInProgressTickets);
   
   useEffect(() => {
-
-    Promise.all([
-      axios.get(`/tickets/employee/${employee_Id}`),
-      
-    ])
-    .then ((allValues) => {
-
-  useEffect(() => {
     Promise.all([axios.get(`/tickets/employee/${employee_Id}`)]).then(
       (allValues) => {
         let ticketsData = allValues[0].data;
