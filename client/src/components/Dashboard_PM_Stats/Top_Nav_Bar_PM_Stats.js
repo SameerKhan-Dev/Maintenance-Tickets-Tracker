@@ -1,7 +1,6 @@
 import React, { useState, Component } from "react";
 import { useEffect } from "react";
 import { Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
-import ControlledTabs from "./Tabs/ControlledTabs";
 import { useHistory } from "react-router-dom";
 
 import "./Top_Nav_Bar_PM_Stats.scss";
