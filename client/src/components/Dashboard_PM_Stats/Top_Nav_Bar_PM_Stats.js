@@ -32,6 +32,7 @@ export default function Top_NavBar_PM_Tickets(props) {
           <Navbar.Text>
             Signed in as: <a href="#login">{loggedInUserEmail}</a>
           </Navbar.Text>
+
           <Button variant="light">Logout</Button>
         </Navbar.Collapse>
       </Navbar>

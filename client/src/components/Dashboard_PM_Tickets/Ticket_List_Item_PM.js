@@ -18,14 +18,41 @@ export default function Ticket_List_Item_PM(props) {
     maintenanceType,
     description,
   } = props;
+
   const hideModal = function (ticket_id, employee_id) {
     setModalShow(false);
     assignEmployeeToTicket(ticket_id, employee_id);
     
-    
   }
+
+  const employees2 = [
+    { 
+      id: 24,
+      name: "Tim",
+      role_id: 3,
+    },
+    { 
+      id: 25,
+      name: "Mike",
+      role_id: 4,
+    },
+    { 
+      id: 26,
+      name: "Rogers",
+      role_id: 5,
+    }
+  ];
+
+  const getEmployeeName = function (employee_id) {
+    for(let employee of employees2) {
+      if (employee.id === employee_id) {
+        return employee.name;
+      }
+    }
+  }
+
   const [ticketItemState, setState] = useState("employee-unassigned");
-  const {assignEmployeeToTicket} = props;
+  const {assignEmployeeToTicket, employee_id} = props;
   return (
     <main className="ticket__cards">
       <section className="ticket__card-left">
@@ -44,14 +71,20 @@ export default function Ticket_List_Item_PM(props) {
         <div>{createdAt}</div>
       </section>
       <>
-        {
-        <Button variant="primary" onClick={() => setModalShow(true)}>
-          Assign Employee
-        </Button>
+        { employee_id === null ? 
+          (<Button variant="success" onClick={() => setModalShow(true)}>
+            Assign Employee
+          </Button>)
+          :
+          (<Button variant="secondary" onClick={() => setModalShow(true)}>
+            Assigned to: {getEmployeeName(employee_id)}
+           </Button>)
+
       }
         <MyVerticallyCenteredModal
           employeeList={employees}
           description = {description}
+          employee_id = {employee_id}
           show={modalShow}
           onHide = {hideModal}
           ticket_id = {ticketID}

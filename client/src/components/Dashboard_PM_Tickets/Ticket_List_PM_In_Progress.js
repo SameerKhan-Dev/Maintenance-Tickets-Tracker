@@ -85,6 +85,7 @@ export default function Ticket_List_PM_In_Progress(props) {
               createdAt={ticket.createdAt}
               unit={ticket.unit}
               property_id={ticket.property_id}
+              employee_id={ticket.employee_id}
               // employeeName=, 
               maintenanceType={ticket.maintenanceType}
               description={ticket.description}

@@ -8,9 +8,10 @@ const axios = require("axios");
 export default function Ticket_Form_Emp(props) {
   const history = useHistory(); 
   const {selectedTicketInfo} = props;
+  const {setLocalTicketToResolved} = props;
 
   ////////////// GET ACTUAL DATA LATER AND SET AS PROPS.////////////////
-  const ticket_id = 9;
+
 
   const [finalCost, setFinalCost] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -38,12 +39,13 @@ export default function Ticket_Form_Emp(props) {
 
     return axios
       .put(`/tickets/resolved/`, {
-        ticket_id: ticket_id,
+        ticket_id: selectedTicketInfo.id,
         actual_cost: finalCost.finalCost,
       })
       .then((response) => {
         console.log("RESPONSE: ", response.data);
         history.push("/dashboard-employee");
+        setLocalTicketToResolved(selectedTicketInfo.id);
       });
   };
 
@@ -68,13 +70,17 @@ export default function Ticket_Form_Emp(props) {
                   placeholder="Final Cost"
                 />
               </section>
-              <section className="ticket__actions">
-              <Button onClick= {onSubmit}variant="success">Maintenance Completed!</Button>{' '}
-                {/*<button onClick={onSubmit}>Maintenance Complete</button>*/}
-              </section>
+              <ResolvedTicketModal
+                  onConfirm={onConfirm}
+                  show={showModal}
+                  onHide={handleHideModal}
+                  ticketId={props.ticket_id}
+                  finalCost={finalCost}
+                  onSubmit={onSubmit}
+              />
             </form>
           </section>
-          {showModal && <div>Modal</div>}
+          {/*showModal && <div>Modal</div>*/}
         </section>
       </Form>
     </Card.Body>

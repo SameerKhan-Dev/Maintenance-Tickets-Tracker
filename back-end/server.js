@@ -196,7 +196,7 @@ app.put("/tickets/resolved", (req, res) => {
 app.get("/property/tenant/:tenant_id", (req, res) => {
   const tenant_id = req.params.tenant_id;
   console.log("Hello from: route 10  ");
-  property_tenant_id = getPropertyByTenantUser_Id(tenant_id).then(
+  const property_tenant_id = getPropertyByTenantUser_Id(tenant_id).then(
     (response) => {
       res.send(response);
     }
