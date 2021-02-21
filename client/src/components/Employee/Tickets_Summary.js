@@ -84,10 +84,10 @@ export default function Tickets_Summary(props) {
                         <tbody>
                             { property.tickets.map(ticket => (
                                         <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
+                                            <td>{ticket.id}</td>
+                                            <td>{ticket.description}</td>
+                                            <td>Creator</td>
+                                            <td>{ticket.created_at}</td>
                                         </tr>
                             ))}
                         </tbody>
