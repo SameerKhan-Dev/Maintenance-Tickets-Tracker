@@ -1,6 +1,7 @@
 import React, { useState, Component } from "react";
 import { useEffect } from "react";
 import { Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 import "./Top_Nav_Bar_PM_Stats.scss";
 // import "./map.scss";
@@ -10,6 +11,12 @@ import "./Top_Nav_Bar_PM_Stats.scss";
 // import Map_SideBar from "./property_map";
 
 export default function Top_NavBar_PM_Tickets(props) {
+  const history = useHistory();
+
+  const goToTicketPage = function () {
+    history.push("/dashboard-pm-tickets");
+  };
+
   const { loggedInUserEmail } = props;
   console.log(
     "***From inside Top_NavBar_PM_Stats  -- props = ",
@@ -18,13 +25,13 @@ export default function Top_NavBar_PM_Tickets(props) {
   return (
     <div classname="App">
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+        <Button onClick={goToTicketPage}>View Tickets</Button>
         {/* <Navbar.Brand href="#home">M Tracker</Navbar.Brand> */}
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
             Signed in as: <a href="#login">{loggedInUserEmail}</a>
           </Navbar.Text>
-
           <Button variant="light">Logout</Button>
         </Navbar.Collapse>
       </Navbar>

@@ -16,7 +16,7 @@ import "./Dashboard_PM_Stats.scss";
 // all employees
 
 export default function Dashboard_PM_Stats(props) {
-  console.log("****Inside Dashboard_PM_Stats -- props = ", props);
+  // console.log("****Inside Dashboard_PM_Stats -- props = ", props);
 
   // When user login is setup, extract user_id using cookies
   // temporarily we are going to use user_id as 1 (i.e pm_id for this page)
@@ -33,7 +33,8 @@ export default function Dashboard_PM_Stats(props) {
       in_Progress: 0,
     },
   });
-  console.log("*** state_PM_Stats: ", state_PM_Stats);
+
+  console.log("*** state_PM_Stats.properties: ", state_PM_Stats.properties);
 
   let ticketsForSelectedProperty = [];
   for (const propertyObject of state_PM_Stats.ticketsOrganizedByProperty) {
@@ -41,6 +42,22 @@ export default function Dashboard_PM_Stats(props) {
       ticketsForSelectedProperty = propertyObject.ticketsArray;
     }
   }
+  console.log("*** ticketsForSelectedProperty: ", ticketsForSelectedProperty);
+
+  // WORKING ON THIS ONE
+  // let addressForSelectedProperty = state_PM_Stats.properties;
+  // console.log("***addressForSelectedProperty = ", addressForSelectedProperty);
+
+  let addressForSelectedProperty = "";
+  for (const propertyObject of state_PM_Stats.properties) {
+    // console.log("***propertyObject = ", propertyObject.id);
+
+    if (propertyObject.id === state_PM_Stats.selectedProperty) {
+      addressForSelectedProperty = propertyObject.address;
+      // addressForSelectedProperty.push(propertyObject.state_PM_Stats.properties);
+    }
+  }
+  console.log("***addressForSelectedProperty = ", addressForSelectedProperty);
 
   // General pointers to remember
   // 1) Our axios call to backend allows us to obtain all tickets for all properties...
@@ -207,6 +224,7 @@ export default function Dashboard_PM_Stats(props) {
           <Individual_Property_Interface
             specificStats={state_PM_Stats.specificStats}
             ticketsForSelectedProperty={ticketsForSelectedProperty}
+            addressForSelectedProperty={addressForSelectedProperty}
           />
         )}
       </div>
