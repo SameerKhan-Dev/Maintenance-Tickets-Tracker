@@ -1,5 +1,10 @@
 @import "./Side_NavBar_PM_Tickets_variable.scss";
 
+.logo {
+  width: 20%;
+  margin-left: 40px;
+}
+
 .sidebar {
   background-color: $dark-background;
   box-shadow: 0px 4px 8px rgba($dark-background, 0.5);
@@ -7,9 +12,7 @@
   flex-direction: column;
   min-width: 18rem;
   padding: $spacing 0;
-  
 
- 
   &--centered {
     align-self: center;
   }
@@ -37,14 +40,11 @@
   margin: 2rem 0;
   padding: 0 $spacing;
   width: 100%;
- 
 }
 .PTagDescription {
-
   border: red solid 3px;
 }
 .Employee_Interface {
-
   border: blue solid 2px;
 }
 .Side_NavBar_Emp {

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import MyVerticallyCenteredModal from './tenantIssue_Modal';
-import Spinner from 'react-bootstrap/Spinner'
+import MyVerticallyCenteredModal from "./tenantIssue_Modal";
+import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 
 export default function Issue_Form(props) {
-  const history = useHistory(); 
+  const history = useHistory();
 
   ////////////// GET ACTUAL DATA LATER AND SET AS PROPS.////////////////
   const property_id = 11;
@@ -13,13 +13,13 @@ export default function Issue_Form(props) {
 
   const [issue, setIssue] = useState({
     description: "",
-    maintenance_type: "general maintenance"
+    maintenance_type: "general maintenance",
   });
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
     setShowModal(!showModal);
-  }
+  };
 
   const handleDescriptionChange = (event) => {
     const target = event.target;
@@ -27,7 +27,7 @@ export default function Issue_Form(props) {
     const name = target.name;
     setIssue((issue) => ({
       ...issue,
-      description: value
+      description: value,
     }));
   };
 
@@ -42,11 +42,10 @@ export default function Issue_Form(props) {
   };
 
   const onSubmit = () => {
-
     let maintenance_type_id = 0;
     if (issue.maintenance_type === "plumbing") {
       maintenance_type_id = 1;
-    } else if (issue.maintenance_type === "electrical"){
+    } else if (issue.maintenance_type === "electrical") {
       maintenance_type_id = 2;
     } else {
       maintenance_type_id = 3;
@@ -57,18 +56,18 @@ export default function Issue_Form(props) {
       .post(`/tickets/new`, {
         property_id: property_id,
         creator_id: creator_id,
-        maintenance_type_id: maintenance_type_id, 
-        description: issue.description
+        maintenance_type_id: maintenance_type_id,
+        description: issue.description,
       })
       .then((response) => {
         console.log("RESPONSE: ", response.data);
-          history.push("/dashboard-tenant");
-          setIssue((issue) => ({
-        ...issue,
-        description: "",
-        maintenance_type: "general maintenance"
-      }));
-    });
+        history.push("/dashboard-tenant");
+        setIssue((issue) => ({
+          ...issue,
+          description: "",
+          maintenance_type: "general maintenance",
+        }));
+      });
   };
 
   return (
@@ -124,10 +123,7 @@ export default function Issue_Form(props) {
           </section>
         </form>
       </section>
-      <MyVerticallyCenteredModal
-        show={showModal}
-        onHide={handleShowModal}
-      />      
+      <MyVerticallyCenteredModal show={showModal} onHide={handleShowModal} />
     </section>
   );
 }

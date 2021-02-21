@@ -3,15 +3,22 @@ import { useHistory } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import ResolvedTicketModal from "./Emp_Resolved_Ticket_Modal";
 const axios = require("axios");
 export default function Ticket_Form_Emp(props) {
   const history = useHistory(); 
   const {selectedTicketInfo} = props;
+  const {setLocalTicketToResolved} = props;
+
   ////////////// GET ACTUAL DATA LATER AND SET AS PROPS.////////////////
-  const ticket_id = 9;
+
 
   const [finalCost, setFinalCost] = useState(0);
   const [showModal, setShowModal] = useState(false);
+
+  const handleHideModal = () => {
+    setShowModal(false);
+  };
 
   const handleFinalCostChange = (event) => {
     const target = event.target;
@@ -19,22 +26,26 @@ export default function Ticket_Form_Emp(props) {
     const name = target.name;
     setFinalCost((finalCost) => ({
       ...finalCost,
-      finalCost: value
+      finalCost: value,
     }));
   };
 
-  console.log("finalCost = ", finalCost);
   const onSubmit = () => {
-    
-    //When employee clicks submit button, it should ask for confirmation
+    setShowModal(true);
+  };
+
+  const onConfirm = () => {
+    setShowModal(false);
+
     return axios
       .put(`/tickets/resolved/`, {
-        ticket_id: ticket_id,
-        actual_cost: finalCost.finalCost
+        ticket_id: selectedTicketInfo.id,
+        actual_cost: finalCost.finalCost,
       })
       .then((response) => {
         console.log("RESPONSE: ", response.data);
-          history.push("/dashboard-employee");
+        history.push("/dashboard-employee");
+        setLocalTicketToResolved(selectedTicketInfo.id);
       });
   };
 
@@ -59,13 +70,17 @@ export default function Ticket_Form_Emp(props) {
                   placeholder="Final Cost"
                 />
               </section>
-              <section className="ticket__actions">
-              <Button onClick= {onSubmit}variant="success">Maintenance Completed!</Button>{' '}
-                {/*<button onClick={onSubmit}>Maintenance Complete</button>*/}
-              </section>
+              <ResolvedTicketModal
+                  onConfirm={onConfirm}
+                  show={showModal}
+                  onHide={handleHideModal}
+                  ticketId={props.ticket_id}
+                  finalCost={finalCost}
+                  onSubmit={onSubmit}
+              />
             </form>
           </section>
-          {showModal && <div>Modal</div>}
+          {/*showModal && <div>Modal</div>*/}
         </section>
       </Form>
     </Card.Body>
@@ -88,13 +103,16 @@ export default function Ticket_Form_Emp(props) {
               placeholder="Final Cost"
             />
           </section>
-          <section className="ticket__actions">
-            <button onClick={onSubmit}>Maintenance Complete</button>
-          </section>
+          <ResolvedTicketModal
+            onConfirm={onConfirm}
+            show={showModal}
+            onHide={handleHideModal}
+            ticketId={props.ticket_id}
+            finalCost={finalCost}
+            onSubmit={onSubmit}
+          />
         </form>
       </section>
-      // add popup modal?
-      {showModal && <div>Modal</div>}
     </section>
     </>
    */}

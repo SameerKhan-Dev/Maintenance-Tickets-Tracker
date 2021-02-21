@@ -33,6 +33,22 @@ export default function Employee_Dashboard(props) {
     
 
  }
+ const setLocalTicketToResolved = function (ticket_id) {
+    let tickets = [...state_Employee.tickets];
+  console.log("inside setLocalTicketsToResolve");
+  for (let ticket of tickets) {
+    
+    if(ticket.id === ticket_id) {
+      ticket.ticket_status_id = 3;
+      console.log("Set the status_id inside setLocalTicketToResolved!");
+      console.log("ticket.ticket_status_id is: ", ticket.ticket_status_id);
+      console.log("ticket is: ",ticket);
+    }
+    
+  }
+  setState_Employee(prev => ({...prev, tickets: tickets}));
+  console.log("INSIDE: tickets is: ", tickets);
+ }
 
  const getSelectedPropertyName = function () {
   if(state_Employee.selectedProperty === 0){
@@ -162,11 +178,12 @@ console.log("selectedTicket is: ", state_Employee.selectedTicket);
         <div className= "DivEmployee_Interface">
           <div className= "DivEmployee_Interface">
             <Employee_Interface 
-            selectedTicketInfo = {selectedTicketInfo}
-            selectedProperty = {state_Employee.selectedProperty}
-            selectedTicket = {state_Employee.selectedTicket}
-            tickets = {employeeInProgressTickets}
-            properties = {state_Employee.properties}
+              setLocalTicketToResolved = {setLocalTicketToResolved}
+              selectedTicketInfo = {selectedTicketInfo}
+              selectedProperty = {state_Employee.selectedProperty}
+              selectedTicket = {state_Employee.selectedTicket}
+              tickets = {employeeInProgressTickets}
+              properties = {state_Employee.properties}
             />
           </div>
         </div>
