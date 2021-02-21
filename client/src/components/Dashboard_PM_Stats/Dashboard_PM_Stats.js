@@ -16,6 +16,7 @@ import "./Dashboard_PM_Stats.scss";
 // all employees
 
 export default function Dashboard_PM_Stats(props) {
+  console.log("****Inside Dashboard_PM_Stats -- props = ", props);
   // console.log("****Inside Dashboard_PM_Stats -- props = ", props);
 
   // When user login is setup, extract user_id using cookies
@@ -33,6 +34,7 @@ export default function Dashboard_PM_Stats(props) {
       in_Progress: 0,
     },
   });
+  console.log("*** state_PM_Stats: ", state_PM_Stats);
 
   console.log("*** state_PM_Stats.properties: ", state_PM_Stats.properties);
 

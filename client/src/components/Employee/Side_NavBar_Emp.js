@@ -1,6 +1,6 @@
 import React, {useState, Component} from 'react';
 import {useEffect} from 'react';
-import AssignedTicketList from './AssignedTicketsList';
+import AssignedTicketList from './AssignedTicketList';
 import Dropdown from 'react-bootstrap/Dropdown'
 import "./Side_NavBar_Emp.scss";
 //import Ticket_List_Item from  "./Ticket_List_Item"
@@ -10,7 +10,7 @@ import "./Side_NavBar_Emp.scss";
 
 export default function Side_NavBar_Emp(props) {
 
-  const {employeeInProgressTickets} = props;
+  const {employeeInProgressTickets, selectTicket, selectProperty, properties, selectedPropertyAddress, selectedProperty} = props;
 
     return (
       <>
@@ -23,17 +23,20 @@ export default function Side_NavBar_Emp(props) {
           <div className= "dropDown">
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                      All Properties
+                      Selected Property:  {selectedPropertyAddress}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item onClick={() =>console.log("Hello!")}>All Properties</Dropdown.Item>
-                  <Dropdown.Item onClick={()=>console.log("Hello!")}>Property 1</Dropdown.Item>
-                  <Dropdown.Item onClick={()=>console.log("Hello!")}>Property 2</Dropdown.Item>
-                </Dropdown.Menu>
+                <Dropdown.Item onClick={() =>selectProperty(0)}>All Properties</Dropdown.Item>
+                  { properties.map(property =>(
+                      <Dropdown.Item onClick={() =>selectProperty(property.id)}>{property.address}</Dropdown.Item>
+                  ))}
+                  </Dropdown.Menu>
             </Dropdown>
           </div>
             <AssignedTicketList
+             selectTicket = {selectTicket}
              employeeInProgressTickets = {employeeInProgressTickets}
+             selectedProperty = {selectedProperty}
             />
           </nav>
           {/* <img
