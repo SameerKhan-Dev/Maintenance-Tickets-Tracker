@@ -13,7 +13,7 @@ export default function Individual_Property_Interface(props) {
     <main className="stats__view">
       <section className="address__title">
         <h1 className="Text--address-header">
-          42 Wallaby Way Toronto, ON M1P 3R9
+          Address: {props.addressForSelectedProperty}
         </h1>
       </section>
       <section className="ticket__info">
