@@ -11,7 +11,7 @@ export default function Dashboard_Tenant(props) {
 
   return (
     <>
-      <div className="dashboard-interface">
+      <div className="tenant__form">
         <div>
           <Top_NavBar_Tenant loggedInUserEmail={props.loggedInUserEmail} />
         </div>

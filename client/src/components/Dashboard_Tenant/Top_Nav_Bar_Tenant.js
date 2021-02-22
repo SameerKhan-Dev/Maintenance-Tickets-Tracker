@@ -15,7 +15,7 @@ export default function Top_NavBar_Tenant(props) {
   console.log("****Top_Nav_Bar_Tenant -- props = ", props.loggedInUserEmail);
   return (
     <div classname="App">
-      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         {/* <Navbar.Brand href="#home">M Tracker</Navbar.Brand> */}
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
@@ -23,7 +23,7 @@ export default function Top_NavBar_Tenant(props) {
             Signed in as: <a href="#login">{loggedInUserEmail}</a>
           </Navbar.Text>
 
-          <Button variant="light">Logout</Button>
+          <Button variant="dark">Logout</Button>
         </Navbar.Collapse>
       </Navbar>
     </div>
