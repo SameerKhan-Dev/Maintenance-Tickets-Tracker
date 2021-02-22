@@ -21,9 +21,9 @@ export default function Employee_Interface(props) {
   console.log("***Employee_Interface: properties ", props);
   return (
     <>
-      <h1 className="Text--address-header">
+      {/* <h1 className="Text--address-header">
         Address: {props.addressForSelectedProperty}
-      </h1>
+      </h1> */}
       <section className="employee__interface">
         {selectedTicket === 0 && (
           <Tickets_Summary
@@ -38,6 +38,7 @@ export default function Employee_Interface(props) {
           <Ticket_Summary_Emp
             selectedTicketInfo={selectedTicketInfo}
             selectedTicket={selectedTicket}
+            properties={properties}
           />
         )}
         {selectedTicketInfo && selectedTicket !== 0 && (
