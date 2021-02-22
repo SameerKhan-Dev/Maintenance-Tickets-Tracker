@@ -220,7 +220,7 @@ export default function Dashboard_PM_Stats(props) {
           {/* Render All_Property_Interface if selectedProperty = 0. else Render InvidualPropertyInterface if selectedProperty != 0 (i,e
             i.e a specific property has been selected)*/}
                 {/* <Top_NavBar_PM_Stats/> */}
-                 { state_PM_Stats.selectedProperty === 0 ?
+                { state_PM_Stats.selectedProperty === 0 ?
                 <All_Property_Interface specificStats = {state_PM_Stats.specificStats} ticketsOrganizedByProperty = {state_PM_Stats.ticketsOrganizedByProperty} properties = {state_PM_Stats.properties}/> : <Individual_Property_Interface  specificStats = {state_PM_Stats.specificStats} ticketsForSelectedProperty = {ticketsForSelectedProperty} addressForSelectedProperty={addressForSelectedProperty}
                 />
                 }     

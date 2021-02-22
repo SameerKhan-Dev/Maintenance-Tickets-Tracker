@@ -20,7 +20,7 @@ const Map_SideBar = () => {
       // See style options here: https://docs.mapbox.com/api/maps/#styles
       style: "mapbox://styles/mapbox/streets-v11",
       center: [-79.3832, 43.6532],
-      zoom: 12
+      zoom: 9
     });
 
     // add navigation control (zoom buttons)
