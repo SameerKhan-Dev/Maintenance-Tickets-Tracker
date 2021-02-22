@@ -74,7 +74,6 @@ export default function Ticket_List_PM_Pending(props) {
   // console.log("PendingTickets are: ", pendingTickets);
   //console.log("Pending Tickets length is: ", pendingTickets.length);
   console.log("***Ticket_List_PM_Pending -- props: ", props);
-  console.log("***ticketsPending: ", ticketsPending);
 
   return (
     <section className="tickets">
@@ -90,7 +89,7 @@ export default function Ticket_List_PM_Pending(props) {
               unit={ticket.unit}
               property_id={ticket.property_id}
               // employeeName=,
-              maintenanceType={ticket.maintenanceType}
+              maintenanceTypeID={ticket.maintenance_type_id}
               description={ticket.description}
               employee_id={null}
             />

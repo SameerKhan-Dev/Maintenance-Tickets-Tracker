@@ -16,9 +16,22 @@ export default function Ticket_List_Item_PM(props) {
     unit,
     property_id,
     employees,
+    maintenanceTypeID,
     maintenanceType,
     description,
   } = props;
+
+  // assignEmployeeToTicket={assignEmployeeToTicket}
+  // key={ticket.id}
+  // ticketID={ticket.id}
+  // ticketStatus={ticket.ticketStatus}
+  // createdAt={ticket.created_at}
+  // unit={ticket.unit}
+  // property_id={ticket.property_id}
+  // // employeeName=,
+  // maintenanceTypeID={ticket.maintenance_type_id}
+  // description={ticket.description}
+  // employee_id={null}
 
   const hideModal = function (ticket_id, employee_id) {
     setModalShow(false);
@@ -51,13 +64,22 @@ export default function Ticket_List_Item_PM(props) {
     }
   };
 
+  let maintenance_type = "";
+  if (maintenanceTypeID === 1) {
+    maintenance_type = "Plumbing";
+  } else if (maintenanceTypeID === 2) {
+    maintenance_type = "Electrical";
+  } else {
+    maintenance_type = "General Maintenance";
+  }
+
   const [ticketItemState, setState] = useState("employee-unassigned");
   const { assignEmployeeToTicket, employee_id } = props;
   return (
     <main className="ticket__cards">
       <section className="ticket__card-left">
         {/* <div>{unit}</div> */}
-        <div>Maintenance type: {maintenanceType}</div>
+        <div>Maintenance type: {maintenance_type}</div>
         <div>Description: {description}</div>
       </section>
       {/*
