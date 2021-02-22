@@ -30,27 +30,18 @@ export default function All_Property_Interface(props) {
               <Card.Body>
                 <Card.Title>42 Wallaby Way TOronto, ON M9F 1T5</Card.Title>
               </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </Card.Footer>
             </Card>
             <Card>
               <Card.Img variant="top" src={prop2} />
               <Card.Body>
                 <Card.Title>42 Wallaby Way TOronto, ON M9F 1T5</Card.Title>
               </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </Card.Footer>
             </Card>
             <Card>
               <Card.Img variant="top" src={prop3} />
               <Card.Body>
                 <Card.Title>42 Wallaby Way TOronto, ON M9F 1T5</Card.Title>
               </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </Card.Footer>
             </Card>
           </CardDeck>
         </section>

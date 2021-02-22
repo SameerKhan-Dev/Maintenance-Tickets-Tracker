@@ -9,7 +9,7 @@ export default function Propertylist(props){
 
  const propertiesListArray = properties.map((property) => {
     return (
-      <ListGroup.Item action variant="dark">
+      <ListGroup.Item style={{backgroundColor: 'transparent', ':hover': {backgroundColor: 'blue'}}} action variant="dark">
         <PropertyListItem
           property_id = {property.id}
           selectProperty = {selectProperty}
