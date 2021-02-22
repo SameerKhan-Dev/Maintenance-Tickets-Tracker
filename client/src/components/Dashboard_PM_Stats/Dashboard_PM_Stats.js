@@ -4,7 +4,8 @@ import "../Application.scss";
 import axios from "axios";
 import All_Property_Interface from "./All_Property_Interface";
 import Side_NavBar_PM_Stats from "./Side_NavBar_PM_Stats";
-import Individual_Property_Interface from "./Individual_Property_Interface";
+// import SideNav from '../Dashboard_PM_Stats/New_side_navbar/src/SideNav';
+import Individual_Property_Interface from './Individual_Property_Interface';
 
 import Top_NavBar_PM_Stats from "./Top_Nav_Bar_PM_Stats";
 
@@ -191,38 +192,34 @@ export default function Dashboard_PM_Stats(props) {
       // need to sort our tickets data into a structure like above using a helper function
       //constructTicketsData(propertiesData, ticketsData);
     });
-  }, []);
 
-  //console.log("The current state of specificStats is: ", state_PM_Stats.specificStats);
+  },[]);
 
-  return (
-    <>
-      <div>
-        <Side_NavBar_PM_Stats
-          selectProperty={selectProperty}
-          properties={state_PM_Stats.properties}
-        />
-      </div>
-      <div className="dashboard-interface">
-        {/* Render All_Property_Interface if selectedProperty = 0. else Render InvidualPropertyInterface if selectedProperty != 0 (i,e
+    //console.log("The current state of specificStats is: ", state_PM_Stats.specificStats);
+    return (
+      <>
+        <div style = {{width: '100%', zIndex: '200', position: 'absolute'}}>
+          <Top_NavBar_PM_Stats loggedInUserEmail={props.loggedInUserEmail}/>
+        </div>
+        <section className="content">
+          <div className="side__navbar">
+            
+            <Side_NavBar_PM_Stats
+              selectProperty = {selectProperty}
+              properties= {state_PM_Stats.properties}
+              selectedProperty = {state_PM_Stats.selectedProperty}
+            />
+          </div>
+          <div className="dashboard-interface">
+          {/* Render All_Property_Interface if selectedProperty = 0. else Render InvidualPropertyInterface if selectedProperty != 0 (i,e
             i.e a specific property has been selected)*/}
-        <Top_NavBar_PM_Stats loggedInUserEmail={props.loggedInUserEmail} />
-        {state_PM_Stats.selectedProperty === 0 ? (
-          <All_Property_Interface
-            specificStats={state_PM_Stats.specificStats}
-            ticketsOrganizedByProperty={
-              state_PM_Stats.ticketsOrganizedByProperty
-            }
-            properties={state_PM_Stats.properties}
-          />
-        ) : (
-          <Individual_Property_Interface
-            specificStats={state_PM_Stats.specificStats}
-            ticketsForSelectedProperty={ticketsForSelectedProperty}
-            addressForSelectedProperty={addressForSelectedProperty}
-          />
-        )}
-      </div>
-    </>
-  );
+                {/* <Top_NavBar_PM_Stats/> */}
+                { state_PM_Stats.selectedProperty === 0 ?
+                <All_Property_Interface specificStats = {state_PM_Stats.specificStats} ticketsOrganizedByProperty = {state_PM_Stats.ticketsOrganizedByProperty} properties = {state_PM_Stats.properties}/> : <Individual_Property_Interface  specificStats = {state_PM_Stats.specificStats} ticketsForSelectedProperty = {ticketsForSelectedProperty} addressForSelectedProperty={addressForSelectedProperty}
+                />
+                }     
+        </div>
+        </section>
+      </>
+    );
 }

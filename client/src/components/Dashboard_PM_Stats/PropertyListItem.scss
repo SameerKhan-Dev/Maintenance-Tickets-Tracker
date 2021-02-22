@@ -32,3 +32,17 @@
     }
   }
 }
+.text--regular {
+  text-align: center;
+  margin: 5px;
+  color: rgb(253, 253, 253);
+  &:hover {
+    color: navy;
+  }
+}
+
+h2.text--regular {
+  &:hover {
+    background-color:rgb(107, 154, 255);
+  }
+}

@@ -19,6 +19,7 @@ import Badge from "react-bootstrap/Badge";
 import MyVerticallyCenteredModal from "./specificTicket_Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from "react-bootstrap";
+import "./Dashboard_PM_Tickets.scss";
 
 export default function Dashboard_PM_Tickets(props) {
   console.log("****Inside Dashboard_PM_Tickets -- props = ", props);
@@ -298,6 +299,9 @@ export default function Dashboard_PM_Tickets(props) {
 
   return (
     <>
+      <div style = {{width: '100%', zIndex: '200', position: 'absolute'}}>
+        <Top_NavBar_PM_Tickets loggedInUserEmail={props.loggedInUserEmail} />
+      </div>
       <div>
         <Side_NavBar_PM_Tickets
           selectProperty={selectProperty}
@@ -305,7 +309,6 @@ export default function Dashboard_PM_Tickets(props) {
         />
       </div>
       <div className="dashboard-interface">
-        <Top_NavBar_PM_Tickets loggedInUserEmail={props.loggedInUserEmail} />
         <>
           <Button variant="success">
             Total: {specificStats.totalUnsolved}

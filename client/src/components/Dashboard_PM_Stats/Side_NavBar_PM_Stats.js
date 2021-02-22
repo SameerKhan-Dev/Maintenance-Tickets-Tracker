@@ -10,11 +10,10 @@ import Map_SideBar from "./property_map";
 
 
 export default function Side_NavBar_Emp(props) {
-  const { selectProperty, properties } = props;
-
+  const { selectProperty, properties, selectedProperty } = props;
   return (
     <>
-      <main className="layout">
+      <main className="layout" style={{ backgroundImage: 'linear-gradient(#f67a36,#ed008c)' }}>
         <head>
           <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
           <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
@@ -35,7 +34,7 @@ export default function Side_NavBar_Emp(props) {
             src="images/logo.png"
             alt="Interview Scheduler"
           /> */}
-          <h1>My Properties</h1>
+          {/* <h1>My Properties</h1> */}
           <hr className="sidebar__separator sidebar--centered" />
           <nav className="sidebar__menu">'
            { /*
@@ -49,6 +48,7 @@ export default function Side_NavBar_Emp(props) {
             <PropertyList
               selectProperty={selectProperty}
               properties={properties}
+              selectedProperty = {selectedProperty}
 
             />
           </nav>

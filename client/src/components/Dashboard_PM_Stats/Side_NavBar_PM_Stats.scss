@@ -1,12 +1,14 @@
-@import "./Side_NavBar_PM_Stats_variable.scss";
+@import "styles/variables.scss";
 
 .sidebar {
   background-color: $dark-background;
   box-shadow: 0px 4px 8px rgba($dark-background, 0.5);
   display: flex;
   flex-direction: column;
-  min-width: 18rem;
+  min-width: 10rem;
   padding: $spacing 0;
+  position: fixed;
+  height: 100%;
   
 
  
@@ -36,7 +38,7 @@
   justify-content: flex-start;
   margin: 2rem 0;
   padding: 0 $spacing;
-  width: 100%;
+  // width: 100%;
  
 }
 .PTagDescription {
@@ -50,3 +52,13 @@
 .Side_NavBar_Emp {
   border: green solid 2px;
 }
+
+// .map {
+//   height: 35vh;
+//   width: 35vh;
+//   top: 30%;
+//   right: 5%;
+//   left: 5%;
+//   bottom: 15%;
+//   border: solid green 3px;
+// }
