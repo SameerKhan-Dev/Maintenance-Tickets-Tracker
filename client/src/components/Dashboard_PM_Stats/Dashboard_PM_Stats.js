@@ -46,17 +46,10 @@ export default function Dashboard_PM_Stats(props) {
   }
   console.log("*** ticketsForSelectedProperty: ", ticketsForSelectedProperty);
 
-  // WORKING ON THIS ONE
-  // let addressForSelectedProperty = state_PM_Stats.properties;
-  // console.log("***addressForSelectedProperty = ", addressForSelectedProperty);
-
   let addressForSelectedProperty = "";
   for (const propertyObject of state_PM_Stats.properties) {
-    // console.log("***propertyObject = ", propertyObject.id);
-
     if (propertyObject.id === state_PM_Stats.selectedProperty) {
       addressForSelectedProperty = propertyObject.address;
-      // addressForSelectedProperty.push(propertyObject.state_PM_Stats.properties);
     }
   }
   console.log("***addressForSelectedProperty = ", addressForSelectedProperty);
