@@ -21,7 +21,8 @@
     "morgan": "^1.9.1",
     "node-sass-middleware": "^0.11.0",
     "pg": "^6.4.2",
-    "pg-native": "^3.0.0"
+    "pg-native": "^3.0.0",
+    "express-fileupload": "^1.2.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

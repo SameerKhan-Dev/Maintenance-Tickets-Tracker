@@ -17,6 +17,15 @@ export default function Ticket_Summary_Emp(props) {
     selectedTicketInfo
   } = props;
 
+  /*
+  let maintenance_type = "";
+
+  if (selectedTicketInfo.maintenance_type_id === 1 ){
+
+    maintenance_type = "Plumbing";
+  }
+
+  */
   return (
     <>
     <Card>

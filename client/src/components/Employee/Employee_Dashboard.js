@@ -19,7 +19,8 @@ export default function Employee_Dashboard(props) {
         totalUnsolved: 0,
         pending: 0,
         in_Progress: 0
-      }
+      },
+      recentlyResolvedTickets: []
     }
   );
  
@@ -35,6 +36,8 @@ export default function Employee_Dashboard(props) {
  }
  const setLocalTicketToResolved = function (ticket_id) {
     let tickets = [...state_Employee.tickets];
+    //let recentTickets = [...state_Employee.recentlyResolvedTickets];
+    let recentTickets = [];
   console.log("inside setLocalTicketsToResolve");
   for (let ticket of tickets) {
     
@@ -43,13 +46,25 @@ export default function Employee_Dashboard(props) {
       console.log("Set the status_id inside setLocalTicketToResolved!");
       console.log("ticket.ticket_status_id is: ", ticket.ticket_status_id);
       console.log("ticket is: ",ticket);
+      recentTickets.push(ticket_id);
     }
     
   }
-  setState_Employee(prev => ({...prev, tickets: tickets, selectedTicket: 0}));
+  setState_Employee(prev => ({...prev, tickets: tickets, selectedTicket: 0, recentlyResolvedTickets: recentTickets}));
   console.log("INSIDE: tickets is: ", tickets);
  }
 
+ const removeRecentlyModifiedTicket = function (ticket_id) {
+    let recentTickets = [...state_Employee.recentlyResolvedTickets];
+
+    for (let x = 0; x < recentTickets.length; x++) {
+      if(recentTickets[x].id === ticket_id){
+        recentTickets.splice(x, 1);
+      }
+    }
+    setState_Employee((prev) => ({ ...prev, recentlyResolvedTickets: recentTickets}));
+ }
+ console.log("RecentlyResolved Tickets is: ", state_Employee.recentlyResolvedTickets);
  const getSelectedPropertyName = function () {
   if(state_Employee.selectedProperty === 0){
     return "All Properties";
@@ -178,6 +193,7 @@ console.log("selectedTicket is: ", state_Employee.selectedTicket);
         <div className= "DivEmployee_Interface">
           <div className= "DivEmployee_Interface">
             <Employee_Interface 
+              recentlyResolvedTickets = {state_Employee.recentlyResolvedTickets}
               setLocalTicketToResolved = {setLocalTicketToResolved}
               selectedTicketInfo = {selectedTicketInfo}
               selectedProperty = {state_Employee.selectedProperty}

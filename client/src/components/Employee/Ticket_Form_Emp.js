@@ -7,7 +7,7 @@ import ResolvedTicketModal from "./Emp_Resolved_Ticket_Modal";
 const axios = require("axios");
 export default function Ticket_Form_Emp(props) {
   const history = useHistory(); 
-  const {selectedTicketInfo} = props;
+  const {selectedTicketInfo,  showToastAppear} = props;
   const {setLocalTicketToResolved} = props;
 
   ////////////// GET ACTUAL DATA LATER AND SET AS PROPS.////////////////
@@ -46,6 +46,7 @@ export default function Ticket_Form_Emp(props) {
         console.log("RESPONSE: ", response.data);
         history.push("/dashboard-employee");
         setLocalTicketToResolved(selectedTicketInfo.id);
+        showToastAppear();
       });
   };
 
