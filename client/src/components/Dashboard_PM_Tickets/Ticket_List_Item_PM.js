@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import Button from "./Button";
 // import Ticket_List_PM from "./Ticket_List_PM_Pending";
 import Employee_List_PM from "./Employee_List_PM";
-import MyVerticallyCenteredModal from './specificTicket_Modal';
+import MyVerticallyCenteredModal from "./specificTicket_Modal";
 import "./Ticket_List_Item_PM.scss";
 
 export default function Ticket_List_Item_PM(props) {
   const [modalShow, setModalShow] = React.useState(false);
 
+  console.log("***Ticket_List_Item_PM --props: ", props);
   const {
     ticketID,
     ticketStatus,
@@ -15,23 +16,71 @@ export default function Ticket_List_Item_PM(props) {
     unit,
     property_id,
     employees,
+    maintenanceTypeID,
     maintenanceType,
     description,
   } = props;
+
+  // assignEmployeeToTicket={assignEmployeeToTicket}
+  // key={ticket.id}
+  // ticketID={ticket.id}
+  // ticketStatus={ticket.ticketStatus}
+  // createdAt={ticket.created_at}
+  // unit={ticket.unit}
+  // property_id={ticket.property_id}
+  // // employeeName=,
+  // maintenanceTypeID={ticket.maintenance_type_id}
+  // description={ticket.description}
+  // employee_id={null}
+
   const hideModal = function (ticket_id, employee_id) {
     setModalShow(false);
     assignEmployeeToTicket(ticket_id, employee_id);
-    
-    
+  };
+
+  const employees2 = [
+    {
+      id: 24,
+      name: "Tim",
+      role_id: 3,
+    },
+    {
+      id: 25,
+      name: "Mike",
+      role_id: 4,
+    },
+    {
+      id: 26,
+      name: "Rogers",
+      role_id: 5,
+    },
+  ];
+
+  const getEmployeeName = function (employee_id) {
+    for (let employee of employees2) {
+      if (employee.id === employee_id) {
+        return employee.name;
+      }
+    }
+  };
+
+  let maintenance_type = "";
+  if (maintenanceTypeID === 1) {
+    maintenance_type = "Plumbing";
+  } else if (maintenanceTypeID === 2) {
+    maintenance_type = "Electrical";
+  } else {
+    maintenance_type = "General Maintenance";
   }
+
   const [ticketItemState, setState] = useState("employee-unassigned");
-  const {assignEmployeeToTicket} = props;
+  const { assignEmployeeToTicket, employee_id } = props;
   return (
     <main className="ticket__cards">
       <section className="ticket__card-left">
-        <div>{unit}</div>
-        <div>{maintenanceType}</div>
-        <div>{description}</div>
+        {/* <div>{unit}</div> */}
+        <div>Maintenance type: {maintenance_type}</div>
+        <div>Description: {description}</div>
       </section>
       {/*
       <section className="ticket__validation">
@@ -40,25 +89,30 @@ export default function Ticket_List_Item_PM(props) {
       */}
       <section className="ticket__card-right">
         <div>{ticketStatus}</div>
-        <div>{ticketID}</div>
-        <div>{createdAt}</div>
+        <div>Ticket ID: {ticketID}</div>
+        <div>Created at: {createdAt}</div>
       </section>
       <>
-        {
-        <Button variant="primary" onClick={() => setModalShow(true)}>
-          Assign Employee
-        </Button>
-      }
+        {employee_id === null ? (
+          <Button variant="success" onClick={() => setModalShow(true)}>
+            Assign Employee
+          </Button>
+        ) : (
+          <Button variant="secondary" onClick={() => setModalShow(true)}>
+            Assigned to: {getEmployeeName(employee_id)}
+          </Button>
+        )}
         <MyVerticallyCenteredModal
           employeeList={employees}
-          description = {description}
+          description={description}
+          employee_id={employee_id}
           show={modalShow}
-          onHide = {hideModal}
-          ticket_id = {ticketID}
-          assignEmployeeToTicket = {assignEmployeeToTicket}
+          onHide={hideModal}
+          ticket_id={ticketID}
+          assignEmployeeToTicket={assignEmployeeToTicket}
         />
       </>
-       {/*onHide={() => setModalShow(false)}*/}
+      {/*onHide={() => setModalShow(false)}*/}
       <section className="ticket__actions">
         {/* <Button danger onClick={cancel}>
           Cancel

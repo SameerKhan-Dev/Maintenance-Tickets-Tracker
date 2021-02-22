@@ -2,26 +2,46 @@ import React, { useState, Component } from "react";
 import { useEffect } from "react";
 
 import Ticket_Description_Emp from "./Ticket_Description_Emp";
+import Tickets_Summary from "./Tickets_Summary";
 import Ticket_Summary_Emp from "./Ticket_Summary_Emp";
 import Ticket_Form_Emp from "./Ticket_Form_Emp";
+import Card from 'react-bootstrap/Card';
+import './Employee_Interface.scss';
 
 export default function Employee_Interface(props) {
-
-  // const [state, setState] = useState(
-  //   selectedTicket: 0,
-  //   ticketStatus_id: 2, // In progress
-  // )
-  const test = "Employee_Interface";
-
+  const {selectedTicketInfo,  selectedProperty, selectedTicket, properties, tickets, setLocalTicketToResolved } = props;
 
   return (
     <section className="employee__interface">
-      <h1 className="Text--address-header">
-        42 Wallaby Way Toronto, ON M1P 3R9
-      </h1>
-      <Ticket_Summary_Emp test={test}/>
-      <Ticket_Description_Emp />
-      <Ticket_Form_Emp />
+
+        {selectedTicket === 0 && 
+          <Tickets_Summary 
+            properties= {properties}
+            selectedTicket = {selectedTicket}
+            tickets = {tickets}
+            selectedProperty = {selectedProperty}
+          />}
+
+          { selectedTicketInfo && selectedTicket!== 0 &&  
+          
+          <Ticket_Summary_Emp 
+            selectedTicketInfo = {selectedTicketInfo}
+            selectedTicket = {selectedTicket}
+          />}
+          { selectedTicketInfo && selectedTicket !== 0 &&
+            <Ticket_Description_Emp 
+              selectedTicketInfo = {selectedTicketInfo}
+              selectedTicket = {selectedTicket}
+            />
+          } 
+          { selectedTicketInfo && selectedTicket !== 0 &&
+
+          <Ticket_Form_Emp 
+            selectedTicketInfo = {selectedTicketInfo}
+            setLocalTicketToResolved = {setLocalTicketToResolved}
+          />
+          }
+        
     </section>
   );
 }

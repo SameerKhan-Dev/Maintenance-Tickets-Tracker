@@ -2,12 +2,12 @@ import React from "react";
 import { ListGroup } from "react-bootstrap";
 import PropertyListItem from "./PropertyListItem"
 
+export default function Propertylist(props) {
+  const { selectProperty, properties } = props;
 
-export default function Propertylist(props){
+  console.log("*** Props inside PropertyList: ", props);
 
-  const {selectProperty, properties} = props;
-
- const propertiesListArray = properties.map((property) => {
+  const propertiesListArray = properties.map((property) => {
     return (
       <ListGroup.Item style={{backgroundColor: 'transparent', ':hover': {backgroundColor: 'blue'}}} action variant="dark">
         <PropertyListItem

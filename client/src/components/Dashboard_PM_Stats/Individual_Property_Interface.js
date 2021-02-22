@@ -9,11 +9,10 @@ import money from "./money_logo.png";
 
 import { Card, Button, Badge } from 'react-bootstrap';
 // import { Button } from 'react-bootstrap';
-import "./Individual_Property_Interface.scss"
+import "./Individual_Property_Interface.scss";
 
 export default function Individual_Property_Interface(props) {
-
-  //const {specificStats} = props; 
+  console.log("***Inside Individual_Property_Interface: ", props);
 
   return (
     <main className="stats__view">
@@ -92,5 +91,3 @@ export default function Individual_Property_Interface(props) {
 
   );
 }
-
-

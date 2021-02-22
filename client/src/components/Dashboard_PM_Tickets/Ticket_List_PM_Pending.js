@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Ticket_List_Item_PM from "./Ticket_List_Item_PM";
 // import "./Ticket_List_PM.scss"
-import ListGroup from 'react-bootstrap/ListGroup';
+import ListGroup from "react-bootstrap/ListGroup";
 
 const tickets = [
   {
@@ -11,9 +11,9 @@ const tickets = [
     createdAt: "2021-02-16",
     unit: 8,
     property_id: 2,
-    // employeeName: "", 
+    // employeeName: "",
     maintenanceType: "Plumbing",
-    description: "Description"
+    description: "Description",
   },
   {
     ticket_id: 2,
@@ -21,9 +21,9 @@ const tickets = [
     createdAt: "2021-02-16",
     unit: 9,
     property_id: 3,
-    // employeeName: "", 
+    // employeeName: "",
     maintenanceType: "General Maintenance",
-    description: "Description"
+    description: "Description",
   },
   {
     ticket_id: 3,
@@ -31,17 +31,22 @@ const tickets = [
     createdAt: "2021-02-16",
     unit: 5,
     property_id: 4,
-    // employeeName: "", 
+    // employeeName: "",
     maintenanceType: "Electrical",
-    description: "Description"
-  }
+    description: "Description",
+  },
 ];
 
 export default function Ticket_List_PM_Pending(props) {
   const [ticketStatus, setTicketStatus] = useState("Pending");
   const [employee, setEmployee] = useState("none"); // need this?
-  const {assignEmployeeToTicket} = props;
-  const { ticketsOrganizedByProperty, selectedProperty, ticketsPending, ticketsInProgress } = props;
+  const { assignEmployeeToTicket } = props;
+  const {
+    ticketsOrganizedByProperty,
+    selectedProperty,
+    ticketsPending,
+    ticketsInProgress,
+  } = props;
   /*
   ticketsPending= {state_PM_Tickets.ticketsPending}
   ticketsInProgress = {state_PM_Tickets.ticketsInProgress}
@@ -66,35 +71,33 @@ export default function Ticket_List_PM_Pending(props) {
    }
  */
 
-
-
- // console.log("PendingTickets are: ", pendingTickets);
+  // console.log("PendingTickets are: ", pendingTickets);
   //console.log("Pending Tickets length is: ", pendingTickets.length);
+  console.log("***Ticket_List_PM_Pending -- props: ", props);
 
   return (
     <section className="tickets">
-     
       <ListGroup>
-      {ticketsPending.map(ticket => (
+        {ticketsPending.map((ticket) => (
           <ListGroup.Item action variant="light">
             <Ticket_List_Item_PM
-              assignEmployeeToTicket = {assignEmployeeToTicket}
+              assignEmployeeToTicket={assignEmployeeToTicket}
               key={ticket.id}
-              ticketID = {ticket.id}
+              ticketID={ticket.id}
               ticketStatus={ticket.ticketStatus}
-              createdAt={ticket.createdAt}
+              createdAt={ticket.created_at}
               unit={ticket.unit}
               property_id={ticket.property_id}
-              // employeeName=, 
-              maintenanceType={ticket.maintenanceType}
+              // employeeName=,
+              maintenanceTypeID={ticket.maintenance_type_id}
               description={ticket.description}
+              employee_id={null}
             />
           </ListGroup.Item>
         ))}
-
       </ListGroup>
     </section>
-  )
+  );
 }
 /*
 <ListGroup>
