@@ -16,36 +16,16 @@
   display: flex;
   gap: 30px;
 }
-// .address__title {
-//   height: 20%;
-// }
-
-// .expenses__info {
-//   display: flex;
-//   flex-direction: column;
-// }
-
-// .graphs__expenses {
-//   display: flex;
-//   justify-content: space-around;
-// }
-
-// .address__title {
-//   display: flex;
-//   width: 100%;
-// }
-
-
 
 .left {
   display:flex;
-  width: 35%;
+  width: 50%;
   display: inline-block;
 }
 
 .right {
   display: flex;
-  width: 65%;
+  width: 50%;
   display: inline-block;
 }
 
@@ -53,6 +33,7 @@
   display: flex;
   flex-direction: column;
   width: unset;
+  padding: 10px;
 }
 
 .unsolved {
@@ -72,4 +53,31 @@
 
 .pending__progress {
   margin-left: 5px;
+}
+
+.property__cards__ind {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+
+}
+
+.address__title {
+  width: 50%;
+  padding-right: 15px;
+}
+
+.top {
+  display: flex;
+}
+
+.ticket__info__specific {
+  padding: 20px;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
 }

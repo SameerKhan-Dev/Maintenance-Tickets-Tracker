@@ -15,7 +15,7 @@ import "./Top_Nav_Bar_PM_Stats.scss";
 export default function Top_NavBar_PM_Stats(props) {
   return (
     <div classname="App">
-      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+      <Navbar collapseOnSelect expand="lg" bg='dark' variant="light">
   {/* <Navbar.Brand href="#home">M Tracker</Navbar.Brand> */}
   <Navbar.Toggle />
   <Navbar.Collapse className="justify-content-end">
@@ -23,7 +23,7 @@ export default function Top_NavBar_PM_Stats(props) {
       Signed in as: <a href="#login">User Name/Email </a>
     </Navbar.Text>
 
-    <Button variant="light">Logout</Button>
+    <Button variant="dark">Logout</Button>
   </Navbar.Collapse>
 </Navbar>
     </div>

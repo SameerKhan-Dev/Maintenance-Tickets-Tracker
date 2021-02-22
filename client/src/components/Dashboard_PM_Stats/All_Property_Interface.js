@@ -1,11 +1,18 @@
 import React from "react";
 
 import Comparison_Chart from "./Comparison_Chart";
-import { Card } from 'react-bootstrap';
-import "./All_Property_Interface.scss"
+import { Card, Button, Badge, CardDeck } from 'react-bootstrap';
+import "./All_Property_Interface.scss";
+import money from "./money_logo.png";
+import prop1 from "./prop1.jpg";
+import prop2 from "./prop2.jpg";
+import prop3 from "./prop3.jpg";
+import progress from "./progress.jpg";
+import pending from "./pending.png";
+import unresolved from "./unresolved.jpg";
 
 export default function All_Property_Interface(props) {
-  const {ticketsOrganizedByProperty, properties } = props;
+  const { ticketsOrganizedByProperty, properties } = props;
 
   //const {specificStats} = props; 
   console.log("This is props:")
@@ -15,77 +22,74 @@ export default function All_Property_Interface(props) {
     <>
       {/* Total Unsolved */}
       {/* <main class="ticket-cards"> */}
-      <section className="ticket__info">
-        {/* <div class="unsolved"> */}
-        <Card
-          bg={'danger'}
-          text={'danger' === 'light' ? 'dark' : 'white'}
-          style={{ width: '18rem' }}
-          className="mb-2"
-        >
-          <Card.Header style={{ fontSize: '15px', textAlign: 'center' }}>
-            Unresolved Tickets</Card.Header>
-          <Card.Body>
-            <Card.Title style={{ fontSize: '30px', textAlign: 'center' }}>
-              {props.specificStats.totalUnsolved}</Card.Title>
-          </Card.Body>
-        </Card>
-        {/* </div> */}
-
-        {/* Pending */}
-        {/* <div class="pending"> */}
-        <Card
-          bg={'warning'}
-          text={'warning' === 'light' ? 'dark' : 'white'}
-          style={{ width: '18rem' }}
-          className="mb-2"
-        >
-          <Card.Header style={{ fontSize: '15px', textAlign: 'center' }}>
-            Pending Tickets:</Card.Header>
-          <Card.Body>
-            <Card.Title style={{ fontSize: '30px', textAlign: 'center' }}>
-              {props.specificStats.pending}</Card.Title>
-          </Card.Body>
-        </Card>
-        {/* </div> */}
-
-        {/* In Progress */}
-        {/* <div class="progress"> */}
-        <Card
-          bg={'success'}
-          text={'success' === 'light' ? 'dark' : 'white'}
-          style={{ width: '18rem' }}
-          className="mb-2"
-        >
-          <Card.Header style={{ fontSize: '15px', textAlign: 'center' }}>
-            In Progress:</Card.Header>
-          <Card.Body>
-            <Card.Title style={{ fontSize: '30px', textAlign: 'center' }}>
-              {props.specificStats.in_Progress}</Card.Title>
-          </Card.Body>
-        </Card>
-        {/* </div> */}
+      <section className="all__stats">
+        <section className="property__images">
+          <CardDeck>
+            <Card>
+              <Card.Img variant="top" src={prop1} />
+              <Card.Body>
+                <Card.Title>42 Wallaby Way TOronto, ON M9F 1T5</Card.Title>
+              </Card.Body>
+              <Card.Footer>
+                <small className="text-muted">Last updated 3 mins ago</small>
+              </Card.Footer>
+            </Card>
+            <Card>
+              <Card.Img variant="top" src={prop2} />
+              <Card.Body>
+                <Card.Title>42 Wallaby Way TOronto, ON M9F 1T5</Card.Title>
+              </Card.Body>
+              <Card.Footer>
+                <small className="text-muted">Last updated 3 mins ago</small>
+              </Card.Footer>
+            </Card>
+            <Card>
+              <Card.Img variant="top" src={prop3} />
+              <Card.Body>
+                <Card.Title>42 Wallaby Way TOronto, ON M9F 1T5</Card.Title>
+              </Card.Body>
+              <Card.Footer>
+                <small className="text-muted">Last updated 3 mins ago</small>
+              </Card.Footer>
+            </Card>
+          </CardDeck>
+        </section>
+        <section className="ticket__info__all">
+          <Button variant="danger" size="lg">
+            Unresolved Tickets:  <Badge style={{fontSize: '25px'}} variant="light">{props.specificStats.totalUnsolved}</Badge>
+            <span className="sr-only">unread messages</span>
+          </Button>
+          <Button variant="warning" size="lg">
+            Pending Tickets:  <Badge style={{fontSize: '25px'}} variant="light">{props.specificStats.pending}</Badge>
+            <span className="sr-only">unread messages</span>
+          </Button>
+          <Button variant="success" size="lg">
+            In Progress:  <Badge style={{fontSize: '25px'}} variant="light">{props.specificStats.in_Progress}</Badge>
+            <span className="sr-only">unread messages</span>
+          </Button>
+        </section>
+        <section className="card__graph">
+          <section className="property__cards">
+            <Card>
+              <Card.Img variant="top" src={money} style={{ paddingLeft: '90px', paddingRight: '90px', paddingTop: '30px', paddingBottom: '5px' }} />
+              <Card.Body>
+                <Card.Text>
+                  Total Maintenance Expenses
+              </Card.Text>
+                <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >$12, 356</Card.Title>
+              </Card.Body>
+            </Card>
+          </section>
+          <section className="graph__comparison">
+            <Card>
+              <Card.Header>Total Maintenance Cost</Card.Header>
+              <Card.Body>
+                <Comparison_Chart ticketsOrganizedByProperty={ticketsOrganizedByProperty} properties={properties} />
+              </Card.Body>
+            </Card>
+          </section>
+        </section>
       </section>
-      <section className="expenses__info">
-          <Card border="primary" style={{ width: '18rem' }}>
-            <Card.Header style={{ fontSize: '20px', textAlign: 'center' }}>
-              Total Expenses: January 2019 - December 2020</Card.Header>
-            <Card.Body>
-              <Card.Title style={{ fontSize: '40px', textAlign: 'center' }}>
-                $12,432</Card.Title>
-            </Card.Body>
-          </Card>
-      </section>
-      <section className="graph__allProperties">
-        <Card>
-          <Card.Header>Total Maintenance Cost</Card.Header>
-          <Card.Body>
-            <Comparison_Chart ticketsOrganizedByProperty = {ticketsOrganizedByProperty} properties = {properties} />
-          </Card.Body>
-        </Card>
-
-      </section>
-      {/* </main> */}
     </>
   );
-};
+}
