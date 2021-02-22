@@ -10,8 +10,7 @@ import Map_SideBar from "./property_map";
 
 
 export default function Side_NavBar_Emp(props) {
-  const { selectProperty, properties } = props;
-
+  const { selectProperty, properties, selectedProperty } = props;
   return (
     <>
       <main className="layout" style={{ backgroundImage: 'linear-gradient(#f67a36,#ed008c)' }}>
@@ -49,6 +48,7 @@ export default function Side_NavBar_Emp(props) {
             <PropertyList
               selectProperty={selectProperty}
               properties={properties}
+              selectedProperty = {selectedProperty}
 
             />
           </nav>

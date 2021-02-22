@@ -25,7 +25,7 @@ export default function Top_NavBar_PM_Tickets(props) {
 
   return (
     <div classname="App">
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="light">
         <Button onClick={goToStatsPage}>View Statistic Summary</Button>
   <Navbar.Brand href="#home">M Tracker</Navbar.Brand>
   <Navbar.Toggle />

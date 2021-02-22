@@ -214,6 +214,7 @@ export default function Dashboard_PM_Stats(props) {
             <Side_NavBar_PM_Stats
               selectProperty = {selectProperty}
               properties= {state_PM_Stats.properties}
+              selectedProperty = {state_PM_Stats.selectedProperty}
             />
           </div>
           <div className="dashboard-interface">
