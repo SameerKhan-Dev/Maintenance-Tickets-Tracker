@@ -26,16 +26,17 @@ export default function Top_NavBar_PM_Stats(props) {
   return (
     <div classname="App">
       <Navbar collapseOnSelect expand="lg" bg='dark' variant="light">
-  {/* <Navbar.Brand href="#home">M Tracker</Navbar.Brand> */}
-  <Navbar.Toggle />
-  <Navbar.Collapse className="justify-content-end">
-    <Navbar.Text>
-      Signed in as: <a href="#login">{loggedInUserEmail}</a>
-    </Navbar.Text>
+      <Button onClick={goToTicketPage}>View Tickets</Button>
+        {/* <Navbar.Brand href="#home">M Tracker</Navbar.Brand> */}
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+            Signed in as: <a href="#login">{loggedInUserEmail}</a>
+          </Navbar.Text>
 
-    <Button variant="dark">Logout</Button>
-  </Navbar.Collapse>
-</Navbar>
+          <Button variant="dark">Logout</Button>
+        </Navbar.Collapse>
+      </Navbar>
     </div>
   );
 
