@@ -16,7 +16,6 @@ export default function Dashboard_Tenant(props) {
           <Top_NavBar_Tenant loggedInUserEmail={props.loggedInUserEmail} />
         </div>
         <section className="Tenant_View">
-          <h1 className="Text--address-header"></h1>
           <Issue_Form />
         </section>
       </div>

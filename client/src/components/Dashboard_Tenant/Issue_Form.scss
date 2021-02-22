@@ -1,0 +1,44 @@
+.issue-form {
+  margin: 15%;
+  // margin-left: 15%;
+  background-color: rgb(10, 10, 10);
+  padding: 2%;
+  opacity: 85%;
+}
+
+// .card-img-overley {
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   padding: 1.25rem;
+//   border-radius: calc(0.25rem - 1px);
+// }
+
+.maintenance-radio-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -70px;
+  margin-left: 40px;
+  justify-content: flex-start;
+}
+
+.maintenance-types {
+  margin-bottom: 0;
+  padding-left: 5px;
+}
+
+.text-address {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.text-label {
+  font-size: 1.4em;
+  font-weight: 600;
+  padding-bottom: 15px;
+}
