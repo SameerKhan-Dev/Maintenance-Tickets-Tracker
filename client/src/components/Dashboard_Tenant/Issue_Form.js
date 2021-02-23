@@ -7,10 +7,9 @@ import { Button, Form, Col, Row } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
-import BackgroundImagePage from "./BackgroundImagePage";
 
 import background from "./assets/background.jpg";
-import property1 from "./assets/adrien-olichon_Rev.png";
+
 import "./Issue_Form.scss";
 
 export default function Issue_Form(props) {
@@ -81,6 +80,10 @@ export default function Issue_Form(props) {
 
   return (
     <>
+      <h5 className="text-address">
+        Address: <b>3116 Brando Gateway</b>
+      </h5>
+
       <Image
         src={background}
         alt="background img"
@@ -88,13 +91,6 @@ export default function Issue_Form(props) {
         className="tenant-form-bkg"
       />
       <Container fluid="md" className="issue-container">
-        {/* <BackgroundImagePage /> */}
-        {/* <Card className="bg-dark text-white">
-        <Card.Body className="text-address">
-          Address: 3116 Brando Gateway
-        </Card.Body>
-        <Card.Img src={background} alt="background img" />
-        <Card.ImgOverlay> */}
         <Row>
           <Col>
             <Form
@@ -106,7 +102,7 @@ export default function Issue_Form(props) {
                   Please fill out the maintenance request and select a
                   maintenance type:
                 </Form.Text>
-                <Form.Label column sm={4}>
+                <Form.Label column sm={4} className="text-label-form">
                   Description:
                 </Form.Label>
                 <Col sm={10}>
@@ -122,8 +118,13 @@ export default function Issue_Form(props) {
               </Form.Group>
 
               <fieldset>
-                <Form.Group as={Col}>
-                  <Form.Label as="legend" column sm={6}>
+                <Form.Group as={Col} className="maintenance-form-group">
+                  <Form.Label
+                    as="legend"
+                    column
+                    sm={6}
+                    className="text-label-form"
+                  >
                     Maintenance Type:
                   </Form.Label>
                   <Row sm={5} className="maintenance-radio-buttons">
@@ -135,9 +136,11 @@ export default function Issue_Form(props) {
                       id="plumbing"
                       value="plumbing"
                       checked={issue.maintenance_type === "plumbing"}
+                      className="maintenance-type-checked"
                       onChange={handleMaintenanceChange}
                     />
                     <Form.Check
+                      className="maintenance-types"
                       type="radio"
                       label="Electrical"
                       name="maintenance_type"
@@ -147,6 +150,7 @@ export default function Issue_Form(props) {
                       onChange={handleMaintenanceChange}
                     />
                     <Form.Check
+                      className="maintenance-types"
                       type="radio"
                       label="General Maintenance"
                       name="maintenance_type"
@@ -160,7 +164,7 @@ export default function Issue_Form(props) {
               </fieldset>
 
               <Form.Group as={Col}>
-                <Col sm={{ span: 10, offset: 7 }}>
+                <Col sm={{ span: 10, offset: 9 }}>
                   <Button type="submit" onClick={onSubmit}>
                     Submit maintenance request
                   </Button>
@@ -169,8 +173,7 @@ export default function Issue_Form(props) {
             </Form>
           </Col>
         </Row>
-        {/* </Card.ImgOverlay>
-      </Card> */}
+
         <MyVerticallyCenteredModal show={showModal} onHide={handleShowModal} />
       </Container>
     </>
