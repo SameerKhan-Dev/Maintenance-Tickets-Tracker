@@ -21,6 +21,56 @@ export default function Employee_Dashboard(props) {
     },
   });
 
+  const tenants = [
+    {
+      id: 13,
+      firstName: "Jack",
+      lastName: "Harvey",
+    },
+    {
+      id: 14,
+      firstName: "Carl",
+      lastName: "Cooper",
+    },
+    {
+      id: 15,
+      firstName: "Davey",
+      lastName: "Handerson",
+    },
+  ];
+  // ('Jack','Harvey','Jack_Harvey@yahoo.com','password',2,'2016-06-12T08:03:52.569Z'), /* Tenant */
+  // ('Carl','Harvey','car_harvey@yahoo.com','password',2,'2016-06-12T08:03:52.569Z'), /* Tenant  - OPTION*/
+  // ('Davey','Harvey','davey_harvey@yahoo.com','password',2,'2016-06-12T08:03:52.569Z'), /* Tenant - OPTION */
+
+  let tenantId = "";
+  for (let ticket of state_Employee.tickets) {
+    if (ticket.id === state_Employee.selectedTicket) {
+      tenantId = ticket.id;
+    }
+  }
+  console.log("tenantId: ", tenantId);
+
+  const getTenantNameByTenantId = function (tenantId) {
+    let tenantFirstName = "";
+    let tenantLastName = "";
+
+    for (let tenant of tenants) {
+      if (tenant.id === tenantId) {
+        console.log("inside if");
+        console.log("tenant.firstname = ", tenant.firstName);
+        tenantFirstName = tenant.firstname;
+        console.log("tenantFirstname = ", tenantFirstName);
+
+        tenantLastName = tenant.lastname;
+      }
+      // return { tenantFirstName, tenantLastName };
+      return tenantFirstName;
+    }
+  };
+  console.log("getTenantNameByTenantId: ", getTenantNameByTenantId(tenantId));
+
+  console.log("state_Employee.tickets: ", state_Employee.tickets);
+
   console.log("state_Employee.properties: ", state_Employee.properties);
   // ***********************************************************
   let addressForSelectedProperty = "";
