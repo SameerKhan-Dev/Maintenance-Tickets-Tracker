@@ -32,3 +32,19 @@
     }
   }
 }
+
+.text--regular--ticket {
+  text-align: center;
+  margin: 5px;
+  color: rgb(253, 253, 253);
+  &:hover {
+    color: #ef8633;
+  }
+  padding: 15px;
+}
+
+h2.text--regular--ticket {
+  &:hover {
+    background: #343a40;
+  }
+}

@@ -299,7 +299,7 @@ export default function Dashboard_PM_Tickets(props) {
 
   return (
     <>
-      <div style = {{width: '100%', zIndex: '200', position: 'absolute'}}>
+      <div className="topnav__tickets" style = {{width: '100%', zIndex: '200', position: 'absolute'}}>
         <Top_NavBar_PM_Tickets loggedInUserEmail={props.loggedInUserEmail} />
       </div>
       <div>
@@ -318,8 +318,8 @@ export default function Dashboard_PM_Tickets(props) {
             In-Progress: {specificStats.in_Progress}
           </Button>
         </>
-        <h1>
-          <Badge variant="secondary">Pending Tickets</Badge>
+        <h1 class="pending__tickets">
+          <Badge style={{backgroundColor: '#3f444e'}} variant="secondary">Pending Tickets</Badge>
         </h1>
 
         <Ticket_List_PM_Pending
@@ -328,7 +328,7 @@ export default function Dashboard_PM_Tickets(props) {
           assignEmployeeToTicket={assignEmployeeToTicket}
         />
         <h1>
-          <Badge variant="secondary">In-Progress</Badge>
+          <Badge style={{backgroundColor: '#3f444e'}} variant="secondary">In-Progress</Badge>
         </h1>
         <Ticket_List_PM_In_Progress
           ticketsInProgress={ticketsInProgress}

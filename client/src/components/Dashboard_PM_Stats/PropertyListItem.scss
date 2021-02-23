@@ -37,12 +37,12 @@
   margin: 5px;
   color: rgb(253, 253, 253);
   &:hover {
-    color: navy;
+    color: #ef8633;
   }
 }
 
-h2.text--regular {
-  &:hover {
-    background-color:rgb(107, 154, 255);
-  }
-}
+// h2.text--regular {
+//   &:hover {
+//     background: radial-gradient(#2c2b2b, #9198e5);
+//   }
+// }

@@ -7,6 +7,8 @@ import "./map.scss";
 //import Ticket_List from  "./Ticket_List"
 import PropertyList from "./PropertyList";
 import Map_SideBar from "./property_map";
+import logo from "../MTrack_White.png"
+
 
 
 export default function Side_NavBar_Emp(props) {
@@ -29,11 +31,15 @@ export default function Side_NavBar_Emp(props) {
           <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
         </head>
         <section className="sidebar">
-          {/* <img
-            className="sidebar--centered"
-            src="images/logo.png"
-            alt="Interview Scheduler"
-          /> */}
+          <section className="image__logo">
+            {<img
+              alt=""
+              src={logo}
+              width="180"
+              height="34"
+              className="d-inline-block align-top"
+            />}
+          </section>
           {/* <h1>My Properties</h1> */}
           <hr className="sidebar__separator sidebar--centered" />
           <nav className="sidebar__menu">'
@@ -48,7 +54,7 @@ export default function Side_NavBar_Emp(props) {
             <PropertyList
               selectProperty={selectProperty}
               properties={properties}
-              selectedProperty = {selectedProperty}
+              selectedProperty={selectedProperty}
 
             />
           </nav>

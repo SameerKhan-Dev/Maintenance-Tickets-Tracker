@@ -19,68 +19,8 @@ export default function Employee_Dashboard(props) {
       pending: 0,
       in_Progress: 0,
     },
+    recentlyResolvedTickets: [],
   });
-
-  const tenants = [
-    {
-      id: 13,
-      firstName: "Jack",
-      lastName: "Harvey",
-    },
-    {
-      id: 14,
-      firstName: "Carl",
-      lastName: "Cooper",
-    },
-    {
-      id: 15,
-      firstName: "Davey",
-      lastName: "Handerson",
-    },
-  ];
-  // ('Jack','Harvey','Jack_Harvey@yahoo.com','password',2,'2016-06-12T08:03:52.569Z'), /* Tenant */
-  // ('Carl','Harvey','car_harvey@yahoo.com','password',2,'2016-06-12T08:03:52.569Z'), /* Tenant  - OPTION*/
-  // ('Davey','Harvey','davey_harvey@yahoo.com','password',2,'2016-06-12T08:03:52.569Z'), /* Tenant - OPTION */
-
-  let tenantId = "";
-  for (let ticket of state_Employee.tickets) {
-    if (ticket.id === state_Employee.selectedTicket) {
-      tenantId = ticket.id;
-    }
-  }
-  console.log("tenantId: ", tenantId);
-
-  const getTenantNameByTenantId = function (tenantId) {
-    let tenantFirstName = "";
-    let tenantLastName = "";
-
-    for (let tenant of tenants) {
-      if (tenant.id === tenantId) {
-        console.log("inside if");
-        console.log("tenant.firstname = ", tenant.firstName);
-        tenantFirstName = tenant.firstname;
-        console.log("tenantFirstname = ", tenantFirstName);
-
-        tenantLastName = tenant.lastname;
-      }
-      // return { tenantFirstName, tenantLastName };
-      return tenantFirstName;
-    }
-  };
-  console.log("getTenantNameByTenantId: ", getTenantNameByTenantId(tenantId));
-
-  console.log("state_Employee.tickets: ", state_Employee.tickets);
-
-  console.log("state_Employee.properties: ", state_Employee.properties);
-  // ***********************************************************
-  let addressForSelectedProperty = "";
-  for (const propertyObject of state_Employee.properties) {
-    if (propertyObject.id === state_Employee.selectedProperty) {
-      addressForSelectedProperty = propertyObject.address;
-    }
-  }
-  console.log("addressForSelectedProperty: ", addressForSelectedProperty);
-  // ***********************************************************
 
   const selectTicket = function (ticket_id) {
     setState_Employee((prev) => ({ ...prev, selectedTicket: ticket_id }));
@@ -94,6 +34,8 @@ export default function Employee_Dashboard(props) {
   };
   const setLocalTicketToResolved = function (ticket_id) {
     let tickets = [...state_Employee.tickets];
+    //let recentTickets = [...state_Employee.recentlyResolvedTickets];
+    let recentTickets = [];
     console.log("inside setLocalTicketsToResolve");
     for (let ticket of tickets) {
       if (ticket.id === ticket_id) {
@@ -101,16 +43,35 @@ export default function Employee_Dashboard(props) {
         console.log("Set the status_id inside setLocalTicketToResolved!");
         console.log("ticket.ticket_status_id is: ", ticket.ticket_status_id);
         console.log("ticket is: ", ticket);
+        recentTickets.push(ticket_id);
       }
     }
     setState_Employee((prev) => ({
       ...prev,
       tickets: tickets,
       selectedTicket: 0,
+      recentlyResolvedTickets: recentTickets,
     }));
     console.log("INSIDE: tickets is: ", tickets);
   };
 
+  const removeRecentlyModifiedTicket = function (ticket_id) {
+    let recentTickets = [...state_Employee.recentlyResolvedTickets];
+
+    for (let x = 0; x < recentTickets.length; x++) {
+      if (recentTickets[x].id === ticket_id) {
+        recentTickets.splice(x, 1);
+      }
+    }
+    setState_Employee((prev) => ({
+      ...prev,
+      recentlyResolvedTickets: recentTickets,
+    }));
+  };
+  console.log(
+    "RecentlyResolved Tickets is: ",
+    state_Employee.recentlyResolvedTickets
+  );
   const getSelectedPropertyName = function () {
     if (state_Employee.selectedProperty === 0) {
       return "All Properties";
@@ -127,15 +88,11 @@ export default function Employee_Dashboard(props) {
 
   console.log("selectedProperty is: ", state_Employee.selectedProperty);
   /* selected property
-
     1) In my useEffect - i need to make an axios call to /employee_properites/:employee_id:
       - store resulting properties: inside state_Employee. properties.
-
     2) create a handler selectProperty and attach it to all drop-down menu option onClick
        - this changes the selectedProperty state inside state_Employee
-
     3) function that builds tickets based on - selectedProperty value inside
-
  */
 
   const specificTicket = function () {
@@ -180,7 +137,6 @@ export default function Employee_Dashboard(props) {
   };
   /*
 const getEmployeeInProgressTickets = function () {
-
   let inProgressTickets = [];
   // for all properties
     for (let ticket of state_Employee.tickets) {
@@ -190,7 +146,6 @@ const getEmployeeInProgressTickets = function () {
       }
       console.log(ticket);
     }
-
   return inProgressTickets;
  }
  */
@@ -240,13 +195,13 @@ const getEmployeeInProgressTickets = function () {
       <div className="DivEmployee_Interface">
         <div className="DivEmployee_Interface">
           <Employee_Interface
+            recentlyResolvedTickets={state_Employee.recentlyResolvedTickets}
             setLocalTicketToResolved={setLocalTicketToResolved}
             selectedTicketInfo={selectedTicketInfo}
             selectedProperty={state_Employee.selectedProperty}
             selectedTicket={state_Employee.selectedTicket}
             tickets={employeeInProgressTickets}
             properties={state_Employee.properties}
-            addressForSelectedProperty={addressForSelectedProperty}
           />
         </div>
       </div>

@@ -22,7 +22,7 @@ export default function PropertyListItem_Tickets(props) {
       selectProperty(property_id);
      
       }} >
-      <h2 className="text--regular">{props.name}</h2>
+      <h2 className="text--regular--ticket">{props.name}</h2>
     </li>
   );
 }

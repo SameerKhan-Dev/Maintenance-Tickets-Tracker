@@ -4,11 +4,11 @@ import PropertyListItem_Tickets from "./PropertyListItem_Tickets"
 
 export default function Propertylist_Tickets(props){
 
-  const {selectProperty, properties} = props;
+  const {selectProperty, properties, selectedProperty} = props;
 
   const propertiesListArray = properties.map((property) => {
     return (
-      <PropertyListItem_Tickets
+      <PropertyListItem_Tickets style={{backgroundColor: selectedProperty === property.id ? `#343a40` : `transparent`}}
         property_id = {property.id}
         selectProperty = {selectProperty}
         key={property.id}
@@ -25,7 +25,7 @@ export default function Propertylist_Tickets(props){
       selectProperty(0);
      
                         }} >
-      <h2 className="text--regular">All Properties</h2>
+      <h2 className="text--regular--ticket">All Properties</h2>
     </li>
     {propertiesListArray}
     </>  
