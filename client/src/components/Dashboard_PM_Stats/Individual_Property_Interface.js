@@ -116,7 +116,7 @@ export default function Individual_Property_Interface(props) {
             <Card.Img variant="top" src={money} style={{ height: '200px', width: '400px', paddingLeft: '90px', paddingRight: '90px', paddingTop: '30px', paddingBottom: '5px' }} />
             <Card.Body>
               <Card.Text>
-                Total Expenses
+                <b>Total Expenses</b>
             </Card.Text>
             <Card.Text>
                 January 2020 - 2021
@@ -127,15 +127,18 @@ export default function Individual_Property_Interface(props) {
           <Card>
             <Card.Body>
             <Card.Text>
-                Plumbing (2020-2021)
+                <b>Overview (2020-2021)</b>
+            </Card.Text>
+            <Card.Text>
+                Plumbing
             </Card.Text>
               <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >${ costsByType.plumbingCosts}</Card.Title>
               <Card.Text>
-                Electrical (2020-2021)
+                Electrical
             </Card.Text>
               <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >${costsByType.electricalCosts}</Card.Title>
               <Card.Text>
-                General Maint. (2020-2021)
+                General Maint.
             </Card.Text>
               <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >${costsByType.general}</Card.Title>
             

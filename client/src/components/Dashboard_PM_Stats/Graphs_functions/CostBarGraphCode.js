@@ -394,11 +394,11 @@ let generalAvgEstCost = 0;
 //outputs as object
 
 for (let i = 0; i < tickets.length; i++) {
-  if (tickets[i].maintenance_type_id === 1) {
+  if (tickets[i].maintenance_type_id === 1 && tickets[i].ticket_status_id === 3) {
     plumbingTickets.push(tickets[i])
-  } else if (tickets[i].maintenance_type_id === 2) {
+  } else if (tickets[i].maintenance_type_id === 2 && tickets[i].ticket_status_id === 3) {
     electricalTickets.push(tickets[i])
-  } else if (tickets[i].maintenance_type_id === 3) {
+  } else if (tickets[i].maintenance_type_id === 3 && tickets[i].ticket_status_id === 3) {
     generalTickets.push(tickets[i])
   }
 }
