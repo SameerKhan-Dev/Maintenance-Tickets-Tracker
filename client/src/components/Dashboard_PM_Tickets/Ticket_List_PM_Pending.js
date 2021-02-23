@@ -79,7 +79,7 @@ export default function Ticket_List_PM_Pending(props) {
     <section className="tickets">
       <ListGroup>
         {ticketsPending.map((ticket) => (
-          <ListGroup.Item action variant="light">
+          <ListGroup.Item style={{backgroundColor: 'rgba(255, 166, 0, 0.397)'}}action variant="light">
             <Ticket_List_Item_PM
               assignEmployeeToTicket={assignEmployeeToTicket}
               key={ticket.id}

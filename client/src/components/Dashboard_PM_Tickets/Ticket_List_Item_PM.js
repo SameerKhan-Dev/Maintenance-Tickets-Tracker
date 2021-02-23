@@ -79,30 +79,44 @@ export default function Ticket_List_Item_PM(props) {
     <main className="ticket__cards">
       <section className="ticket__card-left">
         {/* <div>{unit}</div> */}
-        <div className="maintenance__type"><b>Maintenance type: </b>{maintenance_type}</div>
+        <div className="maintenance__ticket__id">
+          <div className="maintenance__type"><b>Maintenance type: </b>{maintenance_type}</div>
+          <div className="ticket__id"><b>Ticket ID: </b>{ticketID}</div>
+        </div>
         <div className="ticket__description"><b>Description: </b>{description}</div>
       </section>
-      {/*
-      <section className="ticket__validation">
-        <Employee_List_PM employeeList={employees} />
-      </section>
-      */}
+
       <section className="ticket__card-right">
         <div className="ticket__status">{ticketStatus}</div>
-        <div className="ticket__id"><b>Ticket ID: </b>{ticketID}</div>
-        <div className="created__at"><b>Created at: </b>{createdAt.substr(0, 10)}</div>
+        <div className="created__at"><b>Created at: </b> {createdAt.substr(0, 10)}</div>
       </section>
+      {/* <section className="test__button">
+            <a href="#" class="cta">
+            <span>Assign Employee</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+              <path d="M1,5 L11,5"></path>
+              <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+          </a>
+        </section> */}
       <>
         {employee_id === null ? (
-          <Button action variant="success" onClick={() => setModalShow(true)}>
-            Assign Employee
-          </Button>
+          <section onClick={() => setModalShow(true)}> 
+            <a href="#" class="cta">
+              <span>Assign Employee</span>
+              <svg width="13px" height="10px" viewBox="0 0 13 10">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+              </svg>
+            </a>
+          </section>
+
         ) : (
-          <Button variant="secondary" onClick={() => setModalShow(true)}>
-            Assigned to: {getEmployeeName(employee_id)}
-          </Button>
-        )}
-        <MyVerticallyCenteredModal
+            <Button action variant="primary" onClick={() => setModalShow(true)}>
+              Assigned to: {getEmployeeName(employee_id)}
+            </Button>
+          )}
+        <MyVerticallyCenteredModal style={{ backgroundColor: 'rgba(0, 0, 0, 0.56)' }}
           employeeList={employees}
           description={description}
           employee_id={employee_id}

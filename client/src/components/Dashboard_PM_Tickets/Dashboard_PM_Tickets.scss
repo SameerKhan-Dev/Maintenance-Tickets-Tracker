@@ -7,7 +7,18 @@
 .dashboard-interface {
     width: 100%;
     // padding-left: 10px;
-    padding-left: 300px;
-    padding-top: 10px;
+    padding-left: 320px;
+    padding-top: 20px;
+    padding-right: 30px;
+
 }
 
+.pending__tickets {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.topnav__tickets {
+    position: sticky;
+    top: 0;
+}

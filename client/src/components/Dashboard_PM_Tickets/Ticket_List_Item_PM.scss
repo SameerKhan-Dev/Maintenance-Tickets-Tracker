@@ -5,33 +5,107 @@
 }
 
 .ticket__card-left, .ticket__card-right {
-  color: black;
   font-size: 20px;
 }
 
-// //right
+.maintenance__ticket__id {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+.ticket__card-left, .ticket__id {
+  color: black;
+}
 
-// .ticket__status {
-//   color: black;
-//   font-size: 20px;
+.ticket__id {
+  display: flex;
+  justify-content: flex-end;
+}
+.created__at {
+  padding-bottom: 5px;
+  color:rgba(3, 3, 3, 0.678);
+  display: flex;
+  justify-content: flex-end;
+}
 
-// }
+.test__button {
+  padding: 4px;
+}
 
-// .ticket__id {
-//   color: black;
-//   font-size: 20px;
-// }
-
-// .created__at {
-//   color: black;
-//   font-size: 20px;
-// }
+.button {
+  background-color: grey;
+}
 
 
+$color: #111;
+$primary: grey;
 
-// // left
+;html, body {
+  height: 100%;
+}
 
-// .maintenance__type {
-//   color: black;
-//   font-size: 20px
-// }
+.body {
+  display: grid;
+  font-family: Avenir, sans-serif;
+  color: grey;
+}
+  
+.a {
+  text-decoration: none;
+}
+
+.cta {
+  position: relative;
+  margin: auto;
+  padding: 10px 22px;
+  transition: all .2s ease;
+  color: #ef8633;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 28px;
+    background: rgba($primary,.5);
+    width: 40px;
+    height: 40px;
+    transition: all .3s ease;
+    
+  }
+  span {
+    position: relative;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 900;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    vertical-align: middle;
+    color: #ef8633;
+  }
+  svg {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: $color;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all .3s ease;
+  }
+  &:hover {
+    &:before {
+      width: 100%;
+      background: rgba($primary,1);
+  }
+    svg {
+      transform: translateX(0);
+      color: #ef8633;
+    }
+  &:active {
+    transform: scale(.96);
+  }
+  }
+}
