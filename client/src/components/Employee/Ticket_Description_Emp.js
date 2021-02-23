@@ -1,9 +1,26 @@
 import React, { useState } from "react";
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 export default function Ticket_Description(props) {
+  const tenants = [
+    {
+      id: 13,
+      firstName: "Jack",
+      lastName: "Harvey",
+    },
+    {
+      id: 14,
+      firstName: "Carl",
+      lastName: "Cooper",
+    },
+    {
+      id: 15,
+      firstName: "Davey",
+      lastName: "Handerson",
+    },
+  ];
+
   const {
     ticketID,
     ticketStatus,
@@ -14,22 +31,41 @@ export default function Ticket_Description(props) {
     maintenanceType,
     description,
     image_path,
-    selectedTicketInfo
+    selectedTicketInfo,
   } = props;
-  console.log("inside Ticket_Description component: value of selectedTicketInfo is: ", selectedTicketInfo);
+  console.log(
+    "inside Ticket_Description component: value of selectedTicketInfo is: ",
+    selectedTicketInfo
+  );
   return (
-    
-
     <>
       <Card>
         <Card.Body>
-          <Card.Title><b>Description of Issue:</b></Card.Title>
-          <Card.Text>
-            {selectedTicketInfo.description}
-          </Card.Text>
+          {selectedTicketInfo.creator_id === 13 && (
+            <Card.Title>
+              <b>Submitted By: </b>
+              {`${tenants[0].firstName} ${tenants[0].lastName}`}
+            </Card.Title>
+          )}
+          {selectedTicketInfo.creator_id === 14 && (
+            <Card.Title>
+              <b>Submitted By: </b>
+              {`${tenants[1].firstName} ${tenants[1].lastName}`}
+            </Card.Title>
+          )}
+          {selectedTicketInfo.creator_id === 15 && (
+            <Card.Title>
+              <b>Submitted By: </b>
+              {`${tenants[2].firstName} ${tenants[2].lastName}`}
+            </Card.Title>
+          )}
+          <Card.Title>
+            <b>Description of Issue:</b>
+          </Card.Title>
+          <Card.Text>{selectedTicketInfo.description}</Card.Text>
         </Card.Body>
       </Card>
-     {/*   
+      {/*   
     <section className="ticket__card-description">
       <h2>Description of Issue:</h2>
       <div>{selectedTicketInfo.description}</div>
