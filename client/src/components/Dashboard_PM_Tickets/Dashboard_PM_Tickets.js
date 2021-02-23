@@ -17,6 +17,9 @@ import ToastBody from "react-bootstrap/ToastBody";
 import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
 import MyVerticallyCenteredModal from "./specificTicket_Modal";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Card } from "react-bootstrap";
+import "./Dashboard_PM_Tickets.scss";
 
 export default function Dashboard_PM_Tickets(props) {
   console.log("****Inside Dashboard_PM_Tickets -- props = ", props);
@@ -37,12 +40,33 @@ export default function Dashboard_PM_Tickets(props) {
       in_Progress: 0,
     },
   });
-  // add tickete
+
+  console.log("***state_PM_Tickets.properties = ", state_PM_Tickets.properties);
+  console.log("***state_PM_Tickets.tickets = ", state_PM_Tickets.tickets);
+  console.log(
+    "***state_PM_Tickets.ticketsOrganizedByProperty = ",
+    state_PM_Tickets.ticketsOrganizedByProperty
+  );
+
+  // Grab address and image for selected property
+  let addressForSelectedProperty = "";
+  let imagePathForSelectedProperty = "";
+  for (const propertyObject of state_PM_Tickets.properties) {
+    if (propertyObject.id === state_PM_Tickets.selectedProperty) {
+      addressForSelectedProperty = propertyObject.address;
+      imagePathForSelectedProperty = propertyObject.image_path;
+    }
+  }
+  // console.log("***addressForSelectedProperty = ", addressForSelectedProperty);
+  // console.log(
+  //   "***imagePathForSelectedProperty = ",
+  //   imagePathForSelectedProperty
+  // );
 
   const assignEmployeeToTicket = function (ticket_id, employee_id) {
-    console.log("inside assignEmployeeToTicket!");
-    console.log("ticket_id is: ", ticket_id);
-    console.log("employee_id is:", employee_id);
+    // console.log("inside assignEmployeeToTicket!");
+    // console.log("ticket_id is: ", ticket_id);
+    // console.log("employee_id is:", employee_id);
     return axios
       .put(`/tickets/assignEmployee`, {
         ticket_id: ticket_id,
@@ -89,8 +113,8 @@ export default function Dashboard_PM_Tickets(props) {
         },
       });
     }
-    console.log("ticketsOrganizedByProperty is: ");
-    console.log(ticketsOrganizedByProperty);
+    // console.log("ticketsOrganizedByProperty is: ");
+    // console.log(ticketsOrganizedByProperty);
 
     // filter and store tickets for each property_id
     for (let property of ticketsOrganizedByProperty) {
@@ -100,10 +124,10 @@ export default function Dashboard_PM_Tickets(props) {
         }
       }
     }
-    console.log(
-      "ticketsOrganizedByProperty is: ",
-      state_PM_Tickets.ticketsOrganizedByProperty
-    );
+    // console.log(
+    //   "ticketsOrganizedByProperty is: ",
+    //   state_PM_Tickets.ticketsOrganizedByProperty
+    // );
     // then filter and build stats for each property and add to the corresponding properties array - loop through tickets and
     for (let property of ticketsOrganizedByProperty) {
       // loop through the property's ticketData to build the stats
@@ -208,8 +232,8 @@ export default function Dashboard_PM_Tickets(props) {
     const property_id = state_PM_Tickets.selectedProperty;
 
     for (let propertyObject of ticketsOrganizedByProperty) {
-      //console.log("propertyObject.ticketsArray is: ");
-      //console.log(propertyObject.ticketsArray);
+      // console.log("propertyObject.ticketsArray is: ");
+      // console.log(propertyObject.ticketsArray);
 
       if (propertyObject.property_id === property_id) {
         //console.log("propertyObject.ticketsArray is: ");
@@ -231,15 +255,15 @@ export default function Dashboard_PM_Tickets(props) {
 
   const ticketsPending = setTicketsPending();
   const ticketsInProgress = setTicketsInProgress();
-  console.log(
-    "Current selected property is: ",
-    state_PM_Tickets.selectedProperty
-  );
-  console.log(
-    "Current ticketsOrganizedByProperty is: ",
-    state_PM_Tickets.ticketsOrganizedByProperty
-  );
-  console.log("Pending Tickets are: ", state_PM_Tickets.ticketsPending);
+  // console.log(
+  //   "Current selected property is: ",
+  //   state_PM_Tickets.selectedProperty
+  // );
+  // console.log(
+  //   "Current ticketsOrganizedByProperty is: ",
+  //   state_PM_Tickets.ticketsOrganizedByProperty
+  // );
+  // console.log("Pending Tickets are: ", state_PM_Tickets.ticketsPending);
 
   let specificStats = obtainStats(
     ticketsOrganizedByProperty,
@@ -275,6 +299,9 @@ export default function Dashboard_PM_Tickets(props) {
 
   return (
     <>
+      <div style = {{width: '100%', zIndex: '200', position: 'absolute'}}>
+        <Top_NavBar_PM_Tickets loggedInUserEmail={props.loggedInUserEmail} />
+      </div>
       <div>
         <Side_NavBar_PM_Tickets
           selectProperty={selectProperty}
@@ -282,7 +309,6 @@ export default function Dashboard_PM_Tickets(props) {
         />
       </div>
       <div className="dashboard-interface">
-        <Top_NavBar_PM_Tickets loggedInUserEmail={props.loggedInUserEmail} />
         <>
           <Button variant="success">
             Total: {specificStats.totalUnsolved}

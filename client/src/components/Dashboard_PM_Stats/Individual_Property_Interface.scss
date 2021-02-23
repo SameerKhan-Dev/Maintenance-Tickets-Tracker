@@ -1,0 +1,83 @@
+.Text--address-header {
+  height: 100%;
+}
+
+.stats__view {
+  display:flex;
+  flex-direction: column;
+  // display: inline-block;
+  margin: 5px;
+  padding: 5px;
+  padding-left: 10px;
+  gap: 30px;
+}
+
+.prop__data {
+  display: flex;
+  gap: 30px;
+}
+
+.left {
+  display:flex;
+  width: 50%;
+  display: inline-block;
+}
+
+.right {
+  display: flex;
+  width: 50%;
+  display: inline-block;
+}
+
+.ticket__info {
+  display: flex;
+  flex-direction: column;
+  width: unset;
+  padding: 10px;
+}
+
+.unsolved {
+  align-self: center;
+}
+
+.pending__progress {
+  display: flex;
+  width: 100%;
+}
+
+.expenses__info {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pending__progress {
+  margin-left: 5px;
+}
+
+.property__cards__ind {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+
+}
+
+.address__title {
+  width: 50%;
+  padding-right: 15px;
+}
+
+.top {
+  display: flex;
+}
+
+.ticket__info__specific {
+  padding: 20px;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}

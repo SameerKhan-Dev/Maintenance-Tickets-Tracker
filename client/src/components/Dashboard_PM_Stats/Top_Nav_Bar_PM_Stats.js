@@ -10,7 +10,8 @@ import "./Top_Nav_Bar_PM_Stats.scss";
 // import PropertyList from "./PropertyList";
 // import Map_SideBar from "./property_map";
 
-export default function Top_NavBar_PM_Tickets(props) {
+
+export default function Top_NavBar_PM_Stats(props) {
   const history = useHistory();
 
   const goToTicketPage = function () {
@@ -24,8 +25,8 @@ export default function Top_NavBar_PM_Tickets(props) {
   );
   return (
     <div classname="App">
-      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-        <Button onClick={goToTicketPage}>View Tickets</Button>
+      <Navbar collapseOnSelect expand="lg" bg='dark' variant="light">
+      <Button onClick={goToTicketPage}>View Tickets</Button>
         {/* <Navbar.Brand href="#home">M Tracker</Navbar.Brand> */}
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
@@ -33,7 +34,7 @@ export default function Top_NavBar_PM_Tickets(props) {
             Signed in as: <a href="#login">{loggedInUserEmail}</a>
           </Navbar.Text>
 
-          <Button variant="light">Logout</Button>
+          <Button variant="dark">Logout</Button>
         </Navbar.Collapse>
       </Navbar>
     </div>

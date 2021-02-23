@@ -22,12 +22,12 @@ export default function Side_NavBar_PM_Tickets(props) {
           />
         </head>
         <section className="sidebar">
-          <img
+          {/* <img
             className="logo"
             src="images/MTrack.png"
             alt="Maintenance Tracking System"
           />
-          <img />
+          <img /> */}
           <hr className="sidebar__separator sidebar--centered" />
           <nav className="sidebar__menu">
             '
