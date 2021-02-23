@@ -92,6 +92,7 @@ export default function Ticket_List_PM_Pending(props) {
               maintenanceTypeID={ticket.maintenance_type_id}
               description={ticket.description}
               employee_id={null}
+              creator_id={ticket.creator_id}
             />
           </ListGroup.Item>
         ))}

@@ -91,6 +91,7 @@ export default function Ticket_List_PM_In_Progress(props) {
               // employeeName=,
               maintenanceType={ticket.maintenanceType}
               description={ticket.description}
+              creator_id={ticket.creator_id}
             />
           </ListGroup.Item>
         ))}

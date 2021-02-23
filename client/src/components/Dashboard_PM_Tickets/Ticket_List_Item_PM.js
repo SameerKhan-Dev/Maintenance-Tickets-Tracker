@@ -19,6 +19,7 @@ export default function Ticket_List_Item_PM(props) {
     maintenanceTypeID,
     maintenanceType,
     description,
+    creator_id,
   } = props;
 
   // assignEmployeeToTicket={assignEmployeeToTicket}
@@ -53,6 +54,24 @@ export default function Ticket_List_Item_PM(props) {
       id: 26,
       name: "Rogers",
       role_id: 5,
+    },
+  ];
+
+  const tenants = [
+    {
+      id: 13,
+      firstName: "Jack",
+      lastName: "Harvey",
+    },
+    {
+      id: 14,
+      firstName: "Carl",
+      lastName: "Cooper",
+    },
+    {
+      id: 15,
+      firstName: "Davey",
+      lastName: "Handerson",
     },
   ];
 
@@ -91,6 +110,24 @@ export default function Ticket_List_Item_PM(props) {
         <div>{ticketStatus}</div>
         <div>Ticket ID: {ticketID}</div>
         <div>Created at: {createdAt}</div>
+        {creator_id === 13 && (
+          <div>
+            <b>Created by: </b>
+            {`${tenants[0].firstName} ${tenants[0].lastName}`}
+          </div>
+        )}
+        {creator_id === 14 && (
+          <div>
+            <b>Created by: </b>
+            {`${tenants[1].firstName} ${tenants[1].lastName}`}
+          </div>
+        )}
+        {creator_id === 15 && (
+          <div>
+            <b>Created by: </b>
+            {`${tenants[2].firstName} ${tenants[2].lastName}`}
+          </div>
+        )}
       </section>
       <>
         {employee_id === null ? (
