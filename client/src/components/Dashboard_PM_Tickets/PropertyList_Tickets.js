@@ -12,7 +12,8 @@ export default function Propertylist_Tickets(props){
         property_id = {property.id}
         selectProperty = {selectProperty}
         key={property.id}
-        name={property.name} 
+        name={property.name}
+        address = {property.address}
        
       />
       )
@@ -25,7 +26,7 @@ export default function Propertylist_Tickets(props){
       selectProperty(0);
      
                         }} >
-      <h2 className="text--regular--ticket">All Properties</h2>
+      <h4 className="text--regular--ticket">All Properties</h4>
     </li>
     {propertiesListArray}
     </>  

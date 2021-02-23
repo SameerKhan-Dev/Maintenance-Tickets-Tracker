@@ -34,7 +34,21 @@ export default function Individual_Property_Interface(props) {
     }
   ];
 
-  const {selectedProperty} = props;
+  const {selectedProperty, ticketsForSelectedProperty} = props;
+
+  const getTotalPropertyCosts = function (ticketsForSelectedProperty) {
+
+    let totalActualCosts = 0;
+
+    for (let ticket of ticketsForSelectedProperty) {
+      if(ticket.ticket_status_id === 3){
+        totalActualCosts += ticket.actual_cost;
+      }
+    }
+    return totalActualCosts;
+  }
+
+  let totalPropertyCosts = getTotalPropertyCosts(ticketsForSelectedProperty);
 
   const getPropertyAddress = function (selectedProperty, properties) {
     let propertyAddress = "";
@@ -47,7 +61,31 @@ export default function Individual_Property_Interface(props) {
     }
     return propertyAddress;
   }
-  
+
+
+  const getTotalCostsByType = function (ticketsForSelectedProperty) {
+    let result = {
+      plumbingCosts : 0,
+      electricalCosts : 0,
+      general : 0
+    }
+
+    for (let ticket of ticketsForSelectedProperty) {
+
+      if(ticket.maintenance_type_id === 1 && ticket.ticket_status_id === 3){
+        result.plumbingCosts += ticket.actual_cost;
+      } 
+      if(ticket.maintenance_type_id === 2 && ticket.ticket_status_id === 3){
+        result.electricalCosts += ticket.actual_cost;
+      } 
+      if(ticket.maintenance_type_id === 3 && ticket.ticket_status_id === 3){
+        result.general += ticket.actual_cost;
+      } 
+    }
+    return result;
+  }
+  let costsByType = getTotalCostsByType (ticketsForSelectedProperty);
+
   let propertyAddress = getPropertyAddress(selectedProperty, properties2);
 
   return (
@@ -75,21 +113,32 @@ export default function Individual_Property_Interface(props) {
         </section>
         <section className="property__cards__ind">
           <Card>
-            <Card.Img variant="top" src={money} style={{ paddingLeft: '90px', paddingRight: '90px', paddingTop: '30px', paddingBottom: '5px' }} />
+            <Card.Img variant="top" src={money} style={{ height: '200px', width: '400px', paddingLeft: '90px', paddingRight: '90px', paddingTop: '30px', paddingBottom: '5px' }} />
             <Card.Body>
               <Card.Text>
-                Total Expenses: January 2019 - December 2020
+                Total Expenses
             </Card.Text>
-              <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >$12, 432</Card.Title>
+            <Card.Text>
+                January 2020 - 2021
+            </Card.Text>
+              <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >${totalPropertyCosts}</Card.Title>
             </Card.Body>
           </Card>
           <Card>
-            <Card.Img variant="top" src={money} style={{ paddingLeft: '90px', paddingRight: '90px', paddingTop: '30px', paddingBottom: '5px' }} />
             <Card.Body>
-              <Card.Text>
-                Total Expenses: January 2020 - Current
+            <Card.Text>
+                Plumbing (2020-2021)
             </Card.Text>
-              <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >$3, 532</Card.Title>
+              <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >${ costsByType.plumbingCosts}</Card.Title>
+              <Card.Text>
+                Electrical (2020-2021)
+            </Card.Text>
+              <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >${costsByType.electricalCosts}</Card.Title>
+              <Card.Text>
+                General Maint. (2020-2021)
+            </Card.Text>
+              <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >${costsByType.general}</Card.Title>
+            
             </Card.Body>
           </Card>
         </section>

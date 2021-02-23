@@ -16,7 +16,7 @@ export default function Propertylist(props) {
           selectProperty = {selectProperty}
           key={property.id}
           name={property.name} 
-        
+          address={property.address} 
         />
       </ListGroup.Item>
       )
@@ -30,7 +30,7 @@ export default function Propertylist(props) {
      
                         }} >
       <ListGroup.Item style={{backgroundColor: 'transparent'}} action variant="dark">
-      <h2 className="text--regular">All Properties</h2>
+      <h4 className="text--regular">All Properties</h4>
       </ListGroup.Item>
     </li>
     {propertiesListArray}

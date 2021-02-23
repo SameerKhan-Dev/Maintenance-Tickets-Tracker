@@ -215,7 +215,7 @@ export default function Dashboard_PM_Stats(props) {
             i.e a specific property has been selected)*/}
                 {/* <Top_NavBar_PM_Stats/> */}
                 { state_PM_Stats.selectedProperty === 0 ?
-                <All_Property_Interface specificStats = {state_PM_Stats.specificStats} ticketsOrganizedByProperty = {state_PM_Stats.ticketsOrganizedByProperty} properties = {state_PM_Stats.properties}/> : <Individual_Property_Interface  selectedProperty= {state_PM_Stats.selectedProperty} specificStats = {state_PM_Stats.specificStats} ticketsForSelectedProperty = {ticketsForSelectedProperty} addressForSelectedProperty={addressForSelectedProperty}
+                <All_Property_Interface specificStats = {state_PM_Stats.specificStats} ticketsOrganizedByProperty = {state_PM_Stats.ticketsOrganizedByProperty} properties = {state_PM_Stats.properties} tickets = {state_PM_Stats.tickets}/> : <Individual_Property_Interface properties = {state_PM_Stats.properties} selectedProperty= {state_PM_Stats.selectedProperty} specificStats = {state_PM_Stats.specificStats} ticketsForSelectedProperty = {ticketsForSelectedProperty} addressForSelectedProperty={addressForSelectedProperty}
                 />
                 }     
         </div>
