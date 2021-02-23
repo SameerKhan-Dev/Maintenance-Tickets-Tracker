@@ -7,14 +7,18 @@
   border-top: 1px solid;
 }
 
+.inner__form {
+  background-color: #0a0a0a;
+  padding: 4%;
+  opacity: 90%;
+}
 .issue-container {
   color: White;
 }
 
 .issue-form {
-  background-color: #0a0a0a;
-  padding: 4%;
-  opacity: 90%;
+  padding-top: 200px;
+  padding-left: 80px;
   margin-top: -95%;
   position: absolute;
 }
@@ -58,6 +62,7 @@
   font-size: 1.8em;
   font-weight: 600;
   padding-bottom: 30px;
+  padding-left: 15px;
 }
 
 .text-label-form {
