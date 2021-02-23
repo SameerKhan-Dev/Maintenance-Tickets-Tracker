@@ -71,59 +71,63 @@ export default function Issue_Form(props) {
   };
 
   return (
+
     <section className="issue__form">
       <section className="issue__maintenance-type">
-        <form onSubmit={(event) => event.preventDefault()}>
-          <section className="issue__description">
-            <h1>Please enter description for maintenance request:</h1>
-            <input
-              className="issue__create-input"
-              value={issue.description}
-              name="description"
-              onChange={handleDescriptionChange}
-              description="description"
-              type="text"
-              placeholder="Enter description..."
-            />
-          </section>
-          <h1>Please select a maintenance type:</h1>
-          <label>
-            <input
-              type="radio"
-              name="maintenance_type"
-              value="plumbing"
-              checked={issue.maintenance_type === "plumbing"}
-              onChange={handleMaintenanceChange}
-            />
-            Plumbing
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="maintenance_type"
-              value="electrical"
-              checked={issue.maintenance_type === "electrical"}
-              onChange={handleMaintenanceChange}
-            />
-            Electrical
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="maintenance_type"
-              value="general maintenance"
-              checked={issue.maintenance_type === "general maintenance"}
-              onChange={handleMaintenanceChange}
-            />
-            General Maintenance
-          </label>
-          <section className="issue__actions">
-            {/* <button onClick={upload}>Upload Photos</button> */}
-            <button onClick={onSubmit}>Submit Maintenance Request</button>
-          </section>
-        </form>
+            <form onSubmit={(event) => event.preventDefault()}>
+              <section className="issue__description">
+                <h1>Please enter description for maintenance request:</h1>
+                <input
+                  className="issue__create-input"
+                  value={issue.description}
+                  name="description"
+                  onChange={handleDescriptionChange}
+                  description="description"
+                  type="text"
+                  placeholder="Enter description..."
+                />
+              </section>
+              <h1>Please select a maintenance type:</h1>
+              <label>
+                <input
+                  type="radio"
+                  name="maintenance_type"
+                  value="plumbing"
+                  checked={issue.maintenance_type === "plumbing"}
+                  onChange={handleMaintenanceChange}
+                />
+                Plumbing
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="maintenance_type"
+                  value="electrical"
+                  checked={issue.maintenance_type === "electrical"}
+                  onChange={handleMaintenanceChange}
+                />
+                Electrical
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="maintenance_type"
+                  value="general maintenance"
+                  checked={issue.maintenance_type === "general maintenance"}
+                  onChange={handleMaintenanceChange}
+                />
+                General Maintenance
+              </label>
+
+              <input type="file" id="myFile" name="filename"/>
+              <section className="issue__actions">
+                {/* <button onClick={upload}>Upload Photos</button> */}
+                <button onClick={onSubmit}>Submit Maintenance Request</button>
+              </section>
+            </form>
+        <MyVerticallyCenteredModal show={showModal} onHide={handleShowModal} />
       </section>
-      <MyVerticallyCenteredModal show={showModal} onHide={handleShowModal} />
     </section>
+   
   );
 }

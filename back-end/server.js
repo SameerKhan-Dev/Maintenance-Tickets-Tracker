@@ -4,6 +4,7 @@ require("dotenv").config();
 // Web server config
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || "development";
+const fileUpload = require('express-fileupload');
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -26,10 +27,10 @@ const getAllPropertiesByEmployee_Id = require("./database/databaseHelpers/getAll
 const getUsersById = require("./database/databaseHelpers/getUsersById");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
-// 'dev' = Concise output colored by response status for development use.
+// 'dev' = Concise output colored by response fstatus for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan("dev"));
-
+app.use(fileUpload());
 app.use(bodyParser.json());
 
 app.use(
@@ -54,6 +55,10 @@ app.use(
   })
 );
 app.use(express.static("public"));
+
+//const imageRouter = require('./routes/images');
+//app.use("/images", imageRouter);
+
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
