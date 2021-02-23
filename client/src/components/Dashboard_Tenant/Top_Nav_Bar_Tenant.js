@@ -1,6 +1,7 @@
 import React, { useState, Component } from "react";
 import { useEffect } from "react";
 import { Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
+import logo from "../MTrack_White.png";
 
 import "./Top_Nav_Bar_Tenant.scss";
 
@@ -16,7 +17,15 @@ export default function Top_NavBar_Tenant(props) {
   return (
     <div classname="App">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        {/* <Navbar.Brand href="#home">M Tracker</Navbar.Brand> */}
+        <Navbar.Brand href="/dashboard-pm-stats">
+          <img
+            alt=""
+            src={logo}
+            width="220"
+            height="40"
+            className="d-inline-block align-top"
+          />{" "}
+        </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
