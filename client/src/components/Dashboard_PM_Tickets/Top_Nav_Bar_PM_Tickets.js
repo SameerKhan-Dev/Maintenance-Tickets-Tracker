@@ -25,11 +25,12 @@ export default function Top_NavBar_PM_Tickets(props) {
 
   return (
     <div classname="App">
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="light">
-        <Button onClick={goToStatsPage}>View Statistic Summary</Button>
-  <Navbar.Brand href="#home">M Tracker</Navbar.Brand>
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+  {/* <Navbar.Brand href="#home">M Tracker</Navbar.Brand> */}
   <Navbar.Toggle />
   <Navbar.Collapse className="justify-content-end">
+  <Button variant="dark" onClick={goToStatsPage}>View Statistic Summary</Button>
+  <Navbar.Text>       </Navbar.Text>
     <Navbar.Text>
     Signed in as: <a href="#login">{loggedInUserEmail}</a>
     </Navbar.Text>

@@ -79,8 +79,8 @@ export default function Ticket_List_Item_PM(props) {
     <main className="ticket__cards">
       <section className="ticket__card-left">
         {/* <div>{unit}</div> */}
-        <div>Maintenance type: {maintenance_type}</div>
-        <div>Description: {description}</div>
+        <div className="maintenance__type"><b>Maintenance type: </b>{maintenance_type}</div>
+        <div className="ticket__description"><b>Description: </b>{description}</div>
       </section>
       {/*
       <section className="ticket__validation">
@@ -88,13 +88,13 @@ export default function Ticket_List_Item_PM(props) {
       </section>
       */}
       <section className="ticket__card-right">
-        <div>{ticketStatus}</div>
-        <div>Ticket ID: {ticketID}</div>
-        <div>Created at: {createdAt}</div>
+        <div className="ticket__status">{ticketStatus}</div>
+        <div className="ticket__id"><b>Ticket ID: </b>{ticketID}</div>
+        <div className="created__at"><b>Created at: </b>{createdAt.substr(0, 10)}</div>
       </section>
       <>
         {employee_id === null ? (
-          <Button variant="success" onClick={() => setModalShow(true)}>
+          <Button action variant="success" onClick={() => setModalShow(true)}>
             Assign Employee
           </Button>
         ) : (
