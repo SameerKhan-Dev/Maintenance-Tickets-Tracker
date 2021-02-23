@@ -13,6 +13,42 @@ import "./Individual_Property_Interface.scss";
 
 export default function Individual_Property_Interface(props) {
   console.log("***Inside Individual_Property_Interface: ", props);
+  
+  /*
+    (3,'Brando Gateway','3116 Brando Gateway','APT 4604','Toronto','Ontario','56465','Condominium','http://placeimg.com/640/480/business'),
+    (3,'Amanda Loaf','536 Amanda Loaf','APT 5214','Toronto','Ontario','93432','Condominium','http://placeimg.com/640/480/business'),
+    (3,'12 University St.','12 University St.','APT 5214','Toronto','Ontario','93432','Condominium','http://placeimg.com/640/480/business');
+  */
+  const properties = [
+    {
+      id: 11,
+      address: '3116 Brando Gateway'
+    },
+    {
+      id: 12,
+      address: '536 Amanda Loaf'
+    },
+    {
+      id: 13,
+      address: '12 University St.'
+    }
+  ];
+
+  const {selectedProperty} = props;
+
+  const getPropertyAddress = function (selectedProperty, properties) {
+    let propertyAddress = "";
+    if(properties){
+      for (let property of properties) {
+        if(property.id === selectedProperty){
+          propertyAddress = property.address;
+        } 
+      }
+    }
+    return propertyAddress;
+  }
+  
+  let propertyAddress = getPropertyAddress(selectedProperty, properties);
 
   return (
     <main className="stats__view">
@@ -23,8 +59,8 @@ export default function Individual_Property_Interface(props) {
             <Card.ImgOverlay>
               <Card.Title>Condominium</Card.Title>
               <Card.Text>
-                1 Blue Jays Way Toronto, ON
-                </Card.Text>
+                {propertyAddress}
+              </Card.Text>
             </Card.ImgOverlay>
           </Card>
         </section>
