@@ -12,11 +12,26 @@ import pending from "./pending.png";
 import unresolved from "./unresolved.jpg";
 
 export default function All_Property_Interface(props) {
-  const { ticketsOrganizedByProperty, properties } = props;
+  const { ticketsOrganizedByProperty, properties} = props;
 
   //const {specificStats} = props; 
   console.log("This is props:")
   console.log(props);
+  
+  const properties2 = [
+    {
+      id: 11,
+      address: '3116 Brando Gateway'
+    },
+    {
+      id: 12,
+      address: '536 Amanda Loaf'
+    },
+    {
+      id: 13,
+      address: '12 University St.'
+    }
+  ];
 
   return (
     <>
@@ -28,19 +43,19 @@ export default function All_Property_Interface(props) {
             <Card>
               <Card.Img variant="top" src={prop1} />
               <Card.Body>
-                <Card.Title>42 Wallaby Way TOronto, ON M9F 1T5</Card.Title>
+                <Card.Title>{properties2[0].address}</Card.Title>
               </Card.Body>
             </Card>
             <Card>
               <Card.Img variant="top" src={prop2} />
               <Card.Body>
-                <Card.Title>42 Wallaby Way TOronto, ON M9F 1T5</Card.Title>
+                <Card.Title>{properties2[1].address}</Card.Title>
               </Card.Body>
             </Card>
             <Card>
               <Card.Img variant="top" src={prop3} />
               <Card.Body>
-                <Card.Title>42 Wallaby Way TOronto, ON M9F 1T5</Card.Title>
+                <Card.Title>{properties2[2].address}</Card.Title>
               </Card.Body>
             </Card>
           </CardDeck>

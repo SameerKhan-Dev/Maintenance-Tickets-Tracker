@@ -19,7 +19,7 @@ export default function Individual_Property_Interface(props) {
     (3,'Amanda Loaf','536 Amanda Loaf','APT 5214','Toronto','Ontario','93432','Condominium','http://placeimg.com/640/480/business'),
     (3,'12 University St.','12 University St.','APT 5214','Toronto','Ontario','93432','Condominium','http://placeimg.com/640/480/business');
   */
-  const properties = [
+  const properties2 = [
     {
       id: 11,
       address: '3116 Brando Gateway'
@@ -48,14 +48,23 @@ export default function Individual_Property_Interface(props) {
     return propertyAddress;
   }
   
-  let propertyAddress = getPropertyAddress(selectedProperty, properties);
+  let propertyAddress = getPropertyAddress(selectedProperty, properties2);
 
   return (
     <main className="stats__view">
       <section className="top">
         <section className="address__title">
           <Card className="bg-dark text-white">
-            <Card.Img src={prop1} alt="Card image" />
+
+            { selectedProperty === 11 &&
+                <Card.Img src={prop1} alt="Card image" />
+            }
+            { selectedProperty === 12 &&
+                <Card.Img src={prop2} alt="Card image" />
+            }
+            { selectedProperty === 13 &&
+                <Card.Img src={prop3} alt="Card image" />
+            }
             <Card.ImgOverlay>
               <Card.Title>Condominium</Card.Title>
               <Card.Text>
