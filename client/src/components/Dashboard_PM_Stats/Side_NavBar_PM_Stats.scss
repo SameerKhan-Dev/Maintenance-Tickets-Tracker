@@ -10,7 +10,9 @@
   position: fixed;
   height: 100%;
   
-
+.image__logo {
+  padding-left: 18px;
+}
  
   &--centered {
     align-self: center;
@@ -18,7 +20,7 @@
 
   &__separator {
     width: 90%;
-    margin: $spacing 0;
+    // margin: $spacing 0;
     border: solid 1px;
     color: darken($white, 5%);
   }
