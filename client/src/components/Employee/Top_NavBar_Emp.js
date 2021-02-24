@@ -13,7 +13,7 @@ export default function Top_NavBar_Emp(props) {
   return (
     <div classname="App">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="/dashboard-employee">
+      <Navbar.Brand href="/dashboard-pm-stats">
       <img
         alt=""
         src={logo}
