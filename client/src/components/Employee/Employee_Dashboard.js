@@ -4,8 +4,10 @@ import "../Application.scss";
 import axios from "axios";
 import Employee_Interface from "./Employee_Interface";
 import Side_NavBar_Emp from "./Side_NavBar_Emp";
+import Top_NavBar_Emp from "./Top_NavBar_Emp";
 import "./Employee_Interface.scss";
-
+import "./Employee_Dashboard.scss";
+;
 export default function Employee_Dashboard(props) {
   const employee_Id = 24;
   const [state_Employee, setState_Employee] = useState({
@@ -182,6 +184,9 @@ const getEmployeeInProgressTickets = function () {
   console.log("selectedTicket is: ", state_Employee.selectedTicket);
   return (
     <>
+      <div className="topnav__tickets" style = {{width: '100%', zIndex: '200', position: 'absolute'}}>
+        <Top_NavBar_Emp loggedInUserEmail={props.loggedInUserEmail} />
+      </div>
       <div>
         <Side_NavBar_Emp
           employeeInProgressTickets={employeeInProgressTickets}
@@ -193,7 +198,6 @@ const getEmployeeInProgressTickets = function () {
         />
       </div>
       <div className="DivEmployee_Interface">
-        <div className="DivEmployee_Interface">
           <Employee_Interface
             recentlyResolvedTickets={state_Employee.recentlyResolvedTickets}
             setLocalTicketToResolved={setLocalTicketToResolved}
@@ -203,7 +207,6 @@ const getEmployeeInProgressTickets = function () {
             tickets={employeeInProgressTickets}
             properties={state_Employee.properties}
           />
-        </div>
       </div>
     </>
   );

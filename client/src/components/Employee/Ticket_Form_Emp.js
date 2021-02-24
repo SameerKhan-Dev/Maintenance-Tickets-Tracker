@@ -53,9 +53,9 @@ export default function Ticket_Form_Emp(props) {
   return (
     <>
     <Card>
-    <Card.Body>
+    <Card.Body className="address__info">
       <Card.Title><b>Upon Ticket Completion:</b></Card.Title>
-      <Form>
+      <Form >
           <section className="ticket__card-form-section">
           <section className="ticket__card-form">
             <form onSubmit={(event) => event.preventDefault()}>

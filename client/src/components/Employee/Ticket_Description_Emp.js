@@ -40,7 +40,7 @@ export default function Ticket_Description(props) {
   return (
     <>
       <Card>
-        <Card.Body>
+        <Card.Body className="address__info">
           {selectedTicketInfo.creator_id === 13 && (
             <Card.Title>
               <b>Submitted By: </b>

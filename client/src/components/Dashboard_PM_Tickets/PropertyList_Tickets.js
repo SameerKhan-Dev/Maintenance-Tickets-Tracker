@@ -15,6 +15,8 @@ export default function Propertylist_Tickets(props){
         name={property.name} 
        
       />
+
+      
       )
   });
 

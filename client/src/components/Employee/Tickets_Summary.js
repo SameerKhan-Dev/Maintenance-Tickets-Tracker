@@ -4,6 +4,7 @@ import "./AssignedTicketsListItem.scss";
 import classnames from "classnames";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import "./Tickets_Summary.scss";
 
 export default function Tickets_Summary(props) {
   const tenants = [
@@ -85,22 +86,22 @@ export default function Tickets_Summary(props) {
   console.log("ticketsOrganizedByProperty is: ", ticketsOrganizedByProperty);
   return (
     <>
-      <Card body>
+      <Card className="title__summary" body>
         <h2>
           <b>MY ASSIGNED TICKETS SUMMARY:</b>
         </h2>
       </Card>
       {ticketsOrganizedByProperty.map((property) => (
-        <Card>
+        <Card className="bottom">
           <Card.Header>
             <h5>
               Address: <b>{property.property.address}</b>
             </h5>
           </Card.Header>
-          <Card.Body>
+          <Card.Body className="address_info">
             <Card.Text>
-              <Table bordered hover>
-                <thead>
+              <Table className="table__summ" bordered hover>
+                <thead className="address__info__table">
                   <tr>
                     <th>Ticket ID:</th>
                     <th>Description</th>

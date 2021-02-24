@@ -16,13 +16,11 @@ export default function Side_NavBar_Emp(props) {
       <>
       <main className="layout">
         <section className="sidebar">
-          <h1>Assigned</h1>
-          <h1>Tickets</h1>
           <hr className="sidebar__separator sidebar--centered" />                 
           <nav className="sidebar__menu">
           <div className= "dropDown">
             <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                <Dropdown.Toggle variant="warning" id="dropdown-basic">
                       Selected Property:  {selectedPropertyAddress}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
