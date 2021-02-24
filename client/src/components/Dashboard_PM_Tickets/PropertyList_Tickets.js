@@ -16,6 +16,8 @@ export default function Propertylist_Tickets(props){
         address = {property.address}
        
       />
+
+      
       )
   });
 

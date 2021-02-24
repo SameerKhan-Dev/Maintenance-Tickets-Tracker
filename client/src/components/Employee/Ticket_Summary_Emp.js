@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import "./Ticket_Summary_Emp.scss";
 
 export default function Ticket_Summary_Emp(props) {
   console.log("PROPS in Ticket_Summary_Emp =", props);
@@ -36,8 +37,8 @@ export default function Ticket_Summary_Emp(props) {
   return (
     <>
       <Card>
-        <Card.Header as="h5">TICKET ID: {selectedTicketInfo.id}</Card.Header>
-        <Card.Body>
+        <Card.Header className="title__summary" as="h5">TICKET ID: {selectedTicketInfo.id}</Card.Header>
+        <Card.Body className="address__info">
           <Card.Title>
             <b>Property Overview:</b>
           </Card.Title>

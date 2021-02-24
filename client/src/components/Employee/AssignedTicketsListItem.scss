@@ -32,3 +32,17 @@
     }
   }
 }
+
+.text__regular {
+  background-color: transparent;
+
+}
+
+.text--regular--emp {
+  text-align: center;
+  margin: 5px;
+  color: rgb(253, 253, 253);
+  &:hover {
+    color: #ef8633;
+  }
+}

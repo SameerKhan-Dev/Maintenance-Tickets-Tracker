@@ -2,6 +2,8 @@ import React from "react";
 
 import "./AssignedTicketsListItem.scss";
 import classnames from "classnames";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function AssignedTicketsListItem(props) {
 
@@ -10,7 +12,8 @@ export default function AssignedTicketsListItem(props) {
 
   return (
     <li onClick= {() => selectTicket(id)}className= {props.id} data-testid="day">
-      {id === 0 ?   <h5 className="text--regular">Tickets Summary </h5> :  <h5 className="text--regular">Ticket ID: {id}</h5> }
+      {id === 0 ?   <h5 className="text__regular"><div><FontAwesomeIcon icon={faHome} /></div>Tickets Summary </h5> :  
+      <h5 className="text__regular">Ticket ID: {id}</h5> }
     </li>
   );
 }
