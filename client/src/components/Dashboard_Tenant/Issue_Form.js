@@ -115,61 +115,65 @@ export default function Issue_Form(props) {
                       rows={4}
                     />
                   </Col>
-              </Form.Group>
+                </Form.Group>
 
                 <fieldset>
-                <Form.Group as={Col} className="maintenance-form-group">
-                  <Form.Label
-                    as="legend"
-                    column
-                    sm={6}
-                    className="text-label-form"
-                  >
-                    Maintenance Type:
+                  <Form.Group as={Col} className="maintenance-form-group">
+                    <Form.Label
+                      as="legend"
+                      column
+                      sm={6}
+                      className="text-label-form"
+                    >
+                      Maintenance Type:
                   </Form.Label>
-                  <Row sm={5} className="maintenance-radio-buttons">
-                    <Form.Check
-                      className="maintenance-types"
-                      type="radio"
-                      label="Plumbing"
-                      name="maintenance_type"
-                      id="plumbing"
-                      value="plumbing"
-                      checked={issue.maintenance_type === "plumbing"}
-                      className="maintenance-type-checked"
-                      onChange={handleMaintenanceChange}
-                    />
-                    <Form.Check
-                      className="maintenance-types"
-                      type="radio"
-                      label="Electrical"
-                      name="maintenance_type"
-                      id="electrical"
-                      value="electrical"
-                      checked={issue.maintenance_type === "electrical"}
-                      onChange={handleMaintenanceChange}
-                    />
-                    <Form.Check
-                      className="maintenance-types"
-                      type="radio"
-                      label="General Maintenance"
-                      name="maintenance_type"
-                      id="general maintenance"
-                      value="general maintenance"
-                      checked={issue.maintenance_type === "general maintenance"}
-                      onChange={handleMaintenanceChange}
-                    />
-                  </Row>
-                </Form.Group>
-              </fieldset>
+                    <Row sm={5} className="maintenance-radio-buttons">
+                      <Form.Check
+                        className="maintenance-types"
+                        type="radio"
+                        label="Plumbing"
+                        name="maintenance_type"
+                        id="plumbing"
+                        value="plumbing"
+                        checked={issue.maintenance_type === "plumbing"}
+                        className="maintenance-type-checked"
+                        onChange={handleMaintenanceChange}
+                      />
+                      <Form.Check
+                        className="maintenance-types"
+                        type="radio"
+                        label="Electrical"
+                        name="maintenance_type"
+                        id="electrical"
+                        value="electrical"
+                        checked={issue.maintenance_type === "electrical"}
+                        onChange={handleMaintenanceChange}
+                      />
+                      <Form.Check
+                        className="maintenance-types"
+                        type="radio"
+                        label="General Maintenance"
+                        name="maintenance_type"
+                        id="general maintenance"
+                        value="general maintenance"
+                        checked={issue.maintenance_type === "general maintenance"}
+                        onChange={handleMaintenanceChange}
+                      />
+                    </Row>
+                    <div class="button_cont" onClick={onSubmit} align="center">
+                      <a class="example_d" target="_blank" rel="nofollow noopener">Submit Maintenance Request</a>
+                    </div>
+                  </Form.Group>
+                </fieldset>
 
-                <Form.Group as={Col}>
+                {/* <Form.Group as={Col}>
                 <Col sm={{ span: 10, offset: 9 }}>
-                  <Button type="submit" onClick={onSubmit}>
+                  <Button type="submit" variant="warning"onClick={onSubmit}>
                     Submit maintenance request
                   </Button>
+                  
                 </Col>
-              </Form.Group>
+              </Form.Group> */}
               </section>
             </Form>
           </Col>

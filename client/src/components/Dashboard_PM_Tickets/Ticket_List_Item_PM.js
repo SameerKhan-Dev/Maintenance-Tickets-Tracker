@@ -162,7 +162,7 @@ export default function Ticket_List_Item_PM(props) {
             </a>
           </section>
         ) : (
-          <Button action variant="primary" onClick={() => setModalShow(true)}>
+          <Button action variant="warning" onClick={() => setModalShow(true)}>
             Assigned to: {getEmployeeName(employee_id)}
           </Button>
         )}
