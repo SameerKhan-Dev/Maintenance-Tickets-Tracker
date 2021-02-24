@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
 
 import logo from "../MTrack_White.png";
-import "./Top_Nav_Bar_Emp.scss";
+import "./Top_NavBar_Emp.scss";
 
 // import "./map.scss";
 
