@@ -17,7 +17,7 @@ export default function Issue_Form(props) {
 
   ////////////// GET ACTUAL DATA LATER AND SET AS PROPS.////////////////
   const property_id = 11;
-  const creator_id = 7;
+  const creator_id = 13;
 
   const [issue, setIssue] = useState({
     description: "",

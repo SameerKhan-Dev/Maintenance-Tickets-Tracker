@@ -42,7 +42,7 @@ export default function Ticket_List_Item_PM(props) {
   const employees2 = [
     {
       id: 24,
-      name: "Tim",
+      name: "Sameer",
       role_id: 3,
     },
     {
@@ -52,7 +52,7 @@ export default function Ticket_List_Item_PM(props) {
     },
     {
       id: 26,
-      name: "Rogers",
+      name: "Roger",
       role_id: 5,
     },
   ];
@@ -60,18 +60,18 @@ export default function Ticket_List_Item_PM(props) {
   const tenants = [
     {
       id: 13,
-      firstName: "Jack",
-      lastName: "Harvey",
+      firstName: "Bee",
+      lastName: "Lister",
     },
     {
       id: 14,
       firstName: "Carl",
-      lastName: "Cooper",
+      lastName: "Harvey",
     },
     {
       id: 15,
       firstName: "Davey",
-      lastName: "Handerson",
+      lastName: "Harvey",
     },
   ];
 

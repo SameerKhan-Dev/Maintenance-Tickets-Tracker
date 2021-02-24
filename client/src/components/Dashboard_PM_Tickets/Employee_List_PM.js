@@ -8,7 +8,7 @@ import "./Employee_List_PM.scss"
 const employees = [
   { 
     id: 24,
-    name: "Tim",
+    name: "Sameer",
     role_id: 3,
   },
   { 

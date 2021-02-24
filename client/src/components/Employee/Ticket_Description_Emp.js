@@ -6,18 +6,18 @@ export default function Ticket_Description(props) {
   const tenants = [
     {
       id: 13,
-      firstName: "Jack",
-      lastName: "Harvey",
+      firstName: "Bee",
+      lastName: "Lister",
     },
     {
       id: 14,
       firstName: "Carl",
-      lastName: "Cooper",
+      lastName: "Harvey",
     },
     {
       id: 15,
       firstName: "Davey",
-      lastName: "Handerson",
+      lastName: "Harvey",
     },
   ];
 

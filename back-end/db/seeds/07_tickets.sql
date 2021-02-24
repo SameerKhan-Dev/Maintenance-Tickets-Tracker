@@ -114,13 +114,13 @@ VALUES
     (13,15,24,3,3,'Ratione dolorem. Nam voluptatibus blanditiis accusamus aliquam qui hic. Quas rerum earum facilis. Ea non asperiores fugiat enim consequatur ipsum.',600,400,'2018-12-22T04:35:53.442Z','http://placeimg.com/640/480/business'),
     (13,15,24,3,3,'Beatae quidem ut praesentium ab est dicta. Quas rerum earum facilis. Ea non asperiores fugiat enim consequatur ipsum.',400,450,'2018-12-22T04:35:53.442Z','http://placeimg.com/640/480/business'),
    
-    (11,10,NULL,1,1,'Toilet is blocked and connot flush!',150,NULL,'2021-02-23T19:10:17.627Z','http://placeimg.com/640/480/business'),
+    (11,13,NULL,1,1,'Toilet is blocked and connot flush!',150,NULL,'2021-02-23T19:10:17.627Z','http://placeimg.com/640/480/business'),
     -- (11,11,NULL,1,1,'There is a leak from the faucet in my bathroom.',800,NULL,'2021-02-23T08:53:12.963Z','http://placeimg.com/640/480/business'),    
 
-    (12,12,NULL,2,1,'Light switch in the living room is not working properly. The light keeps dimming.',100,NULL,'2021-02-22T04:35:53.442Z','http://placeimg.com/640/480/business'),
+    (12,14,NULL,2,1,'Light switch in the living room is not working properly. The light keeps dimming.',100,NULL,'2021-02-22T04:35:53.442Z','http://placeimg.com/640/480/business'),
     -- (12,14,NULL,3,1,'The oven does not heat up.',500,NULL,'2021-02-23T08:53:12.963Z','http://placeimg.com/640/480/business'),
    
-    (13,9,NULL,3,1,'I need a new garbage bin. The old one was stolen',30,NULL,'2021-02-22T04:35:53.442Z','http://placeimg.com/640/480/business'),
+    (13,15,NULL,3,1,'I need a new garbage bin. The old one was stolen',30,NULL,'2021-02-22T04:35:53.442Z','http://placeimg.com/640/480/business'),
 
     (11,13,24,3,2,'Dishwasher stopped running. When I pressed the start button, it gives error code: 400.',800,NULL,'2021-02-15T19:10:17.627Z','http://placeimg.com/640/480/business'),
     -- (11,10,20,3,2,'Battery for smoke detector has to be replaced.',20,NULL,'2021-02-23T19:10:17.627Z','http://placeimg.com/640/480/business'),

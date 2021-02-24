@@ -35,7 +35,7 @@ VALUES
     ('Keon','Ankunding','Dorcas_Kulas@yahoo.com','password',5,'2016-09-08T05:42:28.509Z'), /* general-maintenance 21*/
     ('Reynold','Boyer','Harold64@hotmail.com','password',5,'2018-06-18T13:28:53.282Z'), /* general-maintenance    22*/
     ('Mikel','Ruecker','Abe_Goodwin28@gmail.com','password',5,'2017-11-08T20:19:29.374Z'), /* general-maintenance 23*/
-    ('Tim','Khan','sameer_k@email.com','password',3,'2017-07-04T03:13:44.223Z'), /* plumber - USE THIS         24*/
+    ('Sameer','Khan','sameer_k@email.com','password',3,'2017-07-04T03:13:44.223Z'), /* plumber - USE THIS         24*/
     ('Mike','Boyer','mike_boyer@hotmail.com','password',4,'2018-06-18T13:28:53.282Z'), /* OPTION general-maintenance 25*/
     ('Roger','Ruecker','roger_ruecker@gmail.com','password',4,'2017-11-08T20:19:29.374Z'); /* OPTION general-maintenance 26*/
         

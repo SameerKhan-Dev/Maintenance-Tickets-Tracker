@@ -16,12 +16,12 @@ export default function Tickets_Summary(props) {
     {
       id: 14,
       firstName: "Carl",
-      lastName: "Cooper",
+      lastName: "Harvey",
     },
     {
       id: 15,
       firstName: "Davey",
-      lastName: "Handerson",
+      lastName: "Harvey",
     },
   ];
 
