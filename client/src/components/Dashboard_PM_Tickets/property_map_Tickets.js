@@ -27,13 +27,13 @@ const Map_SideBar = () => {
     map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
 
     var address1 = new mapboxgl.Popup({ offset: 25 }).setText(
-      'Address 1'
+      '3116 Brando Gateway'
     );
     var address2 = new mapboxgl.Popup({ offset: 25 }).setText(
-      'Address 2'
+      '536 Amanda Loaf'
     );
     var address3 = new mapboxgl.Popup({ offset: 25 }).setText(
-      'Address 3'
+      '12 University St.'
     );
 
     var marker = new mapboxgl.Marker()

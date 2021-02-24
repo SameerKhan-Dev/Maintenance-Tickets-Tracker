@@ -1,6 +1,7 @@
 import React, { useState, Component } from "react";
 import "./PropertyListItem.scss";
 import classnames from "classnames";
+import "./PropertyList.scss";
 
 export default function PropertyListItem(props) {
   console.log("*** Props inside PropertyListItem: ", props);
@@ -22,7 +23,7 @@ export default function PropertyListItem(props) {
         selectProperty(property_id);
       }}
     >
-      <h4 className="text--regular">{props.address}</h4>
+      <h5 className="property_name text--regular" >{props.address}</h5>
     </li>
   );
 }

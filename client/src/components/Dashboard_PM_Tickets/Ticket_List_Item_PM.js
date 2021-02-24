@@ -116,8 +116,9 @@ export default function Ticket_List_Item_PM(props) {
 
       <section className="ticket__card-right">
         <div>{ticketStatus}</div>
-        <div>Ticket ID: {ticketID}</div>
-        <div>Created at: {createdAt}</div>
+        
+        {/* <div>Ticket ID: {ticketID}</div>
+        <div>Created at: {createdAt}</div> */}
         {creator_id === 13 && (
           <div>
             <b>Created by: </b>

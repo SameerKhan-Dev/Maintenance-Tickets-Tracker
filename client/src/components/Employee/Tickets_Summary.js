@@ -125,7 +125,7 @@ export default function Tickets_Summary(props) {
                           {ticket.creator_id === 15 && (
                             <td className="border_cells">{`${tenants[2].firstName} ${tenants[2].lastName}`}</td>
                           )}
-                          <td className="border_cells">{ticket.created_at}</td>
+                          <td className="border_cells">{ticket.created_at.substr(0, 10) }</td>
                         </tr>
                       </>
                     ))}

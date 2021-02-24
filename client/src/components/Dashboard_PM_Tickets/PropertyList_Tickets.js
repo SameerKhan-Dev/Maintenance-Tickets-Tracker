@@ -1,23 +1,24 @@
 import React from "react";
-import PropertyListItem_Tickets from "./PropertyListItem_Tickets"
-
+import PropertyListItem_Tickets from "./PropertyListItem_Tickets";
+import "./PropertyListItem_Tickets.scss";
+import { ListGroup } from "react-bootstrap";
 
 export default function Propertylist_Tickets(props){
 
   const {selectProperty, properties, selectedProperty} = props;
-
+  // style={{backgroundColor: selectedProperty === property.id ? `#343a40` : `transparent`}
   const propertiesListArray = properties.map((property) => {
     return (
-      <PropertyListItem_Tickets style={{backgroundColor: selectedProperty === property.id ? `#343a40` : `transparent`}}
-        property_id = {property.id}
-        selectProperty = {selectProperty}
-        key={property.id}
-        name={property.name}
-        address = {property.address}
-       
-      />
-
-      
+      <ListGroup.Item action variant="dark">
+        <PropertyListItem_Tickets 
+          property_id = {property.id}
+          selectProperty = {selectProperty}
+          key={property.id}
+          name={property.name}
+          address = {property.address}
+        
+        />
+      </ListGroup.Item>
       )
   });
 
@@ -28,7 +29,10 @@ export default function Propertylist_Tickets(props){
       selectProperty(0);
      
                         }} >
-      <h4 className="text--regular--ticket">All Properties</h4>
+      <ListGroup.Item action variant="dark">
+        <h5 className="text--regular--ticket property_name">All Properties</h5>
+      </ListGroup.Item>
+        
     </li>
     {propertiesListArray}
     </>  
