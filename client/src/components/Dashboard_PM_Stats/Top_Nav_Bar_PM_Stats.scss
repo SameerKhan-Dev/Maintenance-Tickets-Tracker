@@ -22,4 +22,9 @@
 // 		color:grey;
 // 		border-right: 1px solid #ccc; }
 
+.navFixed {
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0;
+}
 
