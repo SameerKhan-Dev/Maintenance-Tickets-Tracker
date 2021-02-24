@@ -12,11 +12,39 @@ import pending from "./pending.png";
 import unresolved from "./unresolved.jpg";
 
 export default function All_Property_Interface(props) {
-  const { ticketsOrganizedByProperty, properties } = props;
+  const { ticketsOrganizedByProperty, properties, tickets} = props;
 
   //const {specificStats} = props; 
   console.log("This is props:")
   console.log(props);
+  
+  const properties2 = [
+    {
+      id: 11,
+      address: '3116 Brando Gateway'
+    },
+    {
+      id: 12,
+      address: '536 Amanda Loaf'
+    },
+    {
+      id: 13,
+      address: '12 University St.'
+    }
+  ];
+
+  const getTotalCosts = function (tickets) {
+
+    let totalActualCosts = 0;
+    
+    for (let ticket of tickets) {
+      if(ticket.ticket_status_id === 3){
+        totalActualCosts += ticket.actual_cost;
+      }
+    }
+    return totalActualCosts;
+  }
+  let totalActualCosts = getTotalCosts(tickets); 
 
   return (
     <>
@@ -28,19 +56,19 @@ export default function All_Property_Interface(props) {
             <Card>
               <Card.Img variant="top" src={prop1} />
               <Card.Body>
-                <Card.Title>42 Wallaby Way TOronto, ON M9F 1T5</Card.Title>
+                <Card.Title>{properties2[0].address}</Card.Title>
               </Card.Body>
             </Card>
             <Card>
               <Card.Img variant="top" src={prop2} />
               <Card.Body>
-                <Card.Title>42 Wallaby Way TOronto, ON M9F 1T5</Card.Title>
+                <Card.Title>{properties2[1].address}</Card.Title>
               </Card.Body>
             </Card>
             <Card>
               <Card.Img variant="top" src={prop3} />
               <Card.Body>
-                <Card.Title>42 Wallaby Way TOronto, ON M9F 1T5</Card.Title>
+                <Card.Title>{properties2[2].address}</Card.Title>
               </Card.Body>
             </Card>
           </CardDeck>
@@ -62,12 +90,12 @@ export default function All_Property_Interface(props) {
         <section className="card__graph">
           <section className="property__cards">
             <Card>
-              <Card.Img variant="top" src={money} style={{ paddingLeft: '90px', paddingRight: '90px', paddingTop: '30px', paddingBottom: '5px' }} />
+              <Card.Img variant="top" src={money} style={{ paddingLeft: '50px', paddingRight: '50px', paddingTop: '30px', paddingBottom: '5px' }} />
               <Card.Body>
                 <Card.Text>
                   Total Maintenance Expenses
               </Card.Text>
-                <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >$12, 356</Card.Title>
+                <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >${totalActualCosts}</Card.Title>
               </Card.Body>
             </Card>
           </section>

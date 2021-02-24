@@ -93,31 +93,31 @@ export default function Issue_Form(props) {
       <Container fluid="md" className="issue-container">
         <Row>
           <Col>
-            <Form
-              className="issue-form"
-              onSubmit={(event) => event.preventDefault()}
-            >
-              <Form.Group as={Col} controlId="formHorizontalEmail">
-                <Form.Text className="text-label">
-                  Please fill out the maintenance request and select a
-                  maintenance type:
-                </Form.Text>
-                <Form.Label column sm={4} className="text-label-form">
-                  Description:
-                </Form.Label>
-                <Col sm={10}>
-                  <Form.Control
-                    value={issue.description}
-                    name="description"
-                    onChange={handleDescriptionChange}
-                    description="description"
-                    type="text"
-                    placeholder="Please enter maintenance description..."
-                  />
-                </Col>
+            <Form className="issue-form" onSubmit={(event) => event.preventDefault()}>
+              <section className="inner__form">
+                <Form.Group as={Col} controlId="formHorizontalEmail">
+                  <Form.Text className="text-label">
+                    Please fill out the maintenance request and select a
+                    maintenance type:
+                  </Form.Text>
+                  <Form.Label column sm={4} className="text-label-form">
+                    Description:
+                  </Form.Label>
+                  <Col sm={10}>
+                    <Form.Control
+                      value={issue.description}
+                      name="description"
+                      onChange={handleDescriptionChange}
+                      description="description"
+                      type="text"
+                      placeholder="Please enter maintenance description..."
+                      as="textarea"
+                      rows={4}
+                    />
+                  </Col>
               </Form.Group>
 
-              <fieldset>
+                <fieldset>
                 <Form.Group as={Col} className="maintenance-form-group">
                   <Form.Label
                     as="legend"
@@ -163,13 +163,14 @@ export default function Issue_Form(props) {
                 </Form.Group>
               </fieldset>
 
-              <Form.Group as={Col}>
+                <Form.Group as={Col}>
                 <Col sm={{ span: 10, offset: 9 }}>
                   <Button type="submit" onClick={onSubmit}>
                     Submit maintenance request
                   </Button>
                 </Col>
               </Form.Group>
+              </section>
             </Form>
           </Col>
         </Row>

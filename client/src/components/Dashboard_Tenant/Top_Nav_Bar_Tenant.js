@@ -2,7 +2,6 @@ import React, { useState, Component } from "react";
 import { useEffect } from "react";
 import { Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
 import logo from "../MTrack_White.png";
-
 import "./Top_Nav_Bar_Tenant.scss";
 
 // import "./map.scss";

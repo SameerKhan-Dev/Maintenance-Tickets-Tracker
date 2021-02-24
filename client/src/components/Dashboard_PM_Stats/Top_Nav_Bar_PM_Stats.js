@@ -26,8 +26,8 @@ export default function Top_NavBar_PM_Stats(props) {
   );
   return (
     <div classname="App">
-      <Navbar collapseOnSelect expand="lg" bg='dark' variant="dark">
-      <Navbar.Brand href="/dashboard-pm-stats">
+      <Navbar className= "fixed-top" collapseOnSelect expand="lg" bg='dark' variant="dark">
+      <Navbar.Brand href="/dashboard-employee">
       <img
         alt=""
         src={logo}

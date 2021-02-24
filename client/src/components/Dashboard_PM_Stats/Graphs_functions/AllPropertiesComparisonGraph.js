@@ -802,7 +802,7 @@ const allPropertiesComparison = function (ticketsOrganizedByPropertyId, properti
 
     // filter out null values (null values are pending/inprogress)
     filterTickets.forEach(ticket => {
-      if (ticket.actual_cost) {
+      if (ticket.actual_cost && ticket.ticket_status_id === 3) {
         costList.push(ticket.actual_cost);
       }
     });
