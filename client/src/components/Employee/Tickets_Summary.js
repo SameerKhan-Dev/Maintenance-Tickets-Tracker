@@ -85,12 +85,20 @@ export default function Tickets_Summary(props) {
   );
   console.log("ticketsOrganizedByProperty is: ", ticketsOrganizedByProperty);
   return (
-    <>
+    <>{ selectedProperty===0 ?       
       <Card className="title__summary" body>
         <h4 className="tickets_summary_title">
-          <b>MY ASSIGNED TICKETS SUMMARY:</b>
+        <b>MY ASSIGNED TICKETS SUMMARY:</b>
         </h4>
       </Card>
+      :
+      <Card className="title__summary2" body>
+        <h4 className="tickets_summary_title">
+        <b>MY ASSIGNED TICKETS SUMMARY:</b>
+        </h4>
+      </Card>
+      }
+
       {ticketsOrganizedByProperty.map((property) => (
         <div className="test__summary">
           <Card className="bottom">
