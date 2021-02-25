@@ -155,7 +155,7 @@ export default function Ticket_List_Item_PM(props) {
         {employee_id === null ? (
           <section onClick={() => setModalShow(true)}>
             <a href="#" class="cta">
-              <span>Assign Employee</span>
+              <span><b className= "assign_employee">Assign Employee</b></span>
               <svg width="13px" height="10px" viewBox="0 0 13 10">
                 <path d="M1,5 L11,5"></path>
                 <polyline points="8 1 12 5 8 9"></polyline>

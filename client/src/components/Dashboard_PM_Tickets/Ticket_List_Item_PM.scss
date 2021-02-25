@@ -1,7 +1,7 @@
 .ticket__cards {
   // border: 2px solid Black;
   // background-color: rgb(175, 174, 255);
-  padding: 5px;
+  padding: 20px;
 }
 
 .ticket__card-left, .ticket__card-right {
@@ -120,4 +120,9 @@ $primary: grey;
 
   color: white !important;
   padding-top: 5px !important;
+}
+
+.assign_employee {
+
+  color: 	#FF8C00;
 }

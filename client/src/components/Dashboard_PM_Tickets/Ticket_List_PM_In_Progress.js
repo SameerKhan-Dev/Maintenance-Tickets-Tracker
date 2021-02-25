@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Ticket_List_Item_PM from "./Ticket_List_Item_PM";
 // import "./Ticket_List_PM.scss"
 import ListGroup from "react-bootstrap/ListGroup";
+import "./Ticket_List_PM_In_Progress";
 
 const tickets = [
   {
@@ -78,7 +79,7 @@ export default function Ticket_List_PM_In_Progress(props) {
     <section className="tickets">
       <ListGroup>
         {ticketsInProgress.map((ticket) => (
-          <ListGroup.Item style={{backgroundColor: 'orange'}}action variant="light">
+          <ListGroup.Item style={{backgroundColor: 'orange', border: '1px solid black'}}action variant="light">
             <Ticket_List_Item_PM
               key={ticket.id}
               ticketID={ticket.id}
