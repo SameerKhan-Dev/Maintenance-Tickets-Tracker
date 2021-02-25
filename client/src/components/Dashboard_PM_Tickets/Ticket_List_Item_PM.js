@@ -42,7 +42,7 @@ export default function Ticket_List_Item_PM(props) {
   const employees2 = [
     {
       id: 24,
-      name: "Tim",
+      name: "Sameer",
       role_id: 3,
     },
     {
@@ -52,7 +52,7 @@ export default function Ticket_List_Item_PM(props) {
     },
     {
       id: 26,
-      name: "Rogers",
+      name: "Roger",
       role_id: 5,
     },
   ];
@@ -60,18 +60,18 @@ export default function Ticket_List_Item_PM(props) {
   const tenants = [
     {
       id: 13,
-      firstName: "Jack",
-      lastName: "Harvey",
+      firstName: "Bee",
+      lastName: "Lister",
     },
     {
       id: 14,
       firstName: "Carl",
-      lastName: "Cooper",
+      lastName: "Harvey",
     },
     {
       id: 15,
       firstName: "Davey",
-      lastName: "Handerson",
+      lastName: "Harvey",
     },
   ];
 
@@ -104,8 +104,8 @@ export default function Ticket_List_Item_PM(props) {
             {maintenance_type}
           </div>
           <div className="ticket__id">
-            <b>Ticket ID: </b>
-            {ticketID}
+            <h6><b>Ticket ID:</b>  {`${ticketID}`} </h6>
+            
           </div>
         </div>
         <div className="ticket__description">
@@ -116,29 +116,30 @@ export default function Ticket_List_Item_PM(props) {
 
       <section className="ticket__card-right">
         <div>{ticketStatus}</div>
-        <div>Ticket ID: {ticketID}</div>
-        <div>Created at: {createdAt}</div>
+        
+        {/* <div>Ticket ID: {ticketID}</div>
+        <div>Created at: {createdAt}</div> */}
         {creator_id === 13 && (
-          <div>
+          <div className="created_by_text">
             <b>Created by: </b>
             {`${tenants[0].firstName} ${tenants[0].lastName}`}
           </div>
         )}
         {creator_id === 14 && (
-          <div>
+          <div className="created_by_text">
             <b>Created by: </b>
             {`${tenants[1].firstName} ${tenants[1].lastName}`}
           </div>
         )}
         {creator_id === 15 && (
-          <div>
-            <b>Created by: </b>
+          <div className="created_by_text">
+            <b >Created by: </b>
             {`${tenants[2].firstName} ${tenants[2].lastName}`}
           </div>
         )}
         <div className="ticket__status">{ticketStatus}</div>
         <div className="created__at">
-          <b>Created at: </b> {createdAt.substr(0, 10)}
+          <b>{`Created at: ${createdAt.substr(0, 10)}`}</b>
         </div>
       </section>
       {/* <section className="test__button">
@@ -162,8 +163,8 @@ export default function Ticket_List_Item_PM(props) {
             </a>
           </section>
         ) : (
-          <Button action variant="warning" onClick={() => setModalShow(true)}>
-            Assigned to: {getEmployeeName(employee_id)}
+          <Button action variant="primary" onClick={() => setModalShow(true)}>
+            <h6 className="assigned_button" >Assigned to: {getEmployeeName(employee_id)}</h6>
           </Button>
         )}
         <MyVerticallyCenteredModal

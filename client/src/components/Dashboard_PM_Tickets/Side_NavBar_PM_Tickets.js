@@ -9,7 +9,7 @@ import PropertyList from "./PropertyList_Tickets";
 import Map_SideBar from "./property_map_Tickets";
 
 export default function Side_NavBar_PM_Tickets(props) {
-  const { selectProperty, properties } = props;
+  const { selectProperty, properties, selectedProperty } = props;
 
   return (
     <>
@@ -41,6 +41,7 @@ export default function Side_NavBar_PM_Tickets(props) {
             <PropertyList
               selectProperty={selectProperty}
               properties={properties}
+              selectedProperty= {selectedProperty}
             />
           </nav>
           {/* <img

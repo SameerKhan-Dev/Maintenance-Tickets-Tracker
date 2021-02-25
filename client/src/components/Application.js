@@ -36,9 +36,9 @@ export default function Application(props) {
     loginUser["userEmail"]
   );
   // const logInUserEmail = loginUser["userEmail"];
-  const pmEmail = "maci_lehner@gmail.com";
-  const empEmail = "tim_ankunding.com";
-  const tenantEmail = "car_harvey@yahoo.com";
+  const pmEmail = "zahra_m@email.com";
+  const empEmail = "sameer_k@email.com";
+  const tenantEmail = "bee_l@email.com";
 
   return (
     <Router>

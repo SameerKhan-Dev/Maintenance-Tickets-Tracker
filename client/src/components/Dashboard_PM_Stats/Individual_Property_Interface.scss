@@ -10,6 +10,7 @@
   padding: 5px;
   padding-left: 10px;
   gap: 30px;
+  background-color: #F8F8FF;
 }
 
 .prop__data {
@@ -62,8 +63,8 @@
   color: black;
   font-size: 20px;
   text-align: center;
-  padding: 10px;
-
+  //padding: 10px;
+  height: 371px;
 }
 
 .address__title {
@@ -73,6 +74,8 @@
 
 .top {
   display: flex;
+
+
 }
 
 .ticket__info__specific {
@@ -80,4 +83,27 @@
   display:flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.card_totalExpenses {
+  width: 275px !important;
+  margin-right: 0px !important;
+
+}
+
+.card_individualExpenses {
+  width: 282px !important;
+  margin-left: 0px !important;
+}
+.property_text {
+  color: black !important;
+
+}
+
+.card_parent {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-direction: column;
+
 }

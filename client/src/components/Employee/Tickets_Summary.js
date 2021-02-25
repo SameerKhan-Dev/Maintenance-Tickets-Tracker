@@ -10,18 +10,18 @@ export default function Tickets_Summary(props) {
   const tenants = [
     {
       id: 13,
-      firstName: "Jack",
-      lastName: "Harvey",
+      firstName: "Bee",
+      lastName: "Lister",
     },
     {
       id: 14,
       firstName: "Carl",
-      lastName: "Cooper",
+      lastName: "Harvey",
     },
     {
       id: 15,
       firstName: "Davey",
-      lastName: "Handerson",
+      lastName: "Harvey",
     },
   ];
 
@@ -85,54 +85,64 @@ export default function Tickets_Summary(props) {
   );
   console.log("ticketsOrganizedByProperty is: ", ticketsOrganizedByProperty);
   return (
-    <>
+    <>{ selectedProperty===0 ?       
       <Card className="title__summary" body>
-        <h2>
-          <b>MY ASSIGNED TICKETS SUMMARY:</b>
-        </h2>
+        <h4 className="tickets_summary_title">
+        <b>MY ASSIGNED TICKETS SUMMARY:</b>
+        </h4>
       </Card>
+      :
+      <Card className="title__summary2" body>
+        <h4 className="tickets_summary_title">
+        <b>MY ASSIGNED TICKETS SUMMARY:</b>
+        </h4>
+      </Card>
+      }
+
       {ticketsOrganizedByProperty.map((property) => (
-        <Card className="bottom">
-          <Card.Header>
-            <h5>
-              Address: <b>{property.property.address}</b>
-            </h5>
-          </Card.Header>
-          <Card.Body className="address_info">
-            <Card.Text>
-              <Table className="table__summ" bordered hover>
-                <thead className="address__info__table">
-                  <tr>
-                    <th>Ticket ID:</th>
-                    <th>Description</th>
-                    <th>Submitted By:</th>
-                    <th>Date Submitted</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {property.tickets.map((ticket) => (
-                    <>
-                      <tr>
-                        <td>{ticket.id}</td>
-                        <td>{ticket.description}</td>
-                        {ticket.creator_id === 13 && (
-                          <td>{`${tenants[0].firstName} ${tenants[0].lastName}`}</td>
-                        )}
-                        {ticket.creator_id === 14 && (
-                          <td>{`${tenants[1].firstName} ${tenants[1].lastName}`}</td>
-                        )}
-                        {ticket.creator_id === 15 && (
-                          <td>{`${tenants[2].firstName} ${tenants[2].lastName}`}</td>
-                        )}
-                        <td>{ticket.created_at.substr(0, 10)}</td>
-                      </tr>
-                    </>
-                  ))}
-                </tbody>
-              </Table>
-            </Card.Text>
-          </Card.Body>
-        </Card>
+        <div className="test__summary">
+          <Card className="bottom">
+            <Card.Header className="address_header">
+              <h5>
+                Address: <b>{property.property.address}</b>
+              </h5>
+            </Card.Header>
+            <Card.Body className="address_info">
+              <Card.Text>
+                <Table className="table__summ" bordered hover>
+                  <thead className="address__info__table">
+                    <tr>
+                      <th className="border_cells">Ticket ID:</th>
+                      <th className="border_cells">Description</th>
+                      <th className="border_cells">Submitted By:</th>
+                      <th className="border_cells">Date Submitted</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {property.tickets.map((ticket) => (
+                      <>
+                        <tr>
+                          <td className="border_cells">{ticket.id}</td>
+                          <td className="border_cells">{ticket.description}</td>
+                          {ticket.creator_id === 13 && (
+                            <td className="border_cells">{`${tenants[0].firstName} ${tenants[0].lastName}`}</td>
+                          )}
+                          {ticket.creator_id === 14 && (
+                            <td className="border_cells">{`${tenants[1].firstName} ${tenants[1].lastName}`}</td>
+                          )}
+                          {ticket.creator_id === 15 && (
+                            <td className="border_cells">{`${tenants[2].firstName} ${tenants[2].lastName}`}</td>
+                          )}
+                          <td className="border_cells">{ticket.created_at.substr(0, 10) }</td>
+                        </tr>
+                      </>
+                    ))}
+                  </tbody>
+                </Table>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
       ))}
     </>
   );

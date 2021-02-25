@@ -40,11 +40,16 @@
   &:hover {
     color: #ef8633;
   }
-  padding: 15px;
+  //padding: 15px;
 }
 
 h2.text--regular--ticket {
   &:hover {
     background: #343a40;
   }
+}
+
+.property_name {
+  color: black;
+  text-align: center;
 }

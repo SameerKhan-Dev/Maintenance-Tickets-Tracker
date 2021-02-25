@@ -195,6 +195,7 @@ const getEmployeeInProgressTickets = function () {
           properties={state_Employee.properties}
           selectedPropertyAddress={selectedPropertyAddress}
           selectedProperty={state_Employee.selectedProperty}
+          selectedTicket={state_Employee.selectedTicket}
         />
       </div>
       <div className="DivEmployee_Interface">

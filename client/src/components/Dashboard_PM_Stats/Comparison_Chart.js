@@ -1,11 +1,13 @@
 import React from "react";
 import Chart from "react-google-charts";
-import Spinner from 'react-bootstrap/Spinner'
-import { allPropertiesComparison } from "./Graphs_functions/AllPropertiesComparisonGraph.js"
+import Spinner from "react-bootstrap/Spinner";
+import { allPropertiesComparison } from "./Graphs_functions/AllPropertiesComparisonGraph.js";
 
 export default function Comparison_Chart(props) {
-
-  let finalData = allPropertiesComparison(props.ticketsOrganizedByProperty, props.properties)
+  let finalData = allPropertiesComparison(
+    props.ticketsOrganizedByProperty,
+    props.properties
+  );
   const data = finalData;
   // const data = [
   //   ["Property Name", "Plumbing", "Electrical", "General Maintenance"],
@@ -30,11 +32,13 @@ export default function Comparison_Chart(props) {
       width={"500px"}
       height={"300px"}
       chartType="Bar"
-      loader={<div>
-        <Spinner animation="border" role="status" size="lg">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      </div>}
+      loader={
+        <div>
+          <Spinner animation="border" role="status" size="lg">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        </div>
+      }
       data={data}
       options={{
         // Material design options
@@ -49,7 +53,7 @@ export default function Comparison_Chart(props) {
             title: "Maintenance Type",
           },
         },
-        // colors: ["#8395a7", "#54a0ff", "#ee5253"],
+        colors: ["#8395a7", "#54a0ff", "#ee5253"],
         position: "top",
         legend: {
           position: "right",

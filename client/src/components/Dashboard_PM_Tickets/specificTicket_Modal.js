@@ -26,7 +26,7 @@ export default function MyVerticallyCenteredModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Description</h4>
+          <h4><b>Description</b></h4>
           <p>
            {description}
           </p>

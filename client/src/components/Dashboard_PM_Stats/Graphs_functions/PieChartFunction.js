@@ -381,11 +381,11 @@ const maintenanceCountPieChart = function(tickets) {
   let numGeneral = 0;
 
   for (let i = 0; i < tickets.length; i++) {
-    if (tickets[i].maintenance_type_id === 1) {
+    if (tickets[i].maintenance_type_id === 1 && tickets[i].ticket_status_id === 3) {
       numPlumbing += 1;
-    } else if (tickets[i].maintenance_type_id === 2) {
+    } else if (tickets[i].maintenance_type_id === 2  && tickets[i].ticket_status_id === 3) {
       numElectrical += 1
-    } else if (tickets[i].maintenance_type_id ===3) {
+    } else if (tickets[i].maintenance_type_id ===3  && tickets[i].ticket_status_id === 3) {
       numGeneral += 1
     }
   }

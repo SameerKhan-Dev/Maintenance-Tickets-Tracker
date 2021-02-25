@@ -1,6 +1,8 @@
 import React, { useState, Component } from "react";
 import "./PropertyListItem.scss";
 import classnames from "classnames";
+import "./PropertyList.scss";
+import { faBuilding } from "@fortawesome/free-solid-svg-icons"; 
 
 export default function PropertyListItem(props) {
   console.log("*** Props inside PropertyListItem: ", props);
@@ -22,7 +24,7 @@ export default function PropertyListItem(props) {
         selectProperty(property_id);
       }}
     >
-      <h2 className="text--regular">{props.name}</h2>
+      <h5 className="property_name text--regular" >{props.address}</h5>
     </li>
   );
 }

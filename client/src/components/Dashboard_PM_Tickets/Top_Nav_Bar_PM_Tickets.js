@@ -26,8 +26,8 @@ export default function Top_NavBar_PM_Tickets(props) {
 
   return (
     <div classname="App">
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="/dashboard-pm-stats">
+      <Navbar className= "fixed-top" collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar.Brand href="/dashboard-employee">
       <img
         alt=""
         src={logo}
@@ -38,12 +38,12 @@ export default function Top_NavBar_PM_Tickets(props) {
     </Navbar.Brand>
   <Navbar.Toggle />
   <Navbar.Collapse className="justify-content-end">
-  <Button variant="dark" onClick={goToStatsPage}>View Statistic Summary</Button>
+  <Button className="button_navBar" variant="dark" onClick={goToStatsPage}>View Stats</Button>
   <Navbar.Text>       </Navbar.Text>
     <Navbar.Text>
     Signed in as: <a href="#login">{loggedInUserEmail}</a>
     </Navbar.Text>
-    <Button variant="dark">Logout</Button>
+    <Button className="logout_button" variant="dark">Logout</Button>
   </Navbar.Collapse>
 </Navbar>
     </div>

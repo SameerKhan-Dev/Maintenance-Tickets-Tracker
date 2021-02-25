@@ -12,7 +12,7 @@ export default function Top_NavBar_Emp(props) {
   console.log("****Top_Nav_Bar_Emp -- props = ", props.loggedInUserEmail);
   return (
     <div classname="App">
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar className= "fixed-top" collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand href="/dashboard-pm-stats">
       <img
         alt=""
