@@ -87,9 +87,9 @@ export default function Tickets_Summary(props) {
   return (
     <>
       <Card className="title__summary" body>
-        <h2>
+        <h4 className="tickets_summary_title">
           <b>MY ASSIGNED TICKETS SUMMARY:</b>
-        </h2>
+        </h4>
       </Card>
       {ticketsOrganizedByProperty.map((property) => (
         <div className="test__summary">

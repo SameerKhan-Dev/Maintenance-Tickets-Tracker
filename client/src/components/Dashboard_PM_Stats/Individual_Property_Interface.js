@@ -103,17 +103,16 @@ export default function Individual_Property_Interface(props) {
             { selectedProperty === 13 &&
                 <Card.Img src={prop3} alt="Card image" />
             }
-            <Card.ImgOverlay>
-              <Card.Title>Condominium</Card.Title>
-              <Card.Text>
-                {propertyAddress}
+            <Card.ImgOverlay className="card_parent">
+              <Card.Text><h5 className="property_text">Condominium</h5>
+                          <div className="property_text">{propertyAddress}</div>
               </Card.Text>
             </Card.ImgOverlay>
           </Card>
         </section>
         <section className="property__cards__ind">
-          <Card>
-            <Card.Img variant="top" src={money} style={{ height: '200px', width: '400px', paddingLeft: '90px', paddingRight: '90px', paddingTop: '30px', paddingBottom: '5px' }} />
+          <Card className="card_totalExpenses">
+            <Card.Img variant="top" src={money} style={{ height: '150px', width: '300px', paddingLeft: '70px', paddingRight: '90px', paddingTop: '30px', paddingBottom: '5px' }} />
             <Card.Body>
               <Card.Text>
                 <b>Total Expenses</b>
@@ -121,10 +120,10 @@ export default function Individual_Property_Interface(props) {
             <Card.Text>
                 January 2020 - 2021
             </Card.Text>
-              <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >${totalPropertyCosts}</Card.Title>
+              <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >${totalPropertyCosts.toLocaleString('en', {useGrouping:true})}</Card.Title>
             </Card.Body>
           </Card>
-          <Card>
+          <Card className="card_individualExpenses">
             <Card.Body>
             <Card.Text>
                 <b>Overview (2020-2021)</b>
@@ -132,15 +131,15 @@ export default function Individual_Property_Interface(props) {
             <Card.Text>
                 Plumbing
             </Card.Text>
-              <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >${ costsByType.plumbingCosts}</Card.Title>
+              <Card.Title style={{ fontSize: '35px', textAlign: 'center', color: '#3FA1DB' }} >${ costsByType.plumbingCosts.toLocaleString('en', {useGrouping:true})}</Card.Title>
               <Card.Text>
                 Electrical
             </Card.Text>
-              <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >${costsByType.electricalCosts}</Card.Title>
+              <Card.Title style={{ fontSize: '35px', textAlign: 'center', color: '#3FA1DB' }} >${costsByType.electricalCosts.toLocaleString('en', {useGrouping:true})}</Card.Title>
               <Card.Text>
                 General Maint.
             </Card.Text>
-              <Card.Title style={{ fontSize: '50px', textAlign: 'center', color: '#3FA1DB' }} >${costsByType.general}</Card.Title>
+              <Card.Title style={{ fontSize: '35px', textAlign: 'center', color: '#3FA1DB' }} >${costsByType.general.toLocaleString('en', {useGrouping:true})}</Card.Title>
             
             </Card.Body>
           </Card>
@@ -176,7 +175,7 @@ export default function Individual_Property_Interface(props) {
         <section className="right">
           <section className="graph__pie">
               <Card>
-                <Card.Header>Percentage of Maintenance Types</Card.Header>
+                <Card.Header>Breakdown of Maintenance Issues by Type</Card.Header>
                 <Card.Body>
                   <Pie_Chart specificTicketsforPropertyPie={props.ticketsForSelectedProperty} />
                 </Card.Body>

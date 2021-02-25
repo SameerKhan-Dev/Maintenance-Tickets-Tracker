@@ -1,5 +1,7 @@
 .title__summary {
   background-color: orange;
+  width: 900px !important;
+  margin-left: 20px;
 }
 
 .summary__address {
@@ -35,4 +37,8 @@
 
 .border_cells {
   border: black solid 1px !important;
+}
+.tickets_summary_title {
+  padding: 0px !important;
+  margin: 0px !important;
 }

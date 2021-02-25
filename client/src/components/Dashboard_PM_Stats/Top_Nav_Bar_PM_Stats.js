@@ -38,12 +38,12 @@ export default function Top_NavBar_PM_Stats(props) {
     </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-        <Button variant="dark" onClick={goToTicketPage}>View Tickets</Button>
+        <Button className="button_navBar" onClick={goToTicketPage}>View Tickets</Button>
           <Navbar.Text>
             Signed in as: <a href="#login">{loggedInUserEmail}</a>
           </Navbar.Text>
 
-          <Button variant="dark">Logout</Button>
+          <Button className="logout_button" variant="dark">Logout</Button>
         </Navbar.Collapse>
       </Navbar>
     </div>

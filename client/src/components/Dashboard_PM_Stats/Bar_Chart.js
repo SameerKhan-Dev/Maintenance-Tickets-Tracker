@@ -45,7 +45,7 @@ export default function Bar_Chart(props) {
       options={{
         // Material design options
         chart: {
-          title: "Maintenance Cost: Estimated Cost vs. Actual Cost",
+          title: " ",
           hAxis: {
             title: "Cost",
             // minValue: 1000,

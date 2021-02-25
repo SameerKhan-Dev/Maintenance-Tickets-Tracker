@@ -12,15 +12,17 @@
   padding: 4%;
   opacity: 90%;
   border-radius: 10px 140px 30px 140px;
+  width:700px;
+  margin-left: 125px;
 }
 .issue-container {
-  color: orange
+  color: orange;
 }
 
 .issue-form {
   padding-top: 200px;
   padding-left: 80px;
-  margin-top: -95%;
+  margin-top: -102%;
   position: absolute;
 }
 
@@ -75,3 +77,7 @@
   // color: purple;
 }
 
+.form_title {
+
+  //width: 700px !important;
+}

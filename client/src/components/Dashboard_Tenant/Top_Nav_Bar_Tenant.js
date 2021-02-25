@@ -27,8 +27,8 @@ export default function Top_NavBar_Tenant(props) {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-            Signed in as: <a href="#login">{loggedInUserEmail}</a>
+          <Navbar.Text >
+            Signed in as: <a className= "navBar_name" href="#login">{loggedInUserEmail}</a>
           </Navbar.Text>
 
           <Button variant="dark">Logout</Button>

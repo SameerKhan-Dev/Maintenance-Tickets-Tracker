@@ -12,15 +12,15 @@ let tickets = [
 
 export default function AssignedTicketList(props){
 
-  const {employeeInProgressTickets, selectTicket, selectedProperty, key} = props;
+  const {employeeInProgressTickets, selectTicket, selectedProperty, key, selectedTicket} = props;
 
   return (
     <ListGroup>
-          <ListGroup.Item style={{textAlign: 'center'}} action variant="dark"><AssignedTicketsListItem  id={0} selectTicket = {selectTicket}/></ListGroup.Item>
+          <ListGroup.Item style={{textAlign: 'center'}} action variant={(selectedTicket !== 0 ? "dark" : "light")}><AssignedTicketsListItem  id={0} selectTicket = {selectTicket}/></ListGroup.Item>
     {employeeInProgressTickets.map((ticket) => (
    
       <>
-       <ListGroup.Item style={{textAlign: 'center'}} action variant="dark">
+       <ListGroup.Item style={{textAlign: 'center'}} action variant={(selectedTicket !== ticket.id ? "dark" : "light")}>
           <AssignedTicketsListItem
             key={ticket.id}
             id = {ticket.id}

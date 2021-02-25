@@ -27,7 +27,7 @@ export default function Pie_Chart(props) {
         ["General Maintenance", finalCosts.numGeneral],
       ]}
       options={{
-        title: "Maintenance Cost",
+        title: " ",
         is3D: true,
         colors: ["#8395a7", "#54a0ff", "#ee5253"],
       }}

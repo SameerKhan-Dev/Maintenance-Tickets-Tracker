@@ -97,13 +97,13 @@ export default function Issue_Form(props) {
               <section className="inner__form">
                 <Form.Group as={Col} controlId="formHorizontalEmail">
                   <Form.Text className="text-label">
-                    Please fill out the maintenance request and select a
-                    maintenance type:
+                    <h2 className="form_title">Please fill out the maintenance request and 
+                    select a maintenance type:</h2>
                   </Form.Text>
                   <Form.Label column sm={4} className="text-label-form">
                     Description:
                   </Form.Label>
-                  <Col sm={10}>
+                  <Col sm={11}>
                     <Form.Control
                       value={issue.description}
                       name="description"
@@ -164,7 +164,7 @@ export default function Issue_Form(props) {
               </fieldset>
 
                 <Form.Group as={Col}>
-                <Col sm={{ span: 10, offset: 9 }}>
+                <Col sm={{ span: 10, offset: 6 }}>
                   <Button type="submit" onClick={onSubmit}>
                     Submit maintenance request
                   </Button>

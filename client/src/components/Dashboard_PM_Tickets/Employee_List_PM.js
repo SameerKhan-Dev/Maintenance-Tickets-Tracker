@@ -38,7 +38,7 @@ export default function Employee_List_PM(props) {
   const currentEmployee = selectedEmployee;
   return (
     <section className="interviewers">
-      <h4 className="interviewers__header text--light">Assign Employee:</h4>
+      <h4 className="interviewers__header text--light"><b>Assign Employee:</b></h4>
       <ul className="employees__list">
         {employees.map((employee) => (
           <Employee_List_Item_PM
@@ -50,7 +50,6 @@ export default function Employee_List_PM(props) {
           />
         ))}
       </ul>
-      <h1>{selectedEmployee}</h1>
     </section>
 
   );

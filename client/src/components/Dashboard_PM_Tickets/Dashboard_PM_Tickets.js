@@ -306,6 +306,7 @@ export default function Dashboard_PM_Tickets(props) {
         <Side_NavBar_PM_Tickets
           selectProperty={selectProperty}
           properties={state_PM_Tickets.properties}
+          selectedProperty= {state_PM_Tickets.selectedProperty}
         />
       </div>
       <div className="dashboard-interface">

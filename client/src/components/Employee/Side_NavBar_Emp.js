@@ -10,7 +10,7 @@ import "./Side_NavBar_Emp.scss";
 
 export default function Side_NavBar_Emp(props) {
 
-  const {employeeInProgressTickets, selectTicket, selectProperty, properties, selectedPropertyAddress, selectedProperty} = props;
+  const {employeeInProgressTickets,selectedTicket, selectTicket, selectProperty, properties, selectedPropertyAddress, selectedProperty} = props;
 
     return (
       <>
@@ -35,6 +35,7 @@ export default function Side_NavBar_Emp(props) {
              selectTicket = {selectTicket}
              employeeInProgressTickets = {employeeInProgressTickets}
              selectedProperty = {selectedProperty}
+             selectedTicket = {selectedTicket}
             />
           </nav>
           {/* <img

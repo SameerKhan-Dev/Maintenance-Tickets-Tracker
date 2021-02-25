@@ -9,14 +9,13 @@ export default function Propertylist_Tickets(props){
   // style={{backgroundColor: selectedProperty === property.id ? `#343a40` : `transparent`}
   const propertiesListArray = properties.map((property) => {
     return (
-      <ListGroup.Item action variant="dark">
+      <ListGroup.Item action variant={(selectedProperty !== property.id ? "dark" : "light")}>
         <PropertyListItem_Tickets 
           property_id = {property.id}
           selectProperty = {selectProperty}
           key={property.id}
           name={property.name}
           address = {property.address}
-        
         />
       </ListGroup.Item>
       )
@@ -29,7 +28,7 @@ export default function Propertylist_Tickets(props){
       selectProperty(0);
      
                         }} >
-      <ListGroup.Item action variant="dark">
+      <ListGroup.Item action variant={(selectedProperty !== 0 ? "dark" : "light")}>
         <h5 className="text--regular--ticket property_name">All Properties</h5>
       </ListGroup.Item>
         

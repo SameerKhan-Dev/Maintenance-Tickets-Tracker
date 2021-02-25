@@ -60,8 +60,7 @@ export default function Ticket_Form_Emp(props) {
           <section className="ticket__card-form">
             <form onSubmit={(event) => event.preventDefault()}>
               <section className="ticket__card-final-cost">           
-                <Form.Label>Final Cost: $ </Form.Label>
-                <input
+                <h6 className="final_cost">Final Cost ($) <input
                   className="ticket__final-cost"
                   value={finalCost.actual_cost}
                   name="finalCost"
@@ -69,7 +68,8 @@ export default function Ticket_Form_Emp(props) {
                   finalCost="finalCost"
                   type="text"
                   placeholder="Final Cost"
-                />
+                /></h6>
+               
               </section>
               <ResolvedTicketModal
                   onConfirm={onConfirm}

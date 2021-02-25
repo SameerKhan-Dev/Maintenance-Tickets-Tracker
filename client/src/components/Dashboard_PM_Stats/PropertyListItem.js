@@ -2,6 +2,7 @@ import React, { useState, Component } from "react";
 import "./PropertyListItem.scss";
 import classnames from "classnames";
 import "./PropertyList.scss";
+import { faBuilding } from "@fortawesome/free-solid-svg-icons"; 
 
 export default function PropertyListItem(props) {
   console.log("*** Props inside PropertyListItem: ", props);

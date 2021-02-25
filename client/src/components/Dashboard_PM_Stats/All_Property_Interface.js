@@ -44,7 +44,8 @@ export default function All_Property_Interface(props) {
     }
     return totalActualCosts;
   }
-  let totalActualCosts = getTotalCosts(tickets); 
+ // let totalActualCosts = getTotalCosts(tickets); 
+ let totalActualCosts = getTotalCosts(tickets).toLocaleString('en', {useGrouping:true});
 
   return (
     <>
@@ -90,7 +91,7 @@ export default function All_Property_Interface(props) {
         <section className="card__graph">
           <section className="property__cards">
             <Card>
-              <Card.Img variant="top" src={money} style={{ paddingLeft: '50px', paddingRight: '50px', paddingTop: '30px', paddingBottom: '5px' }} />
+              <Card.Img variant="top" src={money} style={{ width: '250px' , height: '150px', paddingLeft: '80px', paddingRight: '50px', paddingTop: '30px', paddingBottom: '5px' }} />
               <Card.Body>
                 <Card.Text>
                   Total Maintenance Expenses
@@ -101,7 +102,7 @@ export default function All_Property_Interface(props) {
           </section>
           <section className="graph__comparison">
             <Card>
-              <Card.Header>Total Maintenance Cost</Card.Header>
+              <Card.Header>Total Cost by Maintenance Type for each Property</Card.Header>
               <Card.Body>
                 <Comparison_Chart ticketsOrganizedByProperty={ticketsOrganizedByProperty} properties={properties} />
               </Card.Body>
