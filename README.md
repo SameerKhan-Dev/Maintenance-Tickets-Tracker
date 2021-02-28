@@ -8,8 +8,8 @@ This application requires two servers running, the back-end server runs on port 
 
 1. Install dependencies with `npm install`.
 2. Once the installation is completed:
-   2.1) On the back-end terminal, run `npm run local`.
-   2.2) On the client terminal, run `npm start`.
+   2.1 On the back-end terminal, run `npm run local`.
+   2.2 On the client terminal, run `npm start`.
 3. Visit http://localhost:8000/ in the browser
 
 ## Dependencies
@@ -28,14 +28,14 @@ This application requires two servers running, the back-end server runs on port 
 
 ## Screenshots
 
-!["Login page"]()
+!["Login page"](https://raw.githubusercontent.com/SameerKhan-Dev/Maintenance-Tickets-Tracker/BP-cleanup/docs/Login.png)
 
-!["Dashboard Tenant"]()
+!["Dashboard Tenant"](https://raw.githubusercontent.com/SameerKhan-Dev/Maintenance-Tickets-Tracker/BP-cleanup/docs/dashboard-tenant.png)
 
-!["Dashboard PM Statistics"]()
+!["Dashboard PM Statistics"](https://raw.githubusercontent.com/SameerKhan-Dev/Maintenance-Tickets-Tracker/BP-cleanup/docs/dashboard-pm-stats.png)
 
-!["Dashboard PM Tickets"]()
+!["Dashboard PM Tickets"](https://raw.githubusercontent.com/SameerKhan-Dev/Maintenance-Tickets-Tracker/BP-cleanup/docs/dashboard-pm-tickets.png)
 
-!["Dashboard Employee Summary"]()
+!["Dashboard Employee Summary"](https://raw.githubusercontent.com/SameerKhan-Dev/Maintenance-Tickets-Tracker/BP-cleanup/docs/dashboard-employee-summary.png)
 
-!["Dashboard Employee Ticket"]()
+!["Dashboard Employee Ticket"](https://raw.githubusercontent.com/SameerKhan-Dev/Maintenance-Tickets-Tracker/BP-cleanup/docs/dashboard-employee-ticket.png)
