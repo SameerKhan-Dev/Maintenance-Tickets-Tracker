@@ -28,14 +28,26 @@ This application requires two servers running, the back-end server runs on port 
 
 ## Screenshots
 
+##### Login page
+
 !["Login page"](https://raw.githubusercontent.com/SameerKhan-Dev/Maintenance-Tickets-Tracker/BP-cleanup/docs/Login.png)
+
+##### Tenant maintenance submission form
 
 !["Dashboard Tenant"](https://raw.githubusercontent.com/SameerKhan-Dev/Maintenance-Tickets-Tracker/BP-cleanup/docs/dashboard-tenant.png)
 
+##### Property Manager statistical data page
+
 !["Dashboard PM Statistics"](https://raw.githubusercontent.com/SameerKhan-Dev/Maintenance-Tickets-Tracker/BP-cleanup/docs/dashboard-pm-stats.png)
+
+##### Property Manager tickets page
 
 !["Dashboard PM Tickets"](https://raw.githubusercontent.com/SameerKhan-Dev/Maintenance-Tickets-Tracker/BP-cleanup/docs/dashboard-pm-tickets.png)
 
+##### Employee ticket summary page
+
 !["Dashboard Employee Summary"](https://raw.githubusercontent.com/SameerKhan-Dev/Maintenance-Tickets-Tracker/BP-cleanup/docs/dashboard-employee-summary.png)
+
+##### Employee ticket completion page
 
 !["Dashboard Employee Ticket"](https://raw.githubusercontent.com/SameerKhan-Dev/Maintenance-Tickets-Tracker/BP-cleanup/docs/dashboard-employee-ticket.png)
