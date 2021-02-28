@@ -160,9 +160,6 @@ export default function Issue_Form(props) {
                         onChange={handleMaintenanceChange}
                       />
                     </Row>
-                    <div class="button_cont" onClick={onSubmit} align="center">
-                      <a class="example_d" target="_blank" rel="nofollow noopener">Submit Maintenance Request</a>
-                    </div>
                   </Form.Group>
                 </fieldset>
 

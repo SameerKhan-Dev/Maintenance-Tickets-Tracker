@@ -3,6 +3,7 @@ import React from "react";
 import "./AssignedTicketsListItem.scss";
 import classnames from "classnames";
 import { faHome, faWrench } from "@fortawesome/free-solid-svg-icons";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import 'mdbreact/dist/css/mdb.css';
 
