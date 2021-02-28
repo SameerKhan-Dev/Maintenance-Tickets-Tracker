@@ -12,7 +12,7 @@ const getAllEmployeesByProperty_Id = function (property_id) {
     )
     .then((res) => {
       if (res.rows) {
-        // console.log("res.rows is, ", res.rows);
+        console.log("res.rows is, ", res.rows);
         return res.rows;
       } else {
         console.log("null returned");

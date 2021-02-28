@@ -1,7 +1,6 @@
 const db = require("../database");
 
 const getAllTicketsByPm_Id = function (pm_id) {
-
   return db
     .query(
       `
@@ -12,7 +11,7 @@ const getAllTicketsByPm_Id = function (pm_id) {
     )
     .then((res) => {
       if (res.rows) {
-        // console.log("res.rows is, ", res.rows);
+        console.log("res.rows is, ", res.rows);
         return res.rows;
       } else {
         console.log("null returned");
