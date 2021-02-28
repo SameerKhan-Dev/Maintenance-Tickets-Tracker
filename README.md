@@ -8,23 +8,23 @@ This application requires two servers running, the back-end server runs on port 
 
 1. Install dependencies with `npm install`.
 2. Once the installation is completed:
-   2.1 On the back-end terminal, run `npm run local`.
-   2.2 On the client terminal, run `npm start`.
+   - On the back-end terminal, run `npm run local`.
+   - On the client terminal, run `npm start`.
 3. Visit http://localhost:8000/ in the browser
 
 ## Dependencies
 
-• react
-• react-bootstrap
-• react-google-charts
-• react-bootstrap
-• react-dom
-• react-scripts
-• bootstrap
-• axios
-• mapbox-gl
-• Node.js
-• Express
+- react
+- react-bootstrap
+- react-google-charts
+- react-bootstrap
+- react-dom
+- react-scripts
+- bootstrap
+- axios
+- mapbox-gl
+- Node.js
+- Express
 
 ## Screenshots
 
