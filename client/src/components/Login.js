@@ -64,16 +64,18 @@ export default function Login(props) {
         password: currentPassword,
       })
       .then((response) => {
-        console.log("RESPONSE: ", response.data);
-        if (response.data) {
+        //console.log("RESPONSE: ", response.data);
+
+        if (response.data.isValid) {
           props.setLoginUser((prev) => ({
             ...prev,
             loggedIn: true,
-            userEmail: response.data.email,
-            userRole: response.data.role_id,
+            userEmail: response.data.userInfo.email,
+            userRole: response.data.userInfo.role_id,
           }));
-          history.push(getPathForRole(response.data.role_id));
+          history.push(getPathForRole(response.data.userInfo.role_id));
         }
+        
       });
   };
   // **************************

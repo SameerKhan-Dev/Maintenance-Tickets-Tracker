@@ -66,6 +66,15 @@ app.post("/register", (req, res) => {
   res.send("Hello from: route 2  ");
 });
 
+app.get("/validateUser", (req, res)=> {
+  // 
+  let loggedInUserId = req.session.user_id;
+  if (loggedInUserId) {
+    // cookie is enabled or exists
+    // use the loggedInUserId get the userInfo
+    // and return 
+  }
+});
 // check user email and password, only allow valid user to login
 app.post("/login", (req, res) => {
   const user_email = req.body.email;
@@ -74,16 +83,33 @@ app.post("/login", (req, res) => {
   console.log("password = ", password);
   userLogin = getUserByEmail(user_email)
     .then((response) => {
+      console.log("RES is:", res);
       if (response[0] && response[0].password === password) {
         req.session.user_id = response[0].id;
+        console.log("REQ.SESSION.USER_ID IS: ", req.session.user_id);
+        console.log("RES.header", res);
         // res.redirect(`/my_properties/${req.session.user_id}`);
         console.log("Hello from: route 2  ");
         // res.send(response[0].id);
         // let user_id = JSON.stringify({user_id: response[0].id});
-        res.send(response[0]);
+        const responseValue = {
+          userInfo: response[0],
+          isValid: true 
+        }
+        //console.log("RES is:", res);
+        res.send(responseValue);
+
+        //res.send(response[0]);
       } else {
         // res.send(response);
-        res.send("Your email or password is invalid");
+        const responseValue = {
+          userInfo: null,
+          isValid: false 
+        }
+        //console.log("RES is:", res);
+        //res.send(responseValue);
+        
+       //res.send("Your email or password is invalid");
       }
     })
     .catch((error) => {

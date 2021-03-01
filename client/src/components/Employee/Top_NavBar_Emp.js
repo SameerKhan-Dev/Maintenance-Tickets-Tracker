@@ -8,6 +8,21 @@ import "./Top_NavBar_Emp.scss";
 export default function Top_NavBar_Emp(props) {
   const { loggedInUserEmail } = props;
   console.log("****Top_Nav_Bar_Emp -- props = ", props.loggedInUserEmail);
+  // const { setLogout } = props;
+
+   /*  
+      const onLogout = function (){
+        // first reach out to back-end to clear the cookies.
+        axios.get(/logout)
+        .then (response){
+          // set the state to default
+          setLogout();
+        }
+        setLogout();
+        history.push("/login");;
+      }
+  */
+
   return (
     <div classname="App">
       <Navbar className= "fixed-top" collapseOnSelect expand="lg" bg="dark" variant="dark">

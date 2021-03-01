@@ -11,6 +11,9 @@ export default function Top_NavBar_PM_Tickets(props) {
   const goToStatsPage = function () {
     history.push("/dashboard-pm-stats");
   };
+  const goToEmployeePage = function () {
+    history.push("/dashboard-employee");
+  };
 
   const { loggedInUserEmail } = props;
   console.log(
@@ -32,7 +35,7 @@ export default function Top_NavBar_PM_Tickets(props) {
     </Navbar.Brand>
   <Navbar.Toggle />
   <Navbar.Collapse className="justify-content-end">
-  <Button className="button_navBar" variant="dark" onClick={goToStatsPage}>View Stats</Button>
+  <Button className="button_navBar" variant="dark" onClick={goToEmployeePage}>View Stats</Button>
   <Navbar.Text>       </Navbar.Text>
     <Navbar.Text>
     Signed in as: <a href="#login">{loggedInUserEmail}</a>
