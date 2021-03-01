@@ -1,9 +1,5 @@
 INSERT INTO "ticket_statuses" (status)
 VALUES
-    ('pending'),
-    ('in-progress'),
-    ('resolved')
-
-
-
-
+  ('pending'),
+  ('in-progress'),
+  ('resolved')

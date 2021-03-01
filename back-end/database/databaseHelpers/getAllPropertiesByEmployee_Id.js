@@ -13,7 +13,7 @@ const getAllPropertiesByEmployee_Id = function (employee_id) {
     )
     .then((res) => {
       if (res.rows) {
-        // console.log("res.rows is, ", res.rows);
+        console.log("res.rows is, ", res.rows);
         return res.rows;
       } else {
         console.log("null returned");
@@ -24,7 +24,3 @@ const getAllPropertiesByEmployee_Id = function (employee_id) {
 };
 
 module.exports = getAllPropertiesByEmployee_Id;
-
-// SELECT tickets.*, properties.*
-// FROM tickets JOIN properties
-// ON tickets.property_id = properties.id;

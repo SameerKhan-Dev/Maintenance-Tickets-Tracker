@@ -7,9 +7,16 @@ export default function ResolvedTicketModal(props) {
 
   return (
     <>
-      <Button variant="primary" onClick={onSubmit}>
-        Maintenance Complete
-      </Button>
+      <section style={{paddingTop: '20px'}} variant="warning" onClick={onSubmit}>
+        <a href="#" class="cta">
+              <span>Maintenance Complete?</span>
+              <svg width="13px" height="10px" viewBox="0 0 13 10">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+              </svg>
+            </a>
+      </section>
+    
 
       <Modal show={show} onHide={onHide}>
         <Modal.Body>
@@ -19,7 +26,7 @@ export default function ResolvedTicketModal(props) {
           <Button variant="secondary" onClick={onHide}>
             Close
           </Button>
-          <Button variant="primary" onClick={onConfirm}>
+          <Button variant="warning" onClick={onConfirm}>
             Confirm
           </Button>
         </Modal.Footer>

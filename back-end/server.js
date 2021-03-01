@@ -4,7 +4,7 @@ require("dotenv").config();
 // Web server config
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || "development";
-const fileUpload = require('express-fileupload');
+const fileUpload = require("express-fileupload");
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -43,8 +43,8 @@ app.use(
   })
 );
 
-//app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(
   "/styles",
   sass({
@@ -54,35 +54,18 @@ app.use(
     outputStyle: "expanded",
   })
 );
+
 app.use(express.static("public"));
-
-//const imageRouter = require('./routes/images');
-//app.use("/images", imageRouter);
-
-
-// Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
-//const usersRoutes = require("./routes/users");
-//const widgetsRoutes = require("./routes/widgets");
-
-// Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-//app.use("/api/users", usersRoutes(db));
-//app.use("/api/widgets", widgetsRoutes(db));
-// Note: mount other resources here, using the same pattern above
-
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above)5
 
 app.get("/homepage", (req, res) => {
   res.send("Hello from: route 1  ");
 });
+
 // 1
 app.post("/register", (req, res) => {
   res.send("Hello from: route 2  ");
 });
-//2
+
 // check user email and password, only allow valid user to login
 app.post("/login", (req, res) => {
   const user_email = req.body.email;
@@ -116,10 +99,10 @@ app.get("/logout", (req, res) => {
   res.redirect("/login");
 });
 
-//3
 // get all properties for logged in pm_id
 app.get("/my_properties/:pm_id", (req, res) => {
   const pm_id = req.params.pm_id;
+
   console.log("Hello from: route 4 ");
 
   myProperties = getAllPropertiesByPM_Id(pm_id).then((response) => {
@@ -127,50 +110,33 @@ app.get("/my_properties/:pm_id", (req, res) => {
   });
 });
 
-//4
 // get all tickets for all properties, for logged in PM.
 app.get("/properties/:pm_id/tickets", (req, res) => {
   const pm_id = req.params.pm_id;
-
-  console.log("Hello from: route 5  ");
 
   propertyTickets = getAllTicketsByPm_Id(pm_id).then((response) => {
     res.send(response);
   });
 });
 
-//6
+// assign employee to ticket and update the ticket status to in-progress (dashboard-pm-tickets)
 app.put("/tickets/assignEmployee", (req, res) => {
-  // extract the values from the request body.
-  //const {ticket_id} = req.body.ticket_id;
-  //const {employee_id} = req.body.employee_id;
   const ticket_id = req.body.ticket_id;
   const employee_id = req.body.employee_id;
 
-  console.log("Hello from: route 7  ");
   allTickets = assignEmployeeForTicket_Id(employee_id, ticket_id).then(
     (response) => {
       res.send(response);
     }
   );
-
-  //res.send(`ticket_id is: ${ticket_id}, employee_id is: ${employee_id} `);
-  //res.send(req.body);
 });
 
-//7
 // add a new ticket to the database
 app.post("/tickets/new", (req, res) => {
   const property_id = req.body.property_id;
   const creator_id = req.body.creator_id;
   const maintenance_type_id = req.body.maintenance_type_id;
   const description = req.body.description;
-
-  console.log("Hello from: route 8  ");
-  console.log("property_id: ", property_id);
-  console.log("creator_id: ", creator_id);
-  console.log("maintenance_type_id: ", maintenance_type_id);
-  console.log("description: ", description);
 
   addNewTicket_Tenant = addNewTicket(
     property_id,
@@ -182,13 +148,11 @@ app.post("/tickets/new", (req, res) => {
   });
 });
 
-//8
-// neeed this for employee-dashboard when a ticket is marked as resolved.
+// update ticket status to resolved and update the actual cost (dashboard-employee)
 app.put("/tickets/resolved", (req, res) => {
   const ticket_id = req.body.ticket_id;
   const actual_cost = req.body.actual_cost;
 
-  console.log("Hello from: route 9  ");
   completedTicket = completeTicketByTicket_Id(ticket_id, actual_cost).then(
     (response) => {
       res.send(response);
@@ -196,11 +160,10 @@ app.put("/tickets/resolved", (req, res) => {
   );
 });
 
-//11
-//get the property based on tenant that is logged in
+// get the property based on tenant that is logged in
 app.get("/property/tenant/:tenant_id", (req, res) => {
   const tenant_id = req.params.tenant_id;
-  console.log("Hello from: route 10  ");
+
   const property_tenant_id = getPropertyByTenantUser_Id(tenant_id).then(
     (response) => {
       res.send(response);
@@ -208,46 +171,42 @@ app.get("/property/tenant/:tenant_id", (req, res) => {
   );
 });
 
-//9
+// get all employee info based on property id
 app.get("/properties/employees/:property_id", (req, res) => {
-  console.log("Hello from: route 11  ");
   const property_id = req.params.property_id;
+
   allEmployees = getAllEmployeesByProperty_Id(property_id).then((response) => {
     res.send(response);
   });
 });
 
-//10
 // get all tickets for an employee when they are logged in.
 app.get("/tickets/employee/:employee_id", (req, res) => {
   const employee_id = req.params.employee_id;
-  console.log("In the back-end");
+
   getAllTicketsByEmployee_Id(employee_id).then((response) => {
-    console.log("respond from db query is: ", response);
     res.send(response);
   });
 });
 
-//11
 // get all properties for an employee.
 app.get("/employeeProperties/:employee_id", (req, res) => {
   const employee_id = req.params.employee_id;
+
   getAllPropertiesByEmployee_Id(employee_id).then((response) => {
-    console.log("respond from db query is: ", response);
     res.send(response);
   });
 });
 
-//12
 // get all users by user_id.
 app.get("/users/:user_id", (req, res) => {
   const user_id = req.params.user_id;
+
   getUsersById(user_id).then((response) => {
-    console.log("respond from db query is: ", response);
     res.send(response);
   });
 });
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+  console.log(`App listening on port ${PORT}`);
 });
