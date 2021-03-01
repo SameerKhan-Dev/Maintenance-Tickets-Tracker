@@ -45,21 +45,6 @@ export default function Ticket_Summary_Emp(props) {
           <Card.Text>{`Address: ${selectedAddress}`}</Card.Text>
         </Card.Body>
       </Card>
-      {/*
-    <section className="ticket__card-summary">
-      <section className="ticket__card-left">
-        <div>{unit}</div>
-        <div>{maintenanceType}</div>
-        <div>{description}</div>
-      </section>
-
-      <section className="ticket__card-right">
-        <div>{ticketStatus}</div>
-        <div>{ticketID}</div>
-        <div>{createdAt}</div>
-      </section>
-    </section>
-     */}
     </>
   );
 }

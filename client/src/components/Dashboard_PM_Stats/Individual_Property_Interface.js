@@ -8,17 +8,11 @@ import prop3 from "./prop3.jpg";
 import money from "./money_logo.png";
 
 import { Card, Button, Badge } from 'react-bootstrap';
-// import { Button } from 'react-bootstrap';
 import "./Individual_Property_Interface.scss";
 
 export default function Individual_Property_Interface(props) {
   console.log("***Inside Individual_Property_Interface: ", props);
-  
-  /*
-    (3,'Brando Gateway','3116 Brando Gateway','APT 4604','Toronto','Ontario','56465','Condominium','http://placeimg.com/640/480/business'),
-    (3,'Amanda Loaf','536 Amanda Loaf','APT 5214','Toronto','Ontario','93432','Condominium','http://placeimg.com/640/480/business'),
-    (3,'12 University St.','12 University St.','APT 5214','Toronto','Ontario','93432','Condominium','http://placeimg.com/640/480/business');
-  */
+
   const properties2 = [
     {
       id: 11,

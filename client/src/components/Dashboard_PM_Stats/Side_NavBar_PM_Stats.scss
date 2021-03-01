@@ -20,7 +20,6 @@
 
   &__separator {
     width: 90%;
-    // margin: $spacing 0;
     border: solid 1px;
     color: darken($white, 5%);
   }
@@ -40,8 +39,6 @@
   justify-content: flex-start;
   margin: 2rem 0;
   padding: 0 $spacing;
-  // width: 100%;
- 
 }
 .PTagDescription {
 
@@ -55,12 +52,3 @@
   border: green solid 2px;
 }
 
-// .map {
-//   height: 35vh;
-//   width: 35vh;
-//   top: 30%;
-//   right: 5%;
-//   left: 5%;
-//   bottom: 15%;
-//   border: solid green 3px;
-// }

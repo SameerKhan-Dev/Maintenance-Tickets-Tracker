@@ -6,7 +6,6 @@ import { ListGroup } from "react-bootstrap";
 export default function Propertylist_Tickets(props){
 
   const {selectProperty, properties, selectedProperty} = props;
-  // style={{backgroundColor: selectedProperty === property.id ? `#343a40` : `transparent`}
   const propertiesListArray = properties.map((property) => {
     return (
       <ListGroup.Item action variant={(selectedProperty !== property.id ? "dark" : "light")}>

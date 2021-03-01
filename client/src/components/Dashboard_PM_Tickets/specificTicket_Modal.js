@@ -37,7 +37,6 @@ export default function MyVerticallyCenteredModal(props) {
 
         />
         <Modal.Footer>
-          {/*<Button onClick={handleConfirmAssignEmployee(2,selectedEmployee)}*/}
           <Button onClick={() => props.onHide(ticket_id, selectedEmployee)}
         >Confirm</Button>
         </Modal.Footer>

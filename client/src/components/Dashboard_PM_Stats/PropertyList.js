@@ -8,11 +8,6 @@ export default function Propertylist(props) {
   const { selectProperty, properties, selectedProperty } = props;
 
   console.log("*** Props inside PropertyList: ", props);
-  //style={{backgroundColor: selectedProperty === property.id ? `#343a40` : `transparent`}} 
-  // style={{backgroundColor: 'transparent'}}
-  
-  //let variantColor = ;
-
 
   const propertiesListArray = properties.map((property) => {
     return (

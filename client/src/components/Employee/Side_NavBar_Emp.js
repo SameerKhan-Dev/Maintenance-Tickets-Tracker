@@ -3,10 +3,6 @@ import {useEffect} from 'react';
 import AssignedTicketList from './AssignedTicketList';
 import Dropdown from 'react-bootstrap/Dropdown'
 import "./Side_NavBar_Emp.scss";
-//import Ticket_List_Item from  "./Ticket_List_Item"
-//import Ticket_List from  "./Ticket_List"
-
-
 
 export default function Side_NavBar_Emp(props) {
 
@@ -38,11 +34,6 @@ export default function Side_NavBar_Emp(props) {
              selectedTicket = {selectedTicket}
             />
           </nav>
-          {/* <img
-            className="sidebar__lhl sidebar--centered"
-            src="images/lhl.png"
-            alt="Lighthouse Labs"
-          /> */}
         </section>
       </main>
       </>

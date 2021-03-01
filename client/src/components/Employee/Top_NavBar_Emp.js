@@ -5,8 +5,6 @@ import { Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
 import logo from "../MTrack_White.png";
 import "./Top_NavBar_Emp.scss";
 
-// import "./map.scss";
-
 export default function Top_NavBar_Emp(props) {
   const { loggedInUserEmail } = props;
   console.log("****Top_Nav_Bar_Emp -- props = ", props.loggedInUserEmail);

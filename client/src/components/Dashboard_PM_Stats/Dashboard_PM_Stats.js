@@ -4,21 +4,13 @@ import "../Application.scss";
 import axios from "axios";
 import All_Property_Interface from "./All_Property_Interface";
 import Side_NavBar_PM_Stats from "./Side_NavBar_PM_Stats";
-// import SideNav from '../Dashboard_PM_Stats/New_side_navbar/src/SideNav';
 import Individual_Property_Interface from './Individual_Property_Interface';
-
 import Top_NavBar_PM_Stats from "./Top_Nav_Bar_PM_Stats";
-
 import "./Dashboard_PM_Stats.scss";
 
-// all tickets
-// all properties
-// tickets for specific properties
-// all employees
-
 export default function Dashboard_PM_Stats(props) {
-  console.log("****Inside Dashboard_PM_Stats -- props = ", props);
-  // console.log("****Inside Dashboard_PM_Stats -- props = ", props);
+  //console.log("****Inside Dashboard_PM_Stats -- props = ", props);
+
 
   // When user login is setup, extract user_id using cookies
   // temporarily we are going to use user_id as 1 (i.e pm_id for this page)
@@ -35,10 +27,8 @@ export default function Dashboard_PM_Stats(props) {
       in_Progress: 0,
     },
   });
-  console.log("*** state_PM_Stats: ", state_PM_Stats);
 
-  console.log("*** state_PM_Stats.properties: ", state_PM_Stats.properties);
-
+  // this function filters through all tickets and returns the tickets for current selected city.
   let ticketsForSelectedProperty = [];
   for (const propertyObject of state_PM_Stats.ticketsOrganizedByProperty) {
     if (propertyObject.property_id === state_PM_Stats.selectedProperty) {
@@ -47,6 +37,7 @@ export default function Dashboard_PM_Stats(props) {
   }
   console.log("*** ticketsForSelectedProperty: ", ticketsForSelectedProperty);
 
+  // this function obtains the address for a selected property 
   let addressForSelectedProperty = "";
   for (const propertyObject of state_PM_Stats.properties) {
     if (propertyObject.id === state_PM_Stats.selectedProperty) {
@@ -55,17 +46,7 @@ export default function Dashboard_PM_Stats(props) {
   }
   console.log("***addressForSelectedProperty = ", addressForSelectedProperty);
 
-  // General pointers to remember
-  // 1) Our axios call to backend allows us to obtain all tickets for all properties...
-  // 2) We already have access to our all properties array through the useEffect below
-  // 3) Our display of tickets to show/ stats data to compute relies on the selectedProperty.
-
-  // our helper functions
-  // helper function will do the following:
-  // a) take in all properties array as an input
-  // b) use UseEffect to make axios call for each property, to obtain tickets array for each property
-  // c) Its going to construct an output for each property as object that has two keys: property_id , and ticketsArray.
-
+  // this function constructs an array holding all properties and their tickets.
   const constructTicketsData = function (propertiesArray, ticketsArray) {
     let ticketsOrganizedByProperty = []; // our result to be populated and sent out from this helper function.
     console.log("propertiesArray is: ", propertiesArray);
@@ -135,12 +116,11 @@ export default function Dashboard_PM_Stats(props) {
     return ticketsOrganizedByProperty;
   };
 
-  // const obtainStats for Specific Property:
-  // input is all tickets and stats sorted by property
-  // output is specific stats to display for property
+
   console.log("ticketsOrganizedByProperty is: ");
   console.log(state_PM_Stats.ticketsOrganizedByProperty);
 
+  // this function returns stats for current selected property 
   const obtainStats = function (ticketsOrganizedByProperty, selectedProperty) {
     // loop through allPropertiesStats array and find property with id matching selectedProperty value.
     // extract the specific stats for the selected property and return that value.
@@ -148,8 +128,10 @@ export default function Dashboard_PM_Stats(props) {
       if (property.property_id === selectedProperty) {
         return property.statsForProperty;
       }
-    }
+    }  
   };
+
+  // this helper function updates the property state, when a specific property is selected
   const selectProperty = function (property_id) {
     setState_PM_Stats({
       ...state_PM_Stats,
@@ -171,7 +153,6 @@ export default function Dashboard_PM_Stats(props) {
       let ticketsData = allValues[1].data;
 
       // Update local state with data from API.
-
       setState_PM_Stats((prev) => ({
         ...prev,
         properties: propertiesData,
@@ -189,13 +170,10 @@ export default function Dashboard_PM_Stats(props) {
         ),
       }));
 
-      // need to sort our tickets data into a structure like above using a helper function
-      //constructTicketsData(propertiesData, ticketsData);
     });
 
   },[]);
 
-    //console.log("The current state of specificStats is: ", state_PM_Stats.specificStats);
     return (
       <>
         <div style = {{width: '100%', zIndex: '200', position: 'absolute'}}>
@@ -211,9 +189,7 @@ export default function Dashboard_PM_Stats(props) {
             />
           </div>
           <div className="dashboard-interface">
-          {/* Render All_Property_Interface if selectedProperty = 0. else Render InvidualPropertyInterface if selectedProperty != 0 (i,e
-            i.e a specific property has been selected)*/}
-                {/* <Top_NavBar_PM_Stats/> */}
+  
                 { state_PM_Stats.selectedProperty === 0 ?
                 <All_Property_Interface specificStats = {state_PM_Stats.specificStats} ticketsOrganizedByProperty = {state_PM_Stats.ticketsOrganizedByProperty} properties = {state_PM_Stats.properties} tickets = {state_PM_Stats.tickets}/> : <Individual_Property_Interface properties = {state_PM_Stats.properties} selectedProperty= {state_PM_Stats.selectedProperty} specificStats = {state_PM_Stats.specificStats} ticketsForSelectedProperty = {ticketsForSelectedProperty} addressForSelectedProperty={addressForSelectedProperty}
                 />

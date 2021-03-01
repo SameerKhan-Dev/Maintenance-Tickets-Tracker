@@ -23,16 +23,7 @@ const employees = [
   }
 ];
 
-//('Tim','Ankunding','tim_ankunding.com','password',3,'2016-09-08T05:42:28.509Z'), /* OPTION general-maintenance */
-//('Mike','Boyer','mike_boyer@hotmail.com','password',4,'2018-06-18T13:28:53.282Z'),  /* OPTION general-maintenance */
-//('Roger','Ruecker','roger_ruecker@gmail.com','password',4,'2017-11-08T20:19:29.374Z'); /* OPTION general-maintenance */
-
-
-
-
-
 export default function Employee_List_PM(props) {
-  //const [selectedEmployee, setSelectEmployee] = useState("none");
   const {setSelectEmployee, selectedEmployee} = props;
 
   const currentEmployee = selectedEmployee;

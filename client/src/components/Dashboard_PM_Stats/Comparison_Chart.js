@@ -9,13 +9,6 @@ export default function Comparison_Chart(props) {
     props.properties
   );
   const data = finalData;
-  // const data = [
-  //   ["Property Name", "Plumbing", "Electrical", "General Maintenance"],
-  //   ["Bridlewood", 1400, 3000, 1200],
-  //   ["Castle Hill", 800, 2460, 250],
-  //   ["Arcadia", 660, 1120, 300],
-  //   ["Carleton", 1030, 4500, 350],
-  // ];
 
   // have to figure out
   const chartEvents = [
@@ -41,10 +34,7 @@ export default function Comparison_Chart(props) {
       }
       data={data}
       options={{
-        // Material design options
         chart: {
-          // title: "Total Maintenance Cost",
-          // subtitle: "Categorized by maintenance type",
           hAxis: {
             title: "Cost",
             viewWindow: { min: 0, max: 5000 },

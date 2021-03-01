@@ -97,7 +97,6 @@ export default function Ticket_List_Item_PM(props) {
   return (
     <main className="ticket__cards">
       <section className="ticket__card-left">
-        {/* <div>{unit}</div> */}
         <div className="maintenance__ticket__id">
           <div className="maintenance__type">
             <b>Maintenance type: </b>
@@ -116,9 +115,6 @@ export default function Ticket_List_Item_PM(props) {
 
       <section className="ticket__card-right">
         <div>{ticketStatus}</div>
-        
-        {/* <div>Ticket ID: {ticketID}</div>
-        <div>Created at: {createdAt}</div> */}
         {creator_id === 13 && (
           <div className="created_by_text">
             <b>Created by: </b>
@@ -142,15 +138,6 @@ export default function Ticket_List_Item_PM(props) {
           <b>{`Created at: ${createdAt.substr(0, 10)}`}</b>
         </div>
       </section>
-      {/* <section className="test__button">
-            <a href="#" class="cta">
-            <span>Assign Employee</span>
-            <svg width="13px" height="10px" viewBox="0 0 13 10">
-              <path d="M1,5 L11,5"></path>
-              <polyline points="8 1 12 5 8 9"></polyline>
-            </svg>
-          </a>
-        </section> */}
       <>
         {employee_id === null ? (
           <section onClick={() => setModalShow(true)}>
@@ -178,12 +165,7 @@ export default function Ticket_List_Item_PM(props) {
           assignEmployeeToTicket={assignEmployeeToTicket}
         />
       </>
-      {/*onHide={() => setModalShow(false)}*/}
       <section className="ticket__actions">
-        {/* <Button danger onClick={cancel}>
-          Cancel
-        </Button>
-        <Button onClick={validate}>Save</Button> */}
       </section>
     </main>
   );

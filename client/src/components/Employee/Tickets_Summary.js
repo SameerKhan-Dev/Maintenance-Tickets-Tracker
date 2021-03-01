@@ -25,24 +25,10 @@ export default function Tickets_Summary(props) {
     },
   ];
 
-  //const{ticketsOrganizedByProperty} = props;
 
-  //const {id, description, created_at,maintenance_type_id, property_id, selectTicket} = props;
+
   const { properties, tickets, selectedProperty } = props;
-
-  // create a structure that will organize the tickets based on property
-  /*
-        const propertyTickets = [
-            {  
-                property object {
-                    id: ..,
-                    address:..,
-                    ...
-                } 
-                ticketsForProperty : []
-            }
-        ]
-    */
+  // this helper function return an array of properties with tickets for each property.
   const organizeTicketsByProperty = function (tickets, properties) {
     const result = [];
     // loop through properties and add to the structure
@@ -84,6 +70,8 @@ export default function Tickets_Summary(props) {
     properties
   );
   console.log("ticketsOrganizedByProperty is: ", ticketsOrganizedByProperty);
+
+  
   return (
     <>{ selectedProperty===0 ?       
       <Card className="title__summary" body>

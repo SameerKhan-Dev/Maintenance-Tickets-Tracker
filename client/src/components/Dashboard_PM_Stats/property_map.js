@@ -62,9 +62,6 @@ const Map_SideBar = () => {
     map.on("mouseleave", "random-points-layer", () => {
       map.getCanvas().style.cursor = "";
     });
-
-
-
     // clean up on unmount
     return () => map.remove();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps

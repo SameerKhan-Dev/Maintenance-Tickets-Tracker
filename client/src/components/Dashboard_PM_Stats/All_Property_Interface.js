@@ -14,7 +14,6 @@ import unresolved from "./unresolved.jpg";
 export default function All_Property_Interface(props) {
   const { ticketsOrganizedByProperty, properties, tickets} = props;
 
-  //const {specificStats} = props; 
   console.log("This is props:")
   console.log(props);
   
@@ -44,13 +43,11 @@ export default function All_Property_Interface(props) {
     }
     return totalActualCosts;
   }
- // let totalActualCosts = getTotalCosts(tickets); 
+
  let totalActualCosts = getTotalCosts(tickets).toLocaleString('en', {useGrouping:true});
 
   return (
     <>
-      {/* Total Unsolved */}
-      {/* <main class="ticket-cards"> */}
       <section className="all__stats">
         <section className="property__images">
           <CardDeck>

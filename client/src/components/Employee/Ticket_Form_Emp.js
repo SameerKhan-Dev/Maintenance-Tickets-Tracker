@@ -81,42 +81,10 @@ export default function Ticket_Form_Emp(props) {
               />
             </form>
           </section>
-          {/*showModal && <div>Modal</div>*/}
         </section>
       </Form>
     </Card.Body>
   </Card>
-
-    {/*
-    <section className="ticket__card-form-section">
-      <section className="ticket__card-form">
-        <form onSubmit={(event) => event.preventDefault()}>
-          <section className="ticket__card-final-cost">
-            <h1>Please enter final cost:</h1>
-            <label>Final Cost: $</label>
-            <input
-              className="ticket__final-cost"
-              value={finalCost.actual_cost}
-              name="finalCost"
-              onChange={handleFinalCostChange}
-              finalCost="finalCost"
-              type="text"
-              placeholder="Final Cost"
-            />
-          </section>
-          <ResolvedTicketModal
-            onConfirm={onConfirm}
-            show={showModal}
-            onHide={handleHideModal}
-            ticketId={props.ticket_id}
-            finalCost={finalCost}
-            onSubmit={onSubmit}
-          />
-        </form>
-      </section>
-    </section>
-    </>
-   */}
-   </>
+  </>
   );
 }

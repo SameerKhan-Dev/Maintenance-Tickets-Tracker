@@ -22,38 +22,19 @@ export default function Side_NavBar_PM_Tickets(props) {
           />
         </head>
         <section className="sidebar">
-          {/* <img
-            className="logo"
-            src="images/MTrack.png"
-            alt="Maintenance Tracking System"
-          />
-          <img /> */}
+
           <hr className="sidebar__separator sidebar--centered" />
           <nav className="sidebar__menu">
-            '
-            {/*
-            <DayList
-              days = {state.days}
-              day = {state.day}
-              setDay = {setDay}
-            />
-            */}
+        
             <PropertyList
               selectProperty={selectProperty}
               properties={properties}
               selectedProperty= {selectedProperty}
             />
           </nav>
-          {/* <img
-            className="sidebar__lhl sidebar--centered"
-            src="images/lhl.png"
-            alt="Lighthouse Labs"
-          /> */}
+
           <div className="map">
-            {/* <link
-            href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css"
-            rel="stylesheet"
-          /> */}
+
             <Map_SideBar />
           </div>
         </section>

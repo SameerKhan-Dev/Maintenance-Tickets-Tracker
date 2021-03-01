@@ -65,13 +65,6 @@ export default function Ticket_Description(props) {
           <Card.Text>{selectedTicketInfo.description}</Card.Text>
         </Card.Body>
       </Card>
-      {/*   
-    <section className="ticket__card-description">
-      <h2>Description of Issue:</h2>
-      <div>{selectedTicketInfo.description}</div>
-      <img src={image_path/*selectedTicketInfo.image_path} alt="uploaded_image_path" />
-    </section>
-     */}
     </>
   );
 }

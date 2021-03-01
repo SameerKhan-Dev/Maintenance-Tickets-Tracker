@@ -5,7 +5,6 @@
 .stats__view {
   display:flex;
   flex-direction: column;
-  // display: inline-block;
   margin: 5px;
   padding: 5px;
   padding-left: 10px;
@@ -63,7 +62,6 @@
   color: black;
   font-size: 20px;
   text-align: center;
-  //padding: 10px;
   height: 371px;
 }
 
@@ -74,8 +72,6 @@
 
 .top {
   display: flex;
-
-
 }
 
 .ticket__info__specific {
@@ -86,18 +82,17 @@
 }
 
 .card_totalExpenses {
-  width: 275px !important;
-  margin-right: 0px !important;
+  width: 275px;
+  margin-right: 0px;
 
 }
 
 .card_individualExpenses {
-  width: 282px !important;
-  margin-left: 0px !important;
+  width: 282px;
+  margin-left: 0px;
 }
 .property_text {
-  color: black !important;
-
+  color: black;
 }
 
 .card_parent {
@@ -105,5 +100,4 @@
   justify-content: flex-start;
   align-items: flex-end;
   flex-direction: column;
-
 }

@@ -11,7 +11,6 @@ import "./Employee_Dashboard.scss";
 export default function Employee_Dashboard(props) {
   const employee_Id = 24;
   const [state_Employee, setState_Employee] = useState({
-    // selectedProperty = 0, means no property selected
     selectedTicket: 0,
     selectedProperty: 0,
     properties: [],
@@ -36,7 +35,6 @@ export default function Employee_Dashboard(props) {
   };
   const setLocalTicketToResolved = function (ticket_id) {
     let tickets = [...state_Employee.tickets];
-    //let recentTickets = [...state_Employee.recentlyResolvedTickets];
     let recentTickets = [];
     console.log("inside setLocalTicketsToResolve");
     for (let ticket of tickets) {
@@ -89,14 +87,7 @@ export default function Employee_Dashboard(props) {
   let selectedPropertyAddress = getSelectedPropertyName();
 
   console.log("selectedProperty is: ", state_Employee.selectedProperty);
-  /* selected property
-    1) In my useEffect - i need to make an axios call to /employee_properites/:employee_id:
-      - store resulting properties: inside state_Employee. properties.
-    2) create a handler selectProperty and attach it to all drop-down menu option onClick
-       - this changes the selectedProperty state inside state_Employee
-    3) function that builds tickets based on - selectedProperty value inside
- */
-
+ 
   const specificTicket = function () {
     for (let ticket of state_Employee.tickets) {
       if (ticket.id === state_Employee.selectedTicket) {
@@ -137,20 +128,7 @@ export default function Employee_Dashboard(props) {
 
     return inProgressTickets;
   };
-  /*
-const getEmployeeInProgressTickets = function () {
-  let inProgressTickets = [];
-  // for all properties
-    for (let ticket of state_Employee.tickets) {
-      if (ticket.ticket_status_id === 2){
-        inProgressTickets.push(ticket);
-        console.log(ticket);
-      }
-      console.log(ticket);
-    }
-  return inProgressTickets;
- }
- */
+
   let employeeInProgressTickets = getEmployeeInProgressTickets();
   console.log("employeeInProgressTickets is :", employeeInProgressTickets);
 
@@ -172,15 +150,7 @@ const getEmployeeInProgressTickets = function () {
     });
   }, []);
   console.log("Properties is: ", state_Employee.properties);
-  /*
-  app.get("/tickets/employee/:employee_id", (req, res) => {
-    const employee_id = req.params.employee_id;
-  
-    getAllTicketsByEmployee_Id(employee_id).then((response) => {
-      res.send(response);
-    });
-  });
-*/
+
   console.log("selectedTicket is: ", state_Employee.selectedTicket);
   return (
     <>

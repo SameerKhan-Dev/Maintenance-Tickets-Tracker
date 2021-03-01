@@ -17,7 +17,7 @@ export default function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Your ticket has been submit!</h4>
+        <h4>Your ticket has been submitted!</h4>
         <p>
           Please allow 24 hours for a response. 
           In case of emergency, please call 416-HIRE-ME!.

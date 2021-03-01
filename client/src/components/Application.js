@@ -3,11 +3,8 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import PrivateRoute from "./Private_Route";
 import "components/Application.scss";
-// import { Cookies } from 'react-cookie';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
-// import All_Property_Interface from "./Dashboard_PM_Stats/All_Property_Interface";
-// import Individual_Property_Interface from "./Dashboard_PM_Stats/Individual_Property_Interface";
 import Dashboard_PM_Stats from "./Dashboard_PM_Stats/Dashboard_PM_Stats";
 import Dashboard_PM_Tickets from "./Dashboard_PM_Tickets/Dashboard_PM_Tickets";
 
@@ -108,26 +105,3 @@ export default function Application(props) {
     </Router>
   );
 }
-
-//       <section className="sidebar">
-// {/* Replace this with the sidebar elements during the "Project Setup & Familiarity" activity. */}
-// </section>
-
-// <section className="schedule">
-// {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
-// {state}
-// </section>
-
-// const [state, setState] = useState("Empty");
-
-// <section className="sidebar">
-//   {/* Replace this with the sidebar elements during the "Project Setup & Familiarity" activity. */}
-// </section>
-
-// useEffect(() => {
-//   axios.get("/homepage")
-//   .then(response => {
-//     //console.log(response)
-//     setState(response.data)
-//   })
-// },[]);
