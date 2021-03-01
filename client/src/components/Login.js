@@ -89,7 +89,7 @@ export default function Login(props) {
           />
         </section>
         <section className="right__login">
-          <Form className="login__form">
+          <Form className="login__form" onSubmit={(event) => event.preventDefault()}>
             <img className="logo__login" src={logo}></img>
             <h1 className="login__title">Login Here!</h1>
             <Form.Group controlId="formGroupEmail">
