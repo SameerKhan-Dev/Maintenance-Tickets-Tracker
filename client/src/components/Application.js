@@ -50,9 +50,9 @@ export default function Application(props) {
   );
 
   // const logInUserEmail = loginUser["userEmail"];
-  const pmEmail = "zahra_m@email.com";
-  const empEmail = "sameer_k@email.com";
-  const tenantEmail = "bee_l@email.com";
+  // const pmEmail = "zahra_m@email.com";
+  // const empEmail = "sameer_k@email.com";
+  // const tenantEmail = "bee_l@email.com";
 
   /*
 
