@@ -36,7 +36,7 @@ export default function Top_NavBar_PM_Stats(props) {
           <Navbar.Text>
             Signed in as: <a href="#login">{loggedInUserEmail}</a>
           </Navbar.Text>
-          <Button className="logout_button" variant="dark">Logout</Button>
+          <Button className="logout_button" onClick={setLogout} variant="dark">Logout</Button>
         </Navbar.Collapse>
       </Navbar>
     </div>
