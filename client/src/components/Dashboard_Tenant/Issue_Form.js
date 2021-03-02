@@ -93,12 +93,17 @@ export default function Issue_Form(props) {
       <Container fluid="md" className="issue-container">
         <Row>
           <Col>
-            <Form className="issue-form" onSubmit={(event) => event.preventDefault()}>
+            <Form
+              className="issue-form"
+              onSubmit={(event) => event.preventDefault()}
+            >
               <section className="inner__form">
                 <Form.Group as={Col} controlId="formHorizontalEmail">
                   <Form.Text className="text-label">
-                    <h2 className="form_title">Please fill out the maintenance request and 
-                    select a maintenance type:</h2>
+                    <h2 className="form_title">
+                      Please fill out the maintenance request and select a
+                      maintenance type:
+                    </h2>
                   </Form.Text>
                   <Form.Label column sm={4} className="text-label-form">
                     Description:
@@ -126,8 +131,8 @@ export default function Issue_Form(props) {
                       className="text-label-form"
                     >
                       Maintenance Type:
-                  </Form.Label>
-                    <Row sm={5} className="maintenance-radio-buttons">
+                    </Form.Label>
+                    <Row sm={10} className="maintenance-radio-buttons">
                       <Form.Check
                         className="maintenance-types"
                         type="radio"
@@ -156,7 +161,9 @@ export default function Issue_Form(props) {
                         name="maintenance_type"
                         id="general maintenance"
                         value="general maintenance"
-                        checked={issue.maintenance_type === "general maintenance"}
+                        checked={
+                          issue.maintenance_type === "general maintenance"
+                        }
                         onChange={handleMaintenanceChange}
                       />
                     </Row>
@@ -164,13 +171,12 @@ export default function Issue_Form(props) {
                 </fieldset>
 
                 <Form.Group as={Col}>
-                <Col sm={{ span: 10, offset: 6 }}>
-                  <Button type="submit" onClick={onSubmit}>
-                    Submit maintenance request
-                  </Button>
-                  
-                </Col>
-              </Form.Group>
+                  <Col sm={{ span: 10, offset: 6 }}>
+                    <Button type="submit" onClick={onSubmit}>
+                      Submit maintenance request
+                    </Button>
+                  </Col>
+                </Form.Group>
               </section>
             </Form>
           </Col>
