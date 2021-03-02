@@ -23,6 +23,8 @@ import "./Dashboard_PM_Tickets.scss";
 export default function Dashboard_PM_Tickets(props) {
   console.log("****Inside Dashboard_PM_Tickets -- props = ", props);
 
+  const { setLogoutState } = props;
+
   const [modalShow, setModalShow] = React.useState(false);
   // When user login is setup, extract user_id using cookies
   // temporarily we are going to use user_id as 3 (i.e pm_id for this page)
@@ -59,7 +61,6 @@ export default function Dashboard_PM_Tickets(props) {
 
   // this helper function updates ticket with newly assigned employee, in the database and in local state.
   const assignEmployeeToTicket = function (ticket_id, employee_id) {
-
     return axios
       .put(`/tickets/assignEmployee`, {
         ticket_id: ticket_id,
@@ -81,7 +82,7 @@ export default function Dashboard_PM_Tickets(props) {
 
   // this helper function constructs an array of properties, along with tickets for specific property
   const constructTicketsData = function (propertiesArray, ticketsArray) {
-    let ticketsOrganizedByProperty = []; 
+    let ticketsOrganizedByProperty = [];
 
     // construct the initial tickets data
     ticketsOrganizedByProperty.push({
@@ -116,8 +117,7 @@ export default function Dashboard_PM_Tickets(props) {
       }
     }
 
-
-    // then filter and build stats for each property and add to the corresponding properties array 
+    // then filter and build stats for each property and add to the corresponding properties array
     for (let property of ticketsOrganizedByProperty) {
       // loop through the property's ticketData to build the stats
       let totalUnsolved = 0;
@@ -137,7 +137,6 @@ export default function Dashboard_PM_Tickets(props) {
       property.statsForProperty.totalUnsolved = totalUnsolved;
       property.statsForProperty.pending = pending;
       property.statsForProperty.in_Progress = inProgress;
-
     }
     return ticketsOrganizedByProperty;
   };
@@ -163,7 +162,6 @@ export default function Dashboard_PM_Tickets(props) {
     for (let propertyObject of state_PM_Tickets.ticketsOrganizedByProperty) {
       if (propertyObject.property_id === property_id) {
         for (let ticket of propertyObject.ticketsArray) {
-
           if (ticket.ticket_status_id === 1) {
             pendingTicketsArray.push(ticket);
           }
@@ -182,7 +180,6 @@ export default function Dashboard_PM_Tickets(props) {
     for (let propertyObject of ticketsOrganizedByProperty) {
       if (propertyObject.property_id === property_id) {
         for (let ticket of propertyObject.ticketsArray) {
-
           if (ticket.ticket_status_id === 1) {
             ticketsPending.push(ticket);
           }
@@ -241,14 +238,20 @@ export default function Dashboard_PM_Tickets(props) {
 
   return (
     <>
-      <div className="topnav__tickets" style = {{width: '100%', zIndex: '200', position: 'absolute'}}>
-        <Top_NavBar_PM_Tickets loggedInUserEmail={props.loggedInUserEmail} />
+      <div
+        className="topnav__tickets"
+        style={{ width: "100%", zIndex: "200", position: "absolute" }}
+      >
+        <Top_NavBar_PM_Tickets
+          loggedInUserEmail={props.loggedInUserEmail}
+          setLogoutState={setLogoutState}
+        />
       </div>
       <div>
         <Side_NavBar_PM_Tickets
           selectProperty={selectProperty}
           properties={state_PM_Tickets.properties}
-          selectedProperty= {state_PM_Tickets.selectedProperty}
+          selectedProperty={state_PM_Tickets.selectedProperty}
         />
       </div>
       <div className="dashboard-interface">
@@ -262,7 +265,9 @@ export default function Dashboard_PM_Tickets(props) {
           </Button>
         </>
         <h1 class="pending__tickets">
-          <Badge style={{backgroundColor: '#3f444e'}} variant="secondary">Pending Tickets</Badge>
+          <Badge style={{ backgroundColor: "#3f444e" }} variant="secondary">
+            Pending Tickets
+          </Badge>
         </h1>
 
         <Ticket_List_PM_Pending
@@ -271,7 +276,9 @@ export default function Dashboard_PM_Tickets(props) {
           assignEmployeeToTicket={assignEmployeeToTicket}
         />
         <h1>
-          <Badge style={{backgroundColor: '#3f444e'}} variant="secondary">In-Progress</Badge>
+          <Badge style={{ backgroundColor: "#3f444e" }} variant="secondary">
+            In-Progress
+          </Badge>
         </h1>
         <Ticket_List_PM_In_Progress
           ticketsInProgress={ticketsInProgress}

@@ -7,8 +7,9 @@ import Side_NavBar_Emp from "./Side_NavBar_Emp";
 import Top_NavBar_Emp from "./Top_NavBar_Emp";
 import "./Employee_Interface.scss";
 import "./Employee_Dashboard.scss";
-;
+
 export default function Employee_Dashboard(props) {
+  const { setLogoutState } = props;
   const employee_Id = 24;
   const [state_Employee, setState_Employee] = useState({
     selectedTicket: 0,
@@ -87,7 +88,7 @@ export default function Employee_Dashboard(props) {
   let selectedPropertyAddress = getSelectedPropertyName();
 
   console.log("selectedProperty is: ", state_Employee.selectedProperty);
- 
+
   const specificTicket = function () {
     for (let ticket of state_Employee.tickets) {
       if (ticket.id === state_Employee.selectedTicket) {
@@ -154,8 +155,14 @@ export default function Employee_Dashboard(props) {
   console.log("selectedTicket is: ", state_Employee.selectedTicket);
   return (
     <>
-      <div className="topnav__tickets" style = {{width: '100%', zIndex: '200', position: 'absolute'}}>
-        <Top_NavBar_Emp loggedInUserEmail={props.loggedInUserEmail} />
+      <div
+        className="topnav__tickets"
+        style={{ width: "100%", zIndex: "200", position: "absolute" }}
+      >
+        <Top_NavBar_Emp
+          loggedInUserEmail={props.loggedInUserEmail}
+          setLogoutState={setLogoutState}
+        />
       </div>
       <div>
         <Side_NavBar_Emp
@@ -169,15 +176,15 @@ export default function Employee_Dashboard(props) {
         />
       </div>
       <div className="DivEmployee_Interface">
-          <Employee_Interface
-            recentlyResolvedTickets={state_Employee.recentlyResolvedTickets}
-            setLocalTicketToResolved={setLocalTicketToResolved}
-            selectedTicketInfo={selectedTicketInfo}
-            selectedProperty={state_Employee.selectedProperty}
-            selectedTicket={state_Employee.selectedTicket}
-            tickets={employeeInProgressTickets}
-            properties={state_Employee.properties}
-          />
+        <Employee_Interface
+          recentlyResolvedTickets={state_Employee.recentlyResolvedTickets}
+          setLocalTicketToResolved={setLocalTicketToResolved}
+          selectedTicketInfo={selectedTicketInfo}
+          selectedProperty={state_Employee.selectedProperty}
+          selectedTicket={state_Employee.selectedTicket}
+          tickets={employeeInProgressTickets}
+          properties={state_Employee.properties}
+        />
       </div>
     </>
   );

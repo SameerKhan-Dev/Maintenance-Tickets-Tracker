@@ -26,6 +26,10 @@ function PrivateRoute({ children, path, role_id, login, ...rest }) {
   // accessing tenant page as a tenant, set loginValue to true.
   if (path === "/dashboard-tenant" && role_id === 2 && login) {
     loginValue = true;
+    // console.log(
+    //   "***From inside private route -- path = /dashboard-tenant: ",
+    //   children
+    // );
   }
   // a non tenant is logged in, then don't give them access to tenant page.
   else if (path === "/dashboard-tenant" && login) {

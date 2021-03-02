@@ -66,15 +66,40 @@ app.post("/register", (req, res) => {
   res.send("Hello from: route 2  ");
 });
 
-app.get("/validateUser", (req, res)=> {
-  // 
-  let loggedInUserId = req.session.user_id;
-  if (loggedInUserId) {
+app.post("/validateUser", (req, res) => {
+  // console.log("req.session.user_id = ", req.session.user_id);
+
+  if (req.session !== null) {
+    let loggedInUserId = req.session.user_id;
     // cookie is enabled or exists
     // use the loggedInUserId get the userInfo
-    // and return 
+    // and return
+    console.log("Inside req.session !-- null");
+    getUsersById(loggedInUserId).then((response) => {
+      // console.log("RES is:", res);
+      if (response[0]) {
+        const responseValue = {
+          userInfo: response[0],
+          isCookieSet: true,
+        };
+        console.log("responseValue is:", responseValue);
+        res.send(responseValue);
+      }
+    });
+  }
+
+  if (req.session) {
+    console.log("req.session = ", req.session);
+
+    const responseValue = {
+      userInfo: null,
+      isCookieSet: false,
+    };
+    res.send(responseValue);
+    // res.send("Hello");
   }
 });
+
 // check user email and password, only allow valid user to login
 app.post("/login", (req, res) => {
   const user_email = req.body.email;
@@ -83,9 +108,10 @@ app.post("/login", (req, res) => {
   console.log("password = ", password);
   userLogin = getUserByEmail(user_email)
     .then((response) => {
-      console.log("RES is:", res);
+      // console.log("RES is:", res);
       if (response[0] && response[0].password === password) {
         req.session.user_id = response[0].id;
+        console.log("response[0]: ", response[0]);
         console.log("REQ.SESSION.USER_ID IS: ", req.session.user_id);
         console.log("RES.header", res);
         // res.redirect(`/my_properties/${req.session.user_id}`);
@@ -94,9 +120,9 @@ app.post("/login", (req, res) => {
         // let user_id = JSON.stringify({user_id: response[0].id});
         const responseValue = {
           userInfo: response[0],
-          isValid: true 
-        }
-        //console.log("RES is:", res);
+          isValid: true,
+        };
+        console.log("responseValue is:", responseValue);
         res.send(responseValue);
 
         //res.send(response[0]);
@@ -104,12 +130,12 @@ app.post("/login", (req, res) => {
         // res.send(response);
         const responseValue = {
           userInfo: null,
-          isValid: false 
-        }
+          isValid: false,
+        };
         //console.log("RES is:", res);
         //res.send(responseValue);
-        
-       //res.send("Your email or password is invalid");
+
+        //res.send("Your email or password is invalid");
       }
     })
     .catch((error) => {
@@ -121,8 +147,14 @@ app.post("/login", (req, res) => {
 
 // logout and clear cookies
 app.get("/logout", (req, res) => {
+  // console.log("HELLO FROM LOGOUT!");
+  // const responseValue = {
+  //   userInfo: null,
+  //   isLoggedIn: false,
+  // };
+  // req.session.user_id = null;
   req.session = null;
-  res.redirect("/login");
+  res.send("HELLO from LOGOUT");
 });
 
 // get all properties for logged in pm_id

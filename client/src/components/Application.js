@@ -16,11 +16,14 @@ import Employee_Interface from "./Employee/Employee_Interface";
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
 import Login from "./Login";
 
+const axios = require("axios");
+
 export default function Application(props) {
   const [loginUser, setLoginUser] = useState({
     loggedIn: false,
     userEmail: "",
     userRole: "",
+    // user_id:
   });
   // somehow use cookies, to set values of the loggedIn user state.
   // that function will check cookies data and set the state of login based on the cookies data
@@ -49,10 +52,30 @@ export default function Application(props) {
     loginUser["userRole"]
   );
 
-  // const logInUserEmail = loginUser["userEmail"];
-  // const pmEmail = "zahra_m@email.com";
-  // const empEmail = "sameer_k@email.com";
-  // const tenantEmail = "bee_l@email.com";
+  const setLogoutState = function () {
+    return axios.get(`/logout`, {}).then((response) => {
+      // console.log("LOGOUT SUCCESSFUL?: ", response.data);
+      setLoginUser((prev) => ({
+        ...prev,
+        loggedIn: false,
+        userEmail: "",
+        userRole: "",
+      }));
+    });
+  };
+
+  useEffect(() => {
+    axios.post(`/validateUser`, {}).then((response) => {
+      if (response.isCookieSet) {
+        setLoginUser((prev) => ({
+          ...prev,
+          loggedIn: true,
+          userEmail: response.userInfo.email,
+          userRole: response.userInfo.role_id,
+        }));
+      }
+    }, []);
+  });
 
   /*
 
@@ -118,7 +141,10 @@ export default function Application(props) {
             role_id={loginUser.userRole}
             login={loginUser.loggedIn}
           >
-            <Dashboard_PM_Stats logInUserEmail={loginUser.userEmail} />
+            <Dashboard_PM_Stats
+              logInUserEmail={loginUser.userEmail}
+              setLogoutState={setLogoutState}
+            />
           </PrivateRoute>
 
           <PrivateRoute
@@ -126,7 +152,10 @@ export default function Application(props) {
             role_id={loginUser.userRole}
             login={loginUser.loggedIn}
           >
-            <Dashboard_PM_Tickets loggedInUserEmail={loginUser.userEmail} />
+            <Dashboard_PM_Tickets
+              loggedInUserEmail={loginUser.userEmail}
+              setLogoutState={setLogoutState}
+            />
           </PrivateRoute>
 
           <PrivateRoute
@@ -134,7 +163,10 @@ export default function Application(props) {
             role_id={loginUser.userRole}
             login={loginUser.loggedIn}
           >
-            <Employee_Dashboard loggedInUserEmail={loginUser.userEmail} />
+            <Employee_Dashboard
+              loggedInUserEmail={loginUser.userEmail}
+              setLogoutState={setLogoutState}
+            />
           </PrivateRoute>
 
           <PrivateRoute
@@ -142,7 +174,10 @@ export default function Application(props) {
             role_id={loginUser.userRole}
             login={loginUser.loggedIn}
           >
-            <Dashboard_Tenant loggedInUserEmail={loginUser.userEmail} />
+            <Dashboard_Tenant
+              loggedInUserEmail={loginUser.userEmail}
+              setLogoutState={setLogoutState}
+            />
           </PrivateRoute>
         </Switch>
       </div>
