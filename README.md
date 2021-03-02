@@ -2,6 +2,12 @@
 
 M-Tracker or Maintenance Tracker is a team collaboration to build an end-to-end solution that helps property managers or landlords track the progress of maintenance issues for their properties. Starting from tenants submitting tickets, property managers assigning tasks to employees and employees entering cost of maintenance upon completion of tickets. The system also provides statistical data on maintenance issues and expenses which assists property mangers or owners with business forecast.
 
+## Tech Stack
+
+- Front end: React, HTML, JS, Axios, SASS, Bootstrap, CSS, Google Charts API, MapBox API
+- Back End: Node.JS, Express
+- Database: PostgreSQL
+
 ## Getting started
 
 This application requires two servers running, the back-end server runs on port 8080 and the client runs on port 8000. From the root directory of the project, execute the following commands:
