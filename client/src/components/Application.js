@@ -15,6 +15,7 @@ import Dashboard_Tenant from "./Dashboard_Tenant/Dashboard_Tenant";
 import Employee_Interface from "./Employee/Employee_Interface";
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
 import Login from "./Login";
+import Register from "./Register";
 
 export default function Application(props) {
   const [loginUser, setLoginUser] = useState({
@@ -118,7 +119,7 @@ export default function Application(props) {
           </Route>
 
           <Route path="/register">
-            <h1> Hello from "/register Page</h1>
+            <Register/>
           </Route>
 
           <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>

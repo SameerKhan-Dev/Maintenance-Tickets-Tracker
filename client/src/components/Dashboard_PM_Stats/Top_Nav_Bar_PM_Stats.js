@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import logo from "../MTrack_White.png"
 import "./Top_Nav_Bar_PM_Stats.scss";
 
+const axios = require("axios");
+
 
 export default function Top_NavBar_PM_Stats(props) {
   const history = useHistory();
@@ -12,6 +14,23 @@ export default function Top_NavBar_PM_Stats(props) {
   const goToTicketPage = function () {
     history.push("/dashboard-pm-tickets");
   };
+
+  // const checkCookie = () => {
+  //   let isCookie = false
+  //   if (is)
+  // }
+
+  // const setLogout = () => {
+
+  //   return axios
+  //     .get(`/logout`, {
+
+  //     })
+  //     .then((response) => {
+  //       history.push(`/login`);
+        
+  //     });
+  // };
 
   const { loggedInUserEmail } = props;
   console.log(
@@ -36,7 +55,7 @@ export default function Top_NavBar_PM_Stats(props) {
           <Navbar.Text>
             Signed in as: <a href="#login">{loggedInUserEmail}</a>
           </Navbar.Text>
-          <Button className="logout_button" onClick={setLogout} variant="dark">Logout</Button>
+          <Button className="logout_button" variant="dark">Logout</Button>
         </Navbar.Collapse>
       </Navbar>
     </div>
