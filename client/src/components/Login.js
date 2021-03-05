@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Form, Button, Image } from "react-bootstrap";
 import "./Login.scss";
-// import background from "./Dashboard_Tenant/assets/background.jpg";
 import logo from "./MTrack_White.png";
 import background from "./tools__logo.jpg";
 
