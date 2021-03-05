@@ -127,13 +127,12 @@ app.post("/login", (req, res) => {
 
         //res.send(response[0]);
       } else {
-        // res.send(response);
         const responseValue = {
           userInfo: null,
           isValid: false,
         };
         //console.log("RES is:", res);
-        //res.send(responseValue);
+        res.status(400).send(responseValue);
 
         //res.send("Your email or password is invalid");
       }

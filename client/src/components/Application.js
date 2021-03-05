@@ -15,6 +15,7 @@ import Dashboard_Tenant from "./Dashboard_Tenant/Dashboard_Tenant";
 import Employee_Interface from "./Employee/Employee_Interface";
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
 import Login from "./Login";
+import Register from "./Register_Bee";
 
 const axios = require("axios");
 
@@ -54,7 +55,6 @@ export default function Application(props) {
 
   const setLogoutState = function () {
     return axios.get(`/logout`, {}).then((response) => {
-      // console.log("LOGOUT SUCCESSFUL?: ", response.data);
       setLoginUser((prev) => ({
         ...prev,
         loggedIn: false,
@@ -125,7 +125,8 @@ export default function Application(props) {
       <div style={{ display: "flex" }}>
         <Switch>
           <Route path="/" exact>
-            <h1> Hello from "/" Page</h1>
+            {/* <h1> Hello from "/" Page</h1> */}
+            <Login setLoginUser={setLoginUser} />
           </Route>
 
           <Route path="/login">
@@ -133,7 +134,8 @@ export default function Application(props) {
           </Route>
 
           <Route path="/register">
-            <h1> Hello from "/register Page</h1>
+            {/* <h1> Hello from "/register Page</h1> */}
+            <Register />
           </Route>
 
           <PrivateRoute
