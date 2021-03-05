@@ -17,13 +17,16 @@ import Employee_Dashboard from "./Employee/Employee_Dashboard";
 import Login from "./Login";
 import Register from "./Register";
 
+const axios = require("axios");
+
 export default function Application(props) {
   const [loginUser, setLoginUser] = useState({
     loggedIn: false,
     userEmail: "",
     userRole: "",
+    // user_id:
   });
-  // somehow use cookies, to set values of the loggedIn user state. 
+  // somehow use cookies, to set values of the loggedIn user state.
   // that function will check cookies data and set the state of login based on the cookies data
   // On back-end have a route handler that gets the logged-in user info.
   // -- it takes an empty axios call that has cookies in its header to the back-end
@@ -49,11 +52,31 @@ export default function Application(props) {
     "***From inside Application -- loginUser[userRole] =",
     loginUser["userRole"]
   );
-  
-  // const logInUserEmail = loginUser["userEmail"];
-  const pmEmail = "zahra_m@email.com";
-  const empEmail = "sameer_k@email.com";
-  const tenantEmail = "bee_l@email.com";
+
+  const setLogoutState = function () {
+    return axios.get(`/logout`, {}).then((response) => {
+      // console.log("LOGOUT SUCCESSFUL?: ", response.data);
+      setLoginUser((prev) => ({
+        ...prev,
+        loggedIn: false,
+        userEmail: "",
+        userRole: "",
+      }));
+    });
+  };
+
+  useEffect(() => {
+    axios.post(`/validateUser`, {}).then((response) => {
+      if (response.isCookieSet) {
+        setLoginUser((prev) => ({
+          ...prev,
+          loggedIn: true,
+          userEmail: response.userInfo.email,
+          userRole: response.userInfo.role_id,
+        }));
+      }
+    }, []);
+  });
 
   /*
 
@@ -91,8 +114,6 @@ export default function Application(props) {
       }, [0]);
 
   */
-      
-
 
   /*  
       const setLogout(){
@@ -100,19 +121,13 @@ export default function Application(props) {
       }
   */
 
-
   return (
     <Router>
       <div style={{ display: "flex" }}>
         <Switch>
-          {/* Create routes for every wire-frame page */}
           <Route path="/" exact>
             <h1> Hello from "/" Page</h1>
           </Route>
-
-          <PrivateRoute path="/dashboard-employee" role_id = {loginUser.userRole} login={loginUser.loggedIn}>
-            <Employee_Dashboard loggedInUserEmail={empEmail} />
-          </PrivateRoute>
 
           <Route path="/login">
             <Login setLoginUser={setLoginUser} />
@@ -122,46 +137,49 @@ export default function Application(props) {
             <Register/>
           </Route>
 
-          <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
-            <Dashboard_PM_Stats logInUserEmail={loginUser.userEmail} />
-          </PrivateRoute> 
-          {/*
-          <Route path="/dashboard-pm-stats">
-            <Dashboard_PM_Stats loggedInUserEmail={pmEmail} />
-          </Route>
-          */}
-          {/* <PrivateRoute path="/dashboard-pm-stats" login={loginUser.loggedIn}>
-            <Dashboard_PM_Stats />
-          </PrivateRoute> */}
-          <PrivateRoute path="/dashboard-pm-tickets" login={loginUser.loggedIn}>
-            <Dashboard_PM_Tickets loggedInUserEmail={pmEmail} />
-          </PrivateRoute> 
-          
-          <PrivateRoute path="/dashboard-tenant" login={loginUser.loggedIn}>
-            <Dashboard_Tenant loggedInUserEmail={tenantEmail} />
-          </PrivateRoute> 
+          <PrivateRoute
+            path="/dashboard-pm-stats"
+            role_id={loginUser.userRole}
+            login={loginUser.loggedIn}
+          >
+            <Dashboard_PM_Stats
+              logInUserEmail={loginUser.userEmail}
+              setLogoutState={setLogoutState}
+            />
+          </PrivateRoute>
 
+          <PrivateRoute
+            path="/dashboard-pm-tickets"
+            role_id={loginUser.userRole}
+            login={loginUser.loggedIn}
+          >
+            <Dashboard_PM_Tickets
+              loggedInUserEmail={loginUser.userEmail}
+              setLogoutState={setLogoutState}
+            />
+          </PrivateRoute>
 
-          {/* <PrivateRoute path="/dashboard-tenant" login={loginUser.loggedIn}>
-            <Dashboard_Tenant />
-          </PrivateRoute> */}
-          {/*  
-              // specific property
-            
-            */}
-          {/* </Route> */}
-          <Route path="/tickets">
-            <h1> Hello from "/tickets" Page</h1>
-          </Route>
+          <PrivateRoute
+            path="/dashboard-employee"
+            role_id={loginUser.userRole}
+            login={loginUser.loggedIn}
+          >
+            <Employee_Dashboard
+              loggedInUserEmail={loginUser.userEmail}
+              setLogoutState={setLogoutState}
+            />
+          </PrivateRoute>
 
-          <Route path="/test">
-            {/* <h1> Hello from "/test" Page</h1> */}
-            {/* <Employee_List_PM /> */}
-            {/* <Ticket_List_PM /> */}
-
-            <Employee_Interface />
-            {/* <Dashboard_PM_Tickets /> */}
-          </Route>
+          <PrivateRoute
+            path="/dashboard-tenant"
+            role_id={loginUser.userRole}
+            login={loginUser.loggedIn}
+          >
+            <Dashboard_Tenant
+              loggedInUserEmail={loginUser.userEmail}
+              setLogoutState={setLogoutState}
+            />
+          </PrivateRoute>
         </Switch>
       </div>
     </Router>

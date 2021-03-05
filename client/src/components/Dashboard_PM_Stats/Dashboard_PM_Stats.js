@@ -4,13 +4,13 @@ import "../Application.scss";
 import axios from "axios";
 import All_Property_Interface from "./All_Property_Interface";
 import Side_NavBar_PM_Stats from "./Side_NavBar_PM_Stats";
-import Individual_Property_Interface from './Individual_Property_Interface';
+import Individual_Property_Interface from "./Individual_Property_Interface";
 import Top_NavBar_PM_Stats from "./Top_Nav_Bar_PM_Stats";
 import "./Dashboard_PM_Stats.scss";
 
 export default function Dashboard_PM_Stats(props) {
   //console.log("****Inside Dashboard_PM_Stats -- props = ", props);
-
+  const { setLogoutState } = props;
 
   // When user login is setup, extract user_id using cookies
   // temporarily we are going to use user_id as 1 (i.e pm_id for this page)
@@ -37,7 +37,7 @@ export default function Dashboard_PM_Stats(props) {
   }
   console.log("*** ticketsForSelectedProperty: ", ticketsForSelectedProperty);
 
-  // this function obtains the address for a selected property 
+  // this function obtains the address for a selected property
   let addressForSelectedProperty = "";
   for (const propertyObject of state_PM_Stats.properties) {
     if (propertyObject.id === state_PM_Stats.selectedProperty) {
@@ -116,11 +116,10 @@ export default function Dashboard_PM_Stats(props) {
     return ticketsOrganizedByProperty;
   };
 
-
   console.log("ticketsOrganizedByProperty is: ");
   console.log(state_PM_Stats.ticketsOrganizedByProperty);
 
-  // this function returns stats for current selected property 
+  // this function returns stats for current selected property
   const obtainStats = function (ticketsOrganizedByProperty, selectedProperty) {
     // loop through allPropertiesStats array and find property with id matching selectedProperty value.
     // extract the specific stats for the selected property and return that value.
@@ -128,7 +127,7 @@ export default function Dashboard_PM_Stats(props) {
       if (property.property_id === selectedProperty) {
         return property.statsForProperty;
       }
-    }  
+    }
   };
 
   // this helper function updates the property state, when a specific property is selected
@@ -169,33 +168,46 @@ export default function Dashboard_PM_Stats(props) {
           prev.selectedProperty
         ),
       }));
-
     });
+  }, []);
 
-  },[]);
-
-    return (
-      <>
-        <div style = {{width: '100%', zIndex: '200', position: 'absolute'}}>
-          <Top_NavBar_PM_Stats loggedInUserEmail={props.loggedInUserEmail}/>
+  return (
+    <>
+      <div style={{ width: "100%", zIndex: "200", position: "absolute" }}>
+        <Top_NavBar_PM_Stats
+          loggedInUserEmail={props.loggedInUserEmail}
+          setLogoutState={setLogoutState}
+        />
+      </div>
+      <section className="content">
+        <div className="side__navbar">
+          <Side_NavBar_PM_Stats
+            selectProperty={selectProperty}
+            properties={state_PM_Stats.properties}
+            selectedProperty={state_PM_Stats.selectedProperty}
+          />
         </div>
-        <section className="content">
-          <div className="side__navbar">
-            
-            <Side_NavBar_PM_Stats
-              selectProperty = {selectProperty}
-              properties= {state_PM_Stats.properties}
-              selectedProperty = {state_PM_Stats.selectedProperty}
+        <div className="dashboard-interface">
+          {state_PM_Stats.selectedProperty === 0 ? (
+            <All_Property_Interface
+              specificStats={state_PM_Stats.specificStats}
+              ticketsOrganizedByProperty={
+                state_PM_Stats.ticketsOrganizedByProperty
+              }
+              properties={state_PM_Stats.properties}
+              tickets={state_PM_Stats.tickets}
             />
-          </div>
-          <div className="dashboard-interface">
-  
-                { state_PM_Stats.selectedProperty === 0 ?
-                <All_Property_Interface specificStats = {state_PM_Stats.specificStats} ticketsOrganizedByProperty = {state_PM_Stats.ticketsOrganizedByProperty} properties = {state_PM_Stats.properties} tickets = {state_PM_Stats.tickets}/> : <Individual_Property_Interface properties = {state_PM_Stats.properties} selectedProperty= {state_PM_Stats.selectedProperty} specificStats = {state_PM_Stats.specificStats} ticketsForSelectedProperty = {ticketsForSelectedProperty} addressForSelectedProperty={addressForSelectedProperty}
-                />
-                }     
+          ) : (
+            <Individual_Property_Interface
+              properties={state_PM_Stats.properties}
+              selectedProperty={state_PM_Stats.selectedProperty}
+              specificStats={state_PM_Stats.specificStats}
+              ticketsForSelectedProperty={ticketsForSelectedProperty}
+              addressForSelectedProperty={addressForSelectedProperty}
+            />
+          )}
         </div>
-        </section>
-      </>
-    );
+      </section>
+    </>
+  );
 }

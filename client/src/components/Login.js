@@ -64,7 +64,7 @@ export default function Login(props) {
         password: currentPassword,
       })
       .then((response) => {
-        //console.log("RESPONSE: ", response.data);
+        console.log("*** From inside Login -- RESPONSE: ", response.data);
 
         if (response.data.isValid) {
           props.setLoginUser((prev) => ({
@@ -75,7 +75,6 @@ export default function Login(props) {
           }));
           history.push(getPathForRole(response.data.userInfo.role_id));
         }
-        
       });
   };
   // **************************
@@ -91,7 +90,10 @@ export default function Login(props) {
           />
         </section>
         <section className="right__login">
-          <Form className="login__form" onSubmit={(event) => event.preventDefault()}>
+          <Form
+            className="login__form"
+            onSubmit={(event) => event.preventDefault()}
+          >
             <img className="logo__login" src={logo}></img>
             <h1 className="login__title">Login Here!</h1>
             <Form.Group controlId="formGroupEmail">

@@ -12,13 +12,13 @@
   padding: 4%;
   opacity: 90%;
   border-radius: 10px 140px 30px 140px;
-  width:700px;
+  width: 700px;
   margin-left: 125px;
 }
+
 .issue-container {
   color: orange;
 }
-
 
 .issue-form {
   padding-top: 200px;
@@ -41,11 +41,14 @@
   margin-left: 40px;
   justify-content: flex-start;
   padding: 10px;
+  font-size: 1.1em;
 }
 
 .maintenance-types {
   margin-bottom: 10px;
-  padding-left: 5px;
+  margin-right: 4px;
+  padding-left: 65px;
+  // font-size: 1.1em;
 }
 
 .text-address {
@@ -73,4 +76,3 @@
   font-size: 1.6em;
   padding-bottom: 15px;
 }
-
