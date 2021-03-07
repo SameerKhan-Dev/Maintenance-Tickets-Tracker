@@ -1,0 +1,38 @@
+.background-img {
+  position: fixed;
+}
+
+.property-register__form {
+  position: fixed;
+  color: White;
+  padding: 25px 35px;
+  border-radius: 60px;
+  background-image: linear-gradient(#2b2929 10%, #ff910000 100%);
+  text-align: center;
+  transform: translate(90%, 3%);
+  width: 50%;
+}
+
+.logo {
+  padding-bottom: 10px;
+  height: 37%;
+  width: 37%;
+  // display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.property-register__title {
+  font-size: 28px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #ef8633;
+}
+
+.text__property-type {
+  display: flex;
+  font-size: 20px;
+  text-align: left;
+  color: rgb(228, 228, 228);
+  padding-top: 10px;
+}
+

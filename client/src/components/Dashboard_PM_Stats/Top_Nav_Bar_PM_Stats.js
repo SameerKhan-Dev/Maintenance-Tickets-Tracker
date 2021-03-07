@@ -5,6 +5,9 @@ import { useHistory } from "react-router-dom";
 import logo from "../MTrack_White.png";
 import "./Top_Nav_Bar_PM_Stats.scss";
 
+const axios = require("axios");
+
+
 export default function Top_NavBar_PM_Stats(props) {
   const { setLogoutState } = props;
   const history = useHistory();
