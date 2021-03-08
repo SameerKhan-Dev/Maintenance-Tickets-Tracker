@@ -11,28 +11,30 @@
   text-align: center;
   transform: translate(90%, 3%);
   width: 50%;
+  overflow: auto;
+  height: 95vh;
 }
 
 .logo {
   padding-bottom: 10px;
-  height: 37%;
-  width: 37%;
+  height: 32%;
+  width: 32%;
   // display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 12px;
 }
 
 .property-register__title {
-  font-size: 28px;
+  font-size: 25px;
   padding-bottom: 10px;
   border-bottom: 3px solid #ef8633;
 }
 
 .text__property-type {
   display: flex;
-  font-size: 20px;
+  font-size: 18px;
   text-align: left;
   color: rgb(228, 228, 228);
   padding-top: 10px;
 }
-
