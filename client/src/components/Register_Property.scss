@@ -5,35 +5,35 @@
 .property-register__form {
   position: fixed;
   color: White;
-  padding: 25px 35px;
+  padding: 45px 55px;
   border-radius: 60px;
   background-image: linear-gradient(#2b2929 10%, #ff910000 100%);
   text-align: center;
-  transform: translate(90%, 3%);
-  width: 50%;
+  transform: translate(120%, 8%);
+  width: 40%;
   overflow: auto;
-  height: 95vh;
+  height: 750px;
 }
 
 .logo {
   padding-bottom: 10px;
-  height: 32%;
-  width: 32%;
+  height: 40%;
+  width: 40%;
   // display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 .property-register__title {
-  font-size: 25px;
-  padding-bottom: 10px;
-  border-bottom: 3px solid #ef8633;
+  font-size: 30px;
+  padding-bottom: 20px;
+  border-bottom: 4px solid #ef8633;
 }
 
 .text__property-type {
   display: flex;
-  font-size: 18px;
+  font-size: 20px;
   text-align: left;
   color: rgb(228, 228, 228);
   padding-top: 10px;

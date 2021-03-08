@@ -5,7 +5,12 @@ import logo from "./MTrack_White.png";
 import background from "./tools__logo.jpg";
 import "./Register_Property.scss";
 
+const axios = require("axios");
+
 export default function Register_Property(props) {
+  console.log("*** Inside Register Property Page: ", props.pm_id);
+  const { pm_id } = props;
+
   const [inputsState, setInputsState] = useState({
     pmId: "",
     propertyType: "",
@@ -17,6 +22,91 @@ export default function Register_Property(props) {
     postalCode: "",
     imagePath: "",
   });
+
+  console.log("*** InputsState = ", inputsState);
+
+  const handlePropertyTypeChange = (event) => {
+    const value = event.target.value;
+    setInputsState((inputsState) => ({
+      ...inputsState,
+      propertyType: value,
+    }));
+  };
+
+  const handlePropertyNameChange = (event) => {
+    const value = event.target.value;
+    setInputsState((inputsState) => ({
+      ...inputsState,
+      propertyName: value,
+    }));
+  };
+
+  const handleAddressChange = (event) => {
+    const value = event.target.value;
+    setInputsState((inputsState) => ({
+      ...inputsState,
+      address: value,
+    }));
+  };
+
+  const handleUnitChange = (event) => {
+    const value = event.target.value;
+    setInputsState((inputsState) => ({
+      ...inputsState,
+      unit: value,
+    }));
+  };
+
+  const handleCityChange = (event) => {
+    const value = event.target.value;
+    setInputsState((inputsState) => ({
+      ...inputsState,
+      city: value,
+    }));
+  };
+
+  const handleProvinceChange = (event) => {
+    const value = event.target.value;
+    setInputsState((inputsState) => ({
+      ...inputsState,
+      province: value,
+    }));
+  };
+
+  const handlePostalCodeChange = (event) => {
+    const value = event.target.value;
+    setInputsState((inputsState) => ({
+      ...inputsState,
+      postalCode: value,
+    }));
+  };
+
+  const onSubmit = () => {
+    const new_propertyType = inputsState.propertyType;
+    const new_propertyName = inputsState.propertyName;
+    const new_address = inputsState.address;
+    const new_unit = inputsState.unit;
+    const new_city = inputsState.city;
+    const new_province = inputsState.province;
+    const new_postalCode = inputsState.postalCode;
+    const new_imagePath = inputsState.imagePath;
+
+    return axios
+      .post(`/register_property/new`, {
+        property_manager_id: pm_id,
+        name: new_propertyName,
+        address: new_address,
+        unit: new_unit,
+        city: new_city,
+        province: new_province,
+        postal_code: new_postalCode,
+        property_type: new_propertyType,
+        imagePath: new_imagePath,
+      })
+      .then((response) => {
+        console.log("***From inside onSubmit of Register Property: ", response);
+      });
+  };
 
   return (
     <>
@@ -33,29 +123,30 @@ export default function Register_Property(props) {
         <div>
           <img className="logo" src={logo}></img>
         </div>
+
         <h1 className="property-register__title">Register your property!</h1>
-        {/* <InputGroup className="mb-3">
-          <InputGroup.Prepend>
-            <InputGroup.Text>First and last name</InputGroup.Text>
-          </InputGroup.Prepend>
-          <FormControl />
-          <FormControl />
-        </InputGroup> */}
 
-        <h5>Enter Property Information:</h5>
+        <h4 style={{ marginTop: 30 }}>Enter Property Information:</h4>
 
-        <Form inSubmit={(event) => event.preventDefault()}>
+        <Form onSubmit={(event) => event.preventDefault()}>
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label className="text__property-type">
               Select property type:
             </Form.Label>
-            <Form.Control as="select" size="sm">
+            <Form.Control
+              className="mb-4"
+              as="select"
+              value={inputsState.propertyType}
+              name="propertyType"
+              onChange={handlePropertyTypeChange}
+            >
+              <option></option>
               <option>Condominium/Apartment Building</option>
               <option>Individual Home</option>
             </Form.Control>
           </Form.Group>
 
-          <InputGroup className="mb-3" size="sm">
+          <InputGroup className="mb-4">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
                 Property Name
@@ -64,120 +155,84 @@ export default function Register_Property(props) {
             <FormControl
               value={inputsState.propertyName}
               name="propertyName"
-              // onChange={(event) =>
-              //   onFormChange("propertyName", event.target.value)
-              // }
+              onChange={handlePropertyNameChange}
               type="text"
               placeholder="Enter property name"
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
             />
           </InputGroup>
 
-          <InputGroup size="sm">
-            <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-default" className="mb-3">
-                Address
-              </InputGroup.Text>
-              <FormControl
-                className="mr-3"
-                size="sm"
-                // aria-label="Default"
-                // aria-describedby="inputGroup-sizing-default"
-              />
-            </InputGroup.Prepend>
-            <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-default" className="mb-3">
-                Unit#
-              </InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-            // aria-label="Default"
-            // aria-describedby="inputGroup-sizing-default"
-            />
-          </InputGroup>
-
-          {/* <InputGroup className="mb-3">
+          <InputGroup className="mb-4">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
-                Unit#
+                Address
               </InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-            />
-          </InputGroup> */}
-
-          <InputGroup className="mb-3" size="sm">
-            <InputGroup.Prepend>
-              <InputGroup.Text>City</InputGroup.Text>
-              {/* <FormControl /> */}
-            </InputGroup.Prepend>
-            <FormControl
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
+              value={inputsState.address}
+              name="address"
+              onChange={handleAddressChange}
+              type="text"
+              placeholder="Enter street address"
             />
           </InputGroup>
 
-          <InputGroup className="mb-3" size="sm">
+          <InputGroup className="mb-4">
+            <InputGroup.Prepend>
+              <InputGroup.Text>City</InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl
+              value={inputsState.city}
+              name="city"
+              onChange={handleCityChange}
+              type="text"
+              placeholder="Enter city name"
+            />
+          </InputGroup>
+
+          <InputGroup className="mb-4">
             <InputGroup.Prepend>
               <InputGroup.Text className="text__prov-state">
                 Province/State
               </InputGroup.Text>
-              {/* <FormControl /> */}
             </InputGroup.Prepend>
             <FormControl
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
+              value={inputsState.province}
+              name="province"
+              onChange={handleProvinceChange}
+              type="text"
+              placeholder="Enter province name"
             />
           </InputGroup>
 
-          <InputGroup className="mb-3" size="sm">
+          <InputGroup className="mb-4">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
                 Postal Code
               </InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
+              value={inputsState.postalCode}
+              name="ostalCode"
+              onChange={handlePostalCodeChange}
+              type="text"
+              placeholder="Enter postal code"
             />
           </InputGroup>
 
-          <Form className="mb-3">
+          {/* <Form className="mb-4">
             <Form.File
               size="sm"
               id="chooseImageUpload"
-              label="Choose image upload"
+              label="Choose image to upload"
               custom
             />
-          </Form>
-
-          {/* <div className="input-group mb-3">
-            <div className="custom-file">
-              <input
-                type="file"
-                className="custom-file-input"
-                id="chooseImageUpload"
-              ></input>
-              <label className="custom-file-label" for="chooseImageUpload">
-                Choose file
-              </label>
-            </div>
-            <div className="input-group-append">
-              <button className="btn btn-secondary" type="button">
-                Upload
-              </button>
-            </div>
-          </div> */}
+          </Form> */}
 
           <Button
             className="float-right"
-            // onClick={onPropertyRegisterSubmit}
+            onClick={onSubmit}
             variant="secondary"
             type="submit"
-            size="sm"
           >
             Save Property Information
           </Button>
