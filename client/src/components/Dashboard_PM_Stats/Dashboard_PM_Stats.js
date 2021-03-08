@@ -6,11 +6,12 @@ import All_Property_Interface from "./All_Property_Interface";
 import Side_NavBar_PM_Stats from "./Side_NavBar_PM_Stats";
 import Individual_Property_Interface from "./Individual_Property_Interface";
 import Top_NavBar_PM_Stats from "./Top_Nav_Bar_PM_Stats";
+// import Register_Property from "../Register_Property";
 import "./Dashboard_PM_Stats.scss";
 
 export default function Dashboard_PM_Stats(props) {
-  //console.log("****Inside Dashboard_PM_Stats -- props = ", props);
-  const { setLogoutState } = props;
+  console.log("****Inside Dashboard_PM_Stats -- props = ", props);
+  const { setLogoutState, logInUserEmail } = props;
 
   // When user login is setup, extract user_id using cookies
   // temporarily we are going to use user_id as 1 (i.e pm_id for this page)
@@ -175,7 +176,7 @@ export default function Dashboard_PM_Stats(props) {
     <>
       <div style={{ width: "100%", zIndex: "200", position: "absolute" }}>
         <Top_NavBar_PM_Stats
-          loggedInUserEmail={props.loggedInUserEmail}
+          loggedInUserEmail={logInUserEmail}
           setLogoutState={setLogoutState}
         />
       </div>
@@ -187,6 +188,7 @@ export default function Dashboard_PM_Stats(props) {
             selectedProperty={state_PM_Stats.selectedProperty}
           />
         </div>
+
         <div className="dashboard-interface">
           {state_PM_Stats.selectedProperty === 0 ? (
             <All_Property_Interface

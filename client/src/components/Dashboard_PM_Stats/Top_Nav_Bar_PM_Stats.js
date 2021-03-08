@@ -7,13 +7,15 @@ import "./Top_Nav_Bar_PM_Stats.scss";
 
 const axios = require("axios");
 
-
 export default function Top_NavBar_PM_Stats(props) {
   const { setLogoutState } = props;
   const history = useHistory();
 
   const goToTicketPage = function () {
     history.push("/dashboard-pm-tickets");
+  };
+  const goToPropertyRegisterPage = function () {
+    history.push("/register-property");
   };
 
   const { loggedInUserEmail } = props;
@@ -41,6 +43,9 @@ export default function Top_NavBar_PM_Stats(props) {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
+          <Button className="button_navBar" onClick={goToPropertyRegisterPage}>
+            Register New Property
+          </Button>
           <Button className="button_navBar" onClick={goToTicketPage}>
             View Tickets
           </Button>
