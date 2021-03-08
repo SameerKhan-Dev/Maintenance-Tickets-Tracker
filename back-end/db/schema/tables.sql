@@ -26,7 +26,7 @@ CREATE TABLE properties (
   property_manager_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
-  unit VARCHAR(255) NOT NULL,
+  unit VARCHAR(255) DEFAULT NULL,
   city VARCHAR(255) NOT NULL,
   province VARCHAR(255) NOT NULL,
   postal_code VARCHAR(255) NOT NULL,
