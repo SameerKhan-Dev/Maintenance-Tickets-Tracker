@@ -19,7 +19,7 @@ export default function Register_User(props) {
         />
       </div>
 
-      <section className="user-register-form__container">
+      <Container className="user-register-form__container">
         <div>
           <img className="logo" src={logo}></img>
         </div>
@@ -30,7 +30,7 @@ export default function Register_User(props) {
           className="user-resiger__form"
           inSubmit={(event) => event.preventDefault()}
         >
-          <Form.Group as={Col} controlId="exampleForm.ControlSelect1">
+          <Form.Group as={Col} controlId="selectPropertyAddress">
             <Form.Label column sm={10} className="text__select-address">
               Select property address:
             </Form.Label>
@@ -82,36 +82,40 @@ export default function Register_User(props) {
             </Form.Group>
           </fieldset>
 
-          <Form.Row>
-            <Form.Group as={Col} md="5" controlId="formVerticalFirstname">
-              <Form.Label column sm={2}>
-                Firstname:
-              </Form.Label>
-              <Col sm={11}>
-                <Form.Control type="text" placeholder="Firstname" />
-              </Col>
-            </Form.Group>
+          <Row>
+            <Col md>
+              <Form.Group as={Col} controlId="formFirstname">
+                <Form.Label column sm={2}>
+                  Firstname:
+                </Form.Label>
+                <Col sm={11}>
+                  <Form.Control type="text" placeholder="Firstname" />
+                </Col>
+              </Form.Group>
+            </Col>
 
-            <Form.Group as={Col} md="5" controlId="formVerticalLastname">
-              <Form.Label column sm={2}>
-                Lastname:
-              </Form.Label>
-              <Col sm={11}>
-                <Form.Control type="text" placeholder="Lastname" />
-              </Col>
-            </Form.Group>
-          </Form.Row>
+            <Col md>
+              <Form.Group as={Col} controlId="formLastname">
+                <Form.Label column sm={2}>
+                  Lastname:
+                </Form.Label>
+                <Col sm={11}>
+                  <Form.Control type="text" placeholder="Lastname" />
+                </Col>
+              </Form.Group>
+            </Col>
+          </Row>
 
-          <Form.Group as={Col} controlId="formVerticalEmail">
-            <Form.Label column sm={2}>
-              Email:
+          <Form.Group as={Col} controlId="formlEmail">
+            <Form.Label column sm={5}>
+              Email Address:
             </Form.Label>
             <Col sm={10}>
-              <Form.Control type="email" placeholder="Email" />
+              <Form.Control type="email" placeholder="Example@email.com" />
             </Col>
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formHorizontalPassword">
+          <Form.Group as={Col} controlId="formPassword">
             <Form.Label column sm={2}>
               Password:
             </Form.Label>
@@ -120,7 +124,7 @@ export default function Register_User(props) {
             </Col>
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formHorizontalPassword">
+          <Form.Group as={Col} controlId="formConfirmPassword">
             <Form.Label column sm={10}>
               Confirm Password:
             </Form.Label>
@@ -135,7 +139,7 @@ export default function Register_User(props) {
             </Col>
           </Form.Group>
         </Form>
-      </section>
+      </Container>
     </>
   );
 }
