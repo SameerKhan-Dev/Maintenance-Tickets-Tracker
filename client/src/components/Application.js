@@ -27,6 +27,8 @@ export default function Application(props) {
     userRole: "",
     // user_id:
   });
+
+  const pm_id = 3;
   // somehow use cookies, to set values of the loggedIn user state.
   // that function will check cookies data and set the state of login based on the cookies data
   // On back-end have a route handler that gets the logged-in user info.
@@ -136,7 +138,7 @@ export default function Application(props) {
 
           <Route path="/register-property">
             {/* <h1> Hello from "/register Page</h1> */}
-            <Register_Property />
+            <Register_Property pm_id={pm_id} />
           </Route>
 
           <Route path="/register-user">

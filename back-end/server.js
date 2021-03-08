@@ -25,6 +25,7 @@ const getPropertyByTenantUser_Id = require("./database/databaseHelpers/getProper
 const completeTicketByTicket_Id = require("./database/databaseHelpers/completeTicketByTicket_Id");
 const getAllPropertiesByEmployee_Id = require("./database/databaseHelpers/getAllPropertiesByEmployee_Id");
 const getUsersById = require("./database/databaseHelpers/getUsersById");
+const addNewProperty = require("./database/databaseHelpers/addNewProperty");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response fstatus for development use.
@@ -61,9 +62,32 @@ app.get("/homepage", (req, res) => {
   res.send("Hello from: route 1  ");
 });
 
-// 1
-app.post("/register", (req, res) => {
-  res.send("Hello from: route 2  ");
+// register new property and add to the database
+app.post("/register_property/new", (req, res) => {
+  // res.send("Hello from: route 2  ");
+  const property_manager_id = req.body.property_manager_id;
+  const name = req.body.name;
+  const address = req.body.address;
+  const unit = req.body.unit;
+  const city = req.body.city;
+  const province = req.body.province;
+  const postal_code = req.body.postal_code;
+  const property_type = req.body.property_type;
+  const image_path = req.body.image_path;
+
+  addNewProperty_PM = addNewProperty(
+    property_manager_id,
+    name,
+    address,
+    unit,
+    city,
+    province,
+    postal_code,
+    property_type,
+    image_path
+  ).then((response) => {
+    res.send(response);
+  });
 });
 
 app.post("/validateUser", (req, res) => {
