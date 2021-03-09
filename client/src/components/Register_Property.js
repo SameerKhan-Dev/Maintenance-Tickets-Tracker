@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { InputGroup, FormControl, Form, Button, Image } from "react-bootstrap";
+import {
+  InputGroup,
+  FormControl,
+  Form,
+  Button,
+  Image,
+  Toast,
+} from "react-bootstrap";
 import logo from "./MTrack_White.png";
 import background from "./tools__logo.jpg";
 import "./Register_Property.scss";
@@ -22,9 +29,75 @@ export default function Register_Property(props) {
     province: "",
     postalCode: "",
     imagePath: "",
+    formErrors: {
+      propertyType: "",
+      propertyName: "",
+      address: "",
+      city: "",
+      province: "",
+      postalCode: "",
+    },
+    formValid: false,
+    propertyTypeValid: false,
+    propertyNameValid: false,
+    addressValid: false,
+    cityValid: false,
+    provinceValid: false,
+    postalCodeValid: false,
   });
 
-  console.log("*** InputsState = ", inputsState);
+  const [show, setShow] = useState(false);
+  const showToastAppear = () => {
+    setShow(true);
+  };
+
+  const handleValidation = () => {
+    let formIsValid = true;
+
+    if (!inputsState.propertyType) {
+      formIsValid = false;
+      inputsState.errors["propertyType"] = "Cannot be empty";
+    }
+    //   if (typeof inputsState.propertyName !== "undefined") {
+    //     if (!inputsState.propertyName.match(/^[a-zA-Z]+$/)) {
+    //       formIsValid = false;
+    //       inputsState.errors["propertyName"] = "Only letter";
+    //     }
+    //   } else if (!inputsState.propertyName) {
+    //     formIsValid = false;
+    //     inputsState.errors["propertyName"] = "Cannot be empty";
+    //   }
+    //   if (!inputsState.address) {
+    //     formIsValid = false;
+    //     inputsState.errors["address"] = "cannot be empty";
+    //   }
+    //   if (typeof inputsState.city !== "undefined") {
+    //     if (!inputsState.city.match(/^[a-zA-Z]+$/)) {
+    //       formIsValid = false;
+    //       inputsState.errors["city"] = "Only letter";
+    //     }
+    //   } else if (!inputsState.city) {
+    //     formIsValid = false;
+    //     inputsState.errors["city"] = "cannot be empty";
+    //   }
+    //   if (typeof inputsState.province !== "undefined") {
+    //     if (!inputsState.province.match(/^[a-zA-Z]+$/)) {
+    //       formIsValid = false;
+    //       inputsState.errors["province"] = "Only letter";
+    //     }
+    //   } else if (!inputsState.province) {
+    //     formIsValid = false;
+    //     inputsState.errors["province"] = "cannot be empty";
+    //   }
+    //   if (!inputsState.postalCode) {
+    //     formIsValid = false;
+    //     inputsState.errors["pastalCode"] = "cannot be empty";
+    //   }
+
+    //   setInputsState({ errors: inputsState.errors });
+    //   console.log("formIsValid = ", formIsValid);
+    //   return formIsValid;
+  };
 
   const handlePropertyTypeChange = (event) => {
     const value = event.target.value;
@@ -96,32 +169,37 @@ export default function Register_Property(props) {
     const new_postalCode = inputsState.postalCode;
     const new_imagePath = inputsState.imagePath;
 
-    return axios
-      .post(`/register_property/new`, {
-        property_manager_id: pm_id,
-        name: new_propertyName,
-        address: new_address,
-        unit: new_unit,
-        city: new_city,
-        province: new_province,
-        postal_code: new_postalCode,
-        property_type: new_propertyType,
-        imagePath: new_imagePath,
-      })
-      .then((response) => {
-        console.log("***From inside onSubmit of Register Property: ", response);
-        setInputsState((inputsState) => ({
-          ...inputsState,
-          propertyType: "",
-          propertyName: "",
-          address: "",
-          unit: "",
-          city: "",
-          province: "",
-          postalCode: "",
-          imagePath: "",
-        }));
-      });
+    if (!handleValidation()) {
+      alert("Form has errors!", inputsState.errors);
+    } else {
+      return axios
+        .post(`/register_property/new`, {
+          property_manager_id: pm_id,
+          name: new_propertyName,
+          address: new_address,
+          unit: new_unit,
+          city: new_city,
+          province: new_province,
+          postal_code: new_postalCode,
+          property_type: new_propertyType,
+          imagePath: new_imagePath,
+        })
+        .then((response) => {
+          // console.log("***From inside onSubmit of Register Property: ", response);
+          showToastAppear();
+          setInputsState((inputsState) => ({
+            ...inputsState,
+            propertyType: "",
+            propertyName: "",
+            address: "",
+            unit: "",
+            city: "",
+            province: "",
+            postalCode: "",
+            imagePath: "",
+          }));
+        });
+    }
   };
 
   return (
@@ -235,14 +313,30 @@ export default function Register_Property(props) {
             />
           </InputGroup>
 
-          {/* <Form className="mb-4">
-            <Form.File
-              size="sm"
-              id="chooseImageUpload"
-              label="Choose image to upload"
-              custom
-            />
-          </Form> */}
+          <Toast
+            style={{
+              position: "absolute",
+              bottom: 10,
+              right: 0,
+              width: 300,
+              backgroundColor: "#EF8633",
+            }}
+            onClose={() => setShow(false)}
+            show={show}
+            delay={3000}
+            autohide
+          >
+            <Toast.Header>
+              <img
+                src="holder.js/20x20?text=%20"
+                className="round mr-2"
+                alt=""
+              />
+              <strong className="mr-auto">Notification</strong>
+              <small>just now</small>
+            </Toast.Header>
+            <Toast.Body>{`New property: ${inputsState.propertyName} has been saved to database!`}</Toast.Body>
+          </Toast>
 
           <Button
             className="float-right"
