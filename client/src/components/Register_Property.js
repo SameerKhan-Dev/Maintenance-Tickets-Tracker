@@ -10,6 +10,7 @@ const axios = require("axios");
 export default function Register_Property(props) {
   console.log("*** Inside Register Property Page: ", props.pm_id);
   const { pm_id } = props;
+  const history = useHistory();
 
   const [inputsState, setInputsState] = useState({
     pmId: "",
@@ -81,6 +82,10 @@ export default function Register_Property(props) {
     }));
   };
 
+  const goBack = () => {
+    history.push("/dashboard-pm-stats");
+  };
+
   const onSubmit = () => {
     const new_propertyType = inputsState.propertyType;
     const new_propertyName = inputsState.propertyName;
@@ -105,6 +110,17 @@ export default function Register_Property(props) {
       })
       .then((response) => {
         console.log("***From inside onSubmit of Register Property: ", response);
+        setInputsState((inputsState) => ({
+          ...inputsState,
+          propertyType: "",
+          propertyName: "",
+          address: "",
+          unit: "",
+          city: "",
+          province: "",
+          postalCode: "",
+          imagePath: "",
+        }));
       });
   };
 
@@ -235,6 +251,15 @@ export default function Register_Property(props) {
             type="submit"
           >
             Save Property Information
+          </Button>
+
+          <Button
+            className="float-left"
+            onClick={goBack}
+            variant="secondary"
+            type="submit"
+          >
+            Go Back
           </Button>
         </Form>
       </section>
