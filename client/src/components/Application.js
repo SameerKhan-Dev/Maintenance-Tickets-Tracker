@@ -128,7 +128,6 @@ export default function Application(props) {
       <div style={{ display: "flex" }}>
         <Switch>
           <Route path="/" exact>
-            {/* <h1> Hello from "/" Page</h1> */}
             <Login setLoginUser={setLoginUser} />
           </Route>
 
@@ -136,10 +135,13 @@ export default function Application(props) {
             <Login setLoginUser={setLoginUser} />
           </Route>
 
-          <Route path="/register-property">
-            {/* <h1> Hello from "/register Page</h1> */}
+          <PrivateRoute
+            path="/register-property"
+            role_id={loginUser.userRole}
+            login={loginUser.loggedIn}
+          >
             <Register_Property pm_id={pm_id} />
-          </Route>
+          </PrivateRoute>
 
           <Route path="/register-user">
             {/* <h1> Hello from "/register Page</h1> */}
