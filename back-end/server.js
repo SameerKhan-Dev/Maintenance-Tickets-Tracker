@@ -12,6 +12,8 @@ const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require("morgan");
 const cookieSession = require("cookie-session");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 const database = require("./database/database");
 const getAllPropertiesByPM_Id = require("./database/databaseHelpers/getAllPropertiesByPM_Id");
@@ -26,6 +28,7 @@ const completeTicketByTicket_Id = require("./database/databaseHelpers/completeTi
 const getAllPropertiesByEmployee_Id = require("./database/databaseHelpers/getAllPropertiesByEmployee_Id");
 const getUsersById = require("./database/databaseHelpers/getUsersById");
 const addNewProperty = require("./database/databaseHelpers/addNewProperty");
+const addNewUser = require("./database/databaseHelpers/addNewUser");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response fstatus for development use.
@@ -60,6 +63,14 @@ app.use(express.static("public"));
 
 app.get("/homepage", (req, res) => {
   res.send("Hello from: route 1  ");
+});
+
+// register new user and add to the database
+app.post("/register_user/new", (req, res) => {
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
+  const email = req.body.email;
+  const password = bcrypt.hashSync(req.body.password, saltRounds);
 });
 
 // register new property and add to the database
