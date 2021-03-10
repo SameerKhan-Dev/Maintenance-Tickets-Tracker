@@ -156,7 +156,7 @@ export default function Register_Property(props) {
   };
 
   const onSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
 
     const new_propertyType = inputsState.propertyType;
     const new_propertyName = inputsState.propertyName;
@@ -169,8 +169,8 @@ export default function Register_Property(props) {
 
     const isValid = validate();
     console.log("isValid = ", isValid);
-    console.log("inputsState = ", inputsState);
     if (isValid) {
+      console.log("inputsState = ", inputsState);
       return axios
         .post(`/register_property/new`, {
           property_manager_id: pm_id,
@@ -228,8 +228,8 @@ export default function Register_Property(props) {
 
         <h4 style={{ marginTop: 30 }}>Enter Property Information:</h4>
 
-        <Form onSubmit={(event) => event.preventDefault()}>
-          <Form.Group controlId="exampleForm.ControlSelect1">
+        <Form>
+          <Form.Group controlId="formPropertyType">
             <Form.Label className="text__property-type">
               Select property type:
             </Form.Label>
@@ -251,7 +251,7 @@ export default function Register_Property(props) {
 
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-default">
+              <InputGroup.Text id="formPropertyName">
                 Property Name
               </InputGroup.Text>
             </InputGroup.Prepend>
@@ -269,7 +269,7 @@ export default function Register_Property(props) {
 
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-default">
+              <InputGroup.Text id="formPropertyAddress">
                 Address
               </InputGroup.Text>
             </InputGroup.Prepend>
@@ -287,7 +287,7 @@ export default function Register_Property(props) {
 
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
-              <InputGroup.Text>City</InputGroup.Text>
+              <InputGroup.Text id="formPropertyCity">City</InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
               value={inputsState.city}
@@ -303,7 +303,10 @@ export default function Register_Property(props) {
 
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
-              <InputGroup.Text className="text__prov-state">
+              <InputGroup.Text
+                id="formPropertyProvince"
+                className="text__prov-state"
+              >
                 Province/State
               </InputGroup.Text>
             </InputGroup.Prepend>
@@ -321,7 +324,7 @@ export default function Register_Property(props) {
 
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-default">
+              <InputGroup.Text id="formPropertyPostalCode">
                 Postal Code
               </InputGroup.Text>
             </InputGroup.Prepend>
