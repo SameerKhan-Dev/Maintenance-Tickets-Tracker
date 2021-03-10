@@ -73,20 +73,25 @@ app.post("/register_user/new", (req, res) => {
   const password = bcrypt.hashSync(req.body.password, saltRounds);
   const role_id = req.body.role_id;
 
-  addNewUser_PM = addNewUser(
-    firstname,
-    lastname,
-    email,
-    password,
-    role_id
-  ).then((response) => {
-    res.send(response);
+  isEmailExist = getUserByEmail(email).then((response) => {
+    if (response.length !== 0) {
+      res.send(`User email, ${response[0].email} is in the database!`);
+    } else {
+      addNewUser_PM = addNewUser(
+        firstname,
+        lastname,
+        email,
+        password,
+        role_id
+      ).then((response) => {
+        res.send(response);
+      });
+    }
   });
 });
 
 // register new property and add to the database
 app.post("/register_property/new", (req, res) => {
-  // res.send("Hello from: route 2  ");
   const property_manager_id = req.body.property_manager_id;
   const name = req.body.name;
   const address = req.body.address;
