@@ -168,7 +168,7 @@ export default function Register_Property(props) {
     const new_imagePath = inputsState.imagePath;
 
     const isValid = validate();
-    console.log("isValid = ", isValid);
+
     if (isValid) {
       console.log("inputsState = ", inputsState);
       return axios
@@ -184,10 +184,10 @@ export default function Register_Property(props) {
           imagePath: new_imagePath,
         })
         .then((response) => {
-          console.log(
-            "***From inside onSubmit of Register Property: ",
-            response
-          );
+          // console.log(
+          //   "***From inside onSubmit of Register Property: ",
+          //   response
+          // );
           showToastAppear();
           setInputsState((inputsState) => ({
             ...inputsState,
@@ -197,6 +197,7 @@ export default function Register_Property(props) {
             city: "",
             province: "",
             postalCode: "",
+
             propertyTypeError: "",
             propertyNameError: "",
             addressError: "",
