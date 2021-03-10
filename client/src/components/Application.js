@@ -144,7 +144,6 @@ export default function Application(props) {
           </PrivateRoute>
 
           <Route path="/register-pm">
-            {/* <h1> Hello from "/register Page</h1> */}
             <Register_PM />
           </Route>
 
