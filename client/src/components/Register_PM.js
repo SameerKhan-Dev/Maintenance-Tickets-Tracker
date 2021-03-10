@@ -113,16 +113,21 @@ export default function Register_PM(props) {
       passwordError ||
       confirmPasswordError
     ) {
-      setInputsState({
+      setInputsState((prev) => ({
+        ...prev,
         firstnameError,
         lastnameError,
         emailError,
         passwordError,
         confirmPasswordError,
-      });
+      }));
       return false;
     }
     return true;
+  };
+
+  const goToLoginPage = function () {
+    history.push("/login");
   };
 
   const onSubmit = (event) => {
@@ -146,7 +151,6 @@ export default function Register_PM(props) {
           role_id,
         })
         .then((response) => {
-          // console.log("***From response of onSubmit of Register PM: ", response);
           setInputsState((inputsState) => ({
             ...inputsState,
             firstname: "",
@@ -161,6 +165,7 @@ export default function Register_PM(props) {
             passwordError: "",
             confirmPasswordError: "",
           }));
+          goToLoginPage();
         });
     }
   };
@@ -180,27 +185,14 @@ export default function Register_PM(props) {
         <div>
           <img className="logo" src={logo}></img>
         </div>
-        <h1 className="pm-register__title">Register as Property Manager!</h1>
+        <h1 className="pm-register__title">Register as Property Manager</h1>
         <h5 style={{ marginTop: 30 }}>Enter information to create account:</h5>
 
         <Form
           className="pm-resiger__form"
           onSubmit={(event) => event.preventDefault()}
         >
-          {/* <Form.Group as={Col} controlId="selectPropertyAddress">
-            <Form.Label column sm={10} className="text__select-address">
-              Select property address:
-            </Form.Label>
-            <Col sm={10}>
-              <Form.Control as="select">
-                <option>3116 Brando Gateway</option>
-                <option>536 Amanda Loaf</option>
-                <option>12 University St</option>
-              </Form.Control>
-            </Col>
-          </Form.Group> */}
-
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-3 mt-4">
             <InputGroup.Prepend>
               <InputGroup.Text id="formFirstname">Firstname</InputGroup.Text>
             </InputGroup.Prepend>
@@ -216,7 +208,7 @@ export default function Register_PM(props) {
             {inputsState.firstnameError}
           </div>
 
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-3 mt-4">
             <InputGroup.Prepend>
               <InputGroup.Text id="formLastname">Lastname</InputGroup.Text>
             </InputGroup.Prepend>
@@ -232,7 +224,7 @@ export default function Register_PM(props) {
             {inputsState.lastnameError}
           </div>
 
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-3 mt-4">
             <InputGroup.Prepend>
               <InputGroup.Text id="formEmail">Email Address</InputGroup.Text>
             </InputGroup.Prepend>
@@ -248,7 +240,7 @@ export default function Register_PM(props) {
             {inputsState.emailError}
           </div>
 
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-3 mt-4">
             <InputGroup.Prepend>
               <InputGroup.Text id="formPassword">Password</InputGroup.Text>
             </InputGroup.Prepend>
@@ -264,7 +256,7 @@ export default function Register_PM(props) {
             {inputsState.passwordError}
           </div>
 
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-3 mt-4">
             <InputGroup.Prepend>
               <InputGroup.Text id="formFPasswordConfirm">
                 Confirm Password
@@ -283,7 +275,7 @@ export default function Register_PM(props) {
           </div>
 
           <Button
-            className="float-right"
+            className="float-right mt-4"
             onClick={onSubmit}
             variant="secondary"
             type="submit"
