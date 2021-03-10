@@ -120,11 +120,11 @@ export default function Login(props) {
               />
             </Form.Group>
             <h5 className="no__account">No account?</h5>
-            <h5 className="no__account">
+            <h5 className="no__account mb-3">
               Click<a href="/register"> here</a> to register!
             </h5>
             <Button
-              className="issue__actions"
+              className="float-right"
               onClick={onLoginSubmit}
               variant="secondary"
               type="submit"

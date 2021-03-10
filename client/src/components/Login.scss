@@ -1,24 +1,21 @@
 .login__form {
   position: fixed;
-  // display: flex;
   color: white;
-  // flex-direction: column;
-  // justify-content: flex-end;
-  // background-color: rgba(0, 0, 0, 0.637);
   background: linear-gradient(#2b2929 10%, #ff910000 90%);
-  padding: 30px;
+  padding: 50px;
   border-radius: 80px;
   position: fixed;
   top: 60%;
   left: 50%;
-  transform: translate(-0%, -70%);
-  width: 40%;
+  transform: translate(10%, -70%);
+  width: 35%;
   align-items: center;
-  // border: black 3px solid
 }
 
 .login__bkg {
   position: fixed;
+  width: 100%;
+  height: 100%;
 }
 .logo__login {
   padding-bottom: 15px;
@@ -29,16 +26,10 @@
   margin-right: auto;
 }
 
-.issue__actions {
-  display: flex;
-  justify-content: flex-end;
-
-}
-
 .login__title {
   text-align: center;
   padding-bottom: 10px;
-  border-bottom: 5px solid #EF8633;
+  border-bottom: 5px solid #ef8633;
 }
 
 .form__label {
