@@ -15,7 +15,6 @@ import "./Register_Property.scss";
 const axios = require("axios");
 
 export default function Register_Property(props) {
-  console.log("*** Inside Register Property Page: ", props.pm_id);
   const { pm_id } = props;
   const history = useHistory();
 
@@ -29,74 +28,18 @@ export default function Register_Property(props) {
     province: "",
     postalCode: "",
     imagePath: "",
-    formErrors: {
-      propertyType: "",
-      propertyName: "",
-      address: "",
-      city: "",
-      province: "",
-      postalCode: "",
-    },
-    formValid: false,
-    propertyTypeValid: false,
-    propertyNameValid: false,
-    addressValid: false,
-    cityValid: false,
-    provinceValid: false,
-    postalCodeValid: false,
+
+    propertyTypeError: "",
+    propertyNameError: "",
+    addressError: "",
+    cityError: "",
+    provinceError: "",
+    postalCodeError: "",
   });
 
   const [show, setShow] = useState(false);
   const showToastAppear = () => {
     setShow(true);
-  };
-
-  const handleValidation = () => {
-    let formIsValid = true;
-
-    if (!inputsState.propertyType) {
-      formIsValid = false;
-      inputsState.errors["propertyType"] = "Cannot be empty";
-    }
-    //   if (typeof inputsState.propertyName !== "undefined") {
-    //     if (!inputsState.propertyName.match(/^[a-zA-Z]+$/)) {
-    //       formIsValid = false;
-    //       inputsState.errors["propertyName"] = "Only letter";
-    //     }
-    //   } else if (!inputsState.propertyName) {
-    //     formIsValid = false;
-    //     inputsState.errors["propertyName"] = "Cannot be empty";
-    //   }
-    //   if (!inputsState.address) {
-    //     formIsValid = false;
-    //     inputsState.errors["address"] = "cannot be empty";
-    //   }
-    //   if (typeof inputsState.city !== "undefined") {
-    //     if (!inputsState.city.match(/^[a-zA-Z]+$/)) {
-    //       formIsValid = false;
-    //       inputsState.errors["city"] = "Only letter";
-    //     }
-    //   } else if (!inputsState.city) {
-    //     formIsValid = false;
-    //     inputsState.errors["city"] = "cannot be empty";
-    //   }
-    //   if (typeof inputsState.province !== "undefined") {
-    //     if (!inputsState.province.match(/^[a-zA-Z]+$/)) {
-    //       formIsValid = false;
-    //       inputsState.errors["province"] = "Only letter";
-    //     }
-    //   } else if (!inputsState.province) {
-    //     formIsValid = false;
-    //     inputsState.errors["province"] = "cannot be empty";
-    //   }
-    //   if (!inputsState.postalCode) {
-    //     formIsValid = false;
-    //     inputsState.errors["pastalCode"] = "cannot be empty";
-    //   }
-
-    //   setInputsState({ errors: inputsState.errors });
-    //   console.log("formIsValid = ", formIsValid);
-    //   return formIsValid;
   };
 
   const handlePropertyTypeChange = (event) => {
@@ -159,7 +102,62 @@ export default function Register_Property(props) {
     history.push("/dashboard-pm-stats");
   };
 
-  const onSubmit = () => {
+  const validate = () => {
+    let propertyTypeError = "";
+    let propertyNameError = "";
+    let addressError = "";
+    let cityError = "";
+    let provinceError = "";
+    let postalCodeError = "";
+
+    if (!inputsState.propertyType) {
+      propertyTypeError = "Property type cannot be blank";
+    }
+
+    if (!inputsState.propertyName) {
+      propertyNameError = "Property name cannot be blank";
+    }
+
+    if (!inputsState.address) {
+      addressError = "Address cannot be blank";
+    }
+
+    if (!inputsState.city) {
+      cityError = "City cannot be blank";
+    }
+
+    if (!inputsState.province) {
+      provinceError = "Province cannot be blank";
+    }
+
+    if (!inputsState.postalCode) {
+      postalCodeError = "Postal code cannot be blank";
+    }
+
+    if (
+      propertyTypeError ||
+      propertyNameError ||
+      addressError ||
+      cityError ||
+      provinceError ||
+      postalCodeError
+    ) {
+      setInputsState({
+        propertyTypeError,
+        propertyNameError,
+        addressError,
+        cityError,
+        provinceError,
+        postalCodeError,
+      });
+      return false;
+    }
+    return true;
+  };
+
+  const onSubmit = (event) => {
+    // event.preventDefault();
+
     const new_propertyType = inputsState.propertyType;
     const new_propertyName = inputsState.propertyName;
     const new_address = inputsState.address;
@@ -169,9 +167,10 @@ export default function Register_Property(props) {
     const new_postalCode = inputsState.postalCode;
     const new_imagePath = inputsState.imagePath;
 
-    if (!handleValidation()) {
-      alert("Form has errors!", inputsState.errors);
-    } else {
+    const isValid = validate();
+    console.log("isValid = ", isValid);
+    console.log("inputsState = ", inputsState);
+    if (isValid) {
       return axios
         .post(`/register_property/new`, {
           property_manager_id: pm_id,
@@ -185,18 +184,25 @@ export default function Register_Property(props) {
           imagePath: new_imagePath,
         })
         .then((response) => {
-          // console.log("***From inside onSubmit of Register Property: ", response);
+          console.log(
+            "***From inside onSubmit of Register Property: ",
+            response
+          );
           showToastAppear();
           setInputsState((inputsState) => ({
             ...inputsState,
             propertyType: "",
             propertyName: "",
             address: "",
-            unit: "",
             city: "",
             province: "",
             postalCode: "",
-            imagePath: "",
+            propertyTypeError: "",
+            propertyNameError: "",
+            addressError: "",
+            cityError: "",
+            provinceError: "",
+            postalCodeError: "",
           }));
         });
     }
@@ -228,7 +234,7 @@ export default function Register_Property(props) {
               Select property type:
             </Form.Label>
             <Form.Control
-              className="mb-4"
+              className="mb-3"
               as="select"
               value={inputsState.propertyType}
               name="propertyType"
@@ -238,9 +244,12 @@ export default function Register_Property(props) {
               <option>Condominium/Apartment Building</option>
               <option>Individual Home</option>
             </Form.Control>
+            <div style={{ fontSize: 19, color: "darkred" }}>
+              {inputsState.propertyTypeError}
+            </div>
           </Form.Group>
 
-          <InputGroup className="mb-4">
+          <InputGroup className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
                 Property Name
@@ -254,8 +263,11 @@ export default function Register_Property(props) {
               placeholder="Enter property name"
             />
           </InputGroup>
+          <div style={{ fontSize: 19, color: "darkred", marginBottom: 10 }}>
+            {inputsState.propertyNameError}
+          </div>
 
-          <InputGroup className="mb-4">
+          <InputGroup className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
                 Address
@@ -269,8 +281,11 @@ export default function Register_Property(props) {
               placeholder="Enter street address"
             />
           </InputGroup>
+          <div style={{ fontSize: 19, color: "darkred", marginBottom: 10 }}>
+            {inputsState.addressError}
+          </div>
 
-          <InputGroup className="mb-4">
+          <InputGroup className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text>City</InputGroup.Text>
             </InputGroup.Prepend>
@@ -282,8 +297,11 @@ export default function Register_Property(props) {
               placeholder="Enter city name"
             />
           </InputGroup>
+          <div style={{ fontSize: 19, color: "darkred", marginBottom: 10 }}>
+            {inputsState.cityError}
+          </div>
 
-          <InputGroup className="mb-4">
+          <InputGroup className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text className="text__prov-state">
                 Province/State
@@ -297,8 +315,11 @@ export default function Register_Property(props) {
               placeholder="Enter province name"
             />
           </InputGroup>
+          <div style={{ fontSize: 19, color: "darkred", marginBottom: 10 }}>
+            {inputsState.provinceError}
+          </div>
 
-          <InputGroup className="mb-4">
+          <InputGroup className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
                 Postal Code
@@ -306,12 +327,15 @@ export default function Register_Property(props) {
             </InputGroup.Prepend>
             <FormControl
               value={inputsState.postalCode}
-              name="ostalCode"
+              name="postalCode"
               onChange={handlePostalCodeChange}
               type="text"
               placeholder="Enter postal code"
             />
           </InputGroup>
+          <div style={{ fontSize: 19, color: "darkred", marginBottom: 10 }}>
+            {inputsState.postalCodeError}
+          </div>
 
           <Toast
             style={{
