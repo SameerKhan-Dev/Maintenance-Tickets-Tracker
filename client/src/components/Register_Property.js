@@ -142,14 +142,15 @@ export default function Register_Property(props) {
       provinceError ||
       postalCodeError
     ) {
-      setInputsState({
+      setInputsState((prev) => ({
+        ...prev,
         propertyTypeError,
         propertyNameError,
         addressError,
         cityError,
         provinceError,
         postalCodeError,
-      });
+      }));
       return false;
     }
     return true;
@@ -184,10 +185,6 @@ export default function Register_Property(props) {
           imagePath: new_imagePath,
         })
         .then((response) => {
-          // console.log(
-          //   "***From inside onSubmit of Register Property: ",
-          //   response
-          // );
           showToastAppear();
           setInputsState((inputsState) => ({
             ...inputsState,
@@ -225,7 +222,7 @@ export default function Register_Property(props) {
           <img className="logo" src={logo}></img>
         </div>
 
-        <h1 className="property-register__title">Register your property!</h1>
+        <h1 className="property-register__title">Register your property</h1>
 
         <h4 style={{ marginTop: 30 }}>Enter Property Information:</h4>
 
@@ -250,7 +247,7 @@ export default function Register_Property(props) {
             </div>
           </Form.Group>
 
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-3 mt-4">
             <InputGroup.Prepend>
               <InputGroup.Text id="formPropertyName">
                 Property Name
@@ -268,7 +265,7 @@ export default function Register_Property(props) {
             {inputsState.propertyNameError}
           </div>
 
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-3 mt-4">
             <InputGroup.Prepend>
               <InputGroup.Text id="formPropertyAddress">
                 Address
@@ -286,7 +283,7 @@ export default function Register_Property(props) {
             {inputsState.addressError}
           </div>
 
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-3 mt-4">
             <InputGroup.Prepend>
               <InputGroup.Text id="formPropertyCity">City</InputGroup.Text>
             </InputGroup.Prepend>
@@ -302,7 +299,7 @@ export default function Register_Property(props) {
             {inputsState.cityError}
           </div>
 
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-3 mt-4">
             <InputGroup.Prepend>
               <InputGroup.Text
                 id="formPropertyProvince"
@@ -323,7 +320,7 @@ export default function Register_Property(props) {
             {inputsState.provinceError}
           </div>
 
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-3 mt-4">
             <InputGroup.Prepend>
               <InputGroup.Text id="formPropertyPostalCode">
                 Postal Code
@@ -363,11 +360,11 @@ export default function Register_Property(props) {
               <strong className="mr-auto">Notification</strong>
               <small>just now</small>
             </Toast.Header>
-            <Toast.Body>{`New property: ${inputsState.propertyName} has been saved to database!`}</Toast.Body>
+            <Toast.Body>{`New property has been saved to database!`}</Toast.Body>
           </Toast>
 
           <Button
-            className="float-right"
+            className="float-right mt-4"
             onClick={onSubmit}
             variant="secondary"
             type="submit"
@@ -376,7 +373,7 @@ export default function Register_Property(props) {
           </Button>
 
           <Button
-            className="float-left"
+            className="float-left mt-4"
             onClick={goBack}
             variant="secondary"
             type="submit"
