@@ -1,15 +1,17 @@
-.background-img {
+.img__bkg {
   position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
 .property-register__form {
   position: fixed;
   color: White;
   padding: 45px 55px;
-  border-radius: 60px;
+  border-radius: 80px;
   background-image: linear-gradient(#2b2929 10%, #ff910000 100%);
   text-align: center;
-  transform: translate(120%, 10%);
+  transform: translate(120%, 15%);
   width: 40%;
   overflow: auto;
   height: 750px;
@@ -19,7 +21,6 @@
   padding-bottom: 10px;
   height: 40%;
   width: 40%;
-  // display: block;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 15px;
