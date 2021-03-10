@@ -71,6 +71,17 @@ app.post("/register_user/new", (req, res) => {
   const lastname = req.body.lastname;
   const email = req.body.email;
   const password = bcrypt.hashSync(req.body.password, saltRounds);
+  const role_id = req.body.role_id;
+
+  addNewUser_PM = addNewUser(
+    firstname,
+    lastname,
+    email,
+    password,
+    role_id
+  ).then((response) => {
+    res.send(response);
+  });
 });
 
 // register new property and add to the database
