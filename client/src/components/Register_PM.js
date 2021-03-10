@@ -26,6 +26,12 @@ export default function Register_PM(props) {
     password: "",
     confirmPassword: "",
     role_id: 1,
+
+    firstnameError: "",
+    lastnameError: "",
+    emailError: "",
+    passwordError: "",
+    confirmPasswordError: "",
   });
 
   const handleFirstnameChange = (event) => {
@@ -68,6 +74,57 @@ export default function Register_PM(props) {
     }));
   };
 
+  const validate = () => {
+    let firstnameError = "";
+    let lastnameError = "";
+    let emailError = "";
+    let passwordError = "";
+    let confirmPasswordError = "";
+
+    if (!inputsState.firstname) {
+      firstnameError = "Firstname cannot be blank";
+    }
+
+    if (!inputsState.lastname) {
+      lastnameError = "Lastname cannot be blank";
+    }
+
+    if (!inputsState.email) {
+      emailError = "Email cannot be blank";
+    } else if (!inputsState.email.includes("@")) {
+      emailError = "Invalid email address";
+    }
+
+    if (!inputsState.password) {
+      passwordError = "Password cannot be blank";
+    }
+
+    if (!inputsState.confirmPassword) {
+      confirmPasswordError = "Confirm Password cannot be blank";
+    } else if (inputsState.password !== inputsState.confirmPassword) {
+      confirmPasswordError =
+        "Password confirmation does not match the password!";
+    }
+
+    if (
+      firstnameError ||
+      lastnameError ||
+      emailError ||
+      passwordError ||
+      confirmPasswordError
+    ) {
+      setInputsState({
+        firstnameError,
+        lastnameError,
+        emailError,
+        passwordError,
+        confirmPasswordError,
+      });
+      return false;
+    }
+    return true;
+  };
+
   const onSubmit = (event) => {
     event.preventDefault();
 
@@ -77,17 +134,35 @@ export default function Register_PM(props) {
     const password = inputsState.password;
     const role_id = inputsState.role_id;
 
-    return axios
-      .post(`/register_user/new`, {
-        firstname,
-        lastname,
-        email,
-        password,
-        role_id,
-      })
-      .then((response) => {
-        console.log("***From response of onSubmit of Register PM: ", response);
-      });
+    const isValid = validate();
+
+    if (isValid) {
+      return axios
+        .post(`/register_user/new`, {
+          firstname,
+          lastname,
+          email,
+          password,
+          role_id,
+        })
+        .then((response) => {
+          // console.log("***From response of onSubmit of Register PM: ", response);
+          setInputsState((inputsState) => ({
+            ...inputsState,
+            firstname: "",
+            lastname: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+
+            firstnameError: "",
+            lastnameError: "",
+            emailError: "",
+            passwordError: "",
+            confirmPasswordError: "",
+          }));
+        });
+    }
   };
 
   return (
@@ -112,7 +187,7 @@ export default function Register_PM(props) {
           className="pm-resiger__form"
           onSubmit={(event) => event.preventDefault()}
         >
-          <Form.Group as={Col} controlId="selectPropertyAddress">
+          {/* <Form.Group as={Col} controlId="selectPropertyAddress">
             <Form.Label column sm={10} className="text__select-address">
               Select property address:
             </Form.Label>
@@ -123,7 +198,7 @@ export default function Register_PM(props) {
                 <option>12 University St</option>
               </Form.Control>
             </Col>
-          </Form.Group>
+          </Form.Group> */}
 
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
@@ -137,6 +212,9 @@ export default function Register_PM(props) {
               placeholder="Enter your firstname"
             />
           </InputGroup>
+          <div style={{ fontSize: 19, color: "darkred", marginBottom: 10 }}>
+            {inputsState.firstnameError}
+          </div>
 
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
@@ -150,6 +228,9 @@ export default function Register_PM(props) {
               placeholder="Enter your lastname"
             />
           </InputGroup>
+          <div style={{ fontSize: 19, color: "darkred", marginBottom: 10 }}>
+            {inputsState.lastnameError}
+          </div>
 
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
@@ -163,6 +244,9 @@ export default function Register_PM(props) {
               placeholder="Enter your email address"
             />
           </InputGroup>
+          <div style={{ fontSize: 19, color: "darkred", marginBottom: 10 }}>
+            {inputsState.emailError}
+          </div>
 
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
@@ -176,6 +260,9 @@ export default function Register_PM(props) {
               placeholder="Enter your password"
             />
           </InputGroup>
+          <div style={{ fontSize: 19, color: "darkred", marginBottom: 10 }}>
+            {inputsState.passwordError}
+          </div>
 
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
@@ -191,6 +278,9 @@ export default function Register_PM(props) {
               placeholder="Enter confirm password"
             />
           </InputGroup>
+          <div style={{ fontSize: 19, color: "darkred", marginBottom: 10 }}>
+            {inputsState.confirmPasswordError}
+          </div>
 
           <Button
             className="float-right"
