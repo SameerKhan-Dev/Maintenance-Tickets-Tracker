@@ -15,7 +15,7 @@ import Dashboard_Tenant from "./Dashboard_Tenant/Dashboard_Tenant";
 import Employee_Interface from "./Employee/Employee_Interface";
 import Employee_Dashboard from "./Employee/Employee_Dashboard";
 import Login from "./Login";
-import Register_User from "./Register_User";
+import Register_PM from "./Register_PM";
 import Register_Property from "./Register_Property";
 
 const axios = require("axios");
@@ -143,9 +143,9 @@ export default function Application(props) {
             <Register_Property pm_id={pm_id} />
           </PrivateRoute>
 
-          <Route path="/register-user">
+          <Route path="/register-pm">
             {/* <h1> Hello from "/register Page</h1> */}
-            <Register_User />
+            <Register_PM />
           </Route>
 
           <PrivateRoute
