@@ -9,6 +9,7 @@ import {
   Container,
   InputGroup,
   FormControl,
+  Toast,
 } from "react-bootstrap";
 import logo from "./MTrack_White.png";
 import background from "./tools__logo.jpg";
@@ -33,6 +34,11 @@ export default function Register_PM(props) {
     passwordError: "",
     confirmPasswordError: "",
   });
+
+  const [show, setShow] = useState(false);
+  const showToastAppear = () => {
+    setShow(true);
+  };
 
   const handleFirstnameChange = (event) => {
     const value = event.target.value;
@@ -151,6 +157,7 @@ export default function Register_PM(props) {
           role_id,
         })
         .then((response) => {
+          showToastAppear();
           setInputsState((inputsState) => ({
             ...inputsState,
             firstname: "",
@@ -165,7 +172,7 @@ export default function Register_PM(props) {
             passwordError: "",
             confirmPasswordError: "",
           }));
-          goToLoginPage();
+          setTimeout(() => goToLoginPage(), 1500);
         });
     }
   };
@@ -273,6 +280,31 @@ export default function Register_PM(props) {
           <div style={{ fontSize: 19, color: "darkred", marginBottom: 10 }}>
             {inputsState.confirmPasswordError}
           </div>
+
+          <Toast
+            style={{
+              position: "absolute",
+              bottom: 10,
+              right: 0,
+              width: 300,
+              backgroundColor: "#EF8633",
+            }}
+            onClose={() => setShow(false)}
+            show={show}
+            delay={3000}
+            autohide
+          >
+            <Toast.Header>
+              <img
+                src="holder.js/20x20?text=%20"
+                className="round mr-2"
+                alt=""
+              />
+              <strong className="mr-auto">Notification</strong>
+              <small>just now</small>
+            </Toast.Header>
+            <Toast.Body>{`New user has been added to database!`}</Toast.Body>
+          </Toast>
 
           <Button
             className="float-right mt-4"
