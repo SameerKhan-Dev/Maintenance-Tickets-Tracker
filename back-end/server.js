@@ -125,7 +125,7 @@ app.post("/validateUser", (req, res) => {
     // cookie is enabled or exists
     // use the loggedInUserId get the userInfo
     // and return
-    console.log("Inside req.session !-- null");
+    // console.log("Inside req.session !-- null");
     getUsersById(loggedInUserId).then((response) => {
       // console.log("RES is:", res);
       if (response[0]) {
@@ -133,21 +133,20 @@ app.post("/validateUser", (req, res) => {
           userInfo: response[0],
           isCookieSet: true,
         };
-        console.log("responseValue is:", responseValue);
+        // console.log("responseValue is:", responseValue);
         res.send(responseValue);
       }
     });
   }
 
   if (req.session) {
-    console.log("req.session = ", req.session);
+    // console.log("req.session = ", req.session);
 
     const responseValue = {
       userInfo: null,
       isCookieSet: false,
     };
     res.send(responseValue);
-    // res.send("Hello");
   }
 });
 
@@ -155,25 +154,23 @@ app.post("/validateUser", (req, res) => {
 app.post("/login", (req, res) => {
   const user_email = req.body.email;
   const password = req.body.password;
-  console.log("user_email = ", user_email);
-  console.log("password = ", password);
+
+  console.log("**Server.js -- /login route -- user_email = ", user_email);
+  console.log("***FROM front-end -- req.body.password = ", password);
   userLogin = getUserByEmail(user_email)
     .then((response) => {
-      // console.log("RES is:", res);
-      if (response[0] && response[0].password === password) {
+      console.log("***Server.js -- /login route -- password =", password);
+      console.log("***RESPONSE[0].password is:", response[0].password);
+      // still wrong
+      if (response[0] && bcrypt.compareSync(password, response[0].password)) {
         req.session.user_id = response[0].id;
-        console.log("response[0]: ", response[0]);
-        console.log("REQ.SESSION.USER_ID IS: ", req.session.user_id);
-        console.log("RES.header", res);
-        // res.redirect(`/my_properties/${req.session.user_id}`);
-        console.log("Hello from: route 2  ");
-        // res.send(response[0].id);
-        // let user_id = JSON.stringify({user_id: response[0].id});
+        console.log("FOUND MATCHED PWD");
+
         const responseValue = {
           userInfo: response[0],
           isValid: true,
         };
-        console.log("responseValue is:", responseValue);
+        // console.log("responseValue is:", responseValue);
         res.send(responseValue);
 
         //res.send(response[0]);
@@ -210,8 +207,6 @@ app.get("/logout", (req, res) => {
 // get all properties for logged in pm_id
 app.get("/my_properties/:pm_id", (req, res) => {
   const pm_id = req.params.pm_id;
-
-  console.log("Hello from: route 4 ");
 
   myProperties = getAllPropertiesByPM_Id(pm_id).then((response) => {
     res.send(response);
