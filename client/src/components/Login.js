@@ -121,7 +121,7 @@ export default function Login(props) {
             </Form.Group>
             <h5 className="no__account">No account?</h5>
             <h5 className="no__account mb-3">
-              Click<a href="/register"> here</a> to register!
+              Click<a href="/register-pm"> here</a> to register!
             </h5>
             <Button
               className="float-right"
